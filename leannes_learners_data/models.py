@@ -45,3 +45,18 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
+
+
+class Services(models.Model):
+    service_name = models.CharField(max_length=80)
+    service_description = models.CharField(max_length=200, blank=True)
+    service_duration = models.CharField(max_length=80, blank=True)
+    price = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    featured = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["-featured", "service_duration"]
+
+    def __str__(self):
+        return self.service_name
