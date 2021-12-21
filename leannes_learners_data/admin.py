@@ -1,4 +1,4 @@
-from django.contrib import admin 
+from django.contrib import admin
 from .models import Post, Comment, Services
 from django_summernote.admin import SummernoteModelAdmin
 
@@ -7,6 +7,9 @@ admin.site.register(Post)
 
 
 class PostAdmin(SummernoteModelAdmin):
+    """
+    allocation of the table - Post fields
+    """
     list_display = ('title', 'slug', 'status', 'created_at')
     search_fields = ['title', 'content']
     list_filter = ('status', 'created_at')
@@ -15,6 +18,9 @@ class PostAdmin(SummernoteModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
+    """
+    allocation of the database table - Comment fields
+    """
     list_display = ('name', 'body', 'post', 'created_at', 'approved')
     list_filter = ('approved', 'created_at')
     search_fields = ('name', 'email', 'body')
@@ -26,6 +32,10 @@ class CommentAdmin(admin.ModelAdmin):
 
 @admin.register(Services)
 class ServicesAdmin(admin.ModelAdmin):
-    list_display = ('service_name', 'service_description', 'service_duration', 'price', 'featured', 'created_at')
+    """
+    allocation of the database table - Services fields
+    """
+    list_display = ('service_name', 'service_description',
+                    'service_duration', 'price', 'featured', 'created_at')
     list_filter = ('service_name', 'featured')
-    list_display = ('service_name', 'service_duration', 'price', 'featured')
+    list_display = ('service_name', 'service_duration', 'price', 'featured', 'service_description',)
