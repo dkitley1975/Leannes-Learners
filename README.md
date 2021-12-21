@@ -80,11 +80,11 @@ In addition to User Stories and Tasks Project board I also created a Site Creati
 
 #### Desktop
 
-![WEB](./documents/dont_upload_to_github/Holding_Image.png)
+![WEB](/documents/dont_upload_to_github/Holding_Image.png)
 
 #### Mobile
 <!-- TODO Update this -->
-![MOBILE](./documents/dont_upload_to_github/Wireframes/DO_NOT_USE_UPDATE.png)
+![MOBILE](/documents/dont_upload_to_github/Wireframes/DO_NOT_USE_UPDATE.png)
 
 ## Technologies
 
@@ -112,7 +112,7 @@ In addition to User Stories and Tasks Project board I also created a Site Creati
 
 ### Contrast Checker
 
-![image](./documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/dont_upload_to_github/Holding_Image.png)
 
 ## Features
 
@@ -120,39 +120,39 @@ The website has the following features:
 
 ### Navigation bar
 
-![image](./documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/dont_upload_to_github/Holding_Image.png)
 
 ### Home
 
-![image](./documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/dont_upload_to_github/Holding_Image.png)
 
 ### Services
 
-![image](./documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/dont_upload_to_github/Holding_Image.png)
 
 ### Contact us
 
-![image](./documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/dont_upload_to_github/Holding_Image.png)
 
 ### Login
 
-![image](./documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/dont_upload_to_github/Holding_Image.png)
 
 ### Manage
 
-![image](./documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/dont_upload_to_github/Holding_Image.png)
 
 ### Admin
 
-![image](./documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/dont_upload_to_github/Holding_Image.png)
 
 ### Registration/Login
 
-![image](./documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/dont_upload_to_github/Holding_Image.png)
 
 ### User/Logout
 
-![image](./documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/dont_upload_to_github/Holding_Image.png)
 
 ## Testing
 

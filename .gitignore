@@ -8,5 +8,5 @@ node_modules/
 .github/
 cloudinary_python.txt
 dont_upload_to_github*
-leannes-learners-local-env/
+myenv/
 
