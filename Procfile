@@ -1,0 +1,1 @@
+web: gunicorn leannes_learners.wsgi
