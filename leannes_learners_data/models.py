@@ -5,7 +5,7 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
 
-# code sampled from a previous walkthrough - Code Institues " I blog therefore I am"
+# code for POST and COMMENT from a previous walkthrough - Code Institues " I blog therefore I am"
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -45,7 +45,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
-
 
 class Services(models.Model):
     service_name = models.CharField(max_length=80)
