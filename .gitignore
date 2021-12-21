@@ -5,7 +5,7 @@ env.py
 __pycache__/
 *.py[cod]
 node_modules/
-
+.github/
 cloudinary_python.txt
 dont_upload_to_github*
 leannes-learners-local-env/
