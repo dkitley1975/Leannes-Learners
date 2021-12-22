@@ -1,11 +1,11 @@
 [![David's GitHub Banner](./documents/assets/logos/GitHubHeader.png)](https://www.linkedin.com/in/david-kitley-mcnamara)
 
+# Leannes Learners
+
 This is the documentation regarding the creation of the Leanne's Learners website.
 This is my 4th Portfolio Project for the Code Institute's Diploma in Full Stack Development.  
 The projects purpose:
 To build a Full-Stack site based on business logic used to control a centrally-owned dataset. Including an authentication mechanism and providing role-based access to the site's data or other activities based on the dataset.
-
-# Leannes Learners [![Leannes Learners logo](./documents/assets/logos/leannesLearnersLogoPill.png)](https://www.linkedin.com/in/david-kitley-mcnamara)
 
 <!--TODO CONTENTS HERE-->
 
@@ -14,7 +14,7 @@ To build a Full-Stack site based on business logic used to control a centrally-o
 ### User Stories
 
 * As a user
-  * I want to know where the Leanne's Learners are located
+  * I want to know where Leanne's Learners operate
   * I want to see the service's Leanne's Learners offer.
   * I want to be able to see the prices.
   * I want to know about the company.
@@ -80,11 +80,11 @@ In addition to User Stories and Tasks Project board I also created a Site Creati
 
 #### Desktop
 
-![WEB](/documents/dont_upload_to_github/Holding_Image.png)
+![WEB](/documents/assets/Holding_Image.png)
 
 #### Mobile
-<!-- TODO Update this -->
-![MOBILE](/documents/dont_upload_to_github/Wireframes/DO_NOT_USE_UPDATE.png)
+
+![MOBILE](/documents/assets/Wireframes/wireframe-mobile.png)
 
 ## Technologies
 
@@ -112,7 +112,7 @@ In addition to User Stories and Tasks Project board I also created a Site Creati
 
 ### Contrast Checker
 
-![image](/documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/assets/Holding_Image.png)
 
 ## Features
 
@@ -120,39 +120,35 @@ The website has the following features:
 
 ### Navigation bar
 
-![image](/documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/assets/Holding_Image.png)
 
 ### Home
 
-![image](/documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/assets/Holding_Image.png)
 
 ### Services
 
-![image](/documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/assets/Holding_Image.png)
 
 ### Contact us
 
-![image](/documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/assets/Holding_Image.png)
 
 ### Login
 
-![image](/documents/dont_upload_to_github/Holding_Image.png)
-
-### Manage
-
-![image](/documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/assets/Holding_Image.png)
 
 ### Admin
 
-![image](/documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/assets/Holding_Image.png)
 
 ### Registration/Login
 
-![image](/documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/assets/Holding_Image.png)
 
 ### User/Logout
 
-![image](/documents/dont_upload_to_github/Holding_Image.png)
+![image](/documents/assets/Holding_Image.png)
 
 ## Testing
 
@@ -197,9 +193,9 @@ I use media queries to make everything look and feel good on mobile devices.
 
       Saving the changes by pressing ```ctrl + O```, then exiting by pressing ```ctrl + X```  
 
-    This error continues - but if http://localhost:8000/ or http://127.0.0.1:8000/ are used in the address bar the site works, just not directly from the link in the output message in the terminal.
+    This error continues - but if ```http://localhost:8000/``` or ```http://127.0.0.1:8000/``` are used in the address bar the site works, just not directly from the link in the output message in the terminal.
 
-1.
+1. Next issue to arise
 
 ## Deployment
 
