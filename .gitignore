@@ -9,4 +9,5 @@ node_modules/
 cloudinary_python.txt
 dont_upload_to_github*
 myenv/
+*.sqlite3
 
