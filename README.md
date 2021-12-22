@@ -1,4 +1,4 @@
-[![David's GitHub Banner](./documents/assets/logos/GitHubHeader.png)](https://www.linkedin.com/in/david-kitley-mcnamara)
+[![David's GitHub Banner](/documents/assets/logos/GitHubHeader.png)](https://www.linkedin.com/in/david-kitley-mcnamara)
 
 # Leannes Learners
 
@@ -36,39 +36,39 @@ To build a Full-Stack site based on business logic used to control a centrally-o
   * I want to be able to cancel pupils lessons.
   * I want to be able to get email from site users through a contact form
 
-## User Persona Summary ![User Persona Summary](./documents/assets/UserPersonaSummary.jpg)
+## User Persona Summary ![User Persona Summary](/documents/assets/UserPersonaSummary.jpg)
 
 ## Project Board
 
 I Used Github's Project board to plan the project and Github Issue's for User Stories and Tasks [here](https://github.com/users/dkitley1975/projects/9)  
 
 *Project Board listed by Status*
-![Project Board listed by Status](./documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board_List_By_Status.png)  
+![Project Board listed by Status](/documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board_List_By_Status.png)  
 
 *Project Board listed by Milestone*
-![Project Board listed by Milestone](./documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board_List_By_Milestones.png)  
+![Project Board listed by Milestone](/documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board_List_By_Milestones.png)  
 
 *First Milestone with Tasks added*
-![Milestone with tasks added](./documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board_Milestone_Description_And_Adding_Tasks.png)
+![Milestone with tasks added](/documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board_Milestone_Description_And_Adding_Tasks.png)
 
 *User Story with Tasks added*
-![User Story with tasks added](./documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board_User_Story_and_Added_Tasks.png)  
+![User Story with tasks added](/documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board_User_Story_and_Added_Tasks.png)  
 
 *Project Board Kanban, with Automation*
-![Project Board Kanban, with Automation](./documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board.png)  
+![Project Board Kanban, with Automation](/documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board.png)  
 
 ### Site Creation Path Project Board
 
 In addition to User Stories and Tasks Project board I also created a Site Creation Path Board Used Github's Project board again to plan the projects creation path.
 
 *Site Creation Path Board List View*
-![Site Creation Path Board List View](./documents/assets/screenshots/GitHub_Site_Creation_Project_Path_Screen_Shots/GitHub_Site_Creation_Project_Path_Screen_Shots_list_view.png)
+![Site Creation Path Board List View](/documents/assets/screenshots/GitHub_Site_Creation_Project_Path_Screen_Shots/GitHub_Site_Creation_Project_Path_Screen_Shots_list_view.png)
 
 *Site Creation Path Board Table View*
-![Site Creation Path Board Table View](./documents/assets/screenshots/GitHub_Site_Creation_Project_Path_Screen_Shots/GitHub_Site_Creation_Project_Path_Screen_Shots_table_view.png)
+![Site Creation Path Board Table View](/documents/assets/screenshots/GitHub_Site_Creation_Project_Path_Screen_Shots/GitHub_Site_Creation_Project_Path_Screen_Shots_table_view.png)
 
 *Site Creation Path Board Indiviual Item View*
-![Site Creation Path Board Indiviual Item View](./documents/assets/screenshots/GitHub_Site_Creation_Project_Path_Screen_Shots/GitHub_Site_Creation_Project_Path_Screen_Shots_item.png)
+![Site Creation Path Board Indiviual Item View](/documents/assets/screenshots/GitHub_Site_Creation_Project_Path_Screen_Shots/GitHub_Site_Creation_Project_Path_Screen_Shots_item.png)
 
 ## Design
 
