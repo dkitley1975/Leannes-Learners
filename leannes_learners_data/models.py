@@ -5,14 +5,17 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
 
-# code for POST and COMMENT from a previous walkthrough - Code Institues " I blog therefore I am"
+
+# code for POST and COMMENT adapted 
+# from a previous walkthrough - Code Institues " I blog therefore I am"
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
     )
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField('image', default='placeholder', unique=True)
+    alt_tag = models.CharField(max_length=200, blank=True)
     excerpt = models.TextField(blank=True)
     updated_at = models.DateTimeField(auto_now=True)
     content = models.TextField()
@@ -33,7 +36,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
-        related_name="comments")
+                             related_name="comments")
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
@@ -46,8 +49,9 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
 
+
 class Services(models.Model):
-    service_name = models.CharField(max_length=80)
+    service_name = models.CharField(max_length=80, unique=True)
     service_description = models.CharField(max_length=200, blank=True)
     service_duration = models.CharField(max_length=80, blank=True)
     price = models.IntegerField()
@@ -59,3 +63,17 @@ class Services(models.Model):
 
     def __str__(self):
         return self.service_name
+
+
+class HomeCarousel(models.Model):
+    slide_headline = models.CharField(max_length=80, unique=True)
+    slide_description = models.CharField(max_length=200, blank=True)
+    slide_image = CloudinaryField('image', default='placeholder', unique=True)
+    alt_tag = models.CharField(max_length=200, blank=True)
+    include_in_carousel = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["-include_in_carousel", "-slide_headline"]
+
+    def __str__(self):
+        return self.slide_headline
