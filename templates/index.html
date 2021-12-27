@@ -1,7 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Carousel -->
+<section>
+	{% for post in post_list %}
+	<div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-interval="6000" data-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="../media/homepage_slideshow_image_car.jpg" class="d-block w-100" alt="...">
+				<div class="carousel-caption">
+					<h3 class="fw-bold">First slide label</h3>
+					<p class="fw-bold">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+				</div>
+			</div>
 
+
+			<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+	{% endfor %}
+</section>
 <!-- Blog posts -->
 <section>
 	<div class="container-fluid">
