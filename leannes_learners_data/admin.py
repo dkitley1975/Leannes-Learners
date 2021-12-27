@@ -67,7 +67,7 @@ class ServicesAdmin(admin.ModelAdmin):
 
 
 @admin.register(HomeCarousel)
-class HomeCarouselAdmin(admin.ModelAdmin):
+class HomeCarouselAdmin(SummernoteModelAdmin):
     """
     Establish the view in admin for the Home Carousel.
     Which fields to include in the:
@@ -75,15 +75,17 @@ class HomeCarouselAdmin(admin.ModelAdmin):
     create an action to include approve include in the carousel
     """
     list_display = (
-        'slide_headline',
-        'slide_description',
+        'slide_identifying_name',
+        'slide_text_headline',
+        'slide_text_description',
         'slide_image',
         'alt_tag',
         'include_in_carousel'
         )
-    list_filter = ('slide_headline', 'slide_description', 'slide_image')
-    search_fields = ('slide_headline', 'slide_description', 'slide_image', 'alt_tag')
+    list_filter = ('slide_identifying_name','slide_text_headline', 'slide_text_description', 'slide_image')
+    search_fields = ('slide_identifying_name','slide_text_headline', 'slide_text_description', 'slide_image', 'alt_tag')
+    summernote_fields = ('slide_text_description',)
     actions = ['approve_comments']
 
-    def nclude_in_carousel(self, request, queryset):
+    def include_in_carousel(self, request, queryset):
         queryset.update(include_in_carousel=True)

@@ -14,7 +14,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
     )
-    featured_image = CloudinaryField('image', default='placeholder', unique=True)
+    featured_image = CloudinaryField('image', default='placeholder')
     alt_tag = models.CharField(max_length=200, blank=True)
     excerpt = models.TextField(blank=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -66,14 +66,15 @@ class Services(models.Model):
 
 
 class HomeCarousel(models.Model):
-    slide_headline = models.CharField(max_length=80, unique=True)
-    slide_description = models.CharField(max_length=200, blank=True)
-    slide_image = CloudinaryField('image', default='placeholder', unique=True)
+    slide_identifying_name = models.CharField(max_length=80, unique=True)
+    slide_text_headline = models.CharField(max_length=80, unique=False)
+    slide_text_description = models.CharField(max_length=200, blank=False)
+    slide_image = CloudinaryField('image', default='placeholder', unique=False)
     alt_tag = models.CharField(max_length=200, blank=True)
     include_in_carousel = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ["-include_in_carousel", "-slide_headline"]
+        ordering = ["-include_in_carousel", "-slide_identifying_name"]
 
     def __str__(self):
-        return self.slide_headline
+        return self.slide_text_headline
