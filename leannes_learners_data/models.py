@@ -67,8 +67,8 @@ class Services(models.Model):
 
 class HomeCarousel(models.Model):
     slide_identifying_name = models.CharField(max_length=80, unique=True)
-    slide_text_headline = models.CharField(max_length=80, unique=False)
-    slide_text_description = models.CharField(max_length=200, blank=False)
+    slide_text_headline = models.CharField(max_length=80, unique=False, blank=True)
+    slide_text_description = models.CharField(max_length=200, blank=True)
     slide_image = CloudinaryField('image', default='placeholder', unique=False)
     alt_tag = models.CharField(max_length=200, blank=True)
     include_in_carousel = models.BooleanField(default=False)
