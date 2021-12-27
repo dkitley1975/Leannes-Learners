@@ -1,0 +1,169 @@
+{% load static %}
+<!doctype html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+	<!-- IMPORTANT NOTE - Anywhere there are capitalised words inside "", you should replace these with your own information -->
+	<!-- IMPORTANT NOTE - Anywhere there are # inside "", you should replace these with your own links !!!!!!!!!!!!!!!!!!!!! -->
+	<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+	<!-- These are your standard building-block meta tags, which should be included in every project -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- SEO win meta tags -->
+	<meta name="description" content="DESCRIPTION">
+	<!-- Each page should have a unique description. Page, not site. -->
+	<!-- Length can be up to 160 characters on desktop, 130 characters on mobile -->
+	<!-- You can have up to 158 description tags (although generally you won't need more than one per page) -->
+	<!-- Add a clear call to action, don't duplicate descriptions, include keywords, discounts, or offers if you're selling something -->
+
+	<meta name="keywords" content="KEYWORDS">
+	<!-- These are the keywords that your site can be searched with on Google -->
+	<!-- Make these single words, relevant to your site, often searched -->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="index, follow">
+
+	<title>SITE TITLE</title>
+	<!-- This is what will display in the tab at the top of a user's browser window -->
+	<!-- Title should be less than 60 characters -->
+	<!-- Unique title on every page, don't repeat yourself -->
+	<!-- Use words to indicate site function, use keywords with 4+ words, this should be your main keyword -->
+	<!-- Title can be changed to get the user's attention! 'Please come back, we miss you!', 'You have a new notification!' -->
+
+	<!-- Font Awsome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<!-- Bootstrap CSS-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+		integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!-- Local CSS-->
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+</head>
+
+<body>
+	<!-- Here is the main header used across all the pages of our website -->
+
+	<header>
+		<h1>Header</h1>
+	</header>
+
+	<nav class="navbar navbar-expand-lg navbar-burnt-red navbar-dark">
+		<a class="navbar-brand" href="#">
+			<div class="logo-image"><span class="sr-only">(current)</span>
+				<img src="../media/leannes_learners_logo_1_line_no_tag_white.png" class="img-fluid"
+					alt="Leanne's Learners Logo">
+			</div>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="#">About Us</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Pass Plus</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Prices</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Blog</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Contact Us</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Pupil Area</a>
+				</li>
+			</ul>
+
+			<div class="navbar-nav ml-auto action-buttons">
+				<div class="nav-item dropdown">
+					<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Login</a>
+					<div class="dropdown-menu action-form">
+						<form action="/examples/actions/confirmation.php" method="post">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Username" required="required">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Password" required="required">
+							</div>
+							<input type="submit" class="btn btn-primary btn-block" value="Login">
+							<div class="text-center mt-2">
+								<a href="#">Forgot Your password?</a>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="nav-item dropdown">
+					<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle sign-up-btn">Sign up</a>
+					<div class="dropdown-menu action-form">
+						<form action="/examples/actions/confirmation.php" method="post">
+							<p class="hint-text">Fill in this form to create your account!</p>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Username" required="required">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Password" required="required">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Confirm Password"
+									required="required">
+							</div>
+							<div class="form-group">
+								<label class="form-check-label"><input type="checkbox" required="required"> I accept the
+									<a href="#">Terms &amp; Conditions</a></label>
+							</div>
+							<input type="submit" class="btn btn-primary btn-block" value="Sign up">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</nav>
+
+
+
+	</nav>
+
+	<!-- Here is the page's main content -->
+	{% block content %}
+	<!-- Content Goes here -->
+	{% endblock content %}
+	<main>
+
+	</main>
+
+	<!-- And here is our main footer that is used across all the pages of our website -->
+	<footer class="navbar-burnt-red pt-4">
+		<div class="container-wrapper ">
+			<div class="row ">
+				<div class="col-md-12 text-center text-white">
+					<p>Copyright © <span id="copyright-year"></span> Kitley-McNamara. All Rights Reserved
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Custom JavaScript -->
+	<script src="assets/scripts/main.js"></script>
+
+	<!-- TODO move to external script -->
+	<!-- Copyright solution researched and resourced on stackoverflow -->
+	<script>document.getElementById('copyright-year').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+</body>
+
+</html>
