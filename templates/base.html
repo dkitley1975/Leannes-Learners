@@ -49,10 +49,6 @@
 <body>
 	<!-- Here is the main header used across all the pages of our website -->
 
-	<header>
-		<h1>Header</h1>
-	</header>
-
 	<nav class="navbar navbar-expand-lg navbar-burnt-red navbar-dark">
 		<a class="navbar-brand" href="#">
 			<div class="logo-image"><span class="sr-only">(current)</span>
@@ -132,17 +128,11 @@
 		</div>
 		</div>
 	</nav>
-
-
-
-	</nav>
-
-	<!-- Here is the page's main content -->
-	{% block content %}
-	<!-- Content Goes here -->
-	{% endblock content %}
 	<main>
-
+		<!-- Here is the page's main content -->
+		{% block content %}
+		<!-- Content Goes here -->
+		{% endblock content %}
 	</main>
 
 	<!-- And here is our main footer that is used across all the pages of our website -->
@@ -157,9 +147,6 @@
 		</div>
 	</footer>
 
-
-	<!-- Custom JavaScript -->
-	<script src="assets/scripts/main.js"></script>
 
 	<!-- TODO move to external script -->
 	<!-- Copyright solution researched and resourced on stackoverflow -->
