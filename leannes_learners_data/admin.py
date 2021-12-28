@@ -23,6 +23,10 @@ class PostAdmin(SummernoteModelAdmin):
     list_filter = ('status', 'created_at')
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
+    actions = ['publish_post']
+
+    def publish_post(self, request, queryset):
+        queryset.update(status=True)
 
 
 @admin.register(Comment)
