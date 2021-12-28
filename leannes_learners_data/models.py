@@ -14,7 +14,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
     )
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = models.ImageField(upload_to='leannes_learners_blog_images/', default='placeholder')
     alt_tag = models.CharField(max_length=200, blank=True)
     excerpt = models.TextField(blank=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -69,7 +69,8 @@ class HomeCarousel(models.Model):
     slide_identifying_name = models.CharField(max_length=80, unique=True)
     slide_text_headline = models.CharField(max_length=80, unique=False, blank=True)
     slide_text_description = models.CharField(max_length=200, blank=True)
-    slide_image = CloudinaryField('image', default='placeholder', unique=False)
+    slide_image = models.ImageField(upload_to='leannes_learners_caurosel_images/', default='placeholder')
+
     alt_tag = models.CharField(max_length=200, blank=True)
     include_in_carousel = models.BooleanField(default=False)
 

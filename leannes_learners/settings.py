@@ -36,21 +36,21 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "leannes-learners.herokuapp.com",]
 # Application definition
 
 INSTALLED_APPS = [
-'django.contrib.admin',
-'django.contrib.auth',
-'django.contrib.contenttypes',
-'django.contrib.sessions',
-'django.contrib.messages',
-'django.contrib.sites',
-'cloudinary_storage',
-'django.contrib.staticfiles',
-'cloudinary',
-'django_summernote',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.sites',
+    'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
+    'django_summernote',
 #'crispy_forms',
-#'allauth',
-#'allauth.account',
-#'allauth.socialaccount'
-'leannes_learners_data',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'leannes_learners_data',
 ]
 
 SITE_ID = 1
@@ -140,7 +140,7 @@ STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_URL = '/media/'
+MEDIA_URL = '/leannes_learners/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
