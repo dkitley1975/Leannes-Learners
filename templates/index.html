@@ -3,8 +3,9 @@
 {% block content %}
 <!-- Carousel -->
 <section>
-	{% for post in post_list %}
+
 	<div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-interval="6000" data-ride="carousel">
+		{% for blog in blog_list %}
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<img src="https://res.cloudinary.com/dkitley1975/image/upload/v1640589017/tsggvscrtow67k8iai7i.jpg"
@@ -25,10 +26,11 @@
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
+		{% endfor %}
 	</div>
-	{% endfor %}
+
 </section>
-<!-- Blog posts -->
+<!-- Blog blogs -->
 <section>
 	<div class="container-fluid">
 		<div class="row">
@@ -36,28 +38,28 @@
 			<!-- Blog Entries Column -->
 			<div class="col-12 mt-3 left">
 				<div class="row">
-					{% for post in post_list %}
+					{% for blog in blog_list %}
 					<div class="col-md-4">
 						<div class="card mb-4">
 							<div class="card-body">
 								<div class="image-container">
-									{% if "placeholder" in post.featured_image.url %}
+									{% if "placeholder" in blog.featured_image.url %}
 									<img class="card-img-top"
 										src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
 									{% else %}
-									<img class="card-img-top" src=" {{ post.featured_image.url }}">
+									<img class="card-img-top" src=" {{ blog.featured_image.url }}">
 									{% endif %}
 									<div class="image-flash">
-										<p class="author">Author: {{ post.author }}</p>
+										<p class="author">Author: {{ blog.author }}</p>
 									</div>
 								</div>
 								<a href="#">
-									<h2 class="card-title">{{ post.title }}</h2>
-									<p class="card-text">{{ post.excerpt }}</p>
+									<h2 class="card-title">{{ blog.title }}</h2>
+									<p class="card-text">{{ blog.excerpt }}</p>
 								</a>
 								<hr />
-								<p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
-									{{ post.number_of_likes }}</p>
+								<p class="card-text text-muted h6">{{ blog.created_on}} <i class="far fa-heart"></i>
+									{{ blog.number_of_likes }}</p>
 							</div>
 						</div>
 					</div>

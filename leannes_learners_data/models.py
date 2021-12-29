@@ -7,9 +7,9 @@ from django.utils.safestring import mark_safe
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
-# code for POST and COMMENT adapted
+# code for Blog and COMMENT adapted
 # from a previous walkthrough - Code Institues " I blog therefore I am"
-class Post(models.Model):
+class Blog(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -17,7 +17,8 @@ class Post(models.Model):
     )
     featured_image = CloudinaryField(
         folder='leannes_learners/leannes_learners_blog_images/',
-        transformation={'width': '400', 'height': '300', 'crop': 'fill', 'gravity': 'south_east'},
+        transformation={'width': '400', 'height': '300', 'crop': 'fill',
+                        'gravity': 'face', 'zoom': '0.5'},
         default='placeholder')
     alt_tag = models.CharField(max_length=200, blank=True)
     excerpt = models.TextField(blank=True)
@@ -26,7 +27,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
-        User, related_name='blogpost_like', blank=True)
+        User, related_name='blogblog_like', blank=True)
 
     def image_thumb(self):
         """
@@ -48,7 +49,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE,
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE,
                              related_name="comments")
     name = models.CharField(max_length=80)
     email = models.EmailField()

@@ -1,17 +1,17 @@
 from django.contrib import admin
-from .models import Post, Comment, Services, HomeCarousel
+from .models import Blog, Comment, Services, HomeCarousel
 from django_summernote.admin import SummernoteModelAdmin
 
 
 # Register your models here.
-@admin.register(Post)
-class PostAdmin(SummernoteModelAdmin):
+@admin.register(Blog)
+class BlogAdmin(SummernoteModelAdmin):
     """
-    Establish the view in admin for the Blog Posts.
+    Establish the view in admin for the Blog.
     Which fields to include in the:
     list/search views, how they are filtered,
     which are prepopulated and
-    creates an action to include approve posts.
+    creates an action to include approve Blogs.
     """
     fields = [
         'title',
@@ -38,10 +38,10 @@ class PostAdmin(SummernoteModelAdmin):
     list_filter = ('status', 'created_at')
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
-    actions = ['publish_post']
+    actions = ['publish_Blog']
     readonly_fields = ['image_thumb']
 
-    def publish_post(self, request, queryset):
+    def publish_Blog(self, request, queryset):
         queryset.update(status=True)
 
 
@@ -51,12 +51,12 @@ class CommentAdmin(admin.ModelAdmin):
     Establish the view in admin for the Comments.
     Which fields to include in the:
     list/search views, how they are filtered and
-    creates an action to include approve posts.
+    creates an action to include approve Blogs.
     """
     list_display = (
         'name',
         'body',
-        'post',
+        'blog',
         'created_at',
         'approved'
         )
