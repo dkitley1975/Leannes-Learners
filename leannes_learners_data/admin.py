@@ -13,17 +13,33 @@ class PostAdmin(SummernoteModelAdmin):
     which are prepopulated and
     creates an action to include approve posts.
     """
+    fields = [
+        'title',
+        'slug',
+        'author',
+        'featured_image',
+        'image_thumb',
+        'alt_tag',
+        'excerpt',
+        'content',
+        'status',
+        'likes',
+    ]
+
     list_display = (
+        'image_thumb',
         'title',
         'slug',
         'status',
-        'created_at'
+        'created_at',
         )
+
     search_fields = ['title', 'content', 'alt_tag']
     list_filter = ('status', 'created_at')
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
     actions = ['publish_post']
+    readonly_fields = ['image_thumb']
 
     def publish_post(self, request, queryset):
         queryset.update(status=True)
@@ -84,10 +100,12 @@ class HomeCarouselAdmin(SummernoteModelAdmin):
         'slide_text_description',
         'slide_image',
         'alt_tag',
-        'include_in_carousel'
+        'include_in_carousel',
         )
-    list_filter = ('slide_identifying_name','slide_text_headline', 'slide_text_description', 'slide_image')
-    search_fields = ('slide_identifying_name','slide_text_headline', 'slide_text_description', 'slide_image', 'alt_tag')
+    list_filter = ('slide_identifying_name', 'slide_text_headline',
+                   'slide_text_description', 'slide_image',)
+    search_fields = ('slide_identifying_name', 'slide_text_headline',
+                     'slide_text_description', 'slide_image', 'alt_tag',)
     summernote_fields = ('slide_text_description',)
     actions = ['approve_comments']
 

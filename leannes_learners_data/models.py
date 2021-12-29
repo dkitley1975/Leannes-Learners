@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.utils.safestring import mark_safe
 
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
-# code for POST and COMMENT adapted 
+# code for POST and COMMENT adapted
 # from a previous walkthrough - Code Institues " I blog therefore I am"
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
@@ -14,7 +15,10 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
     )
-    featured_image = models.ImageField(upload_to='leannes_learners_blog_images/', default='placeholder')
+    featured_image = CloudinaryField(
+        folder='leannes_learners/leannes_learners_blog_images/',
+        transformation={'width': '400', 'height': '300', 'crop': 'fill', 'gravity': 'south_east'},
+        default='placeholder')
     alt_tag = models.CharField(max_length=200, blank=True)
     excerpt = models.TextField(blank=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -23,6 +27,15 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True)
+
+    def image_thumb(self):
+        """
+        This creates a thumbnail image of the current uploaded image
+        """
+        return mark_safe('<img src="{}" width="100" height="auto">'.format(
+            self.featured_image.url))
+    image_thumb.short_discription = "image"
+    featured_image.allow_tags = True
 
     class Meta:
         ordering = ["-created_at"]
@@ -69,7 +82,10 @@ class HomeCarousel(models.Model):
     slide_identifying_name = models.CharField(max_length=80, unique=True)
     slide_text_headline = models.CharField(max_length=80, unique=False, blank=True)
     slide_text_description = models.CharField(max_length=200, blank=True)
-    slide_image = models.ImageField(upload_to='leannes_learners_caurosel_images/', default='placeholder')
+    slide_image = CloudinaryField(
+        folder='leannes_learners/leannes_learners_caurosel_images/',
+        transformation={'width': '1920', 'height': '600', 'crop': 'fill'},
+        default='placeholder')
 
     alt_tag = models.CharField(max_length=200, blank=True)
     include_in_carousel = models.BooleanField(default=False)
