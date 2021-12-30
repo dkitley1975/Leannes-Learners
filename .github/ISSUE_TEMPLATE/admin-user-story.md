@@ -2,7 +2,7 @@
 name: Admin User Story
 about: Admin User Story Template
 title: Requested Feature
-labels: User Story Document
+labels: ''
 assignees: dkitley1975
 
 ---
