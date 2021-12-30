@@ -90,3 +90,40 @@
 img {
     vertical-align: bottom;
 }
+
+.authentication-background-image-container {
+box-sizing:border-box;
+min-height: 100vh;
+min-width: 100vw;
+overflow:hidden;
+background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1640844853/leannes_learners/default_image/inside_car_blurred.jpg');
+background-size:cover;
+background-repeat: no-repeat;
+z-index: -1;
+}
+
+.authentication-input-container{
+    background-color:rgba(85, 191, 199, 0.308);
+    border-radius: 20px;
+}
+
+.btn-primary,
+.btn-primary:active {
+    color: #fff;
+    background: #205e63 !important;
+    border: none;
+    border-radius: .5rem;
+    padding: .5rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    color: #fff;
+    background: #031c1f !important;
+}
+a {
+    text-decoration: none;
+}
