@@ -46,7 +46,7 @@
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 	<!-- Here is the main header used across all the pages of our website -->
 
 	<nav class="navbar navbar-expand-lg navbar-burnt-red navbar-dark">
@@ -78,54 +78,28 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">Contact Us</a>
 				</li>
+				{% if user.is_authenticated %}
 				<li class="nav-item">
 					<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Pupil Area</a>
 				</li>
+				{% endif %}
 			</ul>
 
 			<div class="navbar-nav ml-auto action-buttons">
-				<div class="nav-item dropdown">
-					<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Login</a>
-					<div class="dropdown-menu action-form">
-						<form action="/examples/actions/confirmation.php" method="post">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Username" required="required">
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Password" required="required">
-							</div>
-							<input type="submit" class="btn btn-primary btn-block" value="Login">
-							<div class="text-center mt-2">
-								<a href="#">Forgot Your password?</a>
-							</div>
-						</form>
-					</div>
-				</div>
-				<div class="nav-item dropdown">
-					<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle sign-up-btn">Sign up</a>
-					<div class="dropdown-menu action-form">
-						<form action="/examples/actions/confirmation.php" method="post">
-							<p class="hint-text">Fill in this form to create your account!</p>
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Username" required="required">
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Password" required="required">
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Confirm Password"
-									required="required">
-							</div>
-							<div class="form-group">
-								<label class="form-check-label"><input type="checkbox" required="required"> I accept the
-									<a href="#">Terms &amp; Conditions</a></label>
-							</div>
-							<input type="submit" class="btn btn-primary btn-block" value="Sign up">
-						</form>
-					</div>
-				</div>
+				{% if user.is_authenticated %}
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+				</li>
+				{% else %}
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'account_login' %}">Login</a>
+				</li>
+				{% endif %}
+
 			</div>
-		</div>
 		</div>
 	</nav>
 	<main>
@@ -136,7 +110,7 @@
 	</main>
 
 	<!-- And here is our main footer that is used across all the pages of our website -->
-	<footer class="navbar-burnt-red pt-4">
+	<footer class="footer navbar-burnt-red mt-auto py-3 pt-4">
 		<div class="container-wrapper ">
 			<div class="row ">
 				<div class="col-md-12 text-center text-white">
