@@ -29,12 +29,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="index, follow">
 
-	<title>SITE TITLE</title>
-	<!-- This is what will display in the tab at the top of a user's browser window -->
-	<!-- Title should be less than 60 characters -->
-	<!-- Unique title on every page, don't repeat yourself -->
-	<!-- Use words to indicate site function, use keywords with 4+ words, this should be your main keyword -->
-	<!-- Title can be changed to get the user's attention! 'Please come back, we miss you!', 'You have a new notification!' -->
+	<title>
+		{% block title %}{% endblock %}
+	</title>
 
 	<!-- Font Awsome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
