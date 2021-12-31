@@ -1,110 +1,81 @@
-.carousel-item {
-    max-height: 80vh;
-}
-
-.navbar-burnt-red {
-    background-color: #74241d;
-}
-.navbar .sign-up-btn {
-    min-width: 110px;
-    max-height: 36px;
-}
-.navbar .dropdown-menu {
-    color: #999;
-    font-weight: normal;
-    border-radius: 1px;
-    border-color: #e5e5e5;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-.navbar a,
-.navbar a:active {
-    color: #888;
-    padding: 8px 20px;
-    background: transparent;
-    line-height: normal;
-}
-.navbar .navbar-form {
-    border: none;
-}
-.navbar .action-form {
-    width: 280px;
-    padding: 20px;
-    left: auto;
-    right: 0;
-    font-size: 14px;
-}
-.navbar .action-form a {
-    color: #205e63;
-    padding: 0 !important;
-    font-size: 14px;
-}
-.navbar .action-form .hint-text {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 13px;
-}
-.navbar .btn-primary,
-.navbar .btn-primary:active {
-    color: #fff;
-    background: #205e63 !important;
-    border: none;
-}
-.navbar .btn-primary:hover,
-.navbar .btn-primary:focus {
-    color: #fff;
-    background: #031c1f !important;
-}
-
-.navbar .action-buttons .dropdown-toggle::after {
-    display: none;
-}
-.form-check-label input {
-    position: relative;
-    top: 1px;
-}
-.logo-image {
-    width: 12vw width;
-}
-
-@media (min-width: 1200px) {
-    .form-inline .input-group {
-        width: 300px;
-        margin-left: 30px;
-    }
-}
-@media (max-width: 768px) {
-    .navbar .dropdown-menu.action-form {
-        width: 100%;
-        padding: 10px 15px;
-        background: transparent;
-        border: none;
-    }
-    .navbar .form-inline {
-        display: block;
-    }
-    .navbar .input-group {
-        width: 100%;
-    }
+a {
+	text-decoration: none;
 }
 
 img {
-    vertical-align: bottom;
+	vertical-align: bottom;
 }
 
 .authentication-background-image-container {
-box-sizing:border-box;
-min-height: 100vh;
-min-width: 100vw;
-overflow:hidden;
-background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1640844853/leannes_learners/default_image/inside_car_blurred.jpg');
-background-size:cover;
-background-repeat: no-repeat;
-z-index: -1;
+	box-sizing: border-box;
+	min-height: 100vh;
+	min-width: 100vw;
+	overflow: hidden;
+	background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1640844853/leannes_learners/default_image/inside_car_blurred.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
 }
 
 .authentication-input-container{
     background-color:rgba(85, 191, 199, 0.308);
     border-radius: 20px;
+
+}
+
+.blog-post-header {
+background-color: #74241d;
+    margin-top: 5vh;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    height: 33vh;
+    width: 100%;
+}
+
+.blog-post-header-image {
+    position: relative;
+    overflow: hidden;
+    min-height: 33vh;
+    overflow: hidden;
+    clip-path: polygon(13% 0, 100% 0, 100% 100%, 33% 100%);
+    margin-right: 0;
+    vertical-align: top;
+}
+
+.blog-post-link {
+    text-decoration: none;
+    color: #445261;
+}
+
+.blog-post-link:hover,
+.page-link {
+    color: #ee1919;
+}
+
+.blog-post-subtitle {
+    margin-left: 5%;
+    color: #ffffff;
+}
+
+.blog-post-title {
+    margin-top: 5%;
+    margin-left: 5%;
+        color: #ffffff;
+
+}
+
+.btn-like {
+    color: #ee1919;
+    border: none;
+    background: transparent;
+}
+
+.btn-like:hover,
+.btn-like:active {
+    color: #ee1919;
+    background: transparent;
+    border: none;
 }
 
 .btn-primary,
@@ -119,11 +90,135 @@ z-index: -1;
     -ms-border-radius: .5rem;
     -o-border-radius: .5rem;
 }
+
 .btn-primary:hover,
 .btn-primary:focus {
     color: #fff;
     background: #031c1f !important;
 }
-a {
+
+.btn-signup {
+    background-color: #23BBBB;
+    color: #fff;
+}
+
+.btn-signup:hover,
+.btn-signup:active {
+    background-color: #fff;
+    color: #23BBBB;
+}
+
+.carousel-item {
+    max-height: 80vh;
+}
+
+.form-check-label input {
+    position: relative;
+    top: 1px;
+}
+
+.link {
+    color: #23BBBB;
     text-decoration: none;
+}
+
+.link:hover,
+.link:active {
+    color: #445261;
+    text-decoration: underline;
+}
+
+.logo-image {
+    width: 12vw width;
+}
+
+.navbar .action-buttons .dropdown-toggle::after {
+    display: none;
+}
+
+.navbar .action-form .hint-text {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.navbar .action-form a {
+    color: #205e63;
+    padding: 0 !important;
+    font-size: 14px;
+}
+
+.navbar .action-form {
+    width: 280px;
+    padding: 20px;
+    left: auto;
+    right: 0;
+    font-size: 14px;
+}
+
+.navbar .btn-primary,
+.navbar .btn-primary:active {
+    color: #fff;
+    background: #205e63 !important;
+    border: none;
+}
+
+.navbar .btn-primary:hover,
+.navbar .btn-primary:focus {
+    color: #fff;
+    background: #031c1f !important;
+}
+
+.navbar .dropdown-menu {
+    color: #999;
+    font-weight: normal;
+    border-radius: 1px;
+    border-color: #e5e5e5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.navbar .form-inline {
+        display: block;
+    }
+
+.navbar .input-group {
+        width: 100%;
+    }
+
+.navbar .navbar-form {
+    border: none;
+}
+
+.navbar .sign-up-btn {
+    min-width: 110px;
+    max-height: 36px;
+}
+
+.navbar a,
+.navbar a:active {
+    color: #888;
+    padding: 8px 20px;
+    background: transparent;
+    line-height: normal;
+}
+
+.navbar-burnt-red {
+    background-color: #74241d;
+}
+
+
+@media (max-width: 768px) {
+    .navbar .dropdown-menu.action-form {
+        width: 100%;
+        padding: 10px 15px;
+        background: transparent;
+        border: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .form-inline .input-group {
+        width: 300px;
+        margin-left: 30px;
+    }
 }
