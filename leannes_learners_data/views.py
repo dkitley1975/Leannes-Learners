@@ -7,9 +7,15 @@ from .models import Blog
 
 class BlogList(generic.ListView):
     model = Blog
-    queryset = Blog.objects.filter(status=1).order_by("-created_at")
+    queryset = Blog.objects.filter(status=1).order_by("-created_at")[0:3]
     template_name = "index.html"
     paginate_by = 6
+
+class BlogPageList(generic.ListView):
+    model = Blog
+    queryset = Blog.objects.filter(status=1).order_by("-created_at")
+    template_name = "blog.html"
+    paginate_by = 9
 
 
 class BlogDetail(View):
