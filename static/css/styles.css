@@ -34,9 +34,12 @@ background-color: #74241d;
 }
 
 .blog-post-header-image {
+    margin-right: 0;
+    padding-right: 0;
     position: relative;
     overflow: hidden;
-    min-height: 33vh;
+    /* min-height: 33vh; */
+    height: 100%;
     overflow: hidden;
     clip-path: polygon(13% 0, 100% 0, 100% 100%, 33% 100%);
     margin-right: 0;
@@ -50,7 +53,7 @@ background-color: #74241d;
 
 .blog-post-link:hover,
 .page-link {
-    color: #ee1919;
+    color: #74241d;
 }
 
 .blog-post-subtitle {
@@ -200,6 +203,10 @@ background-color: #74241d;
     padding: 8px 20px;
     background: transparent;
     line-height: normal;
+}
+
+.navbar-brand {
+    margin-left: 50px;
 }
 
 .navbar-burnt-red {

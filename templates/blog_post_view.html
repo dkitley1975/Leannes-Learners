@@ -2,35 +2,35 @@
 {% block title %}Leannes Learners - Blog{% endblock %}
 {% block content %}
 <div class="blog-post-header">
-	<div class="container">
+	<div class="container col-md-8 ms-auto">
 		<div class="row align-items-end">
-			<div class="col-md-8 p-3">
+			<div class="col-md-7 p-3">
 				<!-- Blog title goes in these h1 tags -->
 				<h1 class="blog-post-title">{{ blog.title }}</h1>
 				<!-- Blog author goes before the | the blog's created date goes after -->
 				<p class="blog-post-subtitle">{{ blog.author }} | {{ blog.created_at }}</p>
 			</div>
 
-			<div class="d-none d-md-block col-md-4 ms-auto blog-post-header-image">
+			<div class="d-none d-md-block col-md-5 ms-auto blog-post-header-image">
 				<!-- The featured image URL goes in the src attribute -->
 				{% if "placeholder" in blog.featured_image.url %}
-				<img src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg"
-					height="100%">
+				<img
+					src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg">
 				{% else %}
-				<img src=" {{ blog.featured_image.url }}" height="100%">
+				<img src=" {{ blog.featured_image.url }}">
 				{% endif %}
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="container">
+<div class="container col-md-8 ms-auto">
 	<div class="row">
-		<div class="col card mb-4  mt-3 left  top">
+		<div class="col card mb-4  mt-3 left top">
 			<div class="card-body">
 				<!-- The blog content goes inside the card-text. -->
 				<!-- Use the | safe filter inside the template tags -->
-				<p class="card-text ">
+				<p class="card-text">
 					{{ blog.content | safe }}
 				</p>
 				<div class="row">
