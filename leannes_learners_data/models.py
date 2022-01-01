@@ -27,7 +27,7 @@ class Blog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
-        User, related_name='blogblog_like', blank=True)
+        User, related_name='blogPost_like', blank=True)
 
     def image_thumb(self):
         """
