@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Blog, Comment, Services, HomeCarousel
+from .models import Blog, Comment, Service, HomeCarousel, Testimonial
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -68,10 +68,10 @@ class CommentAdmin(admin.ModelAdmin):
         queryset.update(approved=True)
 
 
-@admin.register(Services)
-class ServicesAdmin(admin.ModelAdmin):
+@admin.register(Service)
+class ServiceAdmin(admin.ModelAdmin):
     """
-    Establish the view in admin for the Services offered.
+    Establish the view in admin for the Service offered.
     Which fields to include in the:
     list/search views and how they are filtered.
     """
@@ -111,3 +111,38 @@ class HomeCarouselAdmin(SummernoteModelAdmin):
 
     def include_in_carousel(self, request, queryset):
         queryset.update(include_in_carousel=True)
+
+@admin.register(Testimonial)
+class TestimonialAdmin(SummernoteModelAdmin):
+    """
+    Establish the view in admin for the Blog.
+    Which fields to include in the:
+    list/search views, how they are filtered,
+    which are prepopulated and
+    creates an action to include approve Blogs.
+    """
+    fields = [
+        'name',
+        'testimonial_image',
+        'image_thumb',
+        'alt_tag',
+        'testimonial',
+        'status',
+    ]
+
+    list_display = (
+        'image_thumb',
+        'name',
+        'testimonial',
+        'status',
+        'created_at',
+        )
+
+    search_fields = ['name', 'testimonial', 'alt_tag']
+    list_filter = ('status', 'created_at')
+    summernote_fields = ('testimonial',)
+    actions = ['publish_Testimonial']
+    readonly_fields = ['image_thumb']
+
+    def publish_Testimonial(self, request, queryset):
+        queryset.update(status=True)

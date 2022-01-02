@@ -1,6 +1,6 @@
 # TODO before Deployment remove the if else statement in the database section and this RUNLOCAL variable,
 # this is when only used for running the unittests
-RUNLOCAL = False
+RUNLOCAL = True
 
 """
 Django settings for leannes_learners project.
