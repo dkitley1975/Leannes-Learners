@@ -1,3 +1,7 @@
+# TODO before Deployment remove the if else statement in the database section and this RUNLOCAL variable,
+# this is when only used for running the unittests
+RUNLOCAL = False
+
 """
 Django settings for leannes_learners project.
 
@@ -27,8 +31,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "leannes-learners.herokuapp.com",]
 
@@ -101,14 +107,18 @@ WSGI_APPLICATION = 'leannes_learners.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# TODO before Deployment remove the if else statement and replace with this    DATABASES = {'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-DATABASES = { 'default': dj_database_url.parse(os.environ.get("DATABASE_URL")) }
+if RUNLOCAL is True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
