@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Blog, Comment, Service, HomeCarousel, Testimonial
+from .models import Blog, Comment, Testimonial, Service, HomeCarousel
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -115,11 +115,11 @@ class HomeCarouselAdmin(SummernoteModelAdmin):
 @admin.register(Testimonial)
 class TestimonialAdmin(SummernoteModelAdmin):
     """
-    Establish the view in admin for the Blog.
+    Establish the view in admin for the Testimonials.
     Which fields to include in the:
     list/search views, how they are filtered,
     which are prepopulated and
-    creates an action to include approve Blogs.
+    creates an action to include approve Testimonials.
     """
     fields = [
         'name',

@@ -1,3 +1,5 @@
+/* @import url(https://fonts.googleapis.com/css?family=Bitter); */
+
 a {
 	text-decoration: none;
 }
@@ -212,6 +214,67 @@ background-color: #74241d;
 .navbar-burnt-red {
     background-color: #74241d;
 }
+
+
+
+blockquote {
+  position: relative;
+  display: inline-block;
+  background: #eee;
+  padding: 40px 30px 30px 40px;
+  border-radius: 10px;
+  /* font-family: "Bitter", serif; */
+  color: #333;
+  text-align: left;
+
+  box-shadow: 1px 1px 1px #999, 2px 2px 1px #999, 3px 3px 1px #999;
+  transition-duration: 0.3s;
+}
+span.author {
+    position: relative;
+    display: block;
+    text-align: right;
+    margin-top: 5px;
+    color: #999;
+}
+
+    
+    .fa-quote-left {
+        position: relative;
+        background: #eee;
+        padding-left: -5px;
+        margin-left: -20px;
+        font-style: italic;
+        z-index: 5;
+        color: #999;
+    }
+    .fa-quote-right {
+        position: relative;
+        background: #eee;
+        font-style: italic;
+        z-index: 5;
+        text-align: right;
+        padding-right: -5px;
+        margin-right: -20px;
+        display: block;
+        margin-top: -5px;
+        color: #999;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media (max-width: 768px) {

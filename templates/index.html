@@ -29,12 +29,60 @@
 		{% endfor %}
 	</div>
 
-</section> -->
-<!-- Blog blogs -->
+</section>
+
+<!-- Testimonial -->
 <section>
+
 	<div class="container-fluid col-10">
 		<div class="row">
+			<h2>Testimonials</h2>
+			<div class="col-12 mt-3 left">
+				<div class="row d-flex justify-content-around">
+					{% for testimonial in testimonial_list %}
+					<!-- Testimonial Entries Column -->
+					<div class="card mb-3" style="max-width: 540px;">
+						<div class="row g-1 mt-3">
+							{% if "placeholder" in testimonial.testimonial_image.url %}
+							<div class="col-md-4 align-self-center">
+								<img class="card-img-top align-self-center"
+									src="https://res.cloudinary.com/dkitley1975/image/upload/v1641189549/leannes_learners/default_image/placeholder-300x400.png">
+							</div>
+							{% else %}
+							<div class="col-md-4 align-self-center">
+								<img class="card-img-top align-self-center"
+									src=" {{ testimonial.testimonial_image.url }}">
+								<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+							</div>
 
+							{% endif %}
+
+							<div class="col-md-8">
+								<div class="card-body">
+									<blockquote>
+										<i class="fa fa-quote-left" aria-hidden="true"></i>
+										{{ testimonial.testimonial }}
+										<i class="fa fa-quote-right" aria-hidden="true"></i>
+										<span class="author">{{ testimonial.name }}</span>
+									</blockquote>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{% endfor %}
+				</div>
+			</div>
+			<hr />
+</section>
+
+
+<!-- Blog -->
+<section>
+
+	<div class="container-fluid col-10">
+		<div class="row">
+			<h2>Blog</h2>
 			<!-- Blog Entries Column -->
 			<div class="col-12 mt-3 left">
 				<div class="row">
@@ -58,7 +106,7 @@
 									<p class="card-text">{{ blog.excerpt }}</p>
 								</a>
 								<hr />
-								<p class="card-text text-muted h6">{{ blog.created_on}} <i class="far fa-heart"></i>
+								<p class="card-text text-muted h6">{{ blog.created_at}} <i class="far fa-heart"></i>
 									{{ blog.number_of_likes }}</p>
 							</div>
 						</div>
@@ -73,6 +121,7 @@
 			</div>
 		</div>
 	</div>
+	<hr />
 </section>
 
 {%endblock%}

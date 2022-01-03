@@ -16,7 +16,7 @@ class Blog(models.Model):
         User, on_delete=models.CASCADE, related_name="blog_posts"
     )
     featured_image = CloudinaryField(
-        folder='leannes_learners/leannes_learners_blog_images/',
+        folder='leannes_learners/blog_images/',
         transformation={'width': '400', 'height': '300', 'crop': 'fill',
                         'gravity': 'face', 'zoom': '0.5'},
         default='placeholder')
@@ -84,7 +84,7 @@ class HomeCarousel(models.Model):
     slide_text_headline = models.CharField(max_length=80, unique=False, blank=True)
     slide_text_description = models.CharField(max_length=200, blank=True)
     slide_image = CloudinaryField(
-        folder='leannes_learners/leannes_learners_caurosel_images/',
+        folder='leannes_learners/caurosel_images/',
         transformation={'width': '1920', 'height': '600', 'crop': 'fill'},
         default='placeholder')
 
@@ -97,11 +97,20 @@ class HomeCarousel(models.Model):
     def __str__(self):
         return self.slide_text_headline
 
+    def image_thumb(self):
+        """
+        This creates a thumbnail image of the current uploaded image
+        """
+        return mark_safe('<img src="{}" width="100" height="auto">'.format(
+            self.slide_image.url))
+    image_thumb.short_discription = "image"
+    slide_image.allow_tags = True
+
 
 class Testimonial(models.Model):
-    name = models.CharField(max_length=200, unique=True)
+    name = models.CharField(max_length=80, unique=True)
     testimonial_image = CloudinaryField(
-        folder='leannes_learners/eannes_learners_testimonial_images/',
+        folder='leannes_learners/testimonial_images/',
         transformation={'width': '300', 'height': '400', 'crop': 'fill',
                         'gravity': 'face', 'zoom': '0.5'},
         default='placeholder')

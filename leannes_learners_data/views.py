@@ -3,8 +3,9 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Blog
+from .models import Blog, Testimonial
 from .forms import CommentForm
+import random
 
 
 # Create your views here.
@@ -86,3 +87,18 @@ class LikePost(View):
             blog.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('blog_post_view', args=[slug]))
+
+
+class TestimonialList(generic.ListView):
+    model = Testimonial    
+    # queryset = Testimonial.objects.filter(status=1)
+    queryset = Testimonial.objects.filter(status=1)
+    template_name = "index.html"
+    paginate_by = 3
+
+# class TestimonialList(generic.ListView):
+#     model = Testimonial
+#     queryset = list(Testimonial.objects.filter(status=1))
+#     queryset = random.sample(queryset, 3)
+#     template_name = "index.html"
+#     paginate_by = 3
