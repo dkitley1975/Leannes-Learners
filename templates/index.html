@@ -32,15 +32,16 @@
 </section>
 
 <!-- Testimonial -->
-<section>
 
+
+<!-- Testimonials -->
+<section>
 	<div class="container-fluid col-10">
 		<div class="row">
-			<h2>Testimonials</h2>
+			<h2>Our latest testimonials</h2>
 			<div class="col-12 mt-3 left">
 				<div class="row d-flex justify-content-around">
 					{% for testimonial in testimonial_list %}
-					<!-- Testimonial Entries Column -->
 					<div class="card mb-3" style="max-width: 540px;">
 						<div class="row g-1 mt-3">
 							{% if "placeholder" in testimonial.testimonial_image.url %}
@@ -52,7 +53,8 @@
 							<div class="col-md-4 align-self-center">
 								<img class="card-img-top align-self-center"
 									src=" {{ testimonial.testimonial_image.url }}">
-								<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+								<p class="card-text text-end"><small class="text-muted">
+										{{ testimonial.created_at }}</small></p>
 							</div>
 
 							{% endif %}
@@ -79,11 +81,9 @@
 
 <!-- Blog -->
 <section>
-
 	<div class="container-fluid col-10">
 		<div class="row">
-			<h2>Blog</h2>
-			<!-- Blog Entries Column -->
+			<h2>Our latest blog Posts</h2>
 			<div class="col-12 mt-3 left">
 				<div class="row">
 					{% for blog in blog_list %}

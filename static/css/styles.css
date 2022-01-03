@@ -137,28 +137,9 @@ background-color: #74241d;
     width: 12vw width;
 }
 
-.navbar .action-buttons .dropdown-toggle::after {
-    display: none;
-}
-
-.navbar .action-form .hint-text {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 13px;
-}
-
-.navbar .action-form a {
-    color: #205e63;
-    padding: 0 !important;
-    font-size: 14px;
-}
-
-.navbar .action-form {
-    width: 280px;
-    padding: 20px;
-    left: auto;
-    right: 0;
-    font-size: 14px;
+.navbar-nav{
+    padding-left: 10px;
+    margin-left: 50px;
 }
 
 .navbar .btn-primary,
@@ -182,17 +163,7 @@ background-color: #74241d;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.navbar .form-inline {
-        display: block;
-    }
 
-.navbar .input-group {
-        width: 100%;
-    }
-
-.navbar .navbar-form {
-    border: none;
-}
 
 .navbar .sign-up-btn {
     min-width: 110px;
