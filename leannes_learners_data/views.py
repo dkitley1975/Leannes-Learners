@@ -5,7 +5,6 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Blog, Testimonial
 from .forms import CommentForm
-import random
 
 
 # Create your views here.
@@ -90,15 +89,8 @@ class LikePost(View):
 
 
 class TestimonialList(generic.ListView):
-    model = Testimonial    
-    # queryset = Testimonial.objects.filter(status=1)
-    queryset = Testimonial.objects.filter(status=1)
+    model = Testimonial
+    queryset = Testimonial.objects.filter(status=1).order_by("-created_at")
     template_name = "index.html"
     paginate_by = 3
 
-# class TestimonialList(generic.ListView):
-#     model = Testimonial
-#     queryset = list(Testimonial.objects.filter(status=1))
-#     queryset = random.sample(queryset, 3)
-#     template_name = "index.html"
-#     paginate_by = 3

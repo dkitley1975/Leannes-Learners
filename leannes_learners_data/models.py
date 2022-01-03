@@ -116,8 +116,8 @@ class Testimonial(models.Model):
         default='placeholder')
     alt_tag = models.CharField(max_length=200, blank=True)
     testimonial = models.TextField()
-    updated_at = models.DateTimeField(auto_now=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+    created_at = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
     def image_thumb(self):
