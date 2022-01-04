@@ -29,13 +29,74 @@
 		{% endfor %}
 	</div>
 
-</section> -->
-<!-- Blog blogs -->
+</section>
+
+<!-- Testimonial -->
+
+
+<!-- Testimonials -->
 <section>
 	<div class="container-fluid col-10">
 		<div class="row">
+			<h2>Our latest testimonials</h2>
+			<div class="col-12 mt-3 left">
+				<div class="row d-flex justify-content-around">
+					{% for testimonial in testimonial_list %}
+					<div class="card mb-3 align-self-center" style="max-width: 540px;">
+						<div class="row g-1 mt-3">
+							{% if "placeholder" in testimonial.testimonial_image.url %}
+							<div class="col-md-4 align-self-center">
+								<img class="card-img-top align-self-center"
+									src="https://res.cloudinary.com/dkitley1975/image/upload/v1641189549/leannes_learners/default_image/placeholder-300x400.png">
+							</div>
+							{% else %}
+							<div class="col-md-4 align-self-center">
+								<img class="card-img-top align-self-center"
+									src=" {{ testimonial.testimonial_image.url }}">
+								<p class="card-text text-end"><small class="text-muted">
+										{{ testimonial.created_at }}</small></p>
+							</div>
 
-			<!-- Blog Entries Column -->
+							{% endif %}
+
+							<div class="col-md-8">
+								<div class="card-body">
+									<blockquote>
+										<i class="fa fa-quote-left" aria-hidden="true"></i>
+										{{ testimonial.testimonial }}
+										<i class="fa fa-quote-right" aria-hidden="true"></i>
+										<span class="author">{{ testimonial.name }}</span>
+									</blockquote>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{% endfor %}
+				</div>
+			</div>
+			{% if is_paginated %}
+			<nav aria-label="Page navigation">
+				<ul class="pagination justify-content-center">
+					{% if page_obj.has_previous %}
+					<li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+					{% endif %}
+					{% if page_obj.has_next %}
+					<li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+			
+					{% endif %}
+				</ul>
+			</nav>
+			{% endif %}
+			<hr />
+</section>
+
+
+<!-- Blog -->
+<section>
+	<div class="container-fluid col-10">
+		<div class="row">
+			<h2>Our latest blog Posts</h2>
 			<div class="col-12 mt-3 left">
 				<div class="row">
 					{% for blog in blog_list %}
@@ -58,7 +119,7 @@
 									<p class="card-text">{{ blog.excerpt }}</p>
 								</a>
 								<hr />
-								<p class="card-text text-muted h6">{{ blog.created_on}} <i class="far fa-heart"></i>
+								<p class="card-text text-muted h6">{{ blog.created_at}} <i class="far fa-heart"></i>
 									{{ blog.number_of_likes }}</p>
 							</div>
 						</div>
@@ -73,6 +134,7 @@
 			</div>
 		</div>
 	</div>
+	<hr />
 </section>
 
 {%endblock%}
