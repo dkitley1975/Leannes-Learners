@@ -85,7 +85,7 @@ class HomeCarousel(models.Model):
     slide_text_description = models.CharField(max_length=200, blank=True)
     slide_image = CloudinaryField(
         folder='leannes_learners/caurosel_images/',
-        transformation={'width': '1920', 'height': '600', 'crop': 'fill'},
+        transformation={'width': '1240', 'height': '700', 'crop': 'fill'},
         default='placeholder')
 
     alt_tag = models.CharField(max_length=200, blank=True)
@@ -101,8 +101,7 @@ class HomeCarousel(models.Model):
         """
         This creates a thumbnail image of the current uploaded image
         """
-        return mark_safe('<img src="{}" width="100" height="auto">'.format(
-            self.slide_image.url))
+        return mark_safe('<img src="{}" width="100" height="auto">'.format(self.slide_image.url))
     image_thumb.short_discription = "image"
     slide_image.allow_tags = True
 
