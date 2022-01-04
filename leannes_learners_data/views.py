@@ -87,10 +87,11 @@ class LikePost(View):
 
         return HttpResponseRedirect(reverse('blog_post_view', args=[slug]))
 
-
 class TestimonialList(generic.ListView):
     model = Testimonial
     queryset = Testimonial.objects.filter(status=1).order_by("-created_at")
     template_name = "index.html"
-    paginate_by = 3
+    paginate_by = 2
+    extra_context={'blog_list': Blog.objects.filter(status=1).order_by("-created_at")[0:3]}
+
 
