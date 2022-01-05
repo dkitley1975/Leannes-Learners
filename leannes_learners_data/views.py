@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Blog, Testimonial
+from .models import Blog, Testimonial, Carousel
 from .forms import CommentForm
 
 
@@ -15,13 +15,6 @@ class BlogList(generic.ListView):
     queryset = Blog.objects.filter(status=1).order_by("-created_at")[0:3]
     template_name = "index.html"
     paginate_by = 3
-
-
-class BlogPage(generic.ListView):
-    model = Blog
-    queryset = Blog.objects.filter(status=1).order_by("-created_at")
-    template_name = "blog.html"
-    paginate_by = 9
 
 
 class BlogDetail(View):
@@ -76,6 +69,13 @@ class BlogDetail(View):
         )
 
 
+class BlogPage(generic.ListView):
+    model = Blog
+    queryset = Blog.objects.filter(status=1).order_by("-created_at")
+    template_name = "blog.html"
+    paginate_by = 9
+
+
 class LikePost(View):
 
     def post(self, request, slug, *args, **kwargs):
@@ -87,11 +87,20 @@ class LikePost(View):
 
         return HttpResponseRedirect(reverse('blog_post_view', args=[slug]))
 
+
 class TestimonialList(generic.ListView):
     model = Testimonial
     queryset = Testimonial.objects.filter(status=1).order_by("-created_at")
     template_name = "index.html"
     paginate_by = 2
-    extra_context={'blog_list': Blog.objects.filter(status=1).order_by("-created_at")[0:3]}
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['blog_list'] = Blog.objects.filter(status=1).order_by("-created_at")[0:3]
+        return context
 
 
+class CarouselList(generic.ListView):
+    model = Carousel
+    queryset = Carousel.objects.filter(include_in_carousel=1).order_by("slide_identifying_name")
+    template_name = "index.html"

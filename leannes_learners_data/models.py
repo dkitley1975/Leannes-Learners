@@ -64,22 +64,7 @@ class Comment(models.Model):
         return f"Comment {self.body} by {self.name}"
 
 
-class Service(models.Model):
-    service_name = models.CharField(max_length=80, unique=True)
-    service_description = models.CharField(max_length=200, blank=True)
-    service_duration = models.CharField(max_length=80, blank=True)
-    price = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    featured = models.BooleanField(default=False)
-
-    class Meta:
-        ordering = ["-featured", "service_duration"]
-
-    def __str__(self):
-        return self.service_name
-
-
-class HomeCarousel(models.Model):
+class Carousel(models.Model):
     slide_identifying_name = models.CharField(max_length=80, unique=True)
     slide_text_headline = models.CharField(max_length=80, unique=False, blank=True)
     slide_text_description = models.CharField(max_length=200, blank=True)
@@ -104,6 +89,21 @@ class HomeCarousel(models.Model):
         return mark_safe('<img src="{}" width="100" height="auto">'.format(self.slide_image.url))
     image_thumb.short_discription = "image"
     slide_image.allow_tags = True
+
+
+class Service(models.Model):
+    service_name = models.CharField(max_length=80, unique=True)
+    service_description = models.CharField(max_length=200, blank=True)
+    service_duration = models.CharField(max_length=80, blank=True)
+    price = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    featured = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["-featured", "service_duration"]
+
+    def __str__(self):
+        return self.service_name
 
 
 class Testimonial(models.Model):

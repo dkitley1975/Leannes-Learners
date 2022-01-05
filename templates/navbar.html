@@ -1,0 +1,39 @@
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-burnt-red navbar-dark">
+	<div class="container-fluid">
+		<div class="logo-image"><span class="sr-only">Leannes Learners</span>
+			<a href="/"><img
+					src="https://res.cloudinary.com/dkitley1975/image/upload/c_scale,h_50/v1640614265/leannes_learners/logos/Leannes_Learners_Logo_white_text.png"
+					class="img-fluid"
+					alt="Leanne's Learners Logo made up of the words Leannes Learners in white, replacing the L's with Red L-Plates">
+			</a>
+		</div>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+			aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav mr-auto p-1">
+				<a class="nav-link active" aria-current="page" href="/">Home</a>
+				<a class="nav-link" href="#">About Us</a>
+				<a class="nav-link" href="#">Pass Plus</a>
+				<a class="nav-link" href="#">Prices</a>
+				<a class="nav-link" href="blog">Blog</a>
+				<a class="nav-link" href="#">Contact Us</a>
+				{% if user.is_authenticated %}
+				<a class="nav-link">Pupil Area</a>
+				{% endif %}
+			</div>
+			<div class="navbar-nav col-md-2 ms-auto">
+				{% if user.is_authenticated %}
+				<a class="nav-link" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+				{% else %}
+				<a class="nav-link" href="{% url 'account_signup' %}"><i class="fas fa-user-plus"></i> Register</a>
+				<a class="nav-link" href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+				{% endif %}
+			</div>
+
+		</div>
+	</div>
+</nav>
+{% endblock content %}
