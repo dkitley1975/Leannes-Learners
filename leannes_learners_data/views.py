@@ -10,13 +10,6 @@ from .forms import CommentForm
 # Create your views here.
 
 
-class BlogList(generic.ListView):
-    model = Blog
-    queryset = Blog.objects.filter(status=1).order_by("-created_at")[0:3]
-    template_name = "index.html"
-    paginate_by = 3
-
-
 class BlogDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Blog.objects.filter(status=1)
@@ -97,10 +90,5 @@ class TestimonialList(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['blog_list'] = Blog.objects.filter(status=1).order_by("-created_at")[0:3]
+        context['carousel_list'] = Carousel.objects.filter(include_in_carousel=1).order_by("slide_identifying_name")
         return context
-
-
-class CarouselList(generic.ListView):
-    model = Carousel
-    queryset = Carousel.objects.filter(include_in_carousel=1).order_by("slide_identifying_name")
-    template_name = "index.html"
