@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Blog, Comment, Testimonial, Service, HomeCarousel
+from .models import Blog, Comment, Testimonial, Service, Carousel
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -86,19 +86,28 @@ class ServiceAdmin(admin.ModelAdmin):
     list_filter = ('service_name', 'featured')
 
 
-@admin.register(HomeCarousel)
-class HomeCarouselAdmin(SummernoteModelAdmin):
+@admin.register(Carousel)
+class CarouselAdmin(SummernoteModelAdmin):
     """
     Establish the view in admin for the Home Carousel.
     Which fields to include in the:
     list/search views and how they are filtered and
     create an action to include approve include in the carousel
     """
-    list_display = (
+    fields = [
         'slide_identifying_name',
         'slide_text_headline',
         'slide_text_description',
         'slide_image',
+        'image_thumb',
+        'alt_tag',
+        'include_in_carousel',
+    ]
+    list_display = (
+        'image_thumb',
+        'slide_identifying_name',
+        'slide_text_headline',
+        'slide_text_description',
         'alt_tag',
         'include_in_carousel',
         )
@@ -107,10 +116,12 @@ class HomeCarouselAdmin(SummernoteModelAdmin):
     search_fields = ('slide_identifying_name', 'slide_text_headline',
                      'slide_text_description', 'slide_image', 'alt_tag',)
     summernote_fields = ('slide_text_description',)
-    actions = ['approve_comments']
+    actions = ['include_in_carousel']
+    readonly_fields = ['image_thumb']
 
     def include_in_carousel(self, request, queryset):
         queryset.update(include_in_carousel=True)
+
 
 @admin.register(Testimonial)
 class TestimonialAdmin(SummernoteModelAdmin):

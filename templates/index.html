@@ -1,44 +1,53 @@
 {% extends "base.html" %}
 {% block title %}Leannes Learners{% endblock %}
 {% block content %}
+
 <!-- Carousel -->
-<!-- <section>
-
-	<div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-interval="6000" data-ride="carousel">
-		{% for blog in blog_list %}
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="https://res.cloudinary.com/dkitley1975/image/upload/v1640589017/tsggvscrtow67k8iai7i.jpg"
-					class="d-block w-100" alt="...">
-				<div class="carousel-caption">
-					<h3 class="fw-bold">First slide label</h3>
-					<p class="fw-bold">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-				</div>
-			</div>
-
-
-			<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
+<section>
+	<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+				aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+				aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+				aria-label="Slide 3"></button>
 		</div>
-		{% endfor %}
+		<div class="carousel-inner">
+
+			{% for carousel in carousel_list %}
+			{% if forloop.counter == 1 %}
+			<div class="carousel-item active">
+				{% else %}
+				<div class="carousel-item">
+					{% endif %}
+					<img src="{{ carousel.slide_image.url }}" class="d-block w-100" alt="{{ carousel.alt_tag }}">
+					<div class="carousel-caption d-none d-md-block">
+						<h5>{{ carousel.slide_text_headline | safe}}</h5>
+						<p>{{ carousel.slide_text_description | safe}}</p>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+				data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+				data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
 	</div>
-
 </section>
-
-<!-- Testimonial -->
-
 
 <!-- Testimonials -->
 <section>
 	<div class="container-fluid col-10">
 		<div class="row">
-			<h2>Our latest testimonials</h2>
+			<h2 class="section-header">Our latest testimonials</h2>
 			<div class="col-12 mt-3 left">
 				<div class="row d-flex justify-content-around">
 					{% for testimonial in testimonial_list %}
@@ -83,7 +92,7 @@
 					{% endif %}
 					{% if page_obj.has_next %}
 					<li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-			
+
 					{% endif %}
 				</ul>
 			</nav>
@@ -96,7 +105,7 @@
 <section>
 	<div class="container-fluid col-10">
 		<div class="row">
-			<h2>Our latest blog Posts</h2>
+			<h2 class="section-header">Our latest blog Posts</h2>
 			<div class="col-12 mt-3 left">
 				<div class="row">
 					{% for blog in blog_list %}
