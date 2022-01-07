@@ -5,7 +5,7 @@ from django.utils.safestring import mark_safe
 
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
-
+PUPILSTATUS = ((0, "No"), (1, "Yes"))
 
 # code for Blog and COMMENT adapted
 # from a previous walkthrough - Code Institues " I blog therefore I am"
