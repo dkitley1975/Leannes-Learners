@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Blog, Comment, Testimonial, Service, Carousel
+from .models import Blog, Comment, Testimonial, Service, Carousel, Pass_plus
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -157,3 +157,41 @@ class TestimonialAdmin(SummernoteModelAdmin):
 
     def publish_Testimonial(self, request, queryset):
         queryset.update(status=True)
+
+
+@admin.register(Pass_plus)
+class Pass_plusAdmin(SummernoteModelAdmin):
+    """
+    Establish the view in admin for Pass_plus content page.
+    Which fields to include in the:
+    list/search views, how they are filtered,
+    which are prepopulated and
+    creates an action to include approve Testimonials.
+    """
+    fields = [
+        'name',
+        'content',
+        'focus_image',
+        'focus_image_alt_tag',
+        'image_thumb',
+        'background_image',
+        'background_image_alt_tag',
+        'status',
+    ]
+
+    list_display = (
+        'image_thumb',
+        'name',
+        'status',
+        'created_at',
+        )
+
+    search_fields = ['name', 'content', 'alt_tag']
+    list_filter = ('status', 'created_at')
+    summernote_fields = ('content',)
+    actions = ['publish_Pass_plus']
+    readonly_fields = ['image_thumb']
+
+    def publish_Testimonial(self, request, queryset):
+        queryset.update(status=True)
+

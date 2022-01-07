@@ -118,7 +118,7 @@ background-color: rgb(116, 36, 29);
 .btn-primary,
 .btn-primary:active {
     color: #fff;
-    background: #205e63 !important;
+    background: rgb(116, 36, 29) !important;
     border: none;
     border-radius: .5rem;
     padding: .5rem;
@@ -130,19 +130,21 @@ background-color: rgb(116, 36, 29);
 
 .btn-primary:hover,
 .btn-primary:focus {
+    background-color: rgb(116, 36, 29);
     color: #fff;
-    background: #031c1f !important;
 }
 
 .btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
+    color: rgb(116, 36, 29);
+    background: #fff;
+    text-decoration: none;
+    border: 1px solid rgb(116, 36, 29);
 }
 
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+
+.btn-signup:hover {
+    color: #fff;
+    background-color: rgb(116, 36, 29);
 }
 
 .carousel-item{
