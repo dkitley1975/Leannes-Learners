@@ -48,9 +48,19 @@ img {
     border-radius: 20px;
 }
 
-.blog-author{
-
+.background-image {
+    background-color: #333;
+	box-sizing: border-box;
+	min-height: 100vh;
+	min-width: 100vw;
+	overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
+
+
 
 .blog-post-header {
 background-color: rgb(116, 36, 29);
@@ -159,6 +169,12 @@ background-color: rgb(116, 36, 29);
     text-align: center;
 }
 
+.content-overlay {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: left;
+    min-height: 100vh;
+}
+
 .fa-quote-left {
     position: relative;
     background: #eee;
@@ -182,6 +198,18 @@ background-color: rgb(116, 36, 29);
     color: #999;
 }
 
+.footer {
+    z-index: 999;
+}
+
+.img-focus-image {
+    padding: 0.25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 50%;
+    max-width: 100%;
+}
+
 .link {
     color: #23BBBB;
     text-decoration: none;
@@ -197,9 +225,14 @@ background-color: rgb(116, 36, 29);
     width: 12vw width;
 }
 
+.navbar {
+    z-index: 999;
+}
+
+
 .navbar-nav{
     padding-left: 10px;
-    margin-left: 50px;
+    margin-left: 50px;  
 }
 
 .navbar a,
@@ -271,10 +304,6 @@ background-color: rgb(116, 36, 29);
     min-width: 110px;
     max-height: 36px;
 } */
-
-
-
-
 
 
 

@@ -5,7 +5,6 @@ from django.utils.safestring import mark_safe
 
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
-PUPILSTATUS = ((0, "No"), (1, "Yes"))
 
 # code for Blog and COMMENT adapted
 # from a previous walkthrough - Code Institues " I blog therefore I am"
@@ -114,6 +113,41 @@ class Service(models.Model):
         return self.service_name
 
 
+class Passplus(models.Model):
+    name = models.CharField(max_length=80, unique=True)
+    background_image = CloudinaryField(
+        folder='leannes_learners/pass_plus/background_images/',
+        default='placeholder')
+    lead_content = models.TextField()
+    main_content = models.TextField()
+    focus_image = CloudinaryField(
+        folder='leannes_learners/pass_plus/focus_images/',
+        transformation={'width': '400', 'height': '400', 'crop': 'fill',
+                        'gravity': 'face', 'zoom': '0.5'},
+        default='placeholder')
+    focus_image_alt_tag = models.CharField(max_length=200, blank=True)
+    updated_at = models.DateField(auto_now=True)
+    created_at = models.DateField(auto_now_add=True)
+    status = models.IntegerField(choices=STATUS, default=0)
+
+    def image_thumb(self):
+        """
+        This creates a thumbnail image of the current uploaded image
+        """
+        return mark_safe('<img src="{}" width="auto" height="100">'.format(
+            self.background_image.url))
+    image_thumb.short_discription = "background image"
+    background_image.allow_tags = True
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Pass Plus Page Content"
+        verbose_name_plural = "Pass Plus Page Content"
+
+    def __str__(self):
+        return self.name
+
+
 class Testimonial(models.Model):
     name = models.CharField(max_length=80, unique=True)
     testimonial_image = CloudinaryField(
@@ -140,43 +174,6 @@ class Testimonial(models.Model):
         ordering = ["-created_at"]
         verbose_name = "Testimonial"
         verbose_name_plural = "Testimonials"
-
-    def __str__(self):
-        return self.name
-
-
-class Pass_plus(models.Model):
-    name = models.CharField(max_length=80, unique=True)
-    background_image = CloudinaryField(
-        folder='leannes_learners/pass_plus/background_images/',
-        transformation={'width': '300', 'height': '400', 'crop': 'fill',
-                        'gravity': 'face', 'zoom': '0.5'},
-        default='placeholder')
-    background_image_alt_tag = models.CharField(max_length=200, blank=True)
-    content = models.TextField()
-    focus_image = CloudinaryField(
-        folder='leannes_learners/pass_plus/focus_images/',
-        transformation={'width': '400', 'height': '400', 'crop': 'fill',
-                        'gravity': 'face', 'zoom': '0.5'},
-        default='placeholder')
-    focus_image_alt_tag = models.CharField(max_length=200, blank=True)
-    updated_at = models.DateField(auto_now=True)
-    created_at = models.DateField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0)
-
-    def image_thumb(self):
-        """
-        This creates a thumbnail image of the current uploaded image
-        """
-        return mark_safe('<img src="{}" width="100" height="auto">'.format(
-            self.focus_image.url))
-    image_thumb.short_discription = "focus image"
-    focus_image.allow_tags = True
-
-    class Meta:
-        ordering = ["-created_at"]
-        verbose_name = "Pass Plus Page Content"
-        verbose_name_plural = "Pass Plus Page Content"
 
     def __str__(self):
         return self.name
