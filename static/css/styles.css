@@ -48,9 +48,19 @@ img {
     border-radius: 20px;
 }
 
-.blog-author{
-
+.background-image {
+    background-color: #333;
+	box-sizing: border-box;
+	min-height: 100vh;
+	min-width: 100vw;
+	overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
+
+
 
 .blog-post-header {
 background-color: rgb(116, 36, 29);
@@ -92,13 +102,13 @@ background-color: rgb(116, 36, 29);
 
 .blog-post-subtitle {
     margin-left: 5%;
-    color: #ffffff;
+    color: whitefff;
 }
 
 .blog-post-title {
     margin-top: 5%;
     margin-left: 5%;
-        color: #ffffff;
+        color: whitefff;
 
 }
 
@@ -117,8 +127,8 @@ background-color: rgb(116, 36, 29);
 
 .btn-primary,
 .btn-primary:active {
-    color: #fff;
-    background: #205e63 !important;
+    color: white;
+    background: rgb(116, 36, 29) !important;
     border: none;
     border-radius: .5rem;
     padding: .5rem;
@@ -130,19 +140,21 @@ background-color: rgb(116, 36, 29);
 
 .btn-primary:hover,
 .btn-primary:focus {
-    color: #fff;
-    background: #031c1f !important;
+    background-color: rgb(116, 36, 29);
+    color: white;
 }
 
 .btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
+    color: rgb(116, 36, 29);
+    background: white;
+    text-decoration: none;
+    border: 1px solid rgb(116, 36, 29);
 }
 
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+
+.btn-signup:hover {
+    color: white;
+    background-color: rgb(116, 36, 29);
 }
 
 .carousel-item{
@@ -153,8 +165,18 @@ background-color: rgb(116, 36, 29);
     background-color: rgba(116, 36, 29, .7);
     right: 0;
     left: 0;
-    color: #fff;
+    color: white
     text-align: center;
+}
+
+.content-overlay {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: left;
+    min-height: 100vh;
+}
+
+.nav-link-white {
+    color:white;
 }
 
 .fa-quote-left {
@@ -164,7 +186,7 @@ background-color: rgb(116, 36, 29);
     margin-left: -20px;
     font-style: italic;
     z-index: 5;
-    color: #999;
+    color: rgb(153, 153, 153);
     }
 
 .fa-quote-right {
@@ -177,17 +199,29 @@ background-color: rgb(116, 36, 29);
     margin-right: -20px;
     display: block;
     margin-top: -5px;
-    color: #999;
+    color: rgb(153, 153, 153);
+}
+
+.footer {
+    z-index: 999;
+}
+
+.img-focus-image {
+    padding: 0.25rem;
+    background-color: white
+    border: 1px solid rgb(222, 226, 230);
+    border-radius: 50%;
+    max-width: 100%;
 }
 
 .link {
-    color: #23BBBB;
+    color: rgb(35, 187, 187);
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: #445261;
+    color: rgb(68, 82, 97);
     text-decoration: underline;
 }
 
@@ -195,17 +229,25 @@ background-color: rgb(116, 36, 29);
     width: 12vw width;
 }
 
+.navbar {
+    z-index: 999;
+}
+
 .navbar-nav{
     padding-left: 10px;
-    margin-left: 50px;
+    margin-left: 50px;  
 }
 
 .navbar a,
 .navbar a:active {
-    color: #888;
+    color: white;
     padding: 8px 20px;
     background: transparent;
     line-height: normal;
+}
+
+.navbar a:hover {
+    color: rgb(174, 174, 174);
 }
 
 .navbar-brand {
@@ -221,7 +263,7 @@ background-color: rgb(116, 36, 29);
     display: block;
     color: rgb(116, 36, 29);
     text-decoration: none;
-    background-color: #fff;
+    background-color: white;
     border: 1px solid #dee2e6;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     border-radius: 10px;
@@ -241,44 +283,5 @@ background-color: rgb(116, 36, 29);
     text-align: center;
     font-family: 'Pushster', cursive;
 }
-
-
-
-/* .navbar .btn-primary,
-.navbar .btn-primary:active {
-    color: #fff;
-    background: #205e63 !important;
-    border: none;
-} */
-
-/* .navbar .btn-primary:hover,
-.navbar .btn-primary:focus {
-    color: #fff;
-    background: #031c1f !important;
-} */
-
-/* .navbar .dropdown-menu {
-    color: #999;
-    font-weight: normal;
-    border-radius: 1px;
-    border-color: #e5e5e5;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-} */
-
-/* .navbar .sign-up-btn {
-    min-width: 110px;
-    max-height: 36px;
-} */
-
-
-
-
-
-
-
-
-
-
-
 
 

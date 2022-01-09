@@ -10,7 +10,7 @@ class TestViews(TestCase):
 
 class TestViews(TestCase):
 
-    def test_TestimonialList(self):
+    def test_Testimonials(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html', 'base.html')

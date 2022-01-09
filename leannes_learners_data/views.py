@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Blog, Testimonial, Carousel
+from .models import Blog, Testimonial, Carousel, Passplus
 from .forms import CommentForm
 
 
@@ -81,7 +81,7 @@ class LikePost(View):
         return HttpResponseRedirect(reverse('blog_post_view', args=[slug]))
 
 
-class TestimonialList(generic.ListView):
+class Testimonials(generic.ListView):
     model = Testimonial
     queryset = Testimonial.objects.filter(status=1).order_by("-created_at")
     template_name = "index.html"
@@ -92,3 +92,9 @@ class TestimonialList(generic.ListView):
         context['blog_list'] = Blog.objects.filter(status=1).order_by("-created_at")[0:3]
         context['carousel_list'] = Carousel.objects.filter(include_in_carousel=1).order_by("slide_identifying_name")
         return context
+
+
+class Passplus(generic.ListView):
+    model = Passplus
+    queryset = Passplus.objects.filter(status=1).order_by("-created_at")[0:1]
+    template_name = "pass_plus.html"
