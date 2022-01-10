@@ -6,6 +6,35 @@ from django.utils.safestring import mark_safe
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
 
+
+class About(models.Model):
+    short_description = models.CharField(max_length=80, unique=True)
+    about_us = models.TextField()
+    background_image = CloudinaryField(
+        folder='leannes_learners/about_us/background_images/',
+        default='placeholder')
+    updated_at = models.DateField(auto_now=True)
+    created_at = models.DateField(auto_now_add=True)
+    status = models.IntegerField(choices=STATUS, default=0)
+
+    def image_thumb(self):
+        """
+        This creates a thumbnail image of the current uploaded image
+        """
+        return mark_safe('<img src="{}" width="auto" height="100">'.format(
+            self.background_image.url))
+    image_thumb.short_discription = "background image"
+    background_image.allow_tags = True
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "About Us"
+        verbose_name_plural = "About Us"
+
+    def __str__(self):
+        return self.short_description
+
+
 # code for Blog and COMMENT adapted
 # from a previous walkthrough - Code Institues " I blog therefore I am"
 class Blog(models.Model):
@@ -96,6 +125,37 @@ class Carousel(models.Model):
     slide_image.allow_tags = True
 
 
+class Instructors(models.Model):
+    name = models.CharField(max_length=80, unique=True)
+    instructor_image = CloudinaryField(
+        folder='leannes_learners/instructor_images/',
+        transformation={'width': '300', 'height': '400', 'crop': 'fill',
+                        'gravity': 'face', 'zoom': '0.5'},
+        default='placeholder')
+    alt_tag = models.CharField(max_length=200, blank=True)
+    about = models.TextField()
+    updated_at = models.DateField(auto_now=True)
+    created_at = models.DateField(auto_now_add=True)
+    status = models.IntegerField(choices=STATUS, default=0)
+
+    def image_thumb(self):
+        """
+        This creates a thumbnail image of the current uploaded image
+        """
+        return mark_safe('<img src="{}" width="100" height="auto">'.format(
+            self.instructor_image.url))
+    image_thumb.short_discription = "image"
+    instructor_image.allow_tags = True
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Driving Instructor"
+        verbose_name_plural = "Driving Instructors"
+
+    def __str__(self):
+        return self.name
+
+
 class Service(models.Model):
     service_name = models.CharField(max_length=80, unique=True)
     service_description = models.CharField(max_length=200, blank=True)
@@ -114,7 +174,7 @@ class Service(models.Model):
 
 
 class Passplus(models.Model):
-    name = models.CharField(max_length=80, unique=True)
+    short_description = models.CharField(max_length=80, unique=True)
     background_image = CloudinaryField(
         folder='leannes_learners/pass_plus/background_images/',
         default='placeholder')
@@ -145,7 +205,7 @@ class Passplus(models.Model):
         verbose_name_plural = "Pass Plus Page Content"
 
     def __str__(self):
-        return self.name
+        return self.short_description
 
 
 class Testimonial(models.Model):

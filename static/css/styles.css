@@ -7,16 +7,20 @@ alert-msg {
     z-index: 100;
 }
 
-blockquote {
-position: relative;
-display: inline-block;
-background: #eee;
-padding: 40px 30px 30px 40px;
-border-radius: 10px;
-color: #333;
-text-align: left;
-box-shadow: 1px 1px 1px #999, 2px 2px 1px #999, 3px 3px 1px #999;
-transition-duration: 0.3s;
+blockquote { 
+    position: relative; 
+    display: inline-block; 
+    background: rgb(238, 238, 238); 
+    padding: 20px 30px; 
+    border-radius: 10px; 
+    color: rgb(51, 51, 51); 
+    text-align: left; 
+    box-shadow: 1px 1px 1px rgb(153, 153, 153), 2px 2px 1px rgb(153, 153, 153), 3px 3px 1px rgb(153, 153, 153); 
+    transition-duration: 0.3s; 
+    -webkit-border-radius: 10px; 
+    -moz-border-radius: 10px; 
+    -ms-border-radius: 10px; 
+    -o-border-radius: 10px;
 }
 
 img {
@@ -28,7 +32,7 @@ img {
     display: block;
     text-align: right;
     margin-top: 5px;
-    color: #999;
+    color: rgb(153, 153, 153);
     font-style: italic;
 }
 
@@ -49,7 +53,7 @@ img {
 }
 
 .background-image {
-    background-color: #333;
+    background-color: rgb(51, 51, 51);
 	box-sizing: border-box;
 	min-height: 100vh;
 	min-width: 100vw;
@@ -86,13 +90,13 @@ background-color: rgb(116, 36, 29);
 }
 
 .blog-post-likes {
-    color: #7e848a;
+    color: rgb(126, 132, 138);
     font-style: italic;
 }
 
 .blog-post-link {
     text-decoration: none;
-    color: #445261;
+    color: rgb(68, 82, 97);
 }
 
 .blog-post-link:hover,
@@ -102,25 +106,25 @@ background-color: rgb(116, 36, 29);
 
 .blog-post-subtitle {
     margin-left: 5%;
-    color: whitefff;
+    color: white;
 }
 
 .blog-post-title {
     margin-top: 5%;
     margin-left: 5%;
-        color: whitefff;
+        color: white;
 
 }
 
 .btn-like {
-    color: #ee1919;
+    color: rgb(238, 25, 25);
     border: none;
     background: transparent;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #ee1919;
+    color: rgb(238, 25, 25);
     background: transparent;
     border: none;
 }
@@ -145,16 +149,16 @@ background-color: rgb(116, 36, 29);
 }
 
 .btn-signup {
-    color: rgb(116, 36, 29);
-    background: white;
+    color: white;
+    background-color: rgb(116, 36, 29);
     text-decoration: none;
     border: 1px solid rgb(116, 36, 29);
 }
 
 
 .btn-signup:hover {
-    color: white;
-    background-color: rgb(116, 36, 29);
+    color: rgb(116, 36, 29);
+    background: white;
 }
 
 .carousel-item{
@@ -165,7 +169,7 @@ background-color: rgb(116, 36, 29);
     background-color: rgba(116, 36, 29, .7);
     right: 0;
     left: 0;
-    color: white
+    color: white;
     text-align: center;
 }
 
@@ -181,7 +185,7 @@ background-color: rgb(116, 36, 29);
 
 .fa-quote-left {
     position: relative;
-    background: #eee;
+    background: rgb(238, 238, 238);
     padding-left: -5px;
     margin-left: -20px;
     font-style: italic;
@@ -191,7 +195,7 @@ background-color: rgb(116, 36, 29);
 
 .fa-quote-right {
     position: relative;
-    background: #eee;
+    background: rgb(238, 238, 238);
     font-style: italic;
     z-index: 5;
     text-align: right;
@@ -208,7 +212,7 @@ background-color: rgb(116, 36, 29);
 
 .img-focus-image {
     padding: 0.25rem;
-    background-color: white
+    background-color: white;
     border: 1px solid rgb(222, 226, 230);
     border-radius: 50%;
     max-width: 100%;
@@ -264,7 +268,7 @@ background-color: rgb(116, 36, 29);
     color: rgb(116, 36, 29);
     text-decoration: none;
     background-color: white;
-    border: 1px solid #dee2e6;
+    border: 1px solid rgb(222, 226, 230);
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -275,7 +279,7 @@ background-color: rgb(116, 36, 29);
 .page-link:hover {
     color: white;
     background-color: rgb(116, 36, 29);
-    border: 1px solid #dee2e6;
+    border: 1px solid rgb(222, 226, 230);
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .section-header{

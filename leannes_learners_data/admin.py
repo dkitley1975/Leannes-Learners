@@ -1,9 +1,46 @@
 from django.contrib import admin
-from .models import Blog, Comment, Testimonial, Service, Carousel, Passplus
+from .models import About, Blog, Comment, Testimonial, Service, Carousel, Instructors, Passplus
 from django_summernote.admin import SummernoteModelAdmin
 
 
 # Register your models here.
+@admin.register(About)
+class AboutAdmin(SummernoteModelAdmin):
+    """
+    Establish the view in admin for About content page.
+    Which fields to include in the:
+    list/search views, how they are filtered,
+    which are prepopulated and
+    creates an action to include approve About.
+    """
+    fields = [
+        'short_description',
+        'about_us',
+        'background_image',
+        'image_thumb',
+        'status',
+    ]
+
+    list_display = (
+        'short_description',
+        'image_thumb',
+        'status',
+        'created_at',
+        )
+
+    search_fields = ['short_description', 'about_us',]
+    list_filter = ('status',)
+    summernote_fields = ('about_us',)
+    actions = ['publish_About_us', 'Unpublish_About_us']
+    readonly_fields = ['image_thumb',]
+
+    def publish_About_us(self, request, queryset):
+        queryset.update(status=True)
+
+    def Unpublish_About_us(self, request, queryset):
+        queryset.update(status=False)
+
+
 @admin.register(Blog)
 class BlogAdmin(SummernoteModelAdmin):
     """
@@ -105,6 +142,41 @@ class CommentAdmin(admin.ModelAdmin):
         queryset.update(approved=True)
 
 
+@admin.register(Instructors)
+class InstructorsAdmin(SummernoteModelAdmin):
+    """
+    Establish the view in admin for the Driving Instructors.
+    Which fields to include in the:
+    list/search views, how they are filtered,
+    which are prepopulated and
+    creates an action to include activate Driving Instructors.
+    """
+    fields = [
+        'name',
+        'instructor_image',
+        'image_thumb',
+        'alt_tag',
+        'about',
+        'status',
+    ]
+
+    list_display = (
+        'image_thumb',
+        'name',
+        'about',
+        'status',
+        'created_at',
+        )
+
+    search_fields = ['name',]
+    list_filter = ('status',)
+    actions = ['publish_Instructor',]
+    readonly_fields = ['image_thumb',]
+
+    def publish_Instructor(self, request, queryset):
+        queryset.update(status=True)
+
+
 @admin.register(Passplus)
 class PassplusAdmin(SummernoteModelAdmin):
     """
@@ -115,7 +187,7 @@ class PassplusAdmin(SummernoteModelAdmin):
     creates an action to include approve Testimonials.
     """
     fields = [
-        'name',
+        'short_description',
         "lead_content",
         'main_content',
         'focus_image',
@@ -127,12 +199,12 @@ class PassplusAdmin(SummernoteModelAdmin):
 
     list_display = (
         'image_thumb',
-        'name',
+        'short_description',
         'status',
         'created_at',
         )
 
-    search_fields = ['name', 'lead_content', 'main_content', 'alt_tag',]
+    search_fields = ['short_description', 'lead_content', 'main_content', 'alt_tag',]
     list_filter = ('status', 'created_at',)
     summernote_fields = ('main_content',)
     actions = ['publish_Passplus', 'Unpublish_Passplus']
@@ -200,4 +272,3 @@ class TestimonialAdmin(SummernoteModelAdmin):
 
     def publish_Testimonial(self, request, queryset):
         queryset.update(status=True)
-
