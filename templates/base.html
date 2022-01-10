@@ -40,7 +40,8 @@
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<!-- Local CSS-->
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
+	<!-- Local JS-->
+	<link rel="text/javascript" href="{% static 'js/javascript.js' %}">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -62,20 +63,6 @@
 
 
 
-
-
-	<!-- TODO move to external script -->
-	<!-- Copyright solution researched and resourced on stackoverflow -->
-	<script>document.getElementById('copyright-year').appendChild(document.createTextNode(new Date().getFullYear()))</script>
-
-	<!-- Script to show the alert messages -->
-	<script>
-		setTimeout(function () {
-			let messages = document.getElementById('alert-msg');
-			let alert = new bootstrap.Alert(messages);
-			alert.close();
-		}, 2500);
-	</script>
 
 	<!-- Bootstrap jquery and javascript -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

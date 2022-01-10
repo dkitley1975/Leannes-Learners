@@ -39,12 +39,11 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 						data-bs-toggle="dropdown" aria-expanded="false">
-						Pupil Area
+						{{ user.get_username }}'s' Pupil Area
 					</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
+					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark" aria-labelledby="navbarDropdown">
+						<li><a class="dropdown-item" href="#">Schedule a Lesson</a></li>
+						<li><a class="dropdown-item" href="#">Lesson Diary</a></li>
 						<li>
 							<hr class="dropdown-divider">
 						</li>
@@ -56,7 +55,7 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 						data-bs-toggle="dropdown" aria-expanded="false">{{ user.get_username }}'s Area</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark" aria-labelledby="navbarDropdown">
 						<li><a class="dropdown-item" href="/admin">Login to Admin</a></li>
 						<li><a class="dropdown-item" href="#">Another action</a></li>
 						<li><a class="dropdown-item" href="#">Something else here</a></li>
