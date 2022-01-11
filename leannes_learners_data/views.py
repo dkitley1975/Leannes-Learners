@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import About, Blog, Carousel, Instructors, Passplus, Testimonial
+from .models import About, Blog, Carousel, Instructors, Passplus, Service, Testimonial
 from .forms import CommentForm
 
 
@@ -100,6 +100,17 @@ class PassPlusPage(generic.ListView):
     model = Passplus
     queryset = Passplus.objects.filter(status=1).order_by("-created_at")[0:1]
     template_name = "pass_plus.html"
+
+
+class PricesPage(generic.ListView):
+    model = Service
+    queryset = Service.objects.all().order_by("price")
+    template_name = "prices.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['featured_list'] = Service.objects.filter(featured=1).order_by("price")
+        return context
 
 
 class Testimonials(generic.ListView):
