@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}About Us{% endblock %}
+{% block content %}
+
+
+<!-- Prices -->
+<div class="container py-3">
+	<heading class="pricing-header p-3 pb-md-4 mx-auto text-center">
+		<h1 class="section-header">Prices and services</h1>
+	</heading>
+	<section>
+		<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
+			{% for service in featured_list %}
+			<div class="col">
+				<div class="card mb-4 rounded-3 shadow-sm">
+					<div class="card-header py-3">
+						<h4 class="my-0 fw-normal">{{ service.service_name }}</h4>
+					</div>
+					<div class="card-body">
+						<h1 class="card-title pricing-card-title">£{{ service.price }}</h1>
+						<ul class="list-unstyled mt-3 mb-4">
+							<li>{{ service.service_description }}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+
+		<h2 class="display-6 text-center mb-4">Our Services list</h2>
+
+		<div class="table-responsive">
+			<table class="table text-center">
+				<thead>
+					<tr>
+						<th class="text-start" style="width: 56%;"></th>
+						<th style="width: 22%;">Duration</th>
+						<th style="width: 22%;">Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for service in service_list %}
+					<tr>
+						<td class="text-start fw-bold">{{ service.service_name }}
+							{% if service.service_description %} <small class="text-muted"> -
+								{{ service.service_description }}</small>
+							{% endif %}
+						</td>
+						<td>{{ service.service_duration }}</td>
+						<td class="fw-bold">£{{ service.price }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+
+
+			</table>
+		</div>
+	</section>
+</div>
+
+{%endblock%}
