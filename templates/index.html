@@ -55,12 +55,12 @@
 						<div class="row g-1 mt-3">
 							{% if "placeholder" in testimonial.testimonial_image.url %}
 							<div class="col-md-4 align-self-center">
-								<img class="card-img-top align-self-center"
+								<img class="card-img-top img-radius-10 align-self-center"
 									src="https://res.cloudinary.com/dkitley1975/image/upload/v1641189549/leannes_learners/default_image/placeholder-300x400.png">
 							</div>
 							{% else %}
 							<div class="col-md-4 align-self-center">
-								<img class="card-img-top align-self-center"
+								<img class="card-img-top img-radius-10 align-self-center"
 									src=" {{ testimonial.testimonial_image.url }}">
 								<p class="card-text text-end"><small class="text-muted">
 										{{ testimonial.created_at }}</small></p>
@@ -114,10 +114,10 @@
 							<div class="card-body">
 								<div class="image-container">
 									{% if "placeholder" in blog.featured_image.url %}
-									<img class="card-img-top"
+									<img class="card-img-top img-radius-10"
 										src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg">
 									{% else %}
-									<img class="card-img-top" src=" {{ blog.featured_image.url }}">
+									<img class="card-img-top img-radius-10" src=" {{ blog.featured_image.url }}">
 									{% endif %}
 									<div class="image-flash">
 										<p class="author">Author: {{ blog.author }}</p>

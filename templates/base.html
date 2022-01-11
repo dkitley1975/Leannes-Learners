@@ -73,5 +73,11 @@
 		crossorigin="anonymous"></script>
 
 </body>
-
+<script>
+	setTimeout(function () {
+			let messages = document.getElementById('alert-msg');
+			let alert = new bootstrap.Alert(messages);
+			alert.close();
+		}, 2500);
+</script>
 </html>
