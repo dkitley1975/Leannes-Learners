@@ -191,7 +191,7 @@ class PassplusAdmin(SummernoteModelAdmin):
         "lead_content",
         'main_content',
         'focus_image',
-        'focus_image_alt_tag',
+        'alt_tag',
         'background_image',
         'image_thumb',
         'status',

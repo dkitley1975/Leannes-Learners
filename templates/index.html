@@ -56,12 +56,13 @@
 							{% if "placeholder" in testimonial.testimonial_image.url %}
 							<div class="col-md-4 align-self-center">
 								<img class="card-img-top img-radius-10 align-self-center"
-									src="https://res.cloudinary.com/dkitley1975/image/upload/v1641189549/leannes_learners/default_image/placeholder-300x400.png">
+									src="https://res.cloudinary.com/dkitley1975/image/upload/v1641189549/leannes_learners/default_image/placeholder-300x400.png"
+									alt="Image missing - default place holder image">
 							</div>
 							{% else %}
 							<div class="col-md-4 align-self-center">
 								<img class="card-img-top img-radius-10 align-self-center"
-									src=" {{ testimonial.testimonial_image.url }}">
+									src=" {{ testimonial.testimonial_image.url }}" alt="{{ testimonial.alt_tag }}">
 								<p class="card-text text-end"><small class="text-muted">
 										{{ testimonial.created_at }}</small></p>
 							</div>
@@ -74,7 +75,7 @@
 										<i class="fa fa-quote-left" aria-hidden="true"></i>
 										{{ testimonial.testimonial }}
 										<i class="fa fa-quote-right" aria-hidden="true"></i>
-										<span class="author">{{ testimonial.name }}</span>
+										<span class="author text-muted">{{ testimonial.name }}</span>
 									</blockquote>
 								</div>
 							</div>
@@ -117,10 +118,11 @@
 									<img class="card-img-top img-radius-10"
 										src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg">
 									{% else %}
-									<img class="card-img-top img-radius-10" src=" {{ blog.featured_image.url }}">
+									<img class="card-img-top img-radius-10" src=" {{ blog.featured_image.url }}"
+										alt="{{ blog.alt_tag }}">
 									{% endif %}
 									<div class="image-flash">
-										<p class="author">Author: {{ blog.author }}</p>
+										<p class="author text-muted">Author: {{ blog.author }}</p>
 									</div>
 								</div>
 								<a href="{% url 'blog_post_view' blog.slug %}" class="blog-post-link">
@@ -135,8 +137,8 @@
 					</div>
 					{% if forloop.counter|divisibleby:3 %}
 				</div>
-					{% endif %}
-					{% endfor %}
+				{% endif %}
+				{% endfor %}
 			</div>
 		</div>
 	</div>

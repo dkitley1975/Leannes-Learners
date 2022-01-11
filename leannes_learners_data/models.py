@@ -185,7 +185,7 @@ class Passplus(models.Model):
         transformation={'width': '400', 'height': '400', 'crop': 'fill',
                         'gravity': 'face', 'zoom': '0.5'},
         default='placeholder')
-    focus_image_alt_tag = models.CharField(max_length=200, blank=True)
+    alt_tag = models.CharField(max_length=200, blank=True)
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)

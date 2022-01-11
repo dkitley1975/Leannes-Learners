@@ -1,6 +1,6 @@
 {% load auth_extras %}
 {% block content %}
-<nav class="navbar navbar-expand-lg navbar-light navbar-burnt-red navbar-dark">
+<nav class="navbar navbar-expand-xl navbar-burnt-red navbar-dark">
 	<div class="container-fluid">
 		<div class="logo-image"><span class="sr-only">Leannes Learners</span>
 			<a href="/"><img
@@ -33,13 +33,14 @@
 					<a class="nav-link {% if url_name == 'blogs' %}active{% endif %}" href="blog">Blog</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="blog">Contact Us</a>
+					<a class="nav-link {% if url_name == 'contact_us' %}active{% endif %}" href="contact_us">Contact
+						Us</a>
 				</li>
 				{% if request.user|has_group:"Pupil" %}
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 						data-bs-toggle="dropdown" aria-expanded="false">
-						{{ user.get_username }}'s' Pupil Area
+						{{ user.get_username }}'s' Area
 					</a>
 					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark"
 						aria-labelledby="navbarDropdown">
@@ -55,7 +56,7 @@
 				{% if user.is_staff %}
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false">{{ user.get_username }}'s Area</a>
+						data-bs-toggle="dropdown" aria-expanded="false">Staff Area</a>
 					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark"
 						aria-labelledby="navbarDropdown">
 						<li><a class="dropdown-item" href="/admin">Login to Admin</a></li>
