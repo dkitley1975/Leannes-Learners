@@ -237,3 +237,41 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Contactdetails(models.Model):
+    background_image = CloudinaryField(
+        folder='leannes_learners/contact_page/background_images/',
+        default='placeholder')
+    phone = models.CharField(max_length=15)
+    email = models.EmailField(max_length=30)
+    facebook = models.CharField(max_length=80, blank=True)
+    twitter = models.CharField(max_length=80, blank=True)
+
+    def image_thumb(self):
+        """
+        This creates a thumbnail image of the current uploaded image
+        """
+        return mark_safe('<img src="{}" width="auto" height="100">'.format(
+            self.background_image.url))
+    image_thumb.short_discription = "background image"
+    background_image.allow_tags = True
+
+    class Meta:
+        ordering = ["-id"]
+        verbose_name = "Contact/Social Information"
+        verbose_name_plural = "Contact/Social Information"
+
+    def __str__(self):
+        return self.phone
+
+
+class TeachingHours(models.Model):
+    day = models.CharField(max_length=9, unique=True)
+    start_time = models.CharField(max_length=6)
+    finish_time = models.CharField(max_length=6, blank=True)
+
+    class Meta:
+        ordering = ["id"]
+        verbose_name = "Teaching Hours"
+        verbose_name_plural = "Teaching Hours"

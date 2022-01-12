@@ -1,65 +1,33 @@
-{% extends "base.html" %}
-{% block title %}Contact Us{% endblock %}
-{% block content %}
+#def contactform(request):
+#     if request.method == "POST":
+#         contact_first_name = request.POST['contact-first-name']
+#         contact_last_name = request.POST['contact-last-name']
+#         contact_postcode = request.POST['contact-postcode']
+#         contact_email = request.POST['contact-email']
+#         contact_number = request.POST['contact-number']
+#         contact_message = request.POST['contact-message']
+
+#         return render(request, 'contact.html', {'contact_first_name': contact_first_name })
+
+#     else:
+#         return render(request, 'contact.html', {})
 
 
-<!-- contact us -->
-<div class="container py-3">
-	<heading class="pricing-header p-3 pb-md-4 mx-auto text-center">
-		<h1 class="section-header">Contact Us</h1>
-	</heading>
-	<section>
-		<div class="row d-flex g-3 justify-content-between p-4">
-			<p>we would love to talk to you regarding your requirements so
-				use the form below to drop us an email or send us a text on NUMBER</p>
 
 
-			<div class="card mb-4 col-sm-10 col-md-5 col-lg-4 img-radius-10 p-4">
-				<div class="card-body">
-					<h2 class="card-title">Contact Details</h2>
-					<table class="table">
-						<tbody>
-							<tr>
-								<td>Phone</td>
-								<td>07739 79 2514</td>
-							</tr>
-							<tr>
-								<td>Email</td>
-								<td>leanne@leanneslearners.com</td>
-							</tr>
 
-						</tbody>
-					</table>
-					<h2 class="card-title pt-5">TEACHING HOURS</h2>
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">Day</th>
-								<th scope="col">Hours</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Monday - Friday</td>
-								<td>8AM-5PM</td>
-							</tr>
-							<tr>
-								<td>Saturday</td>
-								<td>Closed</td>
-							</tr>
-							<tr>
-								<td>Saturday</td>
-								<td>Closed</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['hours_list'] = Hours.objects.all().order_by("day")
+    #     return context
 
-			<div class="col-sm-10 col-md-6 col-lg-7 img-radius-10 p-4">
-				<form class="row g-3 needs-validation" novalidate action="{% url 'contact' %}" method="POST">
+
+	{% url 'contactform' %}
+
+
+	<form class="row g-3 needs-validation" novalidate>
 					{% csrf_token %}
-					<h2 class="card-title">Contact Form</h2>
+					<h2 class="card-title text-center">Contact Form</h2>
 					<div class="col-md-10 md-offset-1">
 						<label for="validationFirstName" class="form-label">First name</label>
 						<input type="text" class="form-control" id="validationFirstName" name="contact-first-name"
@@ -95,25 +63,18 @@
 					<div class="col-md-10">
 						<label for="validationContactNumber" class="form-label">Contact Number</label>
 						<input type="text" class="form-control" id="validationContactNumber" name="contact-number"
-							required>
+							placeholder="07123456789" required>
 						<div class="invalid-feedback">
 							Please provide a valid contact number.
 						</div>
 					</div>
 					<div class="col-md-10">
-						<label for="validationCustommessage" class="form-label">message</label>
+						<label for="validationCustommessage" class="form-label">Message</label>
 						<textarea class="form-control" name="contact-message" rows="8" required
-							placeholder="I would like to enquire about driving lessons in the --- area, I am available on --- days"></textarea>
+							placeholder="I would like to enquire about driving lessons &#10in the --- area, &#10I have had no/some lessons previously, &#10I am available on --- days."></textarea>
 					</div>
 
 					<div class="col-12">
 						<button class="btn btn-primary" type="submit">Submit form</button>
 					</div>
 				</form>
-			</div>
-		</div>
-	</section>
-
-</div>
-
-{%endblock%}

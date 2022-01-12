@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import About, Blog, Comment, Testimonial, Service, Carousel, Instructors, Passplus
+from .models import About, Blog, Carousel, Comment, Contactdetails, TeachingHours, Instructors, Passplus, Service, Testimonial 
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -272,3 +272,53 @@ class TestimonialAdmin(SummernoteModelAdmin):
 
     def publish_Testimonial(self, request, queryset):
         queryset.update(status=True)
+
+
+@admin.register(Contactdetails)
+class ContactDetailsAdmin(admin.ModelAdmin):
+    """
+    Establish the view in admin for the Contact Details.
+    Which fields to include in the:
+    list/search views.
+    """
+    fields = [
+        'phone',
+        'email',
+        'facebook',
+        'twitter',
+        'background_image',
+        'image_thumb',
+    ]
+
+    list_display = (
+        'phone',
+        'email',
+        'facebook',
+        'twitter',
+        )
+
+    search_fields = ['phone', 'email',]
+    list_filter = ('phone', 'email',)
+    readonly_fields = ['image_thumb',]
+
+
+@admin.register(TeachingHours)
+class TeachingHoursAdmin(admin.ModelAdmin):
+    """
+    Establish the view in admin for the Contact Details.
+    Which fields to include in the:
+    list/search views.
+    """
+    fields = [
+        'day',
+        'start_time',
+        'finish_time'
+    ]
+
+    list_display = (
+        'day',
+        'start_time',
+        'finish_time'
+        )
+
+    search_fields = ['day', 'email']

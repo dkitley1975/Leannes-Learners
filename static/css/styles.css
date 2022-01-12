@@ -222,15 +222,14 @@ img {
 
 .img-radius-10 {
     padding: 0.25rem;
-    background-color: white;
     border: 1px solid rgb(222, 226, 230);
-    border-radius: 10%;
+    border-radius: 10px;
     box-shadow: 1px 1px 1px rgb(180, 180, 180), 2px 2px 1px rgb(200, 200, 200), 3px 3px 1px rgb(220, 220, 220);
     max-width: 100%;
-    -webkit-border-radius: 10%;
-    -moz-border-radius: 10%;
-    -ms-border-radius: 10%;
-    -o-border-radius: 10%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 .link {
     color: rgb(35, 187, 187);
@@ -301,6 +300,18 @@ img {
     margin-top: 3rem;
     text-align: center;
     font-family: 'Pushster', cursive;
+}
+
+.table a {
+    color: black;
+}
+
+.table a:hover {
+    color: rgb(68, 82, 97);
+}
+
+.trans-white-background-80{
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 
