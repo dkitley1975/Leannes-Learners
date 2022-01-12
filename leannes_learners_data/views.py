@@ -1,8 +1,8 @@
 from django.db.models.query import QuerySet
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic, View
-from django.http import HttpResponseRedirect
 from .models import About, Blog, Carousel, Instructors, Passplus, Service, Testimonial
 from .forms import CommentForm
 
@@ -78,6 +78,20 @@ class BlogPage(generic.ListView):
     template_name = "blog.html"
     paginate_by = 9
 
+
+def contact(request):
+    if request.method == "POST":
+        contact_first_name = request.POST['contact-first-name']
+        contact_last_name = request.POST['contact-last-name']
+        contact_postcode = request.POST['contact-postcode']
+        contact_email = request.POST['contact-email']
+        contact_number = request.POST['contact-number']
+        contact_message = request.POST['contact-message']
+
+        return render(request, 'contact.html', {'contact_first_name': contact_first_name })
+
+    else:
+        return render(request, 'contact.html', {})
 
 class InstructorsList(generic.ListView):
     model = Instructors
