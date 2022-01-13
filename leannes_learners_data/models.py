@@ -239,14 +239,36 @@ class Testimonial(models.Model):
         return self.name
 
 
-class Contactdetails(models.Model):
+class CompanyDetails(models.Model):
     background_image = CloudinaryField(
         folder='leannes_learners/contact_page/background_images/',
         default='placeholder')
     phone = models.CharField(max_length=15)
     email = models.EmailField(max_length=30)
-    facebook = models.CharField(max_length=80, blank=True)
-    twitter = models.CharField(max_length=80, blank=True)
+    social_media_name = models.CharField(max_length=80, blank=True)
+    social_media_link = models.CharField(max_length=200, blank=True)
+    social_media_image = CloudinaryField(
+        folder='leannes_learners/contact_page/social_images/',
+        transformation={'width': 'auto', 'height': '50', 'crop': 'fill'},
+        default='placeholder')
+    social_media_name_2 = models.CharField(max_length=80, blank=True)
+    social_media_link_2 = models.CharField(max_length=200, blank=True)
+    social_media_image_2 = CloudinaryField(
+        folder='leannes_learners/contact_page/social_images/',
+        transformation={'width': 'auto', 'height': '50', 'crop': 'fill'},
+        default='placeholder')
+    social_media_name_3 = models.CharField(max_length=80, blank=True)
+    social_media_link_3 = models.CharField(max_length=200, blank=True)
+    social_media_image_3 = CloudinaryField(
+        folder='leannes_learners/contact_page/social_images/',
+        transformation={'width': 'auto', 'height': '50', 'crop': 'fill'},
+        default='placeholder')
+    social_media_name_4 = models.CharField(max_length=80, blank=True)
+    social_media_link_4 = models.CharField(max_length=200, blank=True)
+    social_media_image_4 = CloudinaryField(
+        folder='leannes_learners/contact_page/social_images/',
+        transformation={'width': 'auto', 'height': '50', 'crop': 'fill'},
+        default='placeholder')
 
     def image_thumb(self):
         """
@@ -258,9 +280,9 @@ class Contactdetails(models.Model):
     background_image.allow_tags = True
 
     class Meta:
-        ordering = ["-id"]
-        verbose_name = "Contact/Social Information"
-        verbose_name_plural = "Contact/Social Information"
+        # ordering = ["-id"]
+        verbose_name = "Company Contact/Social Information"
+        verbose_name_plural = "Company Contact/Social Information"
 
     def __str__(self):
         return self.phone

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import About, Blog, Carousel, Comment, Contactdetails, TeachingHours, Instructors, Passplus, Service, Testimonial 
+from .models import About, Blog, Carousel, Comment, CompanyDetails, TeachingHours, Instructors, Passplus, Service, Testimonial 
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -274,27 +274,39 @@ class TestimonialAdmin(SummernoteModelAdmin):
         queryset.update(status=True)
 
 
-@admin.register(Contactdetails)
-class ContactDetailsAdmin(admin.ModelAdmin):
+@admin.register(CompanyDetails)
+class CompanyDetailsAdmin(admin.ModelAdmin):
     """
-    Establish the view in admin for the Contact Details.
+    Establish the view in admin for the Company Details.
     Which fields to include in the:
     list/search views.
     """
     fields = [
         'phone',
         'email',
-        'facebook',
-        'twitter',
+        'social_media_name',
+        'social_media_link',
+        'social_media_image',
+        'social_media_name_2',
+        'social_media_link_2',
+        'social_media_image_2',
+        'social_media_name_3',
+        'social_media_link_3',
+        'social_media_image_3',
+        'social_media_name_4',
+        'social_media_link_4',
+        'social_media_image_4',
         'background_image',
         'image_thumb',
     ]
 
     list_display = (
-        'phone',
-        'email',
-        'facebook',
-        'twitter',
+        'id', 'phone',
+        'social_media_name',
+        'social_media_name_2',
+        'social_media_name_3',
+        'social_media_name_4',
+        'image_thumb',
         )
 
     search_fields = ['phone', 'email',]

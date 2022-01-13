@@ -3,7 +3,7 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic, View
-from .models import About, Blog, Carousel, Contactdetails, Instructors, Passplus, Service, TeachingHours, Testimonial
+from .models import About, Blog, Carousel, CompanyDetails, Instructors, Passplus, Service, TeachingHours, Testimonial
 from .forms import CommentForm
 
 
@@ -80,8 +80,8 @@ class BlogPage(generic.ListView):
 
 
 class ContactUsPage(generic.ListView):
-    model = Contactdetails
-    queryset = Contactdetails.objects.all()[0:1]
+    model = CompanyDetails
+    queryset = CompanyDetails.objects.all()
     template_name = "contact_us.html"
 
     def get_context_data(self, **kwargs):
