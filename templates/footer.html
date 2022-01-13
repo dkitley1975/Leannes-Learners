@@ -1,11 +1,73 @@
 {% block content %}
 <footer class="footer navbar-burnt-red mt-auto py-3">
-	<div class="container-wrapper ">
-		<div class="row ">
-			<div class="col-md-12 text-center text-white">
-				<p>Copyright © 2019-{% now "Y" %} Kitley-McNamara. All Rights Reserved</p>
+	<div class="container-wrapper col-12">
+		<div class="col-6 offset-3 mb-3">
+			<div class="row d-flex justify-content-around">
+				{% for companydetails in companydetails_list %}
+
+				{% if companydetails.social_media_link %}
+				<div class="col-3 footer-social text-center mx-auto">
+					{% if "placeholder" in companydetails.social_media_image.url %}
+					<a href='{{ companydetails.social_media_link }}'>
+						{{ companydetails.social_media_name }}</a>
+					{% else %}
+					<a href='{{ companydetails.social_media_link }}'
+						alt="This is the image used to represent {{ companydetails.social_media_name }}"><img
+							src='{{ companydetails.social_media_image.url }}' height="20px" class="mx-auto d-block"></a>
+					{% endif %}
+				</div>
+				{% endif %}
+
+				{% if companydetails.social_media_link_2 %}
+				<div class="col-3 footer-social text-center mx-auto">
+					{% if "placeholder" in companydetails.social_media_image_2.url %}
+					<a href='{{ companydetails.social_media_link_2 }}'>
+						{{ companydetails.social_media_name_2 }}</a>
+					{% else %}
+					<a href='{{ companydetails.social_media_link_2 }}'
+						alt="This is the image used to represent {{ companydetails.social_media_name_2 }}"><img
+							src='{{ companydetails.social_media_image_2.url }}' height="20px"
+							class="mx-auto d-block"></a>
+					{% endif %}
+				</div>
+				{% endif %}
+
+				{% if companydetails.social_media_link_3 %}
+				<div class="col-3 footer-social text-center mx-auto">
+					{% if "placeholder" in companydetails.social_media_image_3.url %}
+					<a href='{{ companydetails.social_media_link_3 }}'>
+						{{ companydetails.social_media_name_3 }}</a>
+					{% else %}
+					<a href='{{ companydetails.social_media_link_3 }}'
+						alt="This is the image used to represent {{ companydetails.social_media_name_3 }}"><img
+							src='{{ companydetails.social_media_image_3.url }}' height="20px"
+							class="mx-auto d-block"></a>
+					{% endif %}
+				</div>
+				{% endif %}
+
+				{% if companydetails.social_media_link_4 %}
+				<div class="col-3 footer-social text-center mx-auto">
+					{% if "placeholder" in companydetails.social_media_image_4.url %}
+					<a href='{{ companydetails.social_media_link_4 }}'>
+						{{ companydetails.social_media_name_4 }}</a>
+					{% else %}
+					<a href='{{ companydetails.social_media_link_4 }}'
+						alt="This is the image used to represent {{ companydetails.social_media_name_4 }}"><img
+							src='{{ companydetails.social_media_image_4.url }}' height="20px"
+							class="mx-auto d-block"></a>
+					{% endif %}
+				</div>
+				{% endif %}
+
+				{% endfor %}
+			</div>
+
+			<div class="row ">
+				<div class="col-md-12 text-center text-white">
+					<p>Copyright © 2019-{% now "Y" %} Kitley-McNamara. All Rights Reserved</p>
+				</div>
 			</div>
 		</div>
-	</div>
 </footer>
 {% endblock content %}
