@@ -1,9 +1,9 @@
 from django.db.models.query import QuerySet
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic, View
-from django.http import HttpResponseRedirect
-from .models import About, Blog, Carousel, Instructors, Passplus, Service, Testimonial
+from .models import About, Blog, Carousel, CompanyDetails, Instructors, Passplus, Service, TeachingHours, Testimonial
 from .forms import CommentForm
 
 
@@ -77,6 +77,19 @@ class BlogPage(generic.ListView):
     queryset = Blog.objects.filter(status=1).order_by("-created_at")
     template_name = "blog.html"
     paginate_by = 9
+
+
+class ContactUsPage(generic.ListView):
+    model = CompanyDetails
+    queryset = CompanyDetails.objects.all()[0:1]
+    template_name = "contact_us.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['teaching_hours_list'] = TeachingHours.objects.all().order_by("id")
+        return context
+
+
 
 
 class InstructorsList(generic.ListView):

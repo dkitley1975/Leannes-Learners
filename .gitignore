@@ -11,3 +11,4 @@ dont_upload_to_github*
 myenv/
 *.sqlite3
 
+temp/templates/storage.txt
