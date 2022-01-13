@@ -1,17 +1,17 @@
 {% block content %}
 <footer class="footer navbar-burnt-red mt-auto py-3">
 	<div class="container-wrapper col-12">
-		<div class="col-6 offset-3 mb-3">
-			<div class="row d-flex justify-content-around">
+		<div class="col-6 offset-3 ">
+			<div class="row d-flex justify-content-around mb-3">
 				{% for companydetails in companydetails_list %}
 
 				{% if companydetails.social_media_link %}
-				<div class="col-3 footer-social text-center mx-auto">
+				<div class="col-2 footer-social text-center mx-auto">
 					{% if "placeholder" in companydetails.social_media_image.url %}
-					<a href='{{ companydetails.social_media_link }}'>
+					<a href='{{ companydetails.social_media_link }}' target="_blank" rel="noopener noreferrer">
 						{{ companydetails.social_media_name }}</a>
 					{% else %}
-					<a href='{{ companydetails.social_media_link }}'
+					<a href='{{ companydetails.social_media_link }}' target="_blank" rel="noopener noreferrer"
 						alt="This is the image used to represent {{ companydetails.social_media_name }}"><img
 							src='{{ companydetails.social_media_image.url }}' height="20px" class="mx-auto d-block"></a>
 					{% endif %}
@@ -19,12 +19,12 @@
 				{% endif %}
 
 				{% if companydetails.social_media_link_2 %}
-				<div class="col-3 footer-social text-center mx-auto">
+				<div class="col-2 footer-social text-center mx-auto">
 					{% if "placeholder" in companydetails.social_media_image_2.url %}
-					<a href='{{ companydetails.social_media_link_2 }}'>
+					<a href='{{ companydetails.social_media_link_2 }}' target="_blank" rel="noopener noreferrer">
 						{{ companydetails.social_media_name_2 }}</a>
 					{% else %}
-					<a href='{{ companydetails.social_media_link_2 }}'
+					<a href='{{ companydetails.social_media_link_2 }}' target="_blank" rel="noopener noreferrer"
 						alt="This is the image used to represent {{ companydetails.social_media_name_2 }}"><img
 							src='{{ companydetails.social_media_image_2.url }}' height="20px"
 							class="mx-auto d-block"></a>
@@ -33,12 +33,12 @@
 				{% endif %}
 
 				{% if companydetails.social_media_link_3 %}
-				<div class="col-3 footer-social text-center mx-auto">
+				<div class="col-2 footer-social text-center mx-auto">
 					{% if "placeholder" in companydetails.social_media_image_3.url %}
-					<a href='{{ companydetails.social_media_link_3 }}'>
+					<a href='{{ companydetails.social_media_link_3 }}' target="_blank" rel="noopener noreferrer">
 						{{ companydetails.social_media_name_3 }}</a>
 					{% else %}
-					<a href='{{ companydetails.social_media_link_3 }}'
+					<a href='{{ companydetails.social_media_link_3 }}' target="_blank" rel="noopener noreferrer"
 						alt="This is the image used to represent {{ companydetails.social_media_name_3 }}"><img
 							src='{{ companydetails.social_media_image_3.url }}' height="20px"
 							class="mx-auto d-block"></a>
@@ -47,12 +47,12 @@
 				{% endif %}
 
 				{% if companydetails.social_media_link_4 %}
-				<div class="col-3 footer-social text-center mx-auto">
+				<div class="col-2 footer-social text-center mx-auto">
 					{% if "placeholder" in companydetails.social_media_image_4.url %}
-					<a href='{{ companydetails.social_media_link_4 }}'>
+					<a href='{{ companydetails.social_media_link_4 }}' target="_blank" rel="noopener noreferrer">
 						{{ companydetails.social_media_name_4 }}</a>
 					{% else %}
-					<a href='{{ companydetails.social_media_link_4 }}'
+					<a href='{{ companydetails.social_media_link_4 }}' target="_blank" rel="noopener noreferrer"
 						alt="This is the image used to represent {{ companydetails.social_media_name_4 }}"><img
 							src='{{ companydetails.social_media_image_4.url }}' height="20px"
 							class="mx-auto d-block"></a>
@@ -60,6 +60,11 @@
 				</div>
 				{% endif %}
 
+				<div class="col-2 footer-social text-center mx-auto">
+					<a class="fw-bold tel-link" href='tel:{{ companydetails.phone }}'><i class="fa fa-phone"
+							aria-hidden="true"></i>
+					</a>
+				</div>
 				{% endfor %}
 			</div>
 
