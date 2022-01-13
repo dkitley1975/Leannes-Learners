@@ -240,9 +240,6 @@ class Testimonial(models.Model):
 
 
 class CompanyDetails(models.Model):
-    background_image = CloudinaryField(
-        folder='leannes_learners/contact_page/background_images/',
-        default='placeholder')
     phone = models.CharField(max_length=15)
     email = models.EmailField(max_length=30)
     social_media_name = models.CharField(max_length=80, blank=True)
@@ -269,15 +266,6 @@ class CompanyDetails(models.Model):
         folder='leannes_learners/contact_page/social_images/',
         transformation={'width': 'auto', 'height': '50', 'crop': 'fill'},
         default='placeholder')
-
-    def image_thumb(self):
-        """
-        This creates a thumbnail image of the current uploaded image
-        """
-        return mark_safe('<img src="{}" width="auto" height="100">'.format(
-            self.background_image.url))
-    image_thumb.short_discription = "background image"
-    background_image.allow_tags = True
 
     class Meta:
         # ordering = ["-id"]

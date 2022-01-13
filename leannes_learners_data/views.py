@@ -81,7 +81,7 @@ class BlogPage(generic.ListView):
 
 class ContactUsPage(generic.ListView):
     model = CompanyDetails
-    queryset = CompanyDetails.objects.all()
+    queryset = CompanyDetails.objects.all()[0:1]
     template_name = "contact_us.html"
 
     def get_context_data(self, **kwargs):

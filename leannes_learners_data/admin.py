@@ -296,8 +296,6 @@ class CompanyDetailsAdmin(admin.ModelAdmin):
         'social_media_name_4',
         'social_media_link_4',
         'social_media_image_4',
-        'background_image',
-        'image_thumb',
     ]
 
     list_display = (
@@ -306,12 +304,10 @@ class CompanyDetailsAdmin(admin.ModelAdmin):
         'social_media_name_2',
         'social_media_name_3',
         'social_media_name_4',
-        'image_thumb',
         )
 
     search_fields = ['phone', 'email',]
     list_filter = ('phone', 'email',)
-    readonly_fields = ['image_thumb',]
 
 
 @admin.register(TeachingHours)
