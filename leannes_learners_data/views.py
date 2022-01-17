@@ -17,6 +17,7 @@ class AboutUsPage(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['instructors_list'] = Instructors.objects.filter(status=1).order_by("name")
+        context['social'] = CompanyDetails.objects.all()[0:1]
         return context
 
 
@@ -78,6 +79,11 @@ class BlogPage(generic.ListView):
     template_name = "blog.html"
     paginate_by = 9
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['social'] = CompanyDetails.objects.all()[0:1]
+        return context
+
 
 class ContactUsPage(generic.ListView):
     model = CompanyDetails
@@ -87,9 +93,8 @@ class ContactUsPage(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['teaching_hours_list'] = TeachingHours.objects.all().order_by("id")
+        context['social'] = CompanyDetails.objects.all()[0:1]
         return context
-
-
 
 
 class InstructorsList(generic.ListView):
@@ -114,6 +119,11 @@ class PassPlusPage(generic.ListView):
     queryset = Passplus.objects.filter(status=1).order_by("-created_at")[0:1]
     template_name = "pass_plus.html"
 
+    def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['social'] = CompanyDetails.objects.all()[0:1]
+            return context
+
 
 class PricesPage(generic.ListView):
     model = Service
@@ -123,6 +133,7 @@ class PricesPage(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['featured_list'] = Service.objects.filter(featured=1).order_by("price")
+        context['social'] = CompanyDetails.objects.all()[0:1]
         return context
 
 
@@ -136,4 +147,8 @@ class Testimonials(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['blog_list'] = Blog.objects.filter(status=1).order_by("-created_at")[0:3]
         context['carousel_list'] = Carousel.objects.filter(include_in_carousel=1).order_by("slide_identifying_name")
+        context['social'] = CompanyDetails.objects.all()[0:1]
+
         return context
+
+
