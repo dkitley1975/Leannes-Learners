@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.autoSave": "off",
+		"workbench.colorTheme": "One Dark Pro",
+		"terminal.integrated.gpuAcceleration": "canvas"
+	}
+}
