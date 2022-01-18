@@ -15,8 +15,8 @@
 			<div class="d-none d-md-block col-md-5 ms-auto blog-post-header-image">
 				<!-- The featured image URL goes in the src attribute -->
 				{% if "placeholder" in blog.featured_image.url %}
-				<img
-					src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg" alt="Missing image - default placeholder">
+				<img src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg"
+					alt="Missing image - default placeholder">
 				{% else %}
 				<img src=" {{ blog.featured_image.url }}" alt="{{ blog.alt_tag }}">
 				{% endif %}
@@ -35,9 +35,8 @@
 					{{ blog.content | safe }}
 				</p>
 				<div class="row">
-				
+
 					<div class="col-1">
-						<!-- The number of likes goes before the closing strong tag -->
 						<strong>
 							{% if user.is_authenticated %}
 							<form class="d-inline" action="{% url 'like' blog.slug %}" method="POST">
@@ -82,34 +81,27 @@
 		<div class="col-md-8 card mb-4  mt-3 ">
 			<h3>Comments:</h3>
 			<div class="card-body">
-				<!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
 				{% for comment in comments %}
 				<div class="comments" style="padding: 10px;">
 					<p class="font-weight-bold">
-						<!-- The commenter's name goes here. Check the model if you're not sure what that is -->
 						{{ comment.name }}
 						<span class=" text-muted font-weight-normal">
-							<!-- The comment's created date goes here -->
 							{{ comment.created_at }}
 						</span> wrote:
 					</p>
-					<!-- The body of the comment goes before the | -->
 					{{ comment.body | linebreaks }}
 				</div>
-				<!-- Our for loop ends here -->
 				{% endfor %}
 			</div>
 		</div>
 		<div class="col-md-4 card mb-4  mt-3 ">
 			<div class="card-body">
-				<!-- For later -->
 				{% if commented %}
 				<div class="alert alert-success" role="alert">
 					Your comment is awaiting approval
 				</div>
 				{% else %}
 				{% if user.is_authenticated %}
-
 				<h3>Leave a comment:</h3>
 				<p>Posting as: {{ user.username }}</p>
 				<form method="post" style="margin-top: 1.3em;">
