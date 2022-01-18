@@ -42,7 +42,6 @@ class BlogDetail(View):
             },
         )
 
-    # def BlogPost(self, request, slug, *args, **kwargs):
     def post(self, request, slug, *args, **kwargs):
         queryset = Blog.objects.filter(status=1)
         blog = get_object_or_404(queryset, slug=slug)
