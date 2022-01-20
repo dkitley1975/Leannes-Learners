@@ -12,3 +12,6 @@ myenv/
 *.sqlite3
 
 temp/templates/storage.txt
+Leannes-Learners-Workspace.code-workspace
+.gitignore
+templates/contact_us copy.html
