@@ -1,10 +1,13 @@
 from django.db.models.query import QuerySet
+from django.contrib import messages
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic, View
+from django.views.generic import FormView, TemplateView
 from .models import About, Blog, Carousel, CompanyDetails, Instructors, Passplus, Service, TeachingHours, Testimonial
-from .forms import CommentForm
+from .forms import CommentForm, ContactForm
+
 
 
 # Create your views here.
@@ -85,16 +88,29 @@ class BlogPage(generic.ListView):
         return context
 
 
-class ContactUsPage(generic.ListView):
-    model = CompanyDetails
-    queryset = CompanyDetails.objects.all()[0:1]
+
+class ContactUsPage(FormView):
     template_name = "contact_us.html"
+    form_class = ContactForm
+    success_url = reverse_lazy('success')
+
+    def form_valid(self, form):
+        # Calls the custom send method
+        form.send()
+        # This will add the flash message after email being valid
+        # messages.success(self.request, "Message sent." )
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['teaching_hours_list'] = TeachingHours.objects.all().order_by("id")
         context['social'] = CompanyDetails.objects.all()[0:1]
+        context['companydetails'] = CompanyDetails.objects.all()[0:1]
+        context['teaching_hours_list'] = TeachingHours.objects.all().order_by("id")
         return context
+
+
+class ContactSuccessView(TemplateView):
+    template_name = "success.html"
 
 
 class InstructorsList(generic.ListView):
@@ -150,5 +166,3 @@ class Testimonials(generic.ListView):
         context['social'] = CompanyDetails.objects.all()[0:1]
 
         return context
-
-

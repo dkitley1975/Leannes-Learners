@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Contact Us{% endblock %}
 {% block content %}
+{% load crispy_forms_tags %}
 
 
 <!-- contact us -->
-{% for companydetails in companydetails_list %}
 
 <div class="container py-3">
 
@@ -13,18 +13,19 @@
 	</heading>
 
 	<section>
-		<div class="row d-flex g-3 justify-content-between p-4">
+		<div class="row d-flex g-3 justify-content-center">
+			{% for companydetails in companydetails %}
 
 			<p class="text-center">We would love to talk to you regarding your requirements so
 				use the form below to drop us an email or send us a text on <a class="fw-bold tel-link"
 					href='tel:{{ companydetails.phone }}'>
 					{{ companydetails.phone }}</a></p>
 
-			<div class="card mb-4 col-sm-10 col-md-5 col-lg-4 img-radius-10 trans-white-background-80">
+			<!-- Contact Details  -->
+			<div class="col-sm-10 col-md-10 col-lg-5  col-xl-4 col-xxl-3 img-radius-10 trans-white-background-80">
 				<div class="card-body">
 					<h2 class="card-title text-center">Contact Details</h2>
 					<table class="table">
-						<!-- TODO text running over on smaller screens -->
 						<tbody>
 							<tr>
 								<td>Phone</td>
@@ -34,15 +35,14 @@
 							</tr>
 							<tr>
 								<td>Email</td>
-								<td class="fw-bold"><a
-										href="mailto:{{ companydetails.email }}?subject=Website%20Contact%20Me%20Form">
+								<td><a
+										href="mailto:{{ companydetails.email }}?subject=Website%20Contact%20Details%Page%Link">
 										{{ companydetails.email }}</a>
 								</td>
 							</tr>
-
 						</tbody>
-
 					</table>
+					<!-- Contact Hours  -->
 					<h2 class="card-title pt-5 text-center">Teaching Hours</h2>
 					<table class="table">
 						<thead>
@@ -67,67 +67,21 @@
 					</table>
 				</div>
 			</div>
+			{% endfor %}
 
-			<div class="col-sm-10 col-md-6 col-lg-7 img-radius-10 trans-white-background-80 p-4">
 
-				<form class="row g-3 needs-validation justify-content-around" novalidate>
-					<!-- {% csrf_token %} -->
-					<h2 class="card-title text-center">Contact Form</h2>
-					<div class="col-md-10 md-offset-2">
-						<label for="validationFirstName" class="form-label">First name</label>
-						<input type="text" class="form-control" id="validationFirstName" name="contact-first-name"
-							placeholder="First Name" required>
-						<div class="valid-feedback">
-							Looks good!
-						</div>
-					</div>
-					<div class="col-md-10">
-						<label for="validationLastName" class="form-label">Last name</label>
-						<input type="text" class="form-control" id="validationLastName" name="contact-last-name"
-							placeholder="Last Name" required>
-						<div class="valid-feedback">
-							Looks good!
-						</div>
-					</div>
-					<div class="col-md-10">
-						<label for="validationPostCode" class="form-label">Postcode</label>
-						<input type="text" class="form-control" id="validationPostCode" name="contact-postcode"
-							placeholder="HD" required>
-						<div class="invalid-feedback">
-							Please provide a valid postcode.
-						</div>
-					</div>
-					<div class="col-md-10">
-						<label for="validationCustomUserEmail" class="form-label">email</label>
-						<input type="text" class="form-control" id="validationCustomUserEmail" name="contact-email"
-							placeholder="first.last@mail.com" required>
-						<div class="invalid-feedback">
-							Please provide a valid email address.
-						</div>
-					</div>
-					<div class="col-md-10">
-						<label for="validationContactNumber" class="form-label">Contact Number</label>
-						<input type="text" class="form-control" id="validationContactNumber" name="contact-number"
-							placeholder="07123456789" required>
-						<div class="invalid-feedback">
-							Please provide a valid contact number.
-						</div>
-					</div>
-					<div class="col-md-10">
-						<label for="validationCustommessage" class="form-label">message</label>
-						<textarea class="form-control" name="contact-message" rows="8" required
-							placeholder="I would like to enquire about driving lessons in the --- area,&#10;I am available on --- days"></textarea>
-					</div>
-					<div class="d-grid gap-2 d-md-flex justify-content-md-end p-5">
-						<button class="btn btn-primary me-md-2" type="submit">Submit form</button>
-					</div>
+			<!-- Contact Form -->
+			<div
+				class="col-sm-10 col-md-10 offset-md-1 col-lg-4 col-xl-4 col-xxl-7 img-radius-10 trans-white-background-80 p-4">
+				<h2 class="card-title text-center">Contact Form</h2>
+				<form action="" method="post">
+					{% csrf_token %}
+					{{ form | crispy }}
+					<button class="btn btn-primary me-md-2 mt-2" type="submit">Submit form</button>
 				</form>
 			</div>
-		</div>
-
 	</section>
 
 </div>
 
-{% endfor %}
 {%endblock%}
