@@ -236,3 +236,5 @@ How to clone this repository.
 * Press Enter to create your local clone.
 
 ## Credits
+Email sending: Using Forms and Class based views instead of Function based views
+https://www.sitepoint.com/django-send-email/
