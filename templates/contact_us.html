@@ -13,7 +13,7 @@
 	</heading>
 
 	<section>
-		<div class="row d-flex g-3 justify-content-center">
+		<div class="row d-flex g-3 justify-content-around">
 			{% for companydetails in companydetails %}
 
 			<p class="text-center">We would love to talk to you regarding your requirements so
@@ -71,8 +71,7 @@
 
 
 			<!-- Contact Form -->
-			<div
-				class="col-sm-10 col-md-10 offset-md-1 col-lg-4 col-xl-4 col-xxl-7 img-radius-10 trans-white-background-80 p-4">
+			<div class="col-sm-10 col-md-10  col-lg-4 col-xl-4 col-xxl-7 img-radius-10 trans-white-background-80 p-4">
 				<h2 class="card-title text-center">Contact Form</h2>
 				<form action="" method="post">
 					{% csrf_token %}
