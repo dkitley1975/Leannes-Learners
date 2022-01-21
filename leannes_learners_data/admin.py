@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import About, Blog, Carousel, Comment, CompanyDetails, TeachingHours, Instructors, Passplus, Service, Testimonial 
+from .models import About, Blog, Carousel, Comment, CompanyDetails, TeachingHours, Instructors, Passplus, Service, Terms_and_Conditions, Testimonial 
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -31,13 +31,13 @@ class AboutAdmin(SummernoteModelAdmin):
     search_fields = ['short_description', 'about_us',]
     list_filter = ('status',)
     summernote_fields = ('about_us',)
-    actions = ['publish_About_us', 'Unpublish_About_us']
+    actions = ['publish_About_us', 'unpublish_About_us']
     readonly_fields = ['image_thumb',]
 
     def publish_About_us(self, request, queryset):
         queryset.update(status=True)
 
-    def Unpublish_About_us(self, request, queryset):
+    def unpublish_About_us(self, request, queryset):
         queryset.update(status=False)
 
 
@@ -117,6 +117,41 @@ class CarouselAdmin(SummernoteModelAdmin):
 
     def include_in_carousel(self, request, queryset):
         queryset.update(include_in_carousel=True)
+
+@admin.register(CompanyDetails)
+class CompanyDetailsAdmin(admin.ModelAdmin):
+    """
+    Establish the view in admin for the Company Details.
+    Which fields to include in the:
+    list/search views.
+    """
+    fields = [
+        'phone',
+        'email',
+        'social_media_name',
+        'social_media_link',
+        'social_media_image',
+        'social_media_name_2',
+        'social_media_link_2',
+        'social_media_image_2',
+        'social_media_name_3',
+        'social_media_link_3',
+        'social_media_image_3',
+        'social_media_name_4',
+        'social_media_link_4',
+        'social_media_image_4',
+    ]
+
+    list_display = (
+        'id', 'phone',
+        'social_media_name',
+        'social_media_name_2',
+        'social_media_name_3',
+        'social_media_name_4',
+        )
+
+    search_fields = ['phone', 'email',]
+    list_filter = ('phone', 'email',)
 
 
 @admin.register(Comment)
@@ -207,13 +242,13 @@ class PassplusAdmin(SummernoteModelAdmin):
     search_fields = ['short_description', 'lead_content', 'main_content', 'alt_tag',]
     list_filter = ('status', 'created_at',)
     summernote_fields = ('main_content',)
-    actions = ['publish_Passplus', 'Unpublish_Passplus']
+    actions = ['publish_Passplus', 'unpublish_Passplus']
     readonly_fields = ['image_thumb',]
 
     def publish_Passplus(self, request, queryset):
         queryset.update(status=True)
 
-    def Unpublish_Passplus(self, request, queryset):
+    def unpublish_Passplus(self, request, queryset):
         queryset.update(status=False)
 
 
@@ -236,6 +271,42 @@ class ServiceAdmin(admin.ModelAdmin):
 
     def include_in_Services(self, request, queryset):
         queryset.update(featured=True)
+
+
+@admin.register(Terms_and_Conditions)
+class TermsAdmin(SummernoteModelAdmin):
+    """
+    Establish the view in admin for Terms and Conditions content page.
+    Which fields to include in the:
+    list/search views, how they are filtered,
+    which are prepopulated and
+    creates an action to include approve terms.
+    """
+    fields = [
+        'lead_content',
+        'main_content',
+        'background_image',
+        'image_thumb',
+        'status',
+    ]
+
+    list_display = (
+        'status',
+        'created_at',
+        'lead_content',
+        )
+
+    search_fields = ['lead_content', 'main_content']
+    list_filter = ('status', 'created_at',)
+    summernote_fields = ('lead_content', 'main_content',)
+    actions = ['publish_Terms', 'unpublish_Terms']
+    readonly_fields = ['image_thumb',]
+
+    def publish_Terms(self, request, queryset):
+        queryset.update(status=True)
+
+    def unpublish_Terms(self, request, queryset):
+        queryset.update(status=False)
 
 
 @admin.register(Testimonial)
@@ -272,42 +343,6 @@ class TestimonialAdmin(SummernoteModelAdmin):
 
     def publish_Testimonial(self, request, queryset):
         queryset.update(status=True)
-
-
-@admin.register(CompanyDetails)
-class CompanyDetailsAdmin(admin.ModelAdmin):
-    """
-    Establish the view in admin for the Company Details.
-    Which fields to include in the:
-    list/search views.
-    """
-    fields = [
-        'phone',
-        'email',
-        'social_media_name',
-        'social_media_link',
-        'social_media_image',
-        'social_media_name_2',
-        'social_media_link_2',
-        'social_media_image_2',
-        'social_media_name_3',
-        'social_media_link_3',
-        'social_media_image_3',
-        'social_media_name_4',
-        'social_media_link_4',
-        'social_media_image_4',
-    ]
-
-    list_display = (
-        'id', 'phone',
-        'social_media_name',
-        'social_media_name_2',
-        'social_media_name_3',
-        'social_media_name_4',
-        )
-
-    search_fields = ['phone', 'email',]
-    list_filter = ('phone', 'email',)
 
 
 @admin.register(TeachingHours)

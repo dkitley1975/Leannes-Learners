@@ -207,6 +207,34 @@ class Passplus(models.Model):
         return self.short_description
 
 
+class Terms_and_Conditions(models.Model):
+    background_image = CloudinaryField(
+        folder='leannes_learners/terms_and_conditions/background_images/',
+        default='placeholder')
+    lead_content = models.TextField()
+    main_content = models.TextField()
+    updated_at = models.DateField(auto_now=True)
+    created_at = models.DateField(auto_now_add=True)
+    status = models.IntegerField(choices=STATUS, default=0)
+
+    def image_thumb(self):
+        """
+        This creates a thumbnail image of the current uploaded image
+        """
+        return mark_safe('<img src="{}" width="auto" height="100">'.format(
+            self.background_image.url))
+    image_thumb.short_discription = "terms_and_conditions"
+    background_image.allow_tags = True
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Terms and Conditions Page Content"
+        verbose_name_plural = "Terms and Conditions Page Content"
+   
+    def __str__(self):
+        return "Terms and Conditions"
+
+
 class Testimonial(models.Model):
     name = models.CharField(max_length=80, unique=True)
     testimonial_image = CloudinaryField(

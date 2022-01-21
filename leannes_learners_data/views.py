@@ -1,11 +1,12 @@
 from django.db.models.query import QuerySet
 from django.contrib import messages
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import generic, View
 from django.views.generic import FormView, TemplateView
-from .models import About, Blog, Carousel, CompanyDetails, Instructors, Passplus, Service, TeachingHours, Testimonial
+from .models import About, Blog, Carousel, CompanyDetails, Instructors, Passplus, Service, TeachingHours, Terms_and_Conditions, Testimonial
 from .forms import CommentForm, ContactForm
 
 
@@ -136,9 +137,9 @@ class PassPlusPage(generic.ListView):
     template_name = "pass_plus.html"
 
     def get_context_data(self, **kwargs):
-            context = super().get_context_data(**kwargs)
-            context['social'] = CompanyDetails.objects.all()[0:1]
-            return context
+        context = super().get_context_data(**kwargs)
+        context['social'] = CompanyDetails.objects.all()[0:1]
+        return context
 
 
 class PricesPage(generic.ListView):
@@ -149,6 +150,17 @@ class PricesPage(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['featured_list'] = Service.objects.filter(featured=1).order_by("price")
+        context['social'] = CompanyDetails.objects.all()[0:1]
+        return context
+
+
+class TermsPage(generic.ListView):
+    model = Terms_and_Conditions
+    queryset = Terms_and_Conditions.objects.filter(status=1).order_by("-created_at")[0:1]
+    template_name = "terms_and_conditions.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
 

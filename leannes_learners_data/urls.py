@@ -12,7 +12,7 @@ urlpatterns = [
     path('pass_plus', views.PassPlusPage.as_view(), name='pass_plus'),
     path('prices', views.PricesPage.as_view(), name='prices'),
     path('success', views.ContactSuccessView.as_view(), name="success"),
-
+    path('terms_and_conditions', views.TermsPage.as_view(), name='terms_and_conditions'),
     path('like/<slug:slug>', views.LikePost.as_view(), name='like'),
     path('<slug:slug>', views.BlogDetail.as_view(), name='blog_post_view'),
 
