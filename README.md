@@ -132,7 +132,6 @@ The website has the following features:
 
 ### Contact us
 
-![image](/documents/assets/Holding_Image.png)
 
 ### Login
 
@@ -149,6 +148,21 @@ The website has the following features:
 ### User/Logout
 
 ![image](/documents/assets/Holding_Image.png)
+
+#### Contact Form
+This is the contact form filled in
+![image](/documents/assets/screenshots/contactform/contact-form.png)
+After submission:   
+the user is redirected to this page
+![image](/documents/assets/screenshots/contactform/contact-success.png)
+and receives an email
+![image](/documents/assets/screenshots/contactform/contact-result-email-for-originator.png)
+the owner reveives this email
+![image](/documents/assets/screenshots/contactform/contact-result-email-for-staff.png)
+During debug:   
+the contact test results are shown in the console:
+![image](/documents/assets/screenshots/contactform/contact-test-result-email-for-staff.png)
+![image](/documents/assets/screenshots/contactform/contact-test-result-email-for-originator.png)
 
 ## Testing
 
