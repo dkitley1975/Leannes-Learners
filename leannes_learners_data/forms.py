@@ -61,7 +61,8 @@ class ContactForm(forms.Form):
         msg += f'Email: {contact_email}\n\n\n'
         msg += 'This is their enquiry:\n'
         msg += cl_data.get('message')
-        
+
+        contacts_subject = "Leanne's Learners Contact Form - sent confirmation"
         contacts_msg = f'Thank you {first_name} for contacting Leannes Learners via the online contact form,\n'
         contacts_msg += f'the information you sent was as follows:\n'
         contacts_msg += f'Phone: {contact_number}\n'
@@ -73,14 +74,14 @@ class ContactForm(forms.Form):
         contacts_msg += 'Best Regards,\n'
         contacts_msg += 'Leannes Learners\n\n\n'
 
-        return subject, msg , contact_email, contacts_msg
+        return subject, msg , contact_email, contacts_msg, contacts_subject
 
     def send(self):
         """
         Method to send the formatted data collected form
         the contact form, returning: the subject line, message, contacts_message and contact email
         """
-        subject, msg , contact_email, contacts_msg = self.email_contact_form_information()
+        subject, msg , contact_email, contacts_msg, contacts_subject = self.email_contact_form_information()
         
         # send eamil to the sender of the contact form using the msg
         send_mail(
@@ -93,7 +94,7 @@ class ContactForm(forms.Form):
 
 # send eamil to the sender of the contact form using the contacts_msg
         send_mail(
-            subject=subject,
+            subject=contacts_subject,
             message=contacts_msg,
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[contact_email],
