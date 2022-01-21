@@ -37,10 +37,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in deployment!
-DEBUG = True
+DEBUG = False
 
 # SECURITY WARNING: activate the below for deployment!
-# X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "leannes-learners.herokuapp.com",]
@@ -180,7 +180,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # TODO amend before deployment 
 # test email server setup
-if RUNLOCAL is True:
+if DEBUG is True:
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     EMAIL_HOST = '127.0.0.1'
     EMAIL_PORT = 1025
