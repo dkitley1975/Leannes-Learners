@@ -13,3 +13,4 @@ myenv/
 *.code-workspace
 .gitignore
 
+latest.dump

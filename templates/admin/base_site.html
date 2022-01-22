@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% load i18n static %}
+
+{% block title %}
+{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Leannes Learners site admin')
+}}
+{% endblock %}
+
+{% block extrastyle %}
+<!-- Local CSS-->
+<link rel="stylesheet" href="{% static 'css/admin_color.css' %}">
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+	<a href="{% url 'admin:index' %}">
+
+		<img src="https://res.cloudinary.com/dkitley1975/image/upload/c_scale,h_50/v1640614265/leannes_learners/logos/Leannes_Learners_Logo_white_text.png"
+			class="img-fluid"
+			alt="Leanne's Learners Logo made up of the words Leannes Learners in white, replacing the L's with Red L-Plates">
+	</a>{% trans "Leannes Learners Admin" %}
+</h1>
+
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
