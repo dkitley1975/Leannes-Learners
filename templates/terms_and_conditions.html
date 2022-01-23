@@ -6,16 +6,16 @@
 
 
 <!-- Terms and Conditions Content -->
-<section>
-	{% for terms_and_conditions in terms_and_conditions_list %}
-	{% if "placeholder" in terms_and_conditions.background_image.url %}
-	<div style="background-image: url(https://res.cloudinary.com/dkitley1975/image/upload/v1641618826/leannes_learners/default_image/drivers_side_of_a_car_moving_at_speed_with_the_street_light_bluring.jpg);"
-		class="container-fluid col-12 background-image">
-		{% else %}
-		<div style="background-image: url({{ terms_and_conditions.background_image.url }});"
-			class="container-fluid col-12 background-image">
-			{% endif %}
 
+{% for terms_and_conditions in terms_and_conditions_list %}
+{% if "placeholder" in terms_and_conditions.background_image.url %}
+<section
+	style="background-image: url(https://res.cloudinary.com/dkitley1975/image/upload/v1641618826/leannes_learners/default_image/drivers_side_of_a_car_moving_at_speed_with_the_street_light_bluring.jpg);"
+	class="background-image">
+	{% else %}
+	<section style="background-image: url({{ terms_and_conditions.background_image.url }});" class="background-image">
+		{% endif %}
+		<div class="container-fluid col-12">
 			<div
 				class="container-fluid col-sm-12 col-md-10 justify-content-center content-overlay mt-3 mt-md-4 mt-lg-5">
 				<div class="row">
@@ -31,7 +31,7 @@
 
 
 		</div>
-</section>
+	</section>
 
 
-{%endblock%}
+	{%endblock%}

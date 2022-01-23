@@ -6,16 +6,16 @@
 
 
 <!-- About Us Content -->
-<section>
-	{% for about in about_list %}
-	{% if "placeholder" in about.background_image.url %}
-	<div style="background-image: url(https://res.cloudinary.com/dkitley1975/image/upload/v1641618826/leannes_learners/default_image/drivers_side_of_a_car_moving_at_speed_with_the_street_light_bluring.jpg);"
-		class="container-fluid col-12 background-image">
-		{% else %}
-		<div style="background-image: url({{ about.background_image.url }});"
-			class="container-fluid col-12 background-image">
-			{% endif %}
 
+{% for about in about_list %}
+{% if "placeholder" in about.background_image.url %}
+<section
+	style="background-image: url(https://res.cloudinary.com/dkitley1975/image/upload/v1641618826/leannes_learners/default_image/drivers_side_of_a_car_moving_at_speed_with_the_street_light_bluring.jpg);"
+	class="col-12 background-image">
+	{% else %}
+	<section style="background-image: url({{ about.background_image.url }});" class="background-image">
+		{% endif %}
+		<div class="container-fluid col-12">
 			<div
 				class="container-fluid col-sm-12 col-md-10 justify-content-center content-overlay mt-3 mt-md-4 mt-lg-5">
 				<div class="row">
@@ -28,7 +28,7 @@
 				<!-- About Us Instructors -->
 				{% for instructors in instructors_list %}
 				<div class="row d-flex">
-					<div class="row mt-3 g-0">
+					<div class="row mt-3 mb-3 g-0">
 						<div class="col-8 offset-2 col-md-4 offset-md-1 col-lg-3 offset-lg-1">
 							{% if "placeholder" in instructors.instructor_image.url %}
 							<img class="card-img-top img-radius-10 trans-white-background-80"
@@ -51,14 +51,16 @@
 
 						</div>
 					</div>
-					<hr />
 				</div>
+				{% if not forloop.last %}
+				<hr class="feature-rule">
+				{% endif %}
 				{% endfor %}
 			</div>
 
 
 		</div>
-</section>
+	</section>
 
 
-{%endblock%}
+	{%endblock%}
