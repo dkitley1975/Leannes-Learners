@@ -64,13 +64,13 @@ class ContactForm(forms.Form):
 
         contacts_subject = "Leanne's Learners Contact Form - sent confirmation"
         contacts_msg = f'Thank you {first_name} for contacting Leannes Learners via the online contact form,\n'
-        contacts_msg += f'the information you sent was as follows:\n'
+        contacts_msg += 'the information you sent was as follows:\n'
         contacts_msg += f'Phone: {contact_number}\n'
         contacts_msg += f'Postcode: {postcode}\n'
         contacts_msg += f'Email: {contact_email}\n\n\n'
         contacts_msg += 'This is your enquiry:\n'
         contacts_msg += cl_data.get('message')
-        contacts_msg += f'\n\n\nWe will respond to your message shortly.\n'
+        contacts_msg += '\n\n\nWe will respond to your message shortly.\n'
         contacts_msg += 'Best Regards,\n'
         contacts_msg += 'Leannes Learners\n\n\n'
 

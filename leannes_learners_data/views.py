@@ -14,19 +14,27 @@ from .forms import CommentForm, ContactForm
 # Create your views here.
 
 class AboutUsPage(generic.ListView):
+    """ About Us Page view """
     model = About
     queryset = About.objects.filter(status=1).order_by("-created_at")[0:1]
     template_name = "about_us.html"
 
     def get_context_data(self, **kwargs):
+        """ Gets the Instructors list and Company Contact info """
         context = super().get_context_data(**kwargs)
         context['instructors_list'] = Instructors.objects.filter(status=1).order_by("name")
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
 
+    def aboutuspage(self, request):
+        """ Return render view for about page """
+        return render(request, 'about_us.html')
+
 
 class BlogDetail(View):
+    """ individual Blog Page view """
     def get(self, request, slug, *args, **kwargs):
+        """ Return render view for blog post detail """
         queryset = Blog.objects.filter(status=1)
         blog = get_object_or_404(queryset, slug=slug)
         comments = blog.comments.filter(approved=True).order_by("-created_at")
@@ -53,7 +61,7 @@ class BlogDetail(View):
         liked = False
         if blog.likes.filter(id=self.request.user.id).exists():
             liked = True
-            
+
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
@@ -78,12 +86,14 @@ class BlogDetail(View):
 
 
 class BlogPage(generic.ListView):
+    """ Blog Page list view """
     model = Blog
     queryset = Blog.objects.filter(status=1).order_by("-created_at")
     template_name = "blog.html"
     paginate_by = 9
 
     def get_context_data(self, **kwargs):
+        """ Gets the instructors list and Company Contact info """
         context = super().get_context_data(**kwargs)
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
@@ -91,11 +101,13 @@ class BlogPage(generic.ListView):
 
 
 class ContactUsPage(FormView):
+    """ Contact Us Page view """
     template_name = "contact_us.html"
     form_class = ContactForm
     success_url = reverse_lazy('success')
 
     def form_valid(self, form):
+        """ If form is valid sends the form """
         # Calls the custom send method
         form.send()
         # This will add the flash message after email being valid
@@ -103,6 +115,7 @@ class ContactUsPage(FormView):
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
+        """ Gets the instructors list, Teaching Hours and Company Contact info """
         context = super().get_context_data(**kwargs)
         context['social'] = CompanyDetails.objects.all()[0:1]
         context['companydetails'] = CompanyDetails.objects.all()[0:1]
@@ -111,15 +124,18 @@ class ContactUsPage(FormView):
 
 
 class ContactSuccessView(TemplateView):
+    """ If the contact form was valid this page is returned to view """
     template_name = "success.html"
 
 
 class InstructorsList(generic.ListView):
+    """ retrieves a list of the Instructors """
     model = Instructors
     queryset = Instructors.objects.filter(status=1).order_by("name")
 
 
 class LikePost(View):
+    """ Blog post view page like functionality view """
 
     def post(self, request, slug, *args, **kwargs):
         blog = get_object_or_404(Blog, slug=slug)
@@ -132,22 +148,30 @@ class LikePost(View):
 
 
 class PassPlusPage(generic.ListView):
+    """ Pass Plus Page view"""
+
     model = Passplus
     queryset = Passplus.objects.filter(status=1).order_by("-created_at")[0:1]
     template_name = "pass_plus.html"
 
     def get_context_data(self, **kwargs):
+        """ Gets the instructors list and Company Contact info """
+
         context = super().get_context_data(**kwargs)
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
 
 
 class PricesPage(generic.ListView):
+    """ Prices Page view"""
+
     model = Service
     queryset = Service.objects.all().order_by("price")
     template_name = "prices.html"
 
     def get_context_data(self, **kwargs):
+        """ Gets the instructors list and Company Contact info """
+
         context = super().get_context_data(**kwargs)
         context['featured_list'] = Service.objects.filter(featured=1).order_by("price")
         context['social'] = CompanyDetails.objects.all()[0:1]
@@ -155,23 +179,29 @@ class PricesPage(generic.ListView):
 
 
 class TermsPage(generic.ListView):
+    """ Terms and Conditions view"""
+
     model = Terms_and_Conditions
     queryset = Terms_and_Conditions.objects.filter(status=1).order_by("-created_at")[0:1]
     template_name = "terms_and_conditions.html"
 
     def get_context_data(self, **kwargs):
+        """ Gets the instructors list and Company Contact info """
+
         context = super().get_context_data(**kwargs)
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
 
 
 class Testimonials(generic.ListView):
+    """ Grabs the latest Testimonials for the home Page """
     model = Testimonial
     queryset = Testimonial.objects.filter(status=1).order_by("-created_at")
     template_name = "index.html"
     paginate_by = 2
 
     def get_context_data(self, **kwargs):
+        """ Gets the instructors list and Company Contact info """
         context = super().get_context_data(**kwargs)
         context['blog_list'] = Blog.objects.filter(status=1).order_by("-created_at")[0:3]
         context['carousel_list'] = Carousel.objects.filter(include_in_carousel=1).order_by("slide_identifying_name")

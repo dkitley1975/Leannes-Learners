@@ -1,6 +1,6 @@
 # TODO before Deployment remove the if else statement in the database section and this RUNLOCAL variable,
 # this is when only used for running the unittests
-RUNLOCAL = True
+RUNLOCAL = False
 
 """
 Django settings for leannes_learners project.
@@ -117,7 +117,7 @@ WSGI_APPLICATION = 'leannes_learners.wsgi.application'
 # TODO before Deployment remove the if else statement and replace with this    
 # DATABASES = {'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
-if RUNLOCAL is False:
+if RUNLOCAL is True:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
