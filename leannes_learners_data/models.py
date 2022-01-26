@@ -109,8 +109,8 @@ class Carousel(models.Model):
 
     class Meta:
         ordering = ["-include_in_carousel", "-slide_identifying_name"]
-        verbose_name = "Home Page Carousel"
-        verbose_name_plural = "Home Page Carousel"
+        verbose_name = "Carousel on Home Page"
+        verbose_name_plural = "Carousel on Home Page"
 
     def __str__(self):
         return self.slide_text_headline
@@ -200,8 +200,8 @@ class Passplus(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
-        verbose_name = "Pass Plus Page Content"
-        verbose_name_plural = "Pass Plus Page Content"
+        verbose_name = "Pass Plus Page"
+        verbose_name_plural = "Pass Plus Page"
 
     def __str__(self):
         return self.short_description
@@ -228,8 +228,8 @@ class Terms(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
-        verbose_name = "Terms and Conditions Page Content"
-        verbose_name_plural = "Terms and Conditions Page Content"
+        verbose_name = "Terms and Conditions Page"
+        verbose_name_plural = "Terms and Conditions Page"
    
     def __str__(self):
         return "Terms and Conditions"

@@ -1,0 +1,22 @@
+<article>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Day</th>
+				<th scope="col">Hours</th>
+			</tr>
+		</thead>
+		{% for teachinghours in teaching_hours_list %}
+		<tr>
+			<td>{{ teachinghours.day }}</td>
+			<td class="fw-bold">{{ teachinghours.start_time }}
+				{% if teachinghours.finish_time %} <small class="text-muted"> - </small>
+				{{ teachinghours.finish_time }}
+				{% endif %}
+
+			</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</article>
