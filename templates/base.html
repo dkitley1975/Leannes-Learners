@@ -6,28 +6,22 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-	<!-- here is the navbar that is used across all the pages of our website -->
+	<!-- navbar -->
 	{% include "layout/navbar.html" %}
 
-	<!-- here is the messages area that is used across all the pages of our website -->
+	<!-- messages -->
 	{% include "components/messages.html" %}
 
-
+	<!-- Main content -->
 	<main>
-		<!-- Here is the page's main content -->
 		{% block content %}
-		<!-- Content Goes here -->
+
 		{% endblock content %}
 	</main>
 
-	<!-- here is the footer that is used across all the pages of our website -->
+	<!-- Footer -->
 	{% include "layout/footer.html" %}
-
-
-
-
 	{% include "layout/scripts.html" %}
-
 </body>
 
 </html>

@@ -4,142 +4,26 @@
 
 <!-- Carousel -->
 <section>
-	<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-		<div class="carousel-indicators">
-			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-				aria-current="true" aria-label="Slide 1"></button>
-			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-				aria-label="Slide 2"></button>
-			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-				aria-label="Slide 3"></button>
-		</div>
-		<div class="carousel-inner">
+	{% include "components/carousel.html" %}
+</section>
 
-			{% for carousel in carousel_list %}
-			{% if forloop.counter == 1 %}
-			<div class="carousel-item active">
-				{% else %}
-				<div class="carousel-item">
-					{% endif %}
-					<img src="{{ carousel.slide_image.url }}" class="d-block w-100" alt="{{ carousel.alt_tag }}">
-					<div class="carousel-caption d-none d-md-block">
-						<h5>{{ carousel.slide_text_headline | safe}}</h5>
-						<p>{{ carousel.slide_text_description | safe}}</p>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-				data-bs-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Previous</span>
-			</button>
-			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-				data-bs-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Next</span>
-			</button>
-		</div>
+<!-- Testimonials Cards-->
+<section>
+	<div class="container-fluid col-10">
+		<h2 class="section-header">Our latest testimonials</h2>
+		{% include "components/testimonial-cards.html" %}
+		<hr />
 	</div>
 </section>
 
-<!-- Testimonials -->
+
+<!-- Blog Post Cards -->
 <section>
 	<div class="container-fluid col-10">
+
+		<h2 class="section-header">Our latest blog Posts</h2>
 		<div class="row">
-			<h2 class="section-header">Our latest testimonials</h2>
-			<div class="col-12 mt-3 left">
-				<div class="row d-flex justify-content-around">
-					{% for testimonial in testimonial_list %}
-					<div class="card mb-3 align-self-center" style="max-width: 540px;">
-						<div class="row g-1 mt-3">
-							{% if "placeholder" in testimonial.testimonial_image.url %}
-							<div class="col-md-4 align-self-center">
-								<img class="card-img-top img-radius-10 trans-80align-self-center"
-									src="https://res.cloudinary.com/dkitley1975/image/upload/v1641189549/leannes_learners/default_image/placeholder-300x400.png"
-									alt="Image missing - default place holder image">
-							</div>
-							{% else %}
-							<div class="col-md-4 align-self-center">
-								<img class="card-img-top img-radius-10 trans-white-background-80 align-self-center"
-									src=" {{ testimonial.testimonial_image.url }}" alt="{{ testimonial.alt_tag }}">
-								<p class="card-text text-end"><small class="text-muted">
-										{{ testimonial.created_at }}</small></p>
-							</div>
-
-							{% endif %}
-
-							<div class="col-md-8">
-								<div class="card-body">
-									<blockquote>
-										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										{{ testimonial.testimonial }}
-										<i class="fa fa-quote-right" aria-hidden="true"></i>
-										<span class="author text-muted">{{ testimonial.name }}</span>
-									</blockquote>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					{% endfor %}
-				</div>
-			</div>
-			{% if is_paginated %}
-			<nav aria-label="Page navigation">
-				<ul class="pagination justify-content-center">
-					{% if page_obj.has_previous %}
-					<li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-					{% endif %}
-					{% if page_obj.has_next %}
-					<li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-
-					{% endif %}
-				</ul>
-			</nav>
-			{% endif %}
-			<hr />
-</section>
-
-
-<!-- Blog -->
-<section>
-	<div class="container-fluid col-10">
-		<div class="row">
-			<h2 class="section-header">Our latest blog Posts</h2>
-			<div class="col-12 mt-3 left">
-				<div class="row">
-					{% for blog in blog_list %}
-					<div class="col-md-4">
-						<div class="card mb-4">
-							<div class="card-body">
-								<div class="image-container">
-									{% if "placeholder" in blog.featured_image.url %}
-									<img class="card-img-top img-radius-10 trans-white-background-80"
-										src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg">
-									{% else %}
-									<img class="card-img-top img-radius-10 trans-white-background-80"
-										src=" {{ blog.featured_image.url }}" alt="{{ blog.alt_tag }}">
-									{% endif %}
-									<div class="image-flash">
-										<p class="author text-muted">Author: {{ blog.author }}</p>
-									</div>
-								</div>
-								<a href="{% url 'blog-post' blog.slug %}" class="blog-post-link">
-									<h2 class="card-title text-uppercase">{{ blog.title }}</h2>
-									<p class="card-text">{{ blog.excerpt }}</p>
-								</a>
-								<hr />
-								<p class="card-text text-muted h6">{{ blog.created_at}} <i class="far fa-heart"></i>
-									{{ blog.number_of_likes }}</p>
-							</div>
-						</div>
-					</div>
-					{% if forloop.counter|divisibleby:3 %}
-				</div>
-				{% endif %}
-				{% endfor %}
-			</div>
+			{% include "components/post-preview-card.html" %}
 		</div>
 	</div>
 	<hr />
