@@ -1,0 +1,33 @@
+{
+	"theme_color": "#74241d",
+	"background_color": "#ffffff",
+	"display": "standalone",
+	"description": "A simple site for a driving school created by David Kitley-McNamara for his 4th Portfolio Project for the Code Institute. This is a site for Leanne's Learners - A friendly independent driving school based in the Huddersfield area. Covering all aspects of Driving lessons including, Pass Plus training and Motorway Lessons",
+	"name": "Leanne's Learners - A friendly independent driving school based in the Huddersfield area",
+	"short_name": "Leanne's Learners",
+	"icons": [{
+			"src": "favicons/favicon.ico",
+			"type": "image/png"
+		},
+		{
+			"src": "favicons/maskable-icon.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "favicons/apple-touch-icon.png",
+			"sizes": "180x180",
+			"type": "image/png"
+		},
+		{
+			"src": "favicons/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "favicons/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}
