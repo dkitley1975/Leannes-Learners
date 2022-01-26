@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Leannes Learners - Blog{% endblock %}
 {% block content %}
-{% load crispy_forms_tags %}
+
 <div class="blog-post-header">
 	<div class="container col-md-8 ms-auto">
 		<div class="row align-items-end">
@@ -61,13 +61,7 @@
 							</span>
 						</strong>
 					</div>
-					<div class="col-1">
-						{% with comments.count as total_comments %}
-						<strong class="text-secondary"><i class="far fa-comments"></i>
-							<!-- Our total_comments variable goes before the closing strong tag -->
-							{{ total_comments }}</strong>
-						{% endwith %}
-					</div>
+					{% include "components/blog/comments-count.html" %}
 				</div>
 			</div>
 		</div>
@@ -79,39 +73,10 @@
 	</div>
 	<div class="row">
 		<div class="col-md-8 card mb-4  mt-3 ">
-			<h3>Comments:</h3>
-			<div class="card-body">
-				{% for comment in comments %}
-				<div class="comments" style="padding: 10px;">
-					<p class="font-weight-bold">
-						{{ comment.name }}
-						<span class=" text-muted font-weight-normal">
-							{{ comment.created_at }}
-						</span> wrote:
-					</p>
-					{{ comment.body | linebreaks }}
-				</div>
-				{% endfor %}
-			</div>
+			{% include "components/blog/comments.html" %}
 		</div>
 		<div class="col-md-4 card mb-4  mt-3 ">
-			<div class="card-body">
-				{% if commented %}
-				<div class="alert alert-success" role="alert">
-					Your comment is awaiting approval
-				</div>
-				{% else %}
-				{% if user.is_authenticated %}
-				<h3>Leave a comment:</h3>
-				<p>Posting as: {{ user.username }}</p>
-				<form method="post" style="margin-top: 1.3em;">
-					{{ comment_form | crispy }}
-					{% csrf_token %}
-					<button type="submit" class="btn btn-signup btn-lg">Submit</button>
-				</form>
-				{% endif %}
-				{% endif %}
-			</div>
+			{% include "components/blog/leave-a-comment.html" %}
 		</div>
 	</div>
 </div>

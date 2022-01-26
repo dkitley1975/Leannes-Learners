@@ -1,0 +1,24 @@
+{% load crispy_forms_tags %}
+<div class="card-body">
+	{% if commented %}
+	<div class="alert alert-success" role="alert">
+		Your comment is awaiting approval
+	</div>
+	{% else %}
+	{% if user.is_authenticated %}
+	<h3>Leave a comment:</h3>
+	<hr>
+	<p>Posting as: {{ user.username }}</p>
+	<form method="post" style="margin-top: 1.3em;">
+		{{ comment_form | crispy }}
+		{% csrf_token %}
+		<button type="submit" class="btn btn-signup btn-lg">Submit</button>
+	</form>
+	{% else %}
+	<h3>Leave a comment:</h3>
+	<hr>
+	<p class="mt-4 mb-2 fw-bolder fst-italic">If you would like leave a comment.</p>
+	<p>Please login to your account or register and join our community </p>
+	{% endif %}
+	{% endif %}
+</div>

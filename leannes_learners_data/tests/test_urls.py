@@ -1,6 +1,6 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
-from leannes_learners_data.views import AboutUsPage, BlogDetail, BlogPage, ContactUsPage, ContactSuccessView, PassPlusPage, PricesPage, TermsPage, Testimonials
+from leannes_learners_data.views import AboutUsPage, BlogPost, BlogPage, ContactUsPage, ContactSuccessView, PassPlusPage, PricesPage, TermsPage, Testimonials
 
 
 class TestUrls(SimpleTestCase):
@@ -9,7 +9,7 @@ class TestUrls(SimpleTestCase):
 
     def test_about_Us_url(self):
         """ Test the About Us URL """
-        url = reverse('about_us')
+        url = reverse('about-us')
         self.assertEquals(resolve(url).func.view_class, AboutUsPage)
 
     def test_Home_Page_url(self):
@@ -24,12 +24,13 @@ class TestUrls(SimpleTestCase):
     
     def test_Contact_Us_url(self):
         """ Test the Contact Us Page URL """
-        url = reverse('contact_us')
+        url = reverse('contact_
+        -us')
         self.assertEquals(resolve(url).func.view_class, ContactUsPage)
 
     def test_Pass_Plus_Page_url(self):
         """ Test the Pass Plus Page URL """
-        url = reverse('pass_plus')
+        url = reverse('pass-plus')
         self.assertEquals(resolve(url).func.view_class, PassPlusPage)
 
     def test_Prices_Page_url(self):
@@ -44,12 +45,12 @@ class TestUrls(SimpleTestCase):
 
     def test_Ts_and_Cs_Page_url(self):
         """ Test the Terms and Conditions Page URL """
-        url = reverse('terms_and_conditions')
+        url = reverse('terms-and-conditions')
         self.assertEquals(resolve(url).func.view_class, TermsPage)
 
-    def test_Blog_Detail_Page_url(self):
+    def test_blog_post_Page_url(self):
         """ Test the Blog Post Detail Page URL """
-        url = reverse('blog_post_view', args=['My-Great-First-Blog-slug'])
+        url = reverse('blog-post', args=['My-Great-First-Blog-slug'])
         print(resolve(url))
-        self.assertEquals(resolve(url).func.view_class, BlogDetail)
+        self.assertEquals(resolve(url).func.view_class, BlogPost)
         

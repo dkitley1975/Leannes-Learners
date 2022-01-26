@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}About Us{% endblock %}
+{% block content %}
+
+
+<!-- Prices -->
+<div class="container py-3">
+	<heading class="pricing-header p-3 pb-md-4 mx-auto text-center">
+		<h1 class="section-header">Prices and services</h1>
+	</heading>
+	<section>
+		<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+			{% for service in featured_list %}
+			{% include "components/price-cards.html" %}
+			{% endfor %}
+
+
+		</div>
+
+		<h2 class="display-6 text-center mb-4">Our Services list</h2>
+		{% include "components/service-table.html" %}
+
+	</section>
+</div>
+
+{%endblock%}

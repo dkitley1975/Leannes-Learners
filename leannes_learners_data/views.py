@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import generic, View
 from django.views.generic import FormView, TemplateView
-from .models import About, Blog, Carousel, CompanyDetails, Instructors, Passplus, Service, TeachingHours, Terms_and_Conditions, Testimonial
+from .models import About, Blog, Carousel, CompanyDetails, Instructors, Passplus, Service, TeachingHours, Terms, Testimonial
 from .forms import CommentForm, ContactForm
 
 
@@ -17,7 +17,7 @@ class AboutUsPage(generic.ListView):
     """ About Us Page view """
     model = About
     queryset = About.objects.filter(status=1).order_by("-created_at")[0:1]
-    template_name = "about_us.html"
+    template_name = "pages/about-us.html"
 
     def get_context_data(self, **kwargs):
         """ Gets the Instructors list and Company Contact info """
@@ -28,10 +28,10 @@ class AboutUsPage(generic.ListView):
 
     def aboutuspage(self, request):
         """ Return render view for about page """
-        return render(request, 'about_us.html')
+        return render(request, 'pages/about-us.html')
 
 
-class BlogDetail(View):
+class BlogPost(View):
     """ individual Blog Page view """
     def get(self, request, slug, *args, **kwargs):
         """ Return render view for blog post detail """
@@ -44,7 +44,7 @@ class BlogDetail(View):
 
         return render(
             request,
-            "blog_post_view.html",
+            "components/blog/post.html",
             {
                 "blog": blog,
                 "comments": comments,
@@ -74,7 +74,7 @@ class BlogDetail(View):
 
         return render(
             request,
-            "blog_post_view.html",
+            "components/blog/post.html",
             {
                 "blog": blog,
                 "comments": comments,
@@ -89,7 +89,7 @@ class BlogPage(generic.ListView):
     """ Blog Page list view """
     model = Blog
     queryset = Blog.objects.filter(status=1).order_by("-created_at")
-    template_name = "blog.html"
+    template_name = "pages/blog.html"
     paginate_by = 9
 
     def get_context_data(self, **kwargs):
@@ -102,9 +102,9 @@ class BlogPage(generic.ListView):
 
 class ContactUsPage(FormView):
     """ Contact Us Page view """
-    template_name = "contact_us.html"
+    template_name = "pages/contact-us.html"
     form_class = ContactForm
-    success_url = reverse_lazy('success')
+    success_url = reverse_lazy('pages/success')
 
     def form_valid(self, form):
         """ If form is valid sends the form """
@@ -125,7 +125,7 @@ class ContactUsPage(FormView):
 
 class ContactSuccessView(TemplateView):
     """ If the contact form was valid this page is returned to view """
-    template_name = "success.html"
+    template_name = "pages/success.html"
 
 
 class InstructorsList(generic.ListView):
@@ -144,7 +144,7 @@ class LikePost(View):
         else:
             blog.likes.add(request.user)
 
-        return HttpResponseRedirect(reverse('blog_post_view', args=[slug]))
+        return HttpResponseRedirect(reverse('blog-post', args=[slug]))
 
 
 class PassPlusPage(generic.ListView):
@@ -152,7 +152,7 @@ class PassPlusPage(generic.ListView):
 
     model = Passplus
     queryset = Passplus.objects.filter(status=1).order_by("-created_at")[0:1]
-    template_name = "pass_plus.html"
+    template_name = "pages/pass-plus.html"
 
     def get_context_data(self, **kwargs):
         """ Gets the instructors list and Company Contact info """
@@ -167,7 +167,7 @@ class PricesPage(generic.ListView):
 
     model = Service
     queryset = Service.objects.all().order_by("price")
-    template_name = "prices.html"
+    template_name = "pages/prices.html"
 
     def get_context_data(self, **kwargs):
         """ Gets the instructors list and Company Contact info """
@@ -181,9 +181,9 @@ class PricesPage(generic.ListView):
 class TermsPage(generic.ListView):
     """ Terms and Conditions view"""
 
-    model = Terms_and_Conditions
-    queryset = Terms_and_Conditions.objects.filter(status=1).order_by("-created_at")[0:1]
-    template_name = "terms_and_conditions.html"
+    model = Terms
+    queryset = Terms.objects.filter(status=1).order_by("-created_at")[0:1]
+    template_name = "pages/terms-and-conditions.html"
 
     def get_context_data(self, **kwargs):
         """ Gets the instructors list and Company Contact info """

@@ -21,19 +21,23 @@
 						href="/">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link {% if url_name == 'about_us' %}active{% endif %}" href="about_us">About Us</a>
+					<a class="nav-link {% if url_name == 'about-us' %}active{% endif %}"
+						href="{% url 'about-us' %}">About Us</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link {% if url_name == 'pass_plus' %}active{% endif %}" href="pass_plus">Pass Plus</a>
+					<a class="nav-link {% if url_name == 'pass-plus' %}active{% endif %}"
+						href="{% url 'pass-plus' %}">Pass Plus</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link {% if url_name == 'prices' %}active{% endif %}" href="prices">Prices</a>
+					<a class="nav-link {% if url_name == 'prices' %}active{% endif %}"
+						href="{% url 'prices' %}">Prices</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link {% if url_name == 'blogs' %}active{% endif %}" href="blog">Blog</a>
+					<a class="nav-link {% if url_name == 'blog' %}active{% endif %}" href="{% url 'blog' %}">Blog</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link {% if url_name == 'contact_us' %}active{% endif %}" href="contact_us">Contact
+					<a class="nav-link {% if url_name == 'contact_us' %}active{% endif %}"
+						href="{% url 'contact-us' %}">Contact
 						Us</a>
 				</li>
 				{% if request.user|has_group:"Pupil" %}
@@ -49,8 +53,8 @@
 						<li>
 							<hr class="dropdown-divider">
 						</li>
-						<li><a class="dropdown-item {% if url_name == 'terms_and_conditions' %}active{% endif %}"
-								href="terms_and_conditions">Terms and Conditions</a></li>
+						<li><a class="dropdown-item {% if url_name == 'terms-and-conditions' %}active{% endif %}"
+								href="{% url 'terms-and-conditions' %}">Terms and Conditions</a></li>
 					</ul>
 				</li>
 				{% endif %}

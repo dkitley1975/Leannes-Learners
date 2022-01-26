@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import About, Blog, Carousel, Comment, CompanyDetails, TeachingHours, Instructors, Passplus, Service, Terms_and_Conditions, Testimonial 
+from .models import About, Blog, Carousel, Comment, CompanyDetails, TeachingHours, Instructors, Passplus, Service, Terms, Testimonial 
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -15,7 +15,7 @@ class AboutAdmin(SummernoteModelAdmin):
     """
     fields = [
         'short_description',
-        'about_us',
+        'about-us',
         'background_image',
         'image_thumb',
         'status',
@@ -28,9 +28,9 @@ class AboutAdmin(SummernoteModelAdmin):
         'created_at',
         )
 
-    search_fields = ['short_description', 'about_us',]
+    search_fields = ['short_description', 'about-us',]
     list_filter = ('status',)
-    summernote_fields = ('about_us',)
+    summernote_fields = ('about-us',)
     actions = ['publish_About_us', 'unpublish_About_us']
     readonly_fields = ['image_thumb',]
 
@@ -273,7 +273,7 @@ class ServiceAdmin(admin.ModelAdmin):
         queryset.update(featured=True)
 
 
-@admin.register(Terms_and_Conditions)
+@admin.register(Terms)
 class TermsAdmin(SummernoteModelAdmin):
     """
     Establish the view in admin for Terms and Conditions content page.

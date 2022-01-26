@@ -7,13 +7,13 @@
 
 <!-- Terms and Conditions Content -->
 
-{% for terms_and_conditions in terms_and_conditions_list %}
-{% if "placeholder" in terms_and_conditions.background_image.url %}
+{% for terms in terms_list %}
+{% if "placeholder" in terms.background_image.url %}
 <section
 	style="background-image: url(https://res.cloudinary.com/dkitley1975/image/upload/v1641618826/leannes_learners/default_image/drivers_side_of_a_car_moving_at_speed_with_the_street_light_bluring.jpg);"
 	class="background-image">
 	{% else %}
-	<section style="background-image: url({{ terms_and_conditions.background_image.url }});" class="background-image">
+	<section style="background-image: url({{ terms.background_image.url }});" class="background-image">
 		{% endif %}
 		<div class="container-fluid col-12">
 			<div
@@ -21,8 +21,8 @@
 				<div class="row">
 					<h1 class="section-header">Terms and Conditions</h1>
 					<div class="col-12 mt-3 p-5 row justify-content-center">
-						<p class="lead">{{ terms_and_conditions.lead_content | safe }}</p>
-						<p>{{ terms_and_conditions.main_content | safe }}</p>
+						<p class="lead">{{ terms.lead_content | safe }}</p>
+						<p>{{ terms.main_content | safe }}</p>
 					</div>
 				</div>
 				{% endfor %}

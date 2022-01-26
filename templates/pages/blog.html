@@ -26,15 +26,17 @@
 								<div class="image-container">
 									{% if "placeholder" in blog.featured_image.url %}
 									<img class="card-img-top"
-										src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg" alt="missing image placeholder image">
+										src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg"
+										alt="missing image placeholder image">
 									{% else %}
-									<img class="card-img-top" src=" {{ blog.featured_image.url }}" alt="{{ blog.alt_tag }}">
+									<img class="card-img-top" src=" {{ blog.featured_image.url }}"
+										alt="{{ blog.alt_tag }}">
 									{% endif %}
 									<div class="image-flash">
 										<p class="author text-muted">Author: {{ blog.author }}</p>
 									</div>
 								</div>
-								<a href="{% url 'blog_post_view' blog.slug %}" class="blog-post-link">
+								<a href="{% url 'blog-post' blog.slug %}" class="blog-post-link">
 									<h2 class="card-title text-uppercase">{{ blog.title }}</h2>
 									<p class="card-text">{{ blog.excerpt }}</p>
 								</a>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}About Us{% endblock %}
+{% block content %}
+
+
+
+
+<!-- About Us Content -->
+
+{% for about in about_list %}
+{% if "placeholder" in about.background_image.url %}
+<section
+	style="background-image: url(https://res.cloudinary.com/dkitley1975/image/upload/v1641618826/leannes_learners/default_image/drivers_side_of_a_car_moving_at_speed_with_the_street_light_bluring.jpg);"
+	class="col-12 background-image">
+	{% else %}
+	<section style="background-image: url({{ about.background_image.url }});" class="background-image">
+		{% endif %}
+		<div class="container-fluid col-12">
+			<div
+				class="container-fluid col-sm-12 col-md-10 justify-content-center content-overlay mt-3 mt-md-4 mt-lg-5">
+				<div class="row">
+					<h1 class="section-header">About Us</h1>
+					<div class="col-12 mt-3 p-5">
+						<p>{{ about.about_us | safe }}</p>
+					</div>
+				</div>
+				{% endfor %}
+				<!-- About Us Instructor Cards -->
+				{% for instructors in instructors_list %}
+				{% include "components/instructor-card.html" %}
+				{% endfor %}
+			</div>
+
+
+		</div>
+	</section>
+
+
+	{%endblock%}

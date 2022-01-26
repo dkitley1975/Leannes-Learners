@@ -125,7 +125,7 @@
 										<p class="author text-muted">Author: {{ blog.author }}</p>
 									</div>
 								</div>
-								<a href="{% url 'blog_post_view' blog.slug %}" class="blog-post-link">
+								<a href="{% url 'blog-post' blog.slug %}" class="blog-post-link">
 									<h2 class="card-title text-uppercase">{{ blog.title }}</h2>
 									<p class="card-text">{{ blog.excerpt }}</p>
 								</a>

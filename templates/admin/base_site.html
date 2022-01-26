@@ -2,8 +2,7 @@
 {% load i18n static %}
 
 {% block title %}
-{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Leannes Learners site admin')
-}}
+Leannes Learners {% if subtitle %}{{ subtitle }} | {% endif %}{{ title }}
 {% endblock %}
 
 {% block extrastyle %}

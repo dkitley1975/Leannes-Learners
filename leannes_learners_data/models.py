@@ -109,8 +109,8 @@ class Carousel(models.Model):
 
     class Meta:
         ordering = ["-include_in_carousel", "-slide_identifying_name"]
-        verbose_name = "Home Page Carousel content"
-        verbose_name_plural = "Home Page Carousel content"
+        verbose_name = "Home Page Carousel"
+        verbose_name_plural = "Home Page Carousel"
 
     def __str__(self):
         return self.slide_text_headline
@@ -207,7 +207,7 @@ class Passplus(models.Model):
         return self.short_description
 
 
-class Terms_and_Conditions(models.Model):
+class Terms(models.Model):
     background_image = CloudinaryField(
         folder='leannes_learners/terms_and_conditions/background_images/',
         default='placeholder')
