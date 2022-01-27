@@ -1,11 +1,11 @@
 from django.contrib import admin
 from .models import About, Carousel, CompanyDetails, TeachingHours, Instructors, Passplus, Service, Terms, Testimonial 
-from tinymce.models import HTMLField
+from django_summernote.admin import SummernoteModelAdmin
 
 
 # Register your models here.
 @admin.register(About)
-class AboutAdmin(admin.ModelAdmin):
+class AboutAdmin(SummernoteModelAdmin):
     """
     Establish the view in admin for About content page.
     Which fields to include in the:
@@ -30,6 +30,7 @@ class AboutAdmin(admin.ModelAdmin):
 
     search_fields = ['short_description', 'about-us',]
     list_filter = ('status',)
+    summernote_fields = ('about_us',)
     actions = ['publish_About_us', 'unpublish_About_us']
     readonly_fields = ['image_thumb',]
 
@@ -41,7 +42,7 @@ class AboutAdmin(admin.ModelAdmin):
 
 
 @admin.register(Carousel)
-class CarouselAdmin(admin.ModelAdmin):
+class CarouselAdmin(SummernoteModelAdmin):
     """
     Establish the view in admin for the Home Carousel.
     Which fields to include in the:
@@ -70,6 +71,8 @@ class CarouselAdmin(admin.ModelAdmin):
     search_fields = ('slide_identifying_name', 'slide_text_headline',
                      'slide_text_description', 'slide_image', 'alt_tag',)
     actions = ['include_in_carousel',]
+    summernote_fields = ('slide_text_description',)
+
     readonly_fields = ['image_thumb',]
 
     def include_in_carousel(self, request, queryset):
@@ -148,7 +151,7 @@ class InstructorsAdmin(admin.ModelAdmin):
 
 
 @admin.register(Passplus)
-class PassplusAdmin(admin.ModelAdmin):
+class PassplusAdmin(SummernoteModelAdmin):
     """
     Establish the view in admin for Passplus content page.
     Which fields to include in the:
@@ -176,6 +179,7 @@ class PassplusAdmin(admin.ModelAdmin):
 
     search_fields = ['short_description', 'lead_content', 'main_content', 'alt_tag',]
     list_filter = ('status', 'created_at',)
+    summernote_fields = ('main_content',)
     actions = ['publish_Passplus', 'unpublish_Passplus']
     readonly_fields = ['image_thumb',]
 
@@ -208,7 +212,7 @@ class ServiceAdmin(admin.ModelAdmin):
 
 
 @admin.register(Terms)
-class TermsAdmin(admin.ModelAdmin):
+class TermsAdmin(SummernoteModelAdmin):
     """
     Establish the view in admin for Terms and Conditions content page.
     Which fields to include in the:
@@ -232,6 +236,7 @@ class TermsAdmin(admin.ModelAdmin):
 
     search_fields = ['lead_content', 'main_content']
     list_filter = ('status', 'created_at',)
+    summernote_fields = ('lead_content', 'main_content',)
     actions = ['publish_Terms', 'unpublish_Terms']
     readonly_fields = ['image_thumb',]
 
@@ -243,7 +248,7 @@ class TermsAdmin(admin.ModelAdmin):
 
 
 @admin.register(Testimonial)
-class TestimonialAdmin(admin.ModelAdmin):
+class TestimonialAdmin(SummernoteModelAdmin):
     """
     Establish the view in admin for the Testimonials.
     Which fields to include in the:
@@ -271,6 +276,7 @@ class TestimonialAdmin(admin.ModelAdmin):
     search_fields = ['name', 'testimonial', 'alt_tag',]
     list_filter = ('status', 'created_at')
     actions = ['publish_Testimonial',]
+    summernote_fields = ('testimonial',)
     readonly_fields = ['image_thumb',]
 
     def publish_Testimonial(self, request, queryset):

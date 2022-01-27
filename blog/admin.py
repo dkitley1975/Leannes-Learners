@@ -1,10 +1,10 @@
 from django.contrib import admin
 from .models import Blog, Comment
-from tinymce.models import HTMLField
+from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
 @admin.register(Blog)
-class BlogAdmin(admin.ModelAdmin):
+class BlogAdmin(SummernoteModelAdmin):
     """
     Establish the view in admin for the Blog.
     Which fields to include in the:
@@ -36,6 +36,7 @@ class BlogAdmin(admin.ModelAdmin):
     search_fields = ['title', 'content', 'alt_tag',]
     list_filter = ('status', 'created_at')
     prepopulated_fields = {'slug': ('title',)}
+    summernote_fields = ('content',)
     actions = ['publish_Blog',]
     readonly_fields = ['image_thumb',]
 

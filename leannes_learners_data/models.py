@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.safestring import mark_safe
-from tinymce.models import HTMLField
 
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -10,7 +9,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 class About(models.Model):
     short_description = models.CharField(max_length=80, unique=True)
-    about_us = HTMLField()
+    about_us = models.TextField()
     background_image = CloudinaryField(
         folder='leannes_learners/about_us/background_images/',
         default='placeholder')
@@ -39,13 +38,13 @@ class About(models.Model):
 class Carousel(models.Model):
     slide_identifying_name = models.CharField(max_length=80, unique=True)
     slide_text_headline = models.CharField(max_length=80, unique=False, blank=True)
-    slide_text_description = HTMLField(max_length=200, blank=True)
+    slide_text_description = models.TextField(max_length=200, blank=True)
     slide_image = CloudinaryField(
         folder='leannes_learners/caurosel_images/',
         transformation={'width': '1240', 'height': '700', 'crop': 'fill'},
         default='placeholder')
 
-    alt_tag = models.CharField(max_length=200, blank=True)
+    alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
     include_in_carousel = models.BooleanField(default=False)
 
     class Meta:
@@ -72,7 +71,7 @@ class Instructors(models.Model):
         transformation={'width': '300', 'height': '400', 'crop': 'fill',
                         'gravity': 'face', 'zoom': '0.5'},
         default='placeholder')
-    alt_tag = models.CharField(max_length=200, blank=True)
+    alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
     about = models.TextField()
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
@@ -118,14 +117,14 @@ class Passplus(models.Model):
     background_image = CloudinaryField(
         folder='leannes_learners/pass_plus/background_images/',
         default='placeholder')
-    lead_content = HTMLField()
-    main_content = HTMLField()
+    lead_content = models.TextField()
+    main_content = models.TextField()
     focus_image = CloudinaryField(
         folder='leannes_learners/pass_plus/focus_images/',
         transformation={'width': '400', 'height': '400', 'crop': 'fill',
                         'gravity': 'face', 'zoom': '0.5'},
         default='placeholder')
-    alt_tag = models.CharField(max_length=200, blank=True)
+    alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -152,8 +151,8 @@ class Terms(models.Model):
     background_image = CloudinaryField(
         folder='leannes_learners/terms_and_conditions/background_images/',
         default='placeholder')
-    lead_content = HTMLField()
-    main_content = HTMLField()
+    lead_content = models.TextField()
+    main_content = models.TextField()
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -183,7 +182,7 @@ class Testimonial(models.Model):
         transformation={'width': '300', 'height': '400', 'crop': 'fill',
                         'gravity': 'face', 'zoom': '0.5'},
         default='placeholder')
-    alt_tag = models.CharField(max_length=200, blank=True)
+    alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
     testimonial = models.TextField()
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)

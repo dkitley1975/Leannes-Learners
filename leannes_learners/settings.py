@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary_storage',
     'cloudinary',
-    'tinymce',
+    'django_summernote',
     'crispy_forms',
     'allauth',
     'allauth.account',
@@ -200,3 +200,19 @@ else:
     EMAIL_USE_TLS = True
     RECIPIENT_ADDRESS = 'dkitley@mac.com'
 
+SUMMERNOTE_THEME = 'bs4'
+SUMMERNOTE_CONFIG = {
+    'iframe': True,
+    'summernote': {
+        'width': '800px',
+        'height': '600px',
+        'toolbar': [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'clear','underline', ]],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['color', ['forecolor', 'backcolor', ]],
+            ['insert', ['picture', 'link', 'table', 'hr,' ]],
+            ['misc', ['undo', 'redo', 'codeview', 'fullscreen', 'help',]],
+        ],
+    },
+}

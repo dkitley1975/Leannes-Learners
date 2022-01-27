@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.safestring import mark_safe
-from tinymce.models import HTMLField
 
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -21,10 +20,10 @@ class Blog(models.Model):
         transformation={'width': '400', 'height': '300', 'crop': 'fill',
                         'gravity': 'face', 'zoom': '0.5'},
         default='placeholder')
-    alt_tag = models.CharField(max_length=200, blank=True)
-    excerpt = models.TextField(blank=True)
+    alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
+    excerpt = models.TextField(blank=True, verbose_name = 'Eye Catching Excerpt - make someone want to read the article')
     updated_at = models.DateTimeField(auto_now=True)
-    content = HTMLField()
+    content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
