@@ -1,13 +1,7 @@
 from email.policy import default
-from .models import Comment
 from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
-
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ('body',)
 
 
 class ContactForm(forms.Form):

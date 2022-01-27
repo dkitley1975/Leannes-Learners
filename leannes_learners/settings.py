@@ -58,12 +58,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary_storage',
     'cloudinary',
-    'django_summernote',
+    'tinymce',
     'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'leannes_learners_data',
+    'blog',
 ]
 
 SITE_ID = 1
