@@ -15,7 +15,7 @@ class AboutAdmin(SummernoteModelAdmin):
     """
     fields = [
         'short_description',
-        'about-us',
+        'about_us',
         'background_image',
         'image_thumb',
         'status',

@@ -24,7 +24,7 @@ class About(models.Model):
         return mark_safe('<img src="{}" width="auto" height="100">'.format(
             self.background_image.url))
     image_thumb.short_discription = "background image"
-    background_image.allow_tags = True
+    background_image.allow_tags = True 
 
     class Meta:
         ordering = ["-created_at"]
