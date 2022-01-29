@@ -1,6 +1,6 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
-from leannes_learners_data.views import AboutUsPage, BlogPost, BlogPage, ContactUsPage, ContactSuccessView, PassPlusPage, PricesPage, TermsPage, Testimonials
+from leannes_learners_data.views import AboutUsPage, BlogPost, BlogPostsPage, ContactUsPage, ContactSuccessView, PassPlusPage, PricesPage, TermsPage, Testimonials
 
 
 class TestUrls(SimpleTestCase):
@@ -17,15 +17,14 @@ class TestUrls(SimpleTestCase):
         url = reverse('home')
         self.assertEquals(resolve(url).func.view_class, Testimonials)
 
-    def test_Blog_Page_url(self):
+    def test_blog_post_page_url(self):
         """ Test the Blog Page URL """
         url = reverse('blogs')
-        self.assertEquals(resolve(url).func.view_class, BlogPage)
+        self.assertEquals(resolve(url).func.view_class, BlogPostsPage)
     
     def test_Contact_Us_url(self):
         """ Test the Contact Us Page URL """
-        url = reverse('contact_
-        -us')
+        url = reverse('contact_us')
         self.assertEquals(resolve(url).func.view_class, ContactUsPage)
 
     def test_Pass_Plus_Page_url(self):
