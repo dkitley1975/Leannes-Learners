@@ -5,7 +5,7 @@ from blog import views
 
 urlpatterns = [
     path('accounts/', include('allauth.urls')),
-    path('blog', views.BlogPage.as_view(), name='blog'),
+    path('blog', views.BlogPostsPage.as_view(), name='blog'),
     path('like/<slug:slug>', views.LikePost.as_view(), name='like'),
     path('blog/<slug:slug>', views.BlogPost.as_view(), name='blog-post'),
 

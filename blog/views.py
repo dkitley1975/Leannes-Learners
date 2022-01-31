@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import generic, View
 from django.views.generic import FormView, TemplateView
-from blog.models import Blog
+from blog.models import Post
 from leannes_learners_data.models import CompanyDetails
 from .forms import CommentForm
 
@@ -17,18 +17,18 @@ class BlogPost(View):
     """ individual Blog Page view """
     def get(self, request, slug, *args, **kwargs):
         """ Return render view for blog post detail """
-        queryset = Blog.objects.filter(status=1)
-        blog = get_object_or_404(queryset, slug=slug)
-        comments = blog.comments.filter(approved=True).order_by("-created_at")
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        comments = post.comments.filter(approved=True).order_by("-created_at")
         liked = False
-        if blog.likes.filter(id=self.request.user.id).exists():
+        if post.likes.filter(id=self.request.user.id).exists():
             liked = True
 
         return render(
             request,
             "components/blog/post.html",
             {
-                "blog": blog,
+                "post": post,
                 "comments": comments,
                 "commented": False,
                 "liked": liked,
@@ -37,11 +37,11 @@ class BlogPost(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-        queryset = Blog.objects.filter(status=1)
-        blog = get_object_or_404(queryset, slug=slug)
-        comments = blog.comments.filter(approved=True).order_by("-created_at")
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        comments = post.comments.filter(approved=True).order_by("-created_at")
         liked = False
-        if blog.likes.filter(id=self.request.user.id).exists():
+        if post.likes.filter(id=self.request.user.id).exists():
             liked = True
 
         comment_form = CommentForm(data=request.POST)
@@ -49,7 +49,7 @@ class BlogPost(View):
             comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
-            comment.blog = blog
+            comment.post = blog
             comment.save()
         else:
             comment_form = CommentForm()
@@ -67,10 +67,10 @@ class BlogPost(View):
         )
 
 
-class BlogPage(generic.ListView):
+class BlogPostsPage(generic.ListView):
     """ Blog Page list view """
-    model = Blog
-    queryset = Blog.objects.filter(status=1).order_by("-created_at")
+    model = Post
+    queryset = Post.objects.filter(status=1).order_by("-created_at")
     template_name = "pages/blog.html"
     paginate_by = 9
 
@@ -85,10 +85,10 @@ class LikePost(View):
     """ Blog post view page like functionality view """
 
     def post(self, request, slug, *args, **kwargs):
-        blog = get_object_or_404(Blog, slug=slug)
-        if blog.likes.filter(id=request.user.id).exists():
-            blog.likes.remove(request.user)
+        post = get_object_or_404(Post, slug=slug)
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
         else:
-            blog.likes.add(request.user)
+            post.likes.add(request.user)
 
-        return HttpResponseRedirect(reverse('blog-post', args=[slug]))
+        return HttpResponseRedirect(reverse('post-post', args=[slug]))

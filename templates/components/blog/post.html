@@ -7,18 +7,19 @@
 		<div class="row align-items-end">
 			<div class="col-md-7 p-3">
 				<!-- Blog title goes in these h1 tags -->
-				<h1 class="blog-post-title">{{ blog.title }}</h1>
+				<h1 class="blog-post-title">{{ post.title }}</h1>
 				<!-- Blog author goes before the | the blog's created date goes after -->
-				<p class="blog-post-subtitle">{{ blog.author }} | {{ blog.created_at }}</p>
+				<p class="blog-post-subtitle">{{ post.author }} | {{ post.created_at }}</p>
 			</div>
 
 			<div class="d-none d-md-block col-md-5 ms-auto blog-post-header-image">
 				<!-- The featured image URL goes in the src attribute -->
-				{% if "placeholder" in blog.featured_image.url %}
-				<img src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg"
+				{% if "placeholder" in post.featured_image.url %}
+				<img class="alt-text-white"
+					src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg"
 					alt="Missing image - default placeholder">
 				{% else %}
-				<img src=" {{ blog.featured_image.url }}" alt="{{ blog.alt_tag }}">
+				<img class="alt-text-white" src=" {{ post.featured_image.url }}" alt="{{ post.alt_tag }}">
 				{% endif %}
 			</div>
 		</div>
@@ -32,23 +33,23 @@
 				<!-- The blog content goes inside the card-text. -->
 				<!-- Use the | safe filter inside the template tags -->
 				<p class="card-text">
-					{{ blog.content | safe }}
+					{{ post.content | safe }}
 				</p>
 				<div class="row">
 
 					<div class="col-1">
 						<strong>
 							{% if user.is_authenticated %}
-							<form class="d-inline" action="{% url 'like' blog.slug %}" method="POST">
+							<form class="d-inline" action="{% url 'like' post.slug %}" method="POST">
 								{% csrf_token %}
 								{% if liked %}
-								<button type="submit" name="blogpost_id" value="{{blog.slug}}" class="btn-like"><i
+								<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
 										class="fas fa-heart"></i>
 								</button>
 								<span class="text-secondary">
 								</span>
 								{% else %}
-								<button type="submit" name="blogpost_id" value="{{blog.slug}}" class="btn-like"><i
+								<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
 										class="far fa-heart"></i>
 								</button>
 								{% endif %}
@@ -57,7 +58,7 @@
 							<span class="text-secondary"><i class="far fa-heart"></i></span>
 							{% endif %}
 							<span class="text-secondary text-center">
-								{{ blog.number_of_likes }}
+								{{ post.number_of_likes }}
 							</span>
 						</strong>
 					</div>

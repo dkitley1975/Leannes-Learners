@@ -7,7 +7,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic, View
 from django.views.generic import FormView, TemplateView
 from .models import About, Carousel, CompanyDetails, Instructors, Passplus, Service, TeachingHours, Terms, Testimonial
-from blog.models import Blog
+from blog.models import Post
 from .forms import ContactForm
 
 
@@ -120,7 +120,7 @@ class Testimonials(generic.ListView):
     def get_context_data(self, **kwargs):
         """ Gets the instructors list and Company Contact info """
         context = super().get_context_data(**kwargs)
-        context['blog_list'] = Blog.objects.filter(status=1).order_by("-created_at")[0:3]
+        context['post_list'] = Post.objects.filter(status=1).order_by("-created_at")[0:3]
         context['carousel_list'] = Carousel.objects.filter(include_in_carousel=1).order_by("slide_identifying_name")
         context['social'] = CompanyDetails.objects.all()[0:1]
 
