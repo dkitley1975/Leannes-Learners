@@ -10,6 +10,16 @@
 <link rel="stylesheet" href="{% static 'css/admin_color.css' %}">
 {% endblock %}
 
+{% block extrahead %}
+<meta name="theme-color" content="#74241d">
+{% load static %}
+<link rel="icon" href="{% static 'webmanifest/favicons/favicon.ico' %}">
+<link rel="manifest" href="{% static 'webmanifest/site.webmanifest' %}">
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
+<link rel="icon" type="image/png" sizes="512x512" href="{% static 'favicons/android-chrome-512x512' %}">
+{% endblock %}
+
+
 {% block branding %}
 <h1 id="site-name">
 	<a href="{% url 'admin:index' %}">

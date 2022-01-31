@@ -19,6 +19,10 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 import dj_database_url
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+
 if os.path.isfile("env.py"):
     import env
 
@@ -37,13 +41,13 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in deployment!
-DEBUG = True
+DEBUG = False
 
 # SECURITY WARNING: activate the below for deployment!
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "leannes-learners.herokuapp.com",]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'leannes-learners.herokuapp.com',]
 
 
 # Application definition
@@ -211,64 +215,78 @@ CKEDITOR_BROWSE_SHOW_DIRS = False # Shows directory of image in the server
 CKEDITOR_RESTRICT_BY_DATE = False # Arranges image in terms of date uploaded
 CKEDITOR_UPLOAD_PATH = '/post_images/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
-CKEDITOR_CONFIGS = {
-    'default': {
-        # 'skin': 'moono',
-        'toolbar_Basic': [
-            ['Source', '-', 'Bold', 'Italic']
-        ],
-        'toolbar_YourCustomToolbarConfig': [
-            {'name': 'document', 'items': ['Source', '-', 'Save', 'Preview','-', 'Templates']},
-            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
-            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
-            # {'name': 'forms',
-            #  'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
-            #            'HiddenField']},
-            '/',
-            {'name': 'basicstyles',
-             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
-            {'name': 'paragraph',
-             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
-                       ]},
-            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
-            {'name': 'insert',
-             'items': ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 
-            #  'PageBreak'
-             ]},
-            '/',
-            {'name': 'styles', 'items': [
-                # 'Styles', 
-                'Format', 'Font', 'FontSize']},
-            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
-            {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
-            {'name': 'about', 'items': ['About']},
-            # '/',  # put this to force next toolbar on new line
-        ],
-        'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
-        # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
-        # 'height': 291,
-        # 'width': '100%',
-        # 'filebrowserWindowHeight': 725,
-        # 'filebrowserWindowWidth': 940,
-        # 'toolbarCanCollapse': True,
-        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
-        'tabSpaces': 4,
-        'extraPlugins': ','.join([
-            'uploadimage', # the upload image feature
-            # your extra plugins here
-            # 'div',
-            'autolink',
-            'autoembed',
-            'embedsemantic',
-            # 'autogrow',
-            # 'devtools',
-            'widget',
-            'lineutils',
-            'clipboard',
-            'dialog',
-            'dialogui',
-            'elementspath'
-        ]),
-    }
-}
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         # 'skin': 'moono',
+#         'toolbar_Basic': [
+#             ['Source', '-', 'Bold', 'Italic']
+#         ],
+#         'toolbar_YourCustomToolbarConfig': [
+#             {'name': 'document', 'items': ['Source', '-', 'Save', 'Preview','-', 'Templates']},
+#             {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+#             {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+#             # {'name': 'forms',
+#             #  'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
+#             #            'HiddenField']},
+#             '/',
+#             {'name': 'basicstyles',
+#              'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+#             {'name': 'paragraph',
+#              'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-',
+#                        'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
+#                        ]},
+#             {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+#             {'name': 'insert',
+#              'items': ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 
+#             #  'PageBreak'
+#              ]},
+#             '/',
+#             {'name': 'styles', 'items': [
+#                 # 'Styles', 
+#                 'Format', 'Font', 'FontSize']},
+#             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+#             {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
+#             {'name': 'about', 'items': ['About']},
+#             # '/',  # put this to force next toolbar on new line
+#         ],
+#         'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
+#         # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
+#         # 'height': 291,
+#         # 'width': '100%',
+#         # 'filebrowserWindowHeight': 725,
+#         # 'filebrowserWindowWidth': 940,
+#         # 'toolbarCanCollapse': True,
+#         # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+#         'tabSpaces': 4,
+#         'extraPlugins': ','.join([
+#             'uploadimage', # the upload image feature
+#             # your extra plugins here
+#             # 'div',
+#             'autolink',
+#             'autoembed',
+#             'embedsemantic',
+#             # 'autogrow',
+#             # 'devtools',
+#             'widget',
+#             'lineutils',
+#             'clipboard',
+#             'dialog',
+#             'dialogui',
+#             'elementspath'
+#         ]),
+#     }
+# }
+
+sentry_sdk.init(
+    dsn="https://b27666989ccd4aa9b4cea92ff5aa7fd2@o1131552.ingest.sentry.io/6176132",
+    integrations=[DjangoIntegration()],
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
+)
