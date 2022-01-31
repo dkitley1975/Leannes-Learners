@@ -92,3 +92,4 @@ class LikePost(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post-post', args=[slug]))
+

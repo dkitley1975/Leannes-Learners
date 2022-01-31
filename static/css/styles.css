@@ -48,6 +48,11 @@ img {
     vertical-align: bottom;
 }
 
+.alt-text-white {
+    color: white;
+    text-align: right;
+}
+
 .author {
     position: relative;
     display: block;

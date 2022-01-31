@@ -15,10 +15,11 @@
 			<div class="d-none d-md-block col-md-5 ms-auto blog-post-header-image">
 				<!-- The featured image URL goes in the src attribute -->
 				{% if "placeholder" in post.featured_image.url %}
-				<img src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg"
+				<img class="alt-text-white"
+					src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg"
 					alt="Missing image - default placeholder">
 				{% else %}
-				<img src=" {{ post.featured_image.url }}" alt="{{ post.alt_tag }}">
+				<img class="alt-text-white" src=" {{ post.featured_image.url }}" alt="{{ post.alt_tag }}">
 				{% endif %}
 			</div>
 		</div>
