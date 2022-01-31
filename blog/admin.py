@@ -1,9 +1,11 @@
 from django.contrib import admin
 from .models import Post, Comment
+from django_summernote.admin import SummernoteModelAdmin
+
 
 # Register your models here.
 @admin.register(Post)
-class BlogAdmin(admin.ModelAdmin):
+class BlogAdmin(SummernoteModelAdmin):
     """
     Establish the view in admin for the Blog.
     Which fields to include in the:
@@ -36,6 +38,7 @@ class BlogAdmin(admin.ModelAdmin):
     list_filter = ('status', 'created_at')
     prepopulated_fields = {'slug': ('title',)}
     actions = ['publish_Post',]
+    summernote_fields = ('content',)
     readonly_fields = ['image_thumb',]
 
     def publish_Post(self, request, queryset):
