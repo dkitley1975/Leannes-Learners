@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.safestring import mark_safe
+from ckeditor_uploader.fields import RichTextUploadingField
+
 
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -9,7 +11,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 class About(models.Model):
     short_description = models.CharField(max_length=80, unique=True)
-    about_us = models.TextField()
+    about_us = RichTextUploadingField()
     background_image = CloudinaryField(
         folder='leannes_learners/about_us/background_images/',
         default='placeholder')
@@ -117,8 +119,8 @@ class Passplus(models.Model):
     background_image = CloudinaryField(
         folder='leannes_learners/pass_plus/background_images/',
         default='placeholder')
-    lead_content = models.TextField()
-    main_content = models.TextField()
+    lead_content = RichTextUploadingField(verbose_name = 'Lead content - more prominent than the rest.')
+    main_content = RichTextUploadingField(verbose_name = 'Main content of the page.')
     focus_image = CloudinaryField(
         folder='leannes_learners/pass_plus/focus_images/',
         transformation={'width': '400', 'height': '400', 'crop': 'fill',
@@ -151,8 +153,8 @@ class Terms(models.Model):
     background_image = CloudinaryField(
         folder='leannes_learners/terms_and_conditions/background_images/',
         default='placeholder')
-    lead_content = models.TextField()
-    main_content = models.TextField()
+    lead_content = RichTextUploadingField(verbose_name = 'Lead content - The explanation.')
+    main_content = RichTextUploadingField(verbose_name = 'The Terms and Conditions.')
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -183,7 +185,7 @@ class Testimonial(models.Model):
                         'gravity': 'face', 'zoom': '0.5'},
         default='placeholder')
     alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
-    testimonial = models.TextField()
+    testimonial = RichTextUploadingField()
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)

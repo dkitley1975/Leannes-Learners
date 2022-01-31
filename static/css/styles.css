@@ -23,8 +23,9 @@ a {
 }
 
 alert-msg {
-    z-index: 100;
+    z-index: 1001;
     position: absolute;
+
 }
 
 blockquote {
@@ -96,7 +97,7 @@ img {
     overflow: hidden;
     position: relative;
     display: inline-block;
-    height: 33vh;
+    height: 200px;
     width: 100%;
 }
 
@@ -130,6 +131,7 @@ img {
 
 .blog-post-subtitle {
     margin-left: 5%;
+    margin-bottom: 10%;
     color: white;
 }
 
@@ -274,6 +276,25 @@ img {
     -moz-text-decoration-color: black;
 }
 
+.form-control {
+    display: block;
+    margin-bottom: .75rem;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
 .img-focus-image {
     padding: 0.25rem;
     background-color: white;
@@ -405,5 +426,13 @@ img {
     50% {
         opacity: .5;
         transition-duration: .75s;
+    }
+}
+
+/* On screens that are 768px or less */
+@media screen and (min-width: 768px) {
+    .blog-post-header {
+        height: 300px;
+
     }
 }

@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.safestring import mark_safe
-
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -13,7 +14,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="blog_posts"
+        User, on_delete=models.CASCADE, related_name="post_posts"
     )
     featured_image = CloudinaryField(
         folder='leannes_learners/blog_images/',
@@ -22,8 +23,9 @@ class Post(models.Model):
         default='placeholder')
     alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
     excerpt = models.TextField(blank=True, verbose_name = 'Eye Catching Excerpt - make someone want to read the article')
+
     updated_at = models.DateTimeField(auto_now=True)
-    content = models.TextField()
+    content = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
@@ -51,7 +53,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    blog = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()

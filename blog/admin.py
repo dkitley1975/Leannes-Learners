@@ -53,7 +53,6 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'body',
-        
         'created_at',
         'approved'
         )
