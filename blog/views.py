@@ -49,7 +49,7 @@ class BlogPost(View):
             comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
-            comment.post = blog
+            comment.post = post
             comment.save()
         else:
             comment_form = CommentForm()
@@ -58,7 +58,7 @@ class BlogPost(View):
             request,
             "components/blog/post.html",
             {
-                "blog": blog,
+                "post": post,
                 "comments": comments,
                 "commented": True,
                 "comment_form": comment_form,
@@ -91,5 +91,4 @@ class LikePost(View):
         else:
             post.likes.add(request.user)
 
-        return HttpResponseRedirect(reverse('post-post', args=[slug]))
-
+        return HttpResponseRedirect(reverse('blog-post', args=[slug]))
