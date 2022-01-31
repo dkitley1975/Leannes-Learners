@@ -2,8 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.safestring import mark_safe
-from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import RichTextUploadingField
+
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -25,7 +24,7 @@ class Post(models.Model):
     excerpt = models.TextField(blank=True, verbose_name = 'Eye Catching Excerpt - make someone want to read the article')
 
     updated_at = models.DateTimeField(auto_now=True)
-    content = RichTextUploadingField()
+    content =  models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
