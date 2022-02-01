@@ -226,6 +226,12 @@ img {
     background-color: var(--clr-brand-primary);
 }
 
+.dropdown-item.active {
+    background-color: var(--clr-brand-primary);
+    text-decoration: none;
+}
+
+
 .fa-quote-left {
     position: relative;
     background: var(--clr-background-light);
@@ -373,7 +379,7 @@ img {
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
-    color: white;
+    color: var(--clr-brand-tertiary);
 }
 
 .nav-item.dropdown>ul>li>a {
@@ -381,6 +387,10 @@ img {
 }
 
 .nav-item.dropdown>ul>li>a:hover {
+    color: var(--clr-brand-tertiary);
+}
+
+.nav-item.dropdown>ul>li>a.active {
     color: white;
 }
 

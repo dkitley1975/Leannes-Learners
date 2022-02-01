@@ -5,7 +5,7 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import generic, View
-from django.views.generic import FormView, TemplateView
+from django.views.generic import FormView, TemplateView, CreateView
 from blog.models import Post
 from leannes_learners_data.models import CompanyDetails
 from .forms import CommentForm
@@ -26,7 +26,7 @@ class BlogPost(View):
 
         return render(
             request,
-            "components/blog/post.html",
+            "pages/blog/post.html",
             {
                 "post": post,
                 "comments": comments,
@@ -56,7 +56,7 @@ class BlogPost(View):
 
         return render(
             request,
-            "components/blog/post.html",
+            "pages/blog/post.html",
             {
                 "post": post,
                 "comments": comments,
@@ -71,7 +71,7 @@ class BlogPostsPage(generic.ListView):
     """ Blog Page list view """
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_at")
-    template_name = "pages/blog.html"
+    template_name = "pages/blog/blog.html"
     paginate_by = 9
 
     def get_context_data(self, **kwargs):
@@ -92,3 +92,10 @@ class LikePost(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('blog-post', args=[slug]))
+
+
+class AddPost(CreateView):
+    """ Add a new post page """
+    model = Post
+    template_name = "pages/blog/new_blog_post_entry.html"
+    fields = '__all__'
