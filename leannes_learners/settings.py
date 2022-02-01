@@ -206,6 +206,43 @@ else:
     RECIPIENT_ADDRESS = 'dkitley@mac.com'
 
 
+SUMMERNOTE_CONFIG = {
+    'iframe': True,
+    'summernote': {
+        'width': '800px',
+        'height': '600px',
+        'toolbar': [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+            ['custom', ['imageAttributes', 'imageShape' ]],
+        ],
+    },
+    'popover': {
+        'image': [
+            ['custom', ['imageAttributes']],
+            ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
+            ['float', ['floatLeft', 'floatRight', 'floatNone']],
+            ['remove', ['removeMedia']]
+        ],
+    },
+    
+    'js': (
+        '/static/js/summernote-image-attributes.js',
+    ),
+    'js_for_inplace': (
+        '/static/js/summernote-image-attributes.js',
+    ),
+
+    
+}
+
+
 # sentry_sdk.init(
 #     dsn="https://b27666989ccd4aa9b4cea92ff5aa7fd2@o1131552.ingest.sentry.io/6176132",
 #     integrations=[DjangoIntegration()],
