@@ -99,3 +99,15 @@ class AddPost(CreateView):
     model = Post
     template_name = "pages/blog/new_blog_post_entry.html"
     fields = '__all__'
+
+
+
+    def get_context_data(self, **kwargs):
+        """ Gets the Company Contact info """
+        context = super().get_context_data(**kwargs)
+        context['social'] = CompanyDetails.objects.all()[0:1]
+        return context
+
+class AddPostSuccess(TemplateView):
+    """ If the contact form was valid this page is returned to view """
+    template_name = "pages/blog/success_post_submission.html"

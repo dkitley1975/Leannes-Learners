@@ -5,13 +5,15 @@
 			<div class="card mb-4">
 				<div class="card-body">
 					<div class="image-container">
-						{% if "placeholder" in post.featured_image.url %}
-						<img class="card-img-top img-radius-10 trans-white-background-80"
-							src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg">
-						{% else %}
-						<img class="card-img-top img-radius-10 trans-white-background-80"
-							src=" {{ post.featured_image.url }}" alt="{{ post.alt_tag }}">
-						{% endif %}
+						<a href="{% url 'blog-post' post.slug %}" class="blog-post-link">
+							{% if "placeholder" in post.featured_image.url %}
+							<img class="card-img-top img-radius-10 trans-white-background-80"
+								src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg">
+							{% else %}
+							<img class="card-img-top img-radius-10 trans-white-background-80"
+								src=" {{ post.featured_image.url }}" alt="{{ post.alt_tag }}">
+							{% endif %}
+						</a>
 						<div class="image-flash">
 							<p class="author text-muted">Author: {{ post.author }}</p>
 						</div>

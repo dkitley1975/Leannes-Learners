@@ -16,7 +16,7 @@
 				<!-- The featured image URL goes in the src attribute -->
 				{% if "placeholder" in post.featured_image.url %}
 				<img class="alt-text-white"
-					src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg"
+					src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/default_blog_image.jpg"
 					alt="Missing image - default placeholder">
 				{% else %}
 				<img class="alt-text-white" src=" {{ post.featured_image.url }}" alt="{{ post.alt_tag }}">

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.safestring import mark_safe
+from django.urls import reverse
 
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -47,8 +48,19 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def __str__(self):
+        return self.slug
+
     def number_of_likes(self):
         return self.likes.count()
+
+    def get_absolute_url(self):
+        if self.status == 1:
+            return ('blog/{}'.format(self.slug))
+        else:
+            return ('add_new_post_success')
+        
+
 
 
 class Comment(models.Model):
