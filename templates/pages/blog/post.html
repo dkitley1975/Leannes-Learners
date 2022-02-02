@@ -2,12 +2,13 @@
 {% block title %}Leannes Learners - Blog{% endblock %}
 {% block content %}
 
-<div class="blog-post-header">
-	<div class="container col-md-8 ms-auto">
+<div class="blog-post-header col-12">
+	<div class="container col-md-12 ms-auto">
 		<div class="row align-items-end">
-			<div class="col-md-7 p-3">
+			<div class="col-md-7 p-3 ">
 				<!-- Blog title goes in these h1 tags -->
 				<h1 class="blog-post-title">{{ post.title }}</h1>
+				<hr class="blog-post-h-rule">
 				<!-- Blog author goes before the | the blog's created date goes after -->
 				<p class="blog-post-subtitle">{{ post.author }} | {{ post.created_at }}</p>
 			</div>
@@ -16,7 +17,7 @@
 				<!-- The featured image URL goes in the src attribute -->
 				{% if "placeholder" in post.featured_image.url %}
 				<img class="alt-text-white"
-					src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/default_blog_image.jpg"
+					src="https://res.cloudinary.com/dkitley1975/image/upload/v1643781954/leannes_learners/default_image/default_blog_image.jpg"
 					alt="Missing image - default placeholder">
 				{% else %}
 				<img class="alt-text-white" src=" {{ post.featured_image.url }}" alt="{{ post.alt_tag }}">

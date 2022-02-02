@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.safestring import mark_safe
 from django.urls import reverse
+from autoslug import AutoSlugField
+
 
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -12,7 +14,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 # from a previous walkthrough - Code Institues " I blog therefore I am"
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = AutoSlugField(populate_from='title', unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="post_posts"
     )

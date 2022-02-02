@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+
 {% block title %}Leannes Learners - New Blog Post{% endblock %}
 {% block content %}
 
@@ -9,12 +11,14 @@
 			<div class="col-12 mt-3 left">
 				<h1 class="section-header">Add a new Blog Post</h1>
 				<div class="row">
-					<form method="POST">
-						{% csrf_token %}
-						{{ form.as_p }}
+					<div class="form-group">
+						<form method="POST">
+							{% csrf_token %}
+							{{ form|crispy }}
 
-						<button class="btn btn-primary">Submit</button>
-					</form>
+							<button class="btn btn-primary">Submit</button>
+						</form>
+					</div>
 
 				</div>
 			</div>

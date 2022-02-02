@@ -8,7 +8,7 @@ from django.views import generic, View
 from django.views.generic import FormView, TemplateView, CreateView
 from blog.models import Post
 from leannes_learners_data.models import CompanyDetails
-from .forms import CommentForm
+from .forms import CommentForm, AddPostForm
 
 
 
@@ -94,11 +94,25 @@ class LikePost(View):
         return HttpResponseRedirect(reverse('blog-post', args=[slug]))
 
 
+class AddPostSuccess(TemplateView):
+    """ If the contact form was valid this page is returned to view """
+    template_name = "pages/blog/success_post_submission.html"
+
+
 class AddPost(CreateView):
     """ Add a new post page """
     model = Post
     template_name = "pages/blog/new_blog_post_entry.html"
-    fields = '__all__'
+    fields = (
+        'title', 
+        'featured_image',
+        'alt_tag',
+        'excerpt',
+        'content',
+        'author',
+        'status',
+        )
+
 
 
 
@@ -108,6 +122,3 @@ class AddPost(CreateView):
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
 
-class AddPostSuccess(TemplateView):
-    """ If the contact form was valid this page is returned to view """
-    template_name = "pages/blog/success_post_submission.html"

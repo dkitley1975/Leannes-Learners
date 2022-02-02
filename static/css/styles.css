@@ -98,11 +98,9 @@ img {
 
 .blog-post-header {
     background-color: var(--clr-brand-primary);
-    margin-top: 5vh;
     overflow: hidden;
     position: relative;
     display: inline-block;
-    height: 200px;
     width: 100%;
     margin-top: 0;
 }
@@ -110,18 +108,12 @@ img {
 .blog-post-header-image {
     margin-right: 0;
     padding-right: 0;
+    bottom: 0;
+    right: 0;
     position: relative;
     overflow: hidden;
-    /* min-height: 33vh; */
-    height: 100%;
     overflow: hidden;
-    -webkit-clip-path: circle(104.4% at 93% 0);
-    clip-path: circle(104.4% at 93% 0);
-    /* -webkit-clip-path: circle(90.8% at 81% 96%);
-    clip-path: circle(90.8% at 81% 96%); */
-    /* clip-path: polygon(13% 0, 100% 0, 100% 100%, 33% 100%); */
-    margin-right: 0;
-    vertical-align: top;
+    clip-path: polygon(13% 0, 100% 0, 100% 100%, 33% 100%);
 }
 
 .blog-post-likes {
@@ -150,6 +142,12 @@ img {
     margin-left: 5%;
     color: white;
 
+}
+
+.blog-post-h-rule {
+    width: 80%;
+    margin-left: 5%;
+    border: 1px solid white;
 }
 
 .btn-like {
