@@ -9,6 +9,7 @@ from django.views.generic import FormView, TemplateView, CreateView
 from blog.models import Post
 from leannes_learners_data.models import CompanyDetails
 from .forms import CommentForm, AddPostForm
+from django_summernote.widgets import SummernoteInplaceWidget
 
 
 
@@ -103,17 +104,7 @@ class AddPost(CreateView):
     """ Add a new post page """
     model = Post
     template_name = "pages/blog/new_blog_post_entry.html"
-    fields = (
-        'title', 
-        'featured_image',
-        'alt_tag',
-        'excerpt',
-        'content',
-        'author',
-        'status',
-        )
-
-
+    form_class = AddPostForm
 
 
     def get_context_data(self, **kwargs):
