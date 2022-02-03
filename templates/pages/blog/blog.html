@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block title %}Leannes Learners - Blog{% endblock %}
 {% block content %}
 
@@ -17,41 +17,20 @@
 				<p>Please login/register to comment and like</p>
 				<hr>
 				{% endif %}
-
+				<!-- Blog Post card -->
 				<div class="row">
 					{% for post in post_list %}
 					<div class="col-md-4">
 						<div class="card mb-4">
-							<div class="card-body">
-								<div class="image-container">
-									{% if "placeholder" in post.featured_image.url %}
-									<img class="card-img-top"
-										src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg"
-										alt="missing image placeholder image">
-									{% else %}
-									<img class="card-img-top" src=" {{ post.featured_image.url }}"
-										alt="{{ post.alt_tag }}">
-									{% endif %}
-									<div class="image-flash">
-										<p class="author text-muted">Author: {{ post.author }}</p>
-									</div>
-								</div>
-								<a href="{% url 'blog-post' post.slug %}" class="blog-post-link">
-									<h2 class="card-title text-uppercase">{{ post.title }}</h2>
-									<p class="card-text">{{ post.excerpt }}</p>
-								</a>
-								<hr />
-								<p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
-									{{ post.number_of_likes }}</p>
-							</div>
+							{% include "components/blog/blog-post-card.html" %}
 						</div>
 					</div>
 					{% if forloop.counter|divisibleby:3 %}
+					<!-- if counter divisable by three, close the row and start a new one-->
 				</div>
 				<div class="row">
 					{% endif %}
 					{% endfor %}
-
 				</div>
 			</div>
 		</div>
