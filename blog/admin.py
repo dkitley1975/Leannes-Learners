@@ -17,7 +17,7 @@ class BlogAdmin(SummernoteModelAdmin):
     """
     fields = [
         'title',
-        'slug',
+        # 'slug',
         'author',
         'featured_image',
         'image_thumb',
@@ -38,10 +38,9 @@ class BlogAdmin(SummernoteModelAdmin):
 
     search_fields = ['title', 'content', 'alt_tag',]
     list_filter = ('status', 'created_at')
-    prepopulated_fields = {'slug': ('title',)}
     actions = ['publish_Post',]
     summernote_fields = ('content',)
-    readonly_fields = ['image_thumb',]
+    readonly_fields = ['image_thumb', 'slug']
 
     def publish_Post(self, request, queryset):
         queryset.update(status=True)

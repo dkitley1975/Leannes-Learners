@@ -12,6 +12,7 @@
     --clr-box-shadow: rgb(153, 153, 153);
     --clr-link-dark: rgb(68, 82, 97);
     --clr-quotation-mark: rgb(51, 51, 51);
+    --clr-warning-advice-text: rgb(208, 0, 0);
 
 
 }
@@ -98,11 +99,9 @@ img {
 
 .blog-post-header {
     background-color: var(--clr-brand-primary);
-    margin-top: 5vh;
     overflow: hidden;
     position: relative;
     display: inline-block;
-    height: 200px;
     width: 100%;
     margin-top: 0;
 }
@@ -110,18 +109,12 @@ img {
 .blog-post-header-image {
     margin-right: 0;
     padding-right: 0;
+    bottom: 0;
+    right: 0;
     position: relative;
     overflow: hidden;
-    /* min-height: 33vh; */
-    height: 100%;
     overflow: hidden;
-    -webkit-clip-path: circle(104.4% at 93% 0);
-    clip-path: circle(104.4% at 93% 0);
-    /* -webkit-clip-path: circle(90.8% at 81% 96%);
-    clip-path: circle(90.8% at 81% 96%); */
-    /* clip-path: polygon(13% 0, 100% 0, 100% 100%, 33% 100%); */
-    margin-right: 0;
-    vertical-align: top;
+    clip-path: polygon(13% 0, 100% 0, 100% 100%, 33% 100%);
 }
 
 .blog-post-likes {
@@ -139,17 +132,39 @@ img {
     color: var(--clr-brand-primary);
 }
 
+
 .blog-post-subtitle {
     margin-left: 5%;
     margin-bottom: 10%;
     color: white;
 }
 
+
+.blog-post-subtitle>a {
+    color: white;
+    text-decoration: none;
+    font-style: italic;
+}
+
+.blog-post-subtitle>a:hover {
+    color: var(--clr-brand-tertiary);
+    text-decoration: none;
+}
+
 .blog-post-title {
     margin-top: 5%;
     margin-left: 5%;
     color: white;
+}
 
+.blog-post-h-rule {
+    width: 80%;
+    margin-left: 5%;
+    border: 1px solid white;
+}
+
+.btn {
+    float: right;
 }
 
 .btn-like {
@@ -197,6 +212,17 @@ img {
     background: white;
 }
 
+.btn-warning {
+    background: var(--clr-border-grey);
+    transition: all .5s ease-in-out;
+}
+
+.btn-warning:hover {
+    background: red !important;
+    color: white;
+    font-size: 50%;
+}
+
 .card-header {
     padding: 0.5rem 1rem;
     margin-bottom: 0;
@@ -225,6 +251,12 @@ img {
 .dropdown-item:hover {
     background-color: var(--clr-brand-primary);
 }
+
+.dropdown-item.active {
+    background-color: var(--clr-brand-primary);
+    text-decoration: none;
+}
+
 
 .fa-quote-left {
     position: relative;
@@ -260,11 +292,11 @@ img {
     z-index: 999;
 }
 
-.footer-social a {
+.footer-social>a {
     color: white;
 }
 
-.footer-social a:hover {
+.footer-social>a:hover {
     color: var(--clr-brand-tertiary);
     transform: scale(1.5);
     -webkit-transform: scale(1.5);
@@ -288,21 +320,12 @@ img {
 
 .form-control {
     display: block;
-    margin-bottom: .75rem;
+    margin-bottom: 1.25rem;
     width: 100%;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-group {
+    margin-top: 1.25rem;
 }
 
 .img-focus-image {
@@ -373,7 +396,7 @@ img {
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
-    color: white;
+    color: var(--clr-brand-tertiary);
 }
 
 .nav-item.dropdown>ul>li>a {
@@ -381,6 +404,10 @@ img {
 }
 
 .nav-item.dropdown>ul>li>a:hover {
+    color: var(--clr-brand-tertiary);
+}
+
+.nav-item.dropdown>ul>li>a.active {
     color: white;
 }
 
@@ -431,6 +458,11 @@ img {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
+.warning-advice-text {
+    color: var(--clr-warning-advice-text);
+    animation: heart-beat 1s linear infinite;
+    -webkit-animation: heart-beat 1s linear infinite;
+}
 
 @keyframes heart-beat {
     50% {

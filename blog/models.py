@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.safestring import mark_safe
+from django.urls import reverse
+from autoslug import AutoSlugField
+from django_summernote.widgets import SummernoteWidget
+
+
 
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -11,7 +16,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 # from a previous walkthrough - Code Institues " I blog therefore I am"
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = AutoSlugField(max_length=250, populate_from='title', unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="post_posts"
     )
@@ -20,11 +25,11 @@ class Post(models.Model):
         transformation={'width': '400', 'height': '300', 'crop': 'fill',
                         'gravity': 'face', 'zoom': '0.5'},
         default='placeholder')
-    alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
-    excerpt = models.TextField(blank=True, verbose_name = 'Eye Catching Excerpt - make someone want to read the article')
+    alt_tag = models.CharField(max_length=200, blank=False, verbose_name = 'Describe the image for the blind')
+    excerpt = models.TextField(blank=False, verbose_name = 'Eye Catching Excerpt - make someone want to read the article')
 
     updated_at = models.DateTimeField(auto_now=True)
-    content =  models.TextField()
+    content =  models.TextField(verbose_name = 'Post Content', blank=False,)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
@@ -47,8 +52,19 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def __str__(self):
+        return self.slug
+
     def number_of_likes(self):
         return self.likes.count()
+
+    def get_absolute_url(self):
+        if self.status == 1:
+            return ('blog/{}'.format(self.slug))
+        else:
+            return ('add_new_post_success')
+        
+
 
 
 class Comment(models.Model):
