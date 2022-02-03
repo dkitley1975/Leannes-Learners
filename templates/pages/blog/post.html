@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block title %}Leannes Learners - Blog{% endblock %}
 {% block content %}
 
@@ -10,7 +10,11 @@
 				<h1 class="blog-post-title">{{ post.title }}</h1>
 				<hr class="blog-post-h-rule">
 				<!-- Blog author goes before the | the blog's created date goes after -->
-				<p class="blog-post-subtitle">{{ post.author }} | {{ post.created_at }}</p>
+				<p class="blog-post-subtitle">{{ post.author }} | {{ post.created_at }}
+					<a href="{% url 'update_post' post.slug %}"> | edit post</a>
+					<a href="{% url 'delete_post' post.slug %}"> | delete post</a>
+				</p>
+
 			</div>
 
 			<div class="d-none d-md-block col-md-5 ms-auto blog-post-header-image">

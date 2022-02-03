@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block title %}Leannes Learners - Blog{% endblock %}
 {% block content %}
 
@@ -17,7 +17,7 @@
 				<p>Please login/register to comment and like</p>
 				<hr>
 				{% endif %}
-
+				<!-- Blog Post card -->
 				<div class="row">
 					{% for post in post_list %}
 					<div class="col-md-4">
@@ -26,11 +26,11 @@
 						</div>
 					</div>
 					{% if forloop.counter|divisibleby:3 %}
+					<!-- if counter divisable by three, close the row and start a new one-->
 				</div>
 				<div class="row">
 					{% endif %}
 					{% endfor %}
-
 				</div>
 			</div>
 		</div>
