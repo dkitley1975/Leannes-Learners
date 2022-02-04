@@ -1,18 +1,27 @@
 from django.db.models.query import QuerySet
 from django.contrib import messages
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin, AccessMixin
+from django.contrib.auth import logout
+
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django_summernote.widgets import SummernoteInplaceWidget
 from django.urls import reverse, reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views import generic, View
 from django.views.generic import FormView, TemplateView, CreateView, UpdateView, DeleteView
+
 from blog.models import Post
+from leannes_learners.settings import LOGIN_URL
 from leannes_learners_data.models import CompanyDetails
 from .forms import CommentForm, AddPostForm
-from django_summernote.widgets import SummernoteInplaceWidget
+
+
+
 
 
 # Create your views here.
+
 class BlogPost(View):
     """ individual Blog Page view """
     def get(self, request, slug, *args, **kwargs):
@@ -106,6 +115,7 @@ class AddPostSuccess(TemplateView):
     template_name = "pages/blog/success_post_submission.html"
 
 
+
 class AddPost(CreateView):
     """ Add a new post page """
     model = Post
@@ -117,6 +127,7 @@ class AddPost(CreateView):
         context = super().get_context_data(**kwargs)
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
+
 
 
 class UpdatePost(UpdateView):
@@ -131,12 +142,12 @@ class UpdatePost(UpdateView):
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
 
+
 class DeletePost(DeleteView):
     """ Add a new post page """
     model = Post
     template_name = "pages/blog/delete_blog_post_entry.html"
     success_url = reverse_lazy('blog')
-    # form_class = AddPostForm
 
     def get_context_data(self, **kwargs):
         """ Gets the Company Contact info """
