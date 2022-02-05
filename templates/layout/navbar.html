@@ -1,6 +1,6 @@
 {% load auth_extras %}
 {% block content %}
-<nav class="fixed-top navbar navbar-expand-xl navbar-burnt-red navbar-dark ">
+<nav class="fixed-top navbar navbar-expand-lg navbar-burnt-red navbar-dark ">
 	<div class="container-fluid">
 		<div class="logo-image"><span class="sr-only">Leannes Learners</span>
 			<a href="/"><img
@@ -78,19 +78,73 @@
 				{% endif %}
 				{% endwith %}
 			</ul>
-			<div class="d-flex">
+			<ul class="navbar-nav d-flex navbar-burnt-red navbar-dark">
 				{% if user.is_authenticated %}
 				<a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt nav-link-white"></i>
 					Logout</a>
 				{% else %}
-				<a class="nav-link" href="{% url 'register' %}"><i class="fas fa-user-plus nav-link-white"></i>
-					Register</a>
-				<a class="nav-link" href=" {% url 'login' %}"><i class="fas fa-sign-in-alt nav-link-white"></i>
-					Login</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false">
+						<i class="fas fa-user-plus nav-link-white"></i>
+						Register</a>
+					</a>
+					<ul class="dropdown-menu p-3 dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
+						<form class="form-group" method="POST" action='{% url "register" %}'>
+							{% csrf_token %}
+							<p>Please enter a username and password.</p>
+							<div>
+								<input type="text" class="form-control" name="username" maxlength="150"
+									autocapitalize="none" autocomplete="username" autofocus="" required=""
+									id="id_username" placeholder="Username">
+								<p class="registration-helptext">Required. 150 characters or fewer. Letters, digits and
+									@/./+/-/_ only.</p>
+
+								<input type="password" class="form-control" name="password1" autocomplete="new-password"
+									required="" id="id_password1" placeholder="Password">
+								<ul class="registration-helptext">
+									<li>Your password can’t be too similar to your other personal information.</li>
+									<li>Your password must contain at least 8 characters.</li>
+									<li>Your password can’t be a commonly used password.</li>
+									<li>Your password can’t be entirely numeric.</li>
+								</ul>
+
+								<input type="password" class="form-control" name="password2" autocomplete="new-password"
+									required="" id="id_password2" placeholder="Password confirmation">
+							</div>
+							<button type="submit" class="btn btn-primary btn-white-outline">Register</button>
+						</form>
+
+
+
+					</ul>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false">
+						<i class="fas fa-sign-in-alt nav-link-white"></i>
+						Login</a>
+					</a>
+					<ul class="dropdown-menu p-3 dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
+						<form class="form-group" method="POST" action='{% url "login" %}'>
+							{% csrf_token %}
+							<p>Please enter your username and password.</p>
+							<div>
+								<input type="text" class="form-control" name="username" id="id_username"
+									placeholder="Username">
+							</div>
+							<div>
+								<input type="password" class="form-control" name="password" id="id_password"
+									placeholder="Password">
+							</div>
+							<button type="submit" class="btn btn-primary btn-white-outline">Login</button>
+						</form>
+					</ul>
+				</li>
 				{% endif %}
-			</div>
+			</ul>
+
 		</div>
-	</div>
 </nav>
 
 {% endblock content %}

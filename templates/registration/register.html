@@ -7,17 +7,34 @@
 		<h1 class="section-header">Register</h1>
 		<div class="row">
 			<div class="col-md-10 mt-3 offset-md-2">
+				<div class="row">
+					<div class="col-md-10 mt-3 offset-md-1">
+						<form class="form-group" method="POST">
+							{% csrf_token %}
+							<label for="id_username">Username:</label> <input type="text" name="username"
+								maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required=""
+								id="id_username">
+							<p class="registration-helptext">Required. 150 characters or fewer. Letters, digits and
+								@/./+/-/_ only.</p>
+							<label for="id_password1">Password:</label> <input type="password" name="password1"
+								autocomplete="new-password" required="" id="id_password1">
+							<p>
+							<ul class="registration-helptext">
+								<li>Your password can’t be too similar to your other personal information.</li>
+								<li>Your password must contain at least 8 characters.</li>
+								<li>Your password can’t be a commonly used password.</li>
+								<li>Your password can’t be entirely numeric.</li>
+							</ul>
+							</p>
+							<label for="id_password2">Password confirmation:</label> <input type="password"
+								name="password2" autocomplete="new-password" required="" id="id_password2">
+							<p class="registration-helptext">Enter the same password
+								as before, for verification.</p>
 
-				<form class="form-group" method="POST">
-					{% csrf_token %}
-					{{ form.as_p }}
-
-					{% if redirect_field_value %}
-					<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-					{% endif %}
-
-					<button type="submit" class="btn-primary">Register</button>
-				</form>
+							<button type="submit" class="btn btn-primary ">Register</button>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

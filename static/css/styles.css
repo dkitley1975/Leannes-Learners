@@ -223,6 +223,10 @@ img {
     font-size: 50%;
 }
 
+.btn-white-outline {
+    border: 1px solid white;
+}
+
 .card-header {
     padding: 0.5rem 1rem;
     margin-bottom: 0;
@@ -257,6 +261,10 @@ img {
     text-decoration: none;
 }
 
+.dropdown-menu-end {
+    width: 80vw;
+    margin-left: -40px;
+}
 
 .fa-quote-left {
     position: relative;
@@ -432,6 +440,12 @@ img {
     border: 1px solid var(--clr-border-grey);
 }
 
+.registration-helptext {
+    color: var(--clr-brand-primary);
+    font-style: italic;
+    font-size: small;
+}
+
 .section-header {
     margin-top: 3rem;
     text-align: center;
@@ -471,10 +485,31 @@ img {
     }
 }
 
-/* On screens that are 768px or less */
+/* On screens that are 576px */
+@media screen and (min-width: 576px) {
+
+    .dropdown-menu-end {
+        right: 30px;
+        margin-left: 0px;
+    }
+}
+
+/* On screens that are 768px */
 @media screen and (min-width: 768px) {
     .blog-post-header {
         height: 300px;
+    }
 
+    .dropdown-menu-end {
+        right: 30px;
+    }
+}
+
+/* On screens that are 992px */
+@media screen and (min-width: 992px) {
+
+
+    .dropdown-menu-end {
+        width: 300px;
     }
 }
