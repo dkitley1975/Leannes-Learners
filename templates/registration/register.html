@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Leannes Learners - Register{% endblock %}
+{% block content %}
+<!-- Register Content -->
+<div class="authentication-background-image-container">
+	<div class="container mt-5 p-3 col-md-6 offset-md-3 authentication-input-container">
+		<h1 class="section-header">Register</h1>
+		<div class="row">
+			<div class="col-md-10 mt-3 offset-md-2">
+				<div class="row">
+					<div class="col-md-10 mt-3 offset-md-1">
+						<form class="form-group" method="POST">
+							{% csrf_token %}
+							<label for="id_username">Username:</label> <input type="text" name="username"
+								maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required=""
+								id="id_username">
+							<p class="registration-helptext">Required. 150 characters or fewer. Letters, digits and
+								@/./+/-/_ only.</p>
+							<label for="id_password1">Password:</label> <input type="password" name="password1"
+								autocomplete="new-password" required="" id="id_password1">
+							<p>
+							<ul class="registration-helptext">
+								<li>Your password can’t be too similar to your other personal information.</li>
+								<li>Your password must contain at least 8 characters.</li>
+								<li>Your password can’t be a commonly used password.</li>
+								<li>Your password can’t be entirely numeric.</li>
+							</ul>
+							</p>
+							<label for="id_password2">Password confirmation:</label> <input type="password"
+								name="password2" autocomplete="new-password" required="" id="id_password2">
+							<p class="registration-helptext">Enter the same password
+								as before, for verification.</p>
+
+							<button type="submit" class="btn btn-primary ">Register</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{%endblock%}

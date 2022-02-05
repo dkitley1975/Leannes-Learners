@@ -11,8 +11,10 @@
 				<hr class="blog-post-h-rule">
 				<!-- Blog author goes before the | the blog's created date goes after -->
 				<p class="blog-post-subtitle">{{ post.author }} | {{ post.created_at }}
+					{% if user.is_staff %}
 					<a href="{% url 'update_post' post.slug %}"> | edit post</a>
 					<a href="{% url 'delete_post' post.slug %}"> | delete post</a>
+					{% endif %}
 				</p>
 
 			</div>
