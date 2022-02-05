@@ -1,7 +1,3 @@
-# TODO before Deployment remove the if else statement in the database section and this RUNLOCAL variable,
-# this is when only used for running the unittests
-RUNLOCAL = False
-
 """
 Django settings for leannes_learners project.
 
@@ -43,11 +39,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in deployment!
 DEBUG = True
 
+# TODO before Deployment remove the if else statement in the database section and this RUNLOCAL variable,
+# this is when only used for running the unittests
+RUNLOCAL = False
+
 # SECURITY WARNING: activate the below for deployment!
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'leannes-learners.herokuapp.com',]
+ALLOWED_HOSTS = [ '127.0.0.1', 'localhost', 'leannes-learners.herokuapp.com' ]
 
 
 # Application definition
@@ -69,10 +69,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'leannes_learners_data',
     'blog',
+    'users',
 ]
 
 SITE_ID = 1
 
+LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
