@@ -1,9 +1,19 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from django_summernote.admin import SummernoteModelAdmin
 
 
 # Register your models here.
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    """
+    Establish the view in admin for the Categories.
+    .
+    """
+    list_display = ['name',]
+    list_filter = ['name',]
+    search_fields = ['name',]
 
 
 @admin.register(Post)
@@ -17,11 +27,11 @@ class BlogAdmin(SummernoteModelAdmin):
     """
     fields = [
         'title',
-        # 'slug',
         'author',
         'featured_image',
         'image_thumb',
         'alt_tag',
+        'category',
         'excerpt',
         'content',
         'status',

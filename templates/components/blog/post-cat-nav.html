@@ -1,0 +1,32 @@
+{% block content %}
+<nav class="navbar navbar-light navbar-expand-sm bg-faded justify-content-end">
+	<div class="container">
+		<div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+			<ul class="nav navbar-nav ms-auto w-100 justify-content-end">
+				<li class="nav-item dropdown cat-nav">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false">Filter By Post Categories </a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
+						<li>
+							<a class="dropdown-item-categories" href="{% url 'blog' %}">All Posts</a>
+						</li>
+						{% for category in category_list %}
+						<li><a class="dropdown-item-categories" href="/category/{{ category.name }}">
+								{{ category.name|title}}</a></li>
+						{% endfor %}
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+
+
+
+
+
+
+
+{% endblock content %}

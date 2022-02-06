@@ -14,6 +14,7 @@ urlpatterns = [
     path('add_new_post', staff_member_required(login_url='login')(views.AddPost.as_view()), name='add_new_post'),
     path('<slug:slug>', staff_member_required(login_url='login')(views.UpdatePost.as_view()), name='update_post'),
     path('<slug:slug>/remove', staff_member_required(login_url='login')(views.DeletePost.as_view()), name='delete_post'),
+    path('category/<category>', views.CategoryListView.as_view(), name='category'),
 
     path('add_new_post_success', views.AddPostSuccess.as_view(), name='add_new_post_success'),
     path('like/<slug:slug>', views.LikePost.as_view(), name='like'),
