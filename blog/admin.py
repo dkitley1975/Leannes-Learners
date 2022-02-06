@@ -66,12 +66,12 @@ class CommentAdmin(admin.ModelAdmin):
     """
     list_display = (
         'name',
-        'body',
+        'comment',
         'created_at',
         'approved'
         )
     list_filter = ('approved', 'created_at')
-    search_fields = ('name', 'email', 'body')
+    search_fields = ('name', 'email', 'comment')
     actions = ['approve_comments',]
 
     def approve_comments(self, request, queryset):

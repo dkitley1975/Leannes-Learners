@@ -9,7 +9,7 @@ from django_summernote.widgets import SummernoteInplaceWidget, SummernoteWidget
 class CommentForm(forms.ModelForm):
 	class Meta:
 		model = Comment
-		fields = ('body',)
+		fields = ('comment',)
 
 
 class AddPostForm(forms.ModelForm):
@@ -23,7 +23,6 @@ class AddPostForm(forms.ModelForm):
 			'excerpt',
 			'author',
 			'status',
-			# 'slug'
 			) 
 
 		widgets = {
