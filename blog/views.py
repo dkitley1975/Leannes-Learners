@@ -9,12 +9,14 @@ from django_summernote.widgets import SummernoteInplaceWidget
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic, View
-from django.views.generic import FormView, TemplateView, CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, DeleteView, FormView, ListView, TemplateView, UpdateView
 
-from blog.models import Post
+from blog.models import Category, Post
 from leannes_learners.settings import LOGIN_URL
 from leannes_learners_data.models import CompanyDetails
 from .forms import CommentForm, AddPostForm
+from django.db.models import Count
+
 
 
 
@@ -82,7 +84,6 @@ class BlogPost(View):
         )
 
 
-
 class BlogPostsPage(generic.ListView):
     """ Blog Page list view """
     model = Post
@@ -96,6 +97,30 @@ class BlogPostsPage(generic.ListView):
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
 
+
+class CategoryListView(ListView):
+    template_name = 'pages/blog/category.html'
+    context_object_name = 'catlist'
+
+    def get_queryset(self):
+        content = {
+            'cat': self.kwargs['category'],
+            'posts': Post.objects.filter(category__name=self.kwargs
+            ['category']).filter(status='1')
+        }
+        return content
+
+
+def category_list(request):
+    '''
+    counts all the categories within the posts and filters those with a count of 0 out
+    '''
+    category_list = Category.objects.annotate(post_count=Count("post")).filter(post_count__gt=0).order_by('-post_count')
+    context = {
+        'category_list': category_list,
+    }
+    return context
+    
 
 class LikePost(View):
     """ Blog post view page like functionality view """
@@ -115,7 +140,6 @@ class AddPostSuccess(TemplateView):
     template_name = "pages/blog/success_post_submission.html"
 
 
-
 class AddPost(CreateView):
     """ Add a new post page """
     model = Post
@@ -127,7 +151,6 @@ class AddPost(CreateView):
         context = super().get_context_data(**kwargs)
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
-
 
 
 class UpdatePost(UpdateView):

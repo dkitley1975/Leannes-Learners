@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Leannes Learners - Blog{% endblock %}
+{% block title %}Leannes Learners - Category List{% endblock %}
 {% block content %}
 
 <section>
@@ -8,7 +8,7 @@
 
 			<!-- Blog Entries Column -->
 			<div class="col-12 mt-3 left">
-				<h1 class="section-header">Blog</h1>
+				<h1 class="section-header">Blog Category - {{catlist.cat}}</h1>
 				<p class="mt-3">Get into the fast lane with our tips for choosing the right driving instructor, making
 					the most of your lessons & becoming a safer driver</p>
 				{% if user.is_authenticated %}
@@ -21,7 +21,7 @@
 				{% include "components/blog/post-cat-nav.html" %}
 				<!-- Blog Post card -->
 				<div class="row">
-					{% for post in post_list %}
+					{% for post in catlist.posts %}
 					<div class="col-md-4">
 						<div class="card mb-4">
 							{% include "components/blog/blog-post-card.html" %}

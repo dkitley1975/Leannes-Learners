@@ -11,6 +11,17 @@ from django_summernote.widgets import SummernoteWidget
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
 
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        ordering = ["name"]
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+
+    def __str__(self):
+        return self.name
+
 
 # code for Blog and COMMENT adapted
 # from a previous walkthrough - Code Institues " I blog therefore I am"
@@ -20,6 +31,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="post_posts"
     )
+
     featured_image = CloudinaryField(
         folder='leannes_learners/blog_images/',
         transformation={'width': '400', 'height': '300', 'crop': 'fill',
@@ -29,6 +41,7 @@ class Post(models.Model):
     excerpt = models.TextField(blank=False, verbose_name = 'Eye Catching Excerpt - make someone want to read the article')
 
     updated_at = models.DateTimeField(auto_now=True)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
     content =  models.TextField(verbose_name = 'Post Content', blank=False,)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -46,8 +59,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
-        verbose_name = "Blog Post"
-        verbose_name_plural = "Blog Posts"
+        verbose_name = "Post"
+        verbose_name_plural = "Posts"
 
     def __str__(self):
         return self.title
@@ -77,8 +90,8 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ["created_at"]
-        verbose_name = "Blog Post Comment"
-        verbose_name_plural = "Blog Post Comments"
+        verbose_name = "Comment"
+        verbose_name_plural = "Comments"
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"

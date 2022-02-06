@@ -246,6 +246,10 @@ img {
     text-align: center;
 }
 
+.cat-nav {
+    color: var(--clr-brand-primary);
+}
+
 .content-overlay {
     background-color: rgba(255, 255, 255, 0.8);
     text-align: left;
@@ -259,6 +263,18 @@ img {
 .dropdown-item.active {
     background-color: var(--clr-brand-primary);
     text-decoration: none;
+}
+
+.nav-item.dropdown.cat-nav>ul>li>a {
+    color: var(--clr-brand-primary);
+}
+
+.nav-item.dropdown.cat-nav>ul>li>a:hover {
+    color: white;
+}
+
+.nav-item.dropdown.cat-nav>ul>li:hover {
+    background-color: var(--clr-brand-tertiary);
 }
 
 .dropdown-menu-end {
