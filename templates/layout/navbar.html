@@ -126,7 +126,7 @@
 						Login</a>
 					</a>
 					<ul class="dropdown-menu p-3 dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
-						<form class="form-group" method="POST" action='{% url "login" %}'>
+						<form class="form-group" method="POST" action='{% url "login" %}?next={{request.path}}'>
 							{% csrf_token %}
 							<p>Please enter your username and password.</p>
 							<div>
