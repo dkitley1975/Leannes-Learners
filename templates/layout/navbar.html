@@ -41,21 +41,25 @@
 						href="{% url 'contact-us' %}">Contact
 						Us</a>
 				</li>
-				{% if request.user|has_group:"Pupil" %}
+				{% if user.is_authenticated %}
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 						data-bs-toggle="dropdown" aria-expanded="false">
-						{{ user.get_username }}'s Area
+						Member's Area
 					</a>
 					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark"
 						aria-labelledby="navbarDropdown">
-						<li><a class="dropdown-item" href="#">Schedule a Lesson</a></li>
-						<li><a class="dropdown-item" href="#">Lesson Diary</a></li>
+						<li><a class="dropdown-item {% if url_name == 'edit_profile' %}active{% endif %}"
+								href="{% url 'edit_profile' %}">Edit Profile</a></li>
+						{% if request.user|has_group:"Pupil" %}
 						<li>
 							<hr class="dropdown-divider">
 						</li>
+						<li><a class="dropdown-item" href="#">Schedule a Lesson</a></li>
+						<li><a class="dropdown-item" href="#">Lesson Diary</a></li>
 						<li><a class="dropdown-item {% if url_name == 'terms-and-conditions' %}active{% endif %}"
 								href="{% url 'terms-and-conditions' %}">Terms and Conditions</a></li>
+						{% endif %}
 					</ul>
 				</li>
 				{% endif %}
@@ -99,7 +103,14 @@
 									id="id_username" placeholder="Username">
 								<p class="registration-helptext">Required. 150 characters or fewer. Letters, digits and
 									@/./+/-/_ only.</p>
-
+								<div>
+									<input type="text" class="form-control" name="first_name" id="id_first_name"
+										placeholder="First Name">
+								</div>
+								<div>
+									<input type="text" class="form-control" name="last_name" id="id_last_name"
+										placeholder="Last Name">
+								</div>
 								<input type="password" class="form-control" name="password1" autocomplete="new-password"
 									required="" id="id_password1" placeholder="Password">
 								<ul class="registration-helptext">
