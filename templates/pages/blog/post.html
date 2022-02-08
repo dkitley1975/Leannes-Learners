@@ -6,11 +6,9 @@
 	<div class="container col-md-12 ms-auto">
 		<div class="row align-items-end">
 			<div class="col-md-7 p-3 ">
-				<!-- Blog title goes in these h1 tags -->
 				<h1 class="blog-post-title">{{ post.title }}</h1>
 				<hr class="blog-post-h-rule">
-				<!-- Blog author goes before the | the blog's created date goes after -->
-				<p class="blog-post-subtitle">Post Category {{ catagory.catagory}} <br>
+				<p class="blog-post-subtitle">Post Category - {{ post.category }} <br>
 					{{ post.author }} | {{ post.created_at }}
 					{% if user.is_staff %}
 					<a href="{% url 'update_post' post.slug %}"> | edit post</a>
@@ -37,42 +35,20 @@
 <div class="container col-md-8 ms-auto">
 	<div class="row">
 		<!-- Blog Nav filter -->
-			{% include "components/blog/post-cat-nav.html" %}
+		{% include "components/blog/post-cat-nav.html" %}
 		<div class="col card mb-4  mt-3 left top">
-			
+
 			<div class="card-body">
 
 				<p class="card-text">
 					{{ post.content | safe }}
 				</p>
 				<div class="row">
-
-					<div class="col-1">
-						<strong>
-							{% if user.is_authenticated %}
-							<form class="d-inline" action="{% url 'like' post.slug %}" method="POST">
-								{% csrf_token %}
-								{% if liked %}
-								<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
-										class="fas fa-heart"></i>
-								</button>
-								<span class="text-secondary">
-								</span>
-								{% else %}
-								<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
-										class="far fa-heart"></i>
-								</button>
-								{% endif %}
-							</form>
-							{% else %}
-							<span class="text-secondary"><i class="far fa-heart"></i></span>
-							{% endif %}
-							<span class="text-secondary text-center">
-								{{ post.number_of_likes }}
-							</span>
-						</strong>
-					</div>
-					{% include "components/blog/comments-count.html" %}
+					<hr class="feature-rule mt-3">
+					{% include "components/blog/likes-comments-count.html" %}
+				</div>
+				<div class="row">
+					{% include "components/blog/post-author-bio.html" %}
 				</div>
 			</div>
 		</div>

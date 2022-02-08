@@ -31,13 +31,12 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="post_posts"
     )
-
     featured_image = CloudinaryField(
         folder='leannes_learners/blog_images/',
         transformation={'width': '400', 'height': '300', 'crop': 'fill',
                         'gravity': 'face', 'zoom': '0.5'},
-        default='placeholder')
-    alt_tag = models.CharField(max_length=200, blank=False, verbose_name = 'Describe the image for the blind')
+        default='image/upload/leannes_learners/default_image/placeholder')
+    alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
     excerpt = models.TextField(blank=False, verbose_name = 'Eye Catching Excerpt - make someone want to read the article')
 
     updated_at = models.DateTimeField(auto_now=True)
@@ -76,8 +75,6 @@ class Post(models.Model):
             return ('blog/{}'.format(self.slug))
         else:
             return ('add_new_post_success')
-        
-
 
 
 class Comment(models.Model):
@@ -96,3 +93,29 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment {self.comment} by {self.name}"
 
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE,)  
+    user_bio =  models.TextField(verbose_name = 'Biography', blank=False,)
+    user_profile_image = CloudinaryField(
+        folder='leannes_learners/user_profile_images/',
+        transformation={'width': '300', 'height': '400', 'crop': 'fill',
+                        'gravity': 'face', 'zoom': '0.5'},
+        default='image/upload/leannes_learners/default_image/bio_placeholder',
+        unique_filename = True)
+    user_facebook_url =  models.CharField(max_length=200, null=True, blank=True, verbose_name = 'Facebook Link')
+    user_twitter_url =  models.CharField(max_length=200, null=True, blank=True, verbose_name = 'Twitter Link')
+    user_linkedin_url =  models.CharField(max_length=200, null=True, blank=True, verbose_name = 'Linked-in Link')
+    user_website_url =  models.CharField(max_length=200, null=True, blank=True, verbose_name = 'Website Link')
+
+    def image_thumb(self):
+        """
+        This creates a thumbnail image of the current uploaded image
+        """
+        return mark_safe('<img src="{}" width="50" height="auto">'.format(
+            self.user_profile_image.url))
+    image_thumb.short_discription = "image"
+    user_profile_image.allow_tags = True
+
+    def __str__(self):
+        return str(self.user)
