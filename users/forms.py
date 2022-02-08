@@ -44,5 +44,6 @@ class UpdateProfileForm(UserChangeForm):
 			'last_name',
 			'email',
 			)
+		exclude = ('id_password',)
 		
 		
