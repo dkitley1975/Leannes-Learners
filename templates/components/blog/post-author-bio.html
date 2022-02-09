@@ -2,42 +2,49 @@
 	<div class="card mb-12 blog-post-author-info my-3 img-radius-10">
 		<div class="row justify-content-about g-0">
 			<div class="col-xs-12 col-sm-12 col-md-2 justify-content-center">
-				{% if "placeholder" in user.userprofile.user_profile_image.url %}
+				{% if post.author.userprofile %}
+				{% if "placeholder" in post.author.userprofile.user_profile_image.url %}
 				<img class="card-img-top blog-post-profile-image"
 					src="https://res.cloudinary.com/dkitley1975/image/upload/v1644300446/leannes_learners/default_image/bio_placeholder.png"
 					alt="missing image placeholder image">
 				{% else %}
-				<img class="card-img-top blog-post-profile-image" src=" {{ user.userprofile.user_profile_image.url }}"
-					alt="The authors profile image">
+				<img class="card-img-top blog-post-profile-image"
+					src=" {{ post.author.userprofile.user_profile_image.url }}" alt="The authors profile image">
+				{% endif %}
+				{% else %}
+				<img class="card-img-top blog-post-profile-image"
+					src="https://res.cloudinary.com/dkitley1975/image/upload/v1644300446/leannes_learners/default_image/bio_placeholder.png"
+					alt="missing image placeholder image">
 				{% endif %}
 			</div>
 			<div class="col-md-10">
 				<div class="card-body">
 					<h1 class="card-title blog-post-author-title">About the Author</h1>
-					<h2 class="card-title blog-post-author-subtitle fw-bold">{{ user.first_name }} {{ user.last_name }}
+					<h2 class="card-title blog-post-author-subtitle fw-bold">
+						{{ post.author.first_name }} {{ post.author.last_name }}
 					</h2>
 					<p class="small text-muted blog-post-author-links" target="_blank" rel="noopener noreferrer">
-						{% if user.userprofile.user_website_url != 'Null' %}
-						<a href="{{user.userprofile.user_website_url}}" target="_blank" rel="noopener noreferrer">
+						{% if post.author.userprofile.user_website_url %}
+						<a href="{{post.author.user_website_url}}" target="_blank" rel="noopener noreferrer">
 							<i class="fas fa-globe" aria-hidden="true"></i>&nbsp</a>
 						{% endif %}
 
-						{% if user.userprofile.user_linkedin_url != 'Null' %}
-						<a href="{{user.userprofile.user_linkedin_url}}" target="_blank" rel="noopener noreferrer">
+						{% if post.author.userprofile.user_linkedin_url %}
+						<a href="{{post.author.user_linkedin_url}}" target="_blank" rel="noopener noreferrer">
 							<i class="fab fa-linkedin" aria-hidden="true"></i>&nbsp</a>
 						{% endif %}
 
-						{% if user.userprofile.user_facebook_url != 'Null' %}
-						<a href="{{user.userprofile.user_facebook_url}}" target="_blank" rel="noopener noreferrer">
+						{% if post.author.profile.user_facebook_url %}
+						<a href="{{post.author.user_facebook_url}}" target="_blank" rel="noopener noreferrer">
 							<i class="fab fa-facebook"></i>&nbsp</a>
 						{% endif %}
 
-						{% if user.userprofile.user_twitter_url != 'Null' %}
-						<a href="{{user.userprofile.user_twitter_url}}" target="_blank" rel="noopener noreferrer">
+						{% if post.author.userprofile.user_twitter_url %}
+						<a href="{{post.author.user_twitter_url}}" target="_blank" rel="noopener noreferrer">
 							<i class="fab fa-twitter"></i>&nbsp</a>
 						{% endif %}
 					</p>
-					<p class="card-text">{{user.userprofile.user_bio}}.</p>
+					<p class="card-text">{{post.author.userprofile.user_bio}}</p>
 				</div>
 			</div>
 		</div>
