@@ -2,14 +2,18 @@
 {% block title %}Leannes Learners - Edit Profile{% endblock %}
 {% block content %}
 <!-- edit Profile Content -->
-<div class="authentication-background-image-container">
-	<div class="container mt-5 p-3 col-md-6 offset-md-3 authentication-input-container">
-		<h1 class="section-header">Edit Profile</h1>
-		<div class="row">
-			<div class="col-md-10 mt-3 offset-md-1">
-				<div class="row">
-					<div class="col-md-10 mt-3 offset-md-1">
-						<div class="form-group">
+<div>
+	<div class="container mt-5 p-3 col-md-6 offset-md-3">
+		<article>
+			<div class="card mb-12 blog-post-author-info my-3 img-radius-10">
+				<h1 class="section-header">Edit User Details</h1>
+				<div class="row justify-content-about g-0">
+					<div class="col-md-8 offset-md-2">
+						<div class="card-body">
+							<h1 class="card-title blog-post-author-title">Account Settings</h1>
+							<h2 class="card-title blog-post-author-subtitle fw-bold">
+								{{ user.first_name }} {{ user.last_name }}
+							</h2>
 							<form method="POST">
 								{% csrf_token %}
 								<p><label for="id_username">Username:</label>
@@ -24,19 +28,16 @@
 								<p><span class="helptext">To change your password please use <a href="../password/">this
 											form</a>.</span>
 								</p>
-								<p><label for="id_user.userprofile.user_bio">Biography:</label>
-									{{ user.userprofile.user_bio }}
-								</p>
+								<button type="submit" class="btn btn-primary mb-5">Update Details</button>
 
-
-
-								<button type="submit" class="btn btn-primary ">Update Profile</button>
 							</form>
 						</div>
 					</div>
 				</div>
+
 			</div>
-		</div>
+		</article>
 	</div>
 </div>
+
 {%endblock%}

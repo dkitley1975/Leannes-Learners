@@ -49,10 +49,16 @@
 					</a>
 					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark"
 						aria-labelledby="navbarDropdown">
-						<li><a class="dropdown-item {% if url_name == 'edit_profile' %}active{% endif %}"
-								href="{% url 'edit_profile' %}">Edit Profile</a></li>
-						{% if request.user|has_group:"Pupil" %}
+						<li><a class="dropdown-item {% if url_name == 'edit-user-details' %}active{% endif %}"
+								href="{% url 'edit-user-details' %}">Edit Details</a></li>
+
 						<li>
+						<li><a class="dropdown-item {% if url_name == 'edit-profile' %}active{% endif %}"
+								href="{% url 'edit-profile' user.userprofile.id %}">Edit
+								Profile</a></li>
+						<li>
+
+							{% if request.user|has_group:"Pupil" %}
 							<hr class="dropdown-divider">
 						</li>
 						<li><a class="dropdown-item" href="#">Schedule a Lesson</a></li>

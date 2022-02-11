@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Leannes Learners - Edit Profile{% endblock %}
+{% block content %}
+
+<!-- edit Profile Content -->
+<div>
+	<div class="container mt-5 p-3 col-md-10 offset-md-1">
+
+		<article>
+			<div class="card mb-12 blog-post-author-info my-3 img-radius-10">
+				<h1 class="section-header">Edit User Profile</h1>
+
+				<div class="row justify-content-about g-0">
+					<div class="col-xs-12 col-sm-12 col-md-2 justify-content-center">
+
+						{% if "bio_placeholder" in user.userprofile.user_profile_image.url %}
+						<img class="card-img-top blog-post-profile-image"
+							src="https://res.cloudinary.com/dkitley1975/image/upload/v1644300446/leannes_learners/default_image/bio_placeholder.png"
+							alt="missing image placeholder image">
+						{% else %}
+						<img class="card-img-top blog-post-profile-image"
+							src=" {{ user.userprofile.user_profile_image.url }}" alt="The authors profile image">
+						{% endif %}
+
+
+					</div>
+					<div class="col-md-10">
+						<div class="card-body">
+							<h1 class="card-title blog-post-author-title">User Profile</h1>
+							<h2 class="card-title blog-post-author-subtitle fw-bold">
+
+								{{ user.first_name }} {{ user.last_name }}
+							</h2>
+							<form method="POST" enctype='multipart/form-data'>
+								{% csrf_token %}
+								<h3>Social Links</h3>
+								{{ form.as_p }}
+								<button type="submit" class="btn btn-primary mb-5">Update Profile</button>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</article>
+
+	</div>
+</div>
+{%endblock%}

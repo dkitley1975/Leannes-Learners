@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Post, Comment, Category, UserProfile
+from .models import Post, Comment, Category
 from django_summernote.admin import SummernoteModelAdmin
-from django.utils.html import strip_tags
+
 
 
 # Register your models here.
@@ -77,37 +77,4 @@ class CommentAdmin(admin.ModelAdmin):
 
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
-
-
-
-@admin.register(UserProfile)
-class UserProfileAdmin(admin.ModelAdmin):
-    """
-    Establish the view in admin for the User Profile.
-    Which fields to include in the:
-    list/search views, how they are filtered,
-    which are prepopulated.
-    """
-    fields = [
-        'user',
-        'user_bio',
-        'user_profile_image',
-        'user_facebook_url',
-        'user_twitter_url',
-        'user_linkedin_url',
-        'user_website_url',
-    ]
-    
-    list_display = (
-        'image_thumb',
-        'user',
-        'user_bio',
-        )
-
-    search_fields = ['user', 'user_bio',]
-    readonly_fields = ['image_thumb',]
-
-
-    def publish_Post(self, request, queryset):
-        queryset.update(status=True)
 
