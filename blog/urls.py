@@ -10,15 +10,15 @@ admin.autodiscover()
 
 urlpatterns = [
     path('accounts/', include('allauth.urls')),
-    path('blog', views.BlogPostsPage.as_view(), name='blog'),    
-    path('add_new_post', staff_member_required(login_url='login')(views.AddPost.as_view()), name='add_new_post'),
-    path('<slug:slug>', staff_member_required(login_url='login')(views.UpdatePost.as_view()), name='update_post'),
-    path('<slug:slug>/remove', staff_member_required(login_url='login')(views.DeletePost.as_view()), name='delete_post'),
-    path('category/<category>', views.CategoryListView.as_view(), name='category'),
+    path('posts', views.BlogPostsPage.as_view(), name='blog'),    
+    path('create-new-post', staff_member_required(login_url='login')(views.CreatePost.as_view()), name='create-new-post'),
+    path('edit/<slug:slug>', staff_member_required(login_url='login')(views.UpdatePost.as_view()), name='update-post'),
+    path('<slug:slug>/remove', staff_member_required(login_url='login')(views.DeletePost.as_view()), name='delete-post'),
+    path('categories/<category>', views.CategoryListView.as_view(), name='category'),
 
-    path('add_new_post_success', views.AddPostSuccess.as_view(), name='add_new_post_success'),
+    path('new-post-successfully_added', views.CreatePostSuccessfull.as_view(), name='add_new_post_success'),
     path('like/<slug:slug>', views.LikePost.as_view(), name='like'),
-    path('blog/<slug:slug>', views.BlogPost.as_view(), name='blog-post'),
+    path('post/<slug:slug>', views.BlogPost.as_view(), name='blog-post'),
 
     # path('URL', views.VIEWS-FORM-CLASS-NAME.as_view(), name='PAGE-NAME'),
     ]

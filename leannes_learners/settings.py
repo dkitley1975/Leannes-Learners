@@ -37,14 +37,14 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in deployment!
-DEBUG = False
+DEBUG = True
 
 # TODO before Deployment remove the if else statement in the database section and this RUNLOCAL variable,
 # this is when only used for running the unittests
 RUNLOCAL = False
 
 # SECURITY WARNING: activate the below for deployment!
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+# X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 ALLOWED_HOSTS = [ '127.0.0.1', 'localhost', 'leannes-learners.herokuapp.com' ]

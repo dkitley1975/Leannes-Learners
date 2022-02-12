@@ -11,7 +11,7 @@ class CommentForm(forms.ModelForm):
 		fields = ('comment',)
 
 
-class AddPostForm(forms.ModelForm):
+class CreateNewPostForm(forms.ModelForm):
 	class Meta:
 		model = Post
 		fields = ( 

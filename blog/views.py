@@ -14,7 +14,7 @@ from django.views.generic import CreateView, DeleteView, FormView, ListView, Tem
 from blog.models import Category, Post
 from leannes_learners.settings import LOGIN_URL
 from leannes_learners_data.models import CompanyDetails
-from .forms import CommentForm, AddPostForm
+from .forms import CommentForm, CreateNewPostForm
 from django.db.models import Count
 
 
@@ -137,16 +137,16 @@ class LikePost(View):
         return HttpResponseRedirect(reverse('blog-post', args=[slug]))
 
 
-class AddPostSuccess(TemplateView):
+class CreatePostSuccessfull(TemplateView):
     """ If the contact form was valid this page is returned to view """
-    template_name = "pages/blog/success_post_submission.html"
+    template_name = "pages/blog/success-post-submission.html"
 
 
-class AddPost(CreateView):
+class CreatePost(CreateView):
     """ Add a new post page """
     model = Post
-    template_name = "pages/blog/new_blog_post_entry.html"
-    form_class = AddPostForm
+    template_name = "pages/blog/create-new-post.html"
+    form_class = CreateNewPostForm
 
     def get_context_data(self, **kwargs):
         """ Gets the Company Contact info """
@@ -156,10 +156,10 @@ class AddPost(CreateView):
 
 
 class UpdatePost(UpdateView):
-    """ Add a new post page """
+    """ update post page """
     model = Post
-    template_name = "pages/blog/edit_blog_post_entry.html"
-    form_class = AddPostForm
+    template_name = "pages/blog/edit-blog-post-entry.html"
+    form_class = CreateNewPostForm
 
     def get_context_data(self, **kwargs):
         """ Gets the Company Contact info """
@@ -171,7 +171,7 @@ class UpdatePost(UpdateView):
 class DeletePost(DeleteView):
     """ Add a new post page """
     model = Post
-    template_name = "pages/blog/delete_blog_post_entry.html"
+    template_name = "pages/blog/delete-blog-post-entry.html"
     success_url = reverse_lazy('blog')
 
     def get_context_data(self, **kwargs):
