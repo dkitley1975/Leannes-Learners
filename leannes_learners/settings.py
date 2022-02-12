@@ -37,7 +37,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in deployment!
-DEBUG = True
+DEBUG = False
 
 # TODO before Deployment remove the if else statement in the database section and this RUNLOCAL variable,
 # this is when only used for running the unittests
