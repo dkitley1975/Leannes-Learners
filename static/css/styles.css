@@ -95,7 +95,31 @@ img {
     background-repeat: no-repeat;
 }
 
+.blog-post-author-info {
+    padding: 12px
+}
 
+.blog-post-author-links>a {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--clr-link-dark)
+}
+
+.blog-post-author-links>a:hover {
+    color: var(--clr-brand-primary)
+}
+
+.blog-post-author-title {
+    color: var(--clr-brand-primary);
+    font-size: 1.5rem;
+    text-decoration: underline .3px solid var(--clr-brand-primary-70);
+    text-underline-offset: 3px;
+}
+
+.blog-post-author-subtitle {
+    color: var(--clr-brand-primary-70);
+    font-size: 1rem;
+}
 
 .blog-post-header {
     background-color: var(--clr-brand-primary);
@@ -132,6 +156,13 @@ img {
     color: var(--clr-brand-primary);
 }
 
+.blog-post-profile-image {
+    max-width: 90%;
+    height: auto;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-left: 5%;
+}
 
 .blog-post-subtitle {
     margin-left: 5%;

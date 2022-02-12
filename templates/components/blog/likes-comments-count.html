@@ -1,0 +1,39 @@
+<div class="col-12 row m-1">
+
+	<p>
+		{% if user.is_authenticated %}
+	<form class="text-end" action="{% url 'like' post.slug %}" method="POST">
+		{% csrf_token %}
+		{% if liked %}
+		<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
+			<i class="fas fa-heart"></i>
+		</button>
+		{% else %}
+		<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
+			<i class="far fa-heart">
+
+			</i>
+		</button>
+		{% endif %}
+		<span class="text-secondary">
+			{{ post.number_of_likes }}
+			{% else %}
+			<span class="text-secondary">
+				<i class="far fa-heart"></i>
+				<span class="text-secondary text-center">
+					{{ post.number_of_likes }}
+				</span>
+			</span>
+			{% endif %}
+
+			{% with comments.count as total_comments %}
+
+			<i class="far fa-comments ms-3"></i>
+			{{ total_comments }}
+
+			{% endwith %}
+
+
+			</p>
+	</form>
+</div>

@@ -31,13 +31,12 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="post_posts"
     )
-
     featured_image = CloudinaryField(
         folder='leannes_learners/blog_images/',
         transformation={'width': '400', 'height': '300', 'crop': 'fill',
                         'gravity': 'face', 'zoom': '0.5'},
-        default='placeholder')
-    alt_tag = models.CharField(max_length=200, blank=False, verbose_name = 'Describe the image for the blind')
+        default='image/upload/leannes_learners/default_image/placeholder')
+    alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
     excerpt = models.TextField(blank=False, verbose_name = 'Eye Catching Excerpt - make someone want to read the article')
 
     updated_at = models.DateTimeField(auto_now=True)
@@ -76,8 +75,6 @@ class Post(models.Model):
             return ('blog/{}'.format(self.slug))
         else:
             return ('add_new_post_success')
-        
-
 
 
 class Comment(models.Model):

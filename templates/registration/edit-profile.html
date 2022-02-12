@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Leannes Learners - Edit Profile{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!-- edit Profile Content -->
+<article class="mt-2 p-5 col-md-8 offset-md-2">
+	<h1 class="section-header">Edit your site profile</h1>
+	{% if user.id == userprofile.user.id %}
+	<form method="POST" enctype='multipart/form-data'>
+		{% csrf_token %}
+		<div class="card mb-12 blog-post-author-info my-3 img-radius-10">
+			<div class="row justify-content-about g-0">
+				<div class="col-xs-12 col-sm-12 col-md-2 justify-content-center">
+					{% if "bio_placeholder" in userprofile.user_profile_image.url %}
+					<img class="card-img-top blog-post-profile-image"
+						src="https://res.cloudinary.com/dkitley1975/image/upload/v1644300446/leannes_learners/default_image/bio_placeholder.png"
+						alt="missing image placeholder image">
+					{% else %}
+					<img class="card-img-top blog-post-profile-image" src=" {{ userprofile.user_profile_image.url }}"
+						alt="A picture of {{ user.first_name }} {{ user.last_name }}">
+					{% endif %}
+				</div>
+				<div class="col-md-10">
+					<div class="card-body">
+						<h2 class="card-title blog-post-author-title">Your site Profile</h2>
+						<h2 class="card-title blog-post-author-subtitle fw-bold">
+							{{ userprofile.user.first_name }} {{ userprofile.user.last_name }}
+						</h2>
+						<p class="small text-muted blog-post-author-links" target="_blank" rel="noopener noreferrer">
+							{% if userprofile.user_website_url %}
+							<a href="{{userprofile.user_website_url}}" target="_blank" rel="noopener noreferrer">
+								<i class="fas fa-globe" aria-hidden="true"></i>&nbsp</a>
+							{% endif %}
+							{% if userprofile.user_linkedin_url %}
+							<a href="{{userprofile.user_linkedin_url}}" target="_blank" rel="noopener noreferrer">
+								<i class="fab fa-linkedin" aria-hidden="true"></i>&nbsp</a>
+							{% endif %}
+
+							{% if userprofile.user_facebook_url %}
+							<a href="{{userprofile.user_facebook_url}}" target="_blank" rel="noopener noreferrer">
+								<i class="fab fa-facebook"></i>&nbsp</a>
+							{% endif %}
+
+							{% if userprofile.user_twitter_url %}
+							<a href="{{userprofile.user_twitter_url}}" target="_blank" rel="noopener noreferrer">
+								<i class="fab fa-twitter"></i>&nbsp</a>
+							{% endif %}
+						</p>
+						<p class="card-text">Update your biography</p>
+						{{ form.user_bio}}
+					</div>
+				</div>
+			</div>
+			<div class="row md-12 p-3 justify-content-around">
+				<h3 class="card-title blog-post-author-title">Update your profile avatar</h3>
+				<div class="col-md-12 mt-3">
+					<input type="file" name="user_profile_image" class="clearablefileinput form-control-file"
+						id="id_user_profile_image">
+					<br><br>
+				</div>
+				<h3 class="card-title blog-post-author-title pt-5">Update your social media profile links</h3>
+				<div class="col-12 col-lg-6">
+					<i class="fas fa-globe"></i>&nbspYour Website URL
+					{{ form.user_website_url}}
+				</div>
+				<div class="col-12 col-lg-6">
+					<i class="fab fa-linkedin"></i>&nbspYour LinkedIn Profile URL
+					{{ form.user_linkedin_url}}
+				</div>
+				<div class="col-12 col-lg-6">
+					<i class="fab fa-facebook"></i>&nbspYour Facebook Profile URL
+					{{ form.user_facebook_url}}
+				</div>
+				<div class="col-12 col-lg-6">
+					<i class="fab fa-twitter"></i>&nbspYour Twitter Profile URL
+					{{ form.user_twitter_url}}
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-primary mb-5">Update Profile</button>
+	</form>
+	{% else %}
+
+	<div class="card mb-12 blog-post-author-info my-3 img-radius-10">
+		<div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+
+			<img class="card-img-top blog-post-profile-image"
+				src="https://res.cloudinary.com/dkitley1975/image/upload/v1644590276/leannes_learners/default_image/dead_end_no_access.png"
+				alt="Dead End Road Sign - No Access">
+		</div>
+	</div>
+	{% endif %}
+
+</article>
+
+{%endblock%}

@@ -3,6 +3,7 @@ from .models import Post, Comment, Category
 from django_summernote.admin import SummernoteModelAdmin
 
 
+
 # Register your models here.
 
 @admin.register(Category)
@@ -76,3 +77,4 @@ class CommentAdmin(admin.ModelAdmin):
 
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
+

@@ -82,6 +82,8 @@ class BlogPost(View):
                 "liked": liked
             },
         )
+        return HttpResponseRedirect(request.path)
+        
 
 
 class BlogPostsPage(generic.ListView):
