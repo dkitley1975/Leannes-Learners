@@ -11,8 +11,8 @@
 				<p class="blog-post-subtitle">Post Category - {{ post.category }} <br>
 					{{ post.author }} | {{ post.created_at }}
 					{% if user.is_staff %}
-					<a href="{% url 'update_post' post.slug %}"> | edit post</a>
-					<a href="{% url 'delete_post' post.slug %}"> | delete post</a>
+					<a href="{% url 'update-post' post.slug %}"> <i class="far fa-edit"></i></a>
+					<a href="{% url 'delete-post' post.slug %}"> <i class="fas fa-trash"></i></a>
 					{% endif %}
 				</p>
 

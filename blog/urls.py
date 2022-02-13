@@ -19,6 +19,8 @@ urlpatterns = [
     path('new-post-successfully_added', views.CreatePostSuccessfull.as_view(), name='add_new_post_success'),
     path('like/<slug:slug>', views.LikePost.as_view(), name='like'),
     path('post/<slug:slug>', views.BlogPost.as_view(), name='blog-post'),
+    # path('post/<int:post_pk>/comment/<int:pk>/', views.DeleteComment.as_view(), name='delete-comment'),
+    path('post/<slug:slug>/comment/<int:pk>/', views.DeleteComment.as_view(), name='delete-comment'),
 
     # path('URL', views.VIEWS-FORM-CLASS-NAME.as_view(), name='PAGE-NAME'),
     ]

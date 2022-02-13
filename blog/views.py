@@ -11,7 +11,7 @@ from django.utils.decorators import method_decorator
 from django.views import generic, View
 from django.views.generic import CreateView, DeleteView, FormView, ListView, TemplateView, UpdateView
 
-from blog.models import Category, Post
+from blog.models import Category, Post, Comment
 from leannes_learners.settings import LOGIN_URL
 from leannes_learners_data.models import CompanyDetails
 from .forms import CommentForm, CreateNewPostForm
@@ -30,7 +30,7 @@ class BlogPost(View):
         """ Return render view for blog post detail """
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.filter(approved=True).order_by("-created_at")
+        comments = post.comments.order_by("-created_at")
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -56,18 +56,20 @@ class BlogPost(View):
     def post(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.filter(approved=True).order_by("-created_at")
+        comments = post.comments.order_by("-created_at")
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
 
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-            comment_form.instance.email = request.user.email
-            comment_form.instance.name = request.user.username
+            comment_form.instance.email = request.user
+            comment_form.instance.name = request.user
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
+            comment_form = CommentForm()
+            
         else:
             comment_form = CommentForm()
 
@@ -79,7 +81,7 @@ class BlogPost(View):
                 "comments": comments,
                 "commented": True,
                 "comment_form": comment_form,
-                "liked": liked
+                "liked": liked,
             },
         )
         return HttpResponseRedirect(request.path)
@@ -179,3 +181,12 @@ class DeletePost(DeleteView):
         context = super().get_context_data(**kwargs)
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
+
+class DeleteComment(DeleteView):
+    """ delete a comment """
+    model = Comment
+    template_name = "pages/blog/delete-blog-comment.html"
+    
+    def get_success_url(self):
+        slug = self.kwargs['slug']
+        return reverse_lazy('blog-post', args=[slug])

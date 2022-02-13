@@ -7,6 +7,9 @@
 			{{ comment.name }}
 			<span class=" text-muted font-weight-normal">
 				{{ comment.created_at }}
+				{% if user.is_staff %}
+				<a href="{% url 'delete-comment' post.slug comment.pk %}"> <i class="fas fa-trash"></i></a>
+				{% endif %}
 			</span> wrote:
 		</p>
 		{{ comment.comment | linebreaks }}
