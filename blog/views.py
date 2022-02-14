@@ -69,12 +69,11 @@ class BlogPost(View):
             comment.post = post
             comment.save()
             comment_form = CommentForm()
-            
+            return HttpResponseRedirect(request.path)
         else:
             comment_form = CommentForm()
 
-        return render(
-            request,
+        return render(request,
             "pages/blog/post.html",
             {
                 "post": post,
@@ -84,7 +83,7 @@ class BlogPost(View):
                 "liked": liked,
             },
         )
-        return HttpResponseRedirect(request.path)
+        
         
 
 

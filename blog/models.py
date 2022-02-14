@@ -72,7 +72,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         if self.status == 1:
-            return ('blog/{}'.format(self.slug))
+            return ('post/{}'.format(self.slug))
         else:
             return ('add_new_post_success')
 

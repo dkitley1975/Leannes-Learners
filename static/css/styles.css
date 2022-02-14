@@ -251,7 +251,7 @@ img {
 .btn-warning:hover {
     background: red !important;
     color: white;
-    font-size: 50%;
+    font-size: 90%;
 }
 
 .btn-white-outline {
@@ -279,6 +279,13 @@ img {
 
 .cat-nav {
     color: var(--clr-brand-primary);
+}
+
+.comment-rule {
+    width: 80%;
+    border: .5px solid var(--clr-brand-primary-70);
+    margin-left: 10% !important;
+    margin-right: 10% !important;
 }
 
 .content-overlay {
@@ -521,8 +528,12 @@ img {
 
 .warning-advice-text {
     color: var(--clr-warning-advice-text);
-    animation: heart-beat 1s linear infinite;
-    -webkit-animation: heart-beat 1s linear infinite;
+    animation: heart-beat 2s linear infinite;
+    -webkit-animation: heart-beat 2s linear infinite;
+}
+
+.icon-color-primary {
+    color: var(--clr-brand-primary);
 }
 
 @keyframes heart-beat {
