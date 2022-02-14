@@ -16,7 +16,6 @@ urlpatterns = [
     path('<slug:slug>/remove', staff_member_required(login_url='login')(views.DeletePost.as_view()), name='delete-post'),
     path('categories/<category>', views.CategoryListView.as_view(), name='category'),
 
-    path('blog/new-post-successfully', views.CreatePostSuccessfull.as_view(), name='success-post-submission'),
     path('like/<slug:slug>', views.LikePost.as_view(), name='like'),
     path('post/<slug:slug>', views.BlogPost.as_view(), name='blog-post'),
     # path('post/<int:post_pk>/comment/<int:pk>/', views.DeleteComment.as_view(), name='delete-comment'),

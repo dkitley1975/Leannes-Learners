@@ -43,7 +43,6 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
     content =  models.TextField(verbose_name = 'Post Content', blank=False,)
     created_at = models.DateTimeField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='blogPost_like', blank=True)
 
@@ -71,10 +70,7 @@ class Post(models.Model):
         return self.likes.count()
 
     def get_absolute_url(self):
-        if self.status == 1:
             return ('post/{}'.format(self.slug))
-        else:
-            return ('add_new_post_success')
 
 
 class Comment(models.Model):

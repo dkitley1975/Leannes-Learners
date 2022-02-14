@@ -28,7 +28,7 @@ class BlogPost(View):
     """ individual Blog Page view """
     def get(self, request, slug, *args, **kwargs):
         """ Return render view for blog post detail """
-        queryset = Post.objects.filter(status=1)
+        queryset = Post.objects
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.order_by("-created_at")
         liked = False
@@ -54,7 +54,7 @@ class BlogPost(View):
         return context
 
     def post(self, request, slug, *args, **kwargs):
-        queryset = Post.objects.filter(status=1)
+        queryset = Post.objects
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.order_by("-created_at")
         liked = False
@@ -90,7 +90,7 @@ class BlogPost(View):
 class BlogPostsPage(generic.ListView):
     """ Blog Page list view """
     model = Post
-    queryset = Post.objects.filter(status=1).order_by("-created_at")
+    queryset = Post.objects.order_by("-created_at")
     template_name = "pages/blog/blog.html"
     paginate_by = 9
 
@@ -137,10 +137,6 @@ class LikePost(View):
 
         return HttpResponseRedirect(reverse('blog-post', args=[slug]))
 
-
-class CreatePostSuccessfull(TemplateView):
-    """ If the contact form was valid this page is returned to view """
-    template_name = "pages/blog/success-post-submission.html"
 
 
 class CreatePost(CreateView):

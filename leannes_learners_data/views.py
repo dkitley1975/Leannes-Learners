@@ -120,7 +120,7 @@ class Testimonials(generic.ListView):
     def get_context_data(self, **kwargs):
         """ Gets the instructors list and Company Contact info """
         context = super().get_context_data(**kwargs)
-        context['post_list'] = Post.objects.filter(status=1).order_by("-created_at")[0:3]
+        context['post_list'] = Post.objects.order_by("-created_at")[0:3]
         context['carousel_list'] = Carousel.objects.filter(include_in_carousel=1).order_by("slide_identifying_name")
         context['social'] = CompanyDetails.objects.all()[0:1]
 

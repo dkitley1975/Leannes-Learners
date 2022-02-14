@@ -59,48 +59,10 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="card-body mb-4 p-3 mt-3">
-			<h3>Comments:
-				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-					data-bs-target="#leaveACommentModal">
-					<i class="fa fa-comment" aria-hidden="true"> </i> Leave a comment
-				</button>
-			</h3>
-			<!-- Modal -->
-			<div class="modal fade" id="leaveACommentModal" tabindex="-1" aria-labelledby="leaveACommentModalLabel"
-				aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3 class="modal-title" id="leaveACommentModalLabel">Leave a comment:</h3>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							{% load crispy_forms_tags %}
-							<div class="card-body">
-								{% if user.is_authenticated %}
-								<p>Posting as: {{ user.username }}</p>
-								<form method="post" style="margin-top: 1.3em;">
-									{% csrf_token %}
-									{{ comment_form | crispy }}
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-signup">Submit</button>
-									</div>
-								</form>
-								{% else %}
-								<p class="mt-4 mb-2 fw-bolder fst-italic">If you would like leave a comment.</p>
-								<p>Please login to your account or register and join our community </p>
-								{% endif %}
-							</div>
-						</div>
+		<div class="card mb-4 p-3 mt-3">
+			<h2 class="text-center">Comments:</h2>
+			{% include "components/blog/comment-modal.html" %}
 
-					</div>
-				</div>
-			</div>
-			<hr>
 			{% include "components/blog/comments.html" %}
 		</div>
 

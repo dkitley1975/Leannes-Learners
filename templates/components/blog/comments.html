@@ -1,3 +1,4 @@
+<hr class="comment-rule">
 {% for comment in comments %}
 <div class="comments" style="padding: 10px;">
 	<p class="font-weight-bold">
@@ -5,7 +6,8 @@
 		<span class=" text-muted font-weight-normal">
 			{{ comment.created_at }}
 			{% if user.is_staff %}
-			<a href="{% url 'delete-comment' post.slug comment.pk %}"> <i class="fas fa-trash"></i></a>
+			<a href="{% url 'delete-comment' post.slug comment.pk %}"> <i
+					class="fas fa-trash icon-color-primary"></i></a>
 			{% endif %}
 		</span> wrote:
 	</p>
