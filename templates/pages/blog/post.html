@@ -45,7 +45,7 @@
 				</p>
 				<div class="row">
 					<hr class="feature-rule mt-3">
-					{% include "components/blog/likes-comments-count.html" %}
+					{% include "components/blog/post-likes-and-comments-count.html" %}
 				</div>
 				<div class="row">
 					{% include "components/blog/post-author-bio.html" %}
@@ -60,9 +60,7 @@
 	</div>
 	<div class="row">
 		<div class="card mb-4 p-3 mt-3">
-			<h2 class="text-center">Comments:</h2>
 			{% include "components/blog/comment-modal.html" %}
-
 			{% include "components/blog/comments.html" %}
 		</div>
 

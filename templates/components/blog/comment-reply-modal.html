@@ -1,20 +1,15 @@
-<div class="d-flex flex-row justify-content-end"></div>
-<div class="row">
+<!-- Button trigger modal -->
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#commentReplyModal">
+	<i class="far fa-comment-dots"></i></button>
+</button>
 
-	<h2 class="text-left">Comments:
-
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#leaveACommentModal">
-		<i class="far fa-comment-dots" aria-hidden="true"> </i> Leave a comment
-	</button></h2>
-</div>
 <!-- Modal -->
-<div class="modal fade" id="leaveACommentModal" tabindex="-1" aria-labelledby="leaveACommentModalLabel"
+<div class="modal fade" id="commentReplyModal" tabindex="-1" aria-labelledby="commentReplyModalLabel"
 	aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h3 class="modal-title" id="leaveACommentModalLabel">Leave a comment:</h3>
+				<h5 class="modal-title" id="commentReplyModalLabel">Reply to Comment</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
@@ -22,7 +17,7 @@
 				<div class="card-body">
 					{% if user.is_authenticated %}
 					<p>Posting as: {{ user.username }}</p>
-					<form method="post" style="margin-top: 1.3em;">
+					<form method="post" action="{% url 'comment-reply' post.slug comment.pk %}">
 						{% csrf_token %}
 						{{ comment_form | crispy }}
 						<div class="modal-footer">
@@ -36,7 +31,6 @@
 					{% endif %}
 				</div>
 			</div>
-
 		</div>
 	</div>
 </div>

@@ -4,7 +4,6 @@ from django import forms
 from django_summernote.widgets import SummernoteInplaceWidget, SummernoteWidget
 
 
-
 class CommentForm(forms.ModelForm):
 	class Meta:
 		model = Comment
@@ -14,15 +13,15 @@ class CommentForm(forms.ModelForm):
 class CreateNewPostForm(forms.ModelForm):
 	class Meta:
 		model = Post
-		fields = ( 
-			'title', 
+		fields = (
+			'title',
 			'featured_image',
 			'alt_tag',
 			'content',
 			'excerpt',
 			'author',
 			'category',
-			) 
+			)
 
 		widgets = {
 			'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -32,3 +31,5 @@ class CreateNewPostForm(forms.ModelForm):
 			'author': forms.Select(attrs={'class': 'form-control'}),
 			'category': forms.Select(attrs={'class': 'form-control'}),
 			}
+
+

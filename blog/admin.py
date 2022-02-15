@@ -67,6 +67,6 @@ class CommentAdmin(admin.ModelAdmin):
         'created_at',
         )
     list_filter = ('name', 'created_at')
-    search_fields = ('name', 'email', 'comment')
+    search_fields = ('name', 'comment')
 
 

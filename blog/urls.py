@@ -16,10 +16,12 @@ urlpatterns = [
     path('<slug:slug>/remove', staff_member_required(login_url='login')(views.DeletePost.as_view()), name='delete-post'),
     path('categories/<category>', views.CategoryListView.as_view(), name='category'),
 
-    path('like/<slug:slug>', views.LikePost.as_view(), name='like'),
     path('post/<slug:slug>', views.BlogPost.as_view(), name='blog-post'),
-    # path('post/<int:post_pk>/comment/<int:pk>/', views.DeleteComment.as_view(), name='delete-comment'),
-    path('post/<slug:slug>/comment/<int:pk>/', views.DeleteComment.as_view(), name='delete-comment'),
-
+    path('like/<slug:slug>', views.LikePost.as_view(), name='like'),
+    path('post/<slug:slug>/comment/<int:pk>/like', views.LikeComment.as_view(), name='like-comment'),
+    path('post/<slug:slug>/comment/<int:pk>/dislike', views.DislikeComment.as_view(), name='dislike-comment'),
+    path('post/<slug:slug>/comment/<int:pk>/', views.CommentReplyView.as_view(), name='comment-reply'),
+    path('post/<slug:slug>/comment/delete/<int:pk>/', views.DeleteComment.as_view(), name='delete-comment'),
     # path('URL', views.VIEWS-FORM-CLASS-NAME.as_view(), name='PAGE-NAME'),
     ]
+

@@ -1,6 +1,6 @@
 from django.db.models.query import QuerySet
 from django.contrib import messages
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin, AccessMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, UserPassesTestMixin, LoginRequiredMixin, AccessMixin
 from django.contrib.auth import logout
 
 from django.http.response import HttpResponse, HttpResponseRedirect
@@ -60,10 +60,10 @@ class BlogPost(View):
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
+        
 
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-            comment_form.instance.email = request.user
             comment_form.instance.name = request.user
             comment = comment_form.save(commit=False)
             comment.post = post
@@ -102,6 +102,7 @@ class BlogPostsPage(generic.ListView):
 
 
 class CategoryListView(ListView):
+    """ Category list view for the blog posts"""
     template_name = 'pages/blog/category.html'
     context_object_name = 'catlist'
 
@@ -115,9 +116,10 @@ class CategoryListView(ListView):
 
 
 def category_list(request):
-    '''
-    counts all the categories within the posts and filters those with a count of 0 out
-    '''
+    """
+    counts all the categories within the posts and filters
+    those with a count of 0 out
+    """
     category_list = Category.objects.annotate(post_count=Count("post")).filter(post_count__gt=0).order_by('-post_count')
     context = {
         'category_list': category_list,
@@ -177,7 +179,7 @@ class DeletePost(DeleteView):
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
 
-class DeleteComment(DeleteView):
+class DeleteComment(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """ delete a comment """
     model = Comment
     template_name = "pages/blog/delete-blog-comment.html"
@@ -185,3 +187,100 @@ class DeleteComment(DeleteView):
     def get_success_url(self):
         slug = self.kwargs['slug']
         return reverse_lazy('blog-post', args=[slug])
+
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.name
+
+
+
+
+
+
+
+
+
+
+class LikeComment(LoginRequiredMixin, View):
+    """ Comment like functionality """
+
+    def post(self, request, pk, *args, **kwargs):
+        comment = Comment.objects.get(pk=pk)
+        comment_disliked = False
+        for disliked in comment.disliked.all():
+            if disliked == request.user:
+                comment_disliked = True
+                break
+
+        if comment_disliked:
+            comment.disliked.remove(request.user)
+
+        liked = False
+
+        for liked in comment.liked.all():
+            if liked == request.user:
+                liked = True
+                break
+
+        if not liked:
+            comment.liked.add(request.user)
+
+        if liked:
+            comment.liked.remove(request.user)
+
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+
+class DislikeComment(LoginRequiredMixin, View):
+    """
+    comment dislike functionality
+    """
+
+    def post(self, request, pk, *args, **kwargs):
+        comment = Comment.objects.get(pk=pk)
+
+        liked = False
+        
+        for liked in comment.liked.all():
+            if liked == request.user:
+                liked = True
+                break
+
+        if liked:
+            comment.liked.remove(request.user)
+
+        comment_disliked = False
+
+        for disliked in comment.disliked.all():
+            if disliked == request.user:
+                comment_disliked = True
+                break
+
+        if not comment_disliked:
+            comment.disliked.add(request.user)
+
+        if comment_disliked:
+            comment.disliked.remove(request.user)
+
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+
+class CommentReplyView(LoginRequiredMixin, View):
+    def post(self, request, slug, pk, *args, **kwargs):
+        post = Post.objects.get(slug=slug)
+        parent_comment = Comment.objects.get(pk=pk)
+        comment_form = CommentForm(data=request.POST)
+        
+        if comment_form.is_valid():
+            comment_form.instance.name = request.user
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.parent = parent_comment
+            comment.save()
+            comment_form = CommentForm()
+            return HttpResponseRedirect(reverse('blog-post', args=[slug]))
+        else:
+            comment_form = CommentForm()
+
+        return HttpResponseRedirect(reverse('blog-post', args=[slug]))
+
