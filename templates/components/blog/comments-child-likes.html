@@ -1,5 +1,5 @@
 <div class="d-flex flex-row justify-content-start">
-	<form class="text-end" method="POST" action="{% url 'dislike-comment' post.slug child_comment.pk %}">
+	<form class="text-end" method="POST" action="{% url 'comment-dislike' post.slug child_comment.pk %}">
 		{% csrf_token %}
 		<input type="hidden" name="next" value="{{ request.path }}">
 
@@ -9,7 +9,7 @@
 
 		</button>
 	</form>
-	<form class="text-end" method="POST" action="{% url 'like-comment' post.slug child_comment.pk %}">
+	<form class="text-end" method="POST" action="{% url 'comment-like' post.slug child_comment.pk %}">
 		{% csrf_token %}
 		<input type="hidden" name="next" value="{{ request.path }}">
 		<button class="btn" type="submit">

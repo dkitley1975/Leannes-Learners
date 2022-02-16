@@ -125,3 +125,13 @@ class Testimonials(generic.ListView):
         context['social'] = CompanyDetails.objects.all()[0:1]
 
         return context
+
+
+def social_icons_list(request):
+    """ Gets the Company Contact info """
+    social_icons_list = CompanyDetails.objects.all()[0:1]
+    context = {
+        'social_icons_list': social_icons_list,
+    }
+    return context
+

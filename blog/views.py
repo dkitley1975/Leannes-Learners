@@ -1,25 +1,24 @@
-from django.db.models.query import QuerySet
-from django.contrib import messages
-from django.contrib.auth.mixins import PermissionRequiredMixin, UserPassesTestMixin, LoginRequiredMixin, AccessMixin
-from django.contrib.auth import logout
-
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django_summernote.widgets import SummernoteInplaceWidget
 from django.urls import reverse, reverse_lazy
-from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin, AccessMixin
+
 from django.views import generic, View
 from django.views.generic import CreateView, DeleteView, FormView, ListView, TemplateView, UpdateView
-
-from blog.models import Category, Post, Comment
-from leannes_learners.settings import LOGIN_URL
-from leannes_learners_data.models import CompanyDetails
-from .forms import CommentForm, CreateNewPostForm
 from django.db.models import Count
 
+from blog.models import Category, Post, Comment
+from leannes_learners_data.models import CompanyDetails
+from .forms import CommentForm, CreateNewPostForm
 
-
-
+# from django.db.models.query import QuerySet
+# from django.contrib import messages
+# from django.contrib.auth.mixins import PermissionRequiredMixin
+# from django.contrib.auth import logout
+# from django.http.response import HttpResponse
+# from django_summernote.widgets import SummernoteInplaceWidget
+# from leannes_learners.settings import LOGIN_URL
+# from django.utils.decorators import method_decorator
 
 
 # Create your views here.
@@ -99,16 +98,16 @@ class BlogPosts(generic.ListView):
         return context
 
 
-class CategoryListView(ListView):
+class CategoryList(ListView):
     """ Category list view for the blog posts"""
     template_name = 'pages/blog/category.html'
-    context_object_name = 'catlist'
+    context_object_name = 'catagorylist'
 
     def get_queryset(self):
         content = {
             'cat': self.kwargs['category'],
             'posts': Post.objects.filter(category__name=self.kwargs
-            ['category']).filter(status='1')
+            ['category']).filter()
         }
         return content
 
@@ -275,11 +274,3 @@ class PostUpdate(UpdateView):
         context = super().get_context_data(**kwargs)
         context['social'] = CompanyDetails.objects.all()[0:1]
         return context
-
-
-
-
-
-
-
-

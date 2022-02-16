@@ -4,7 +4,7 @@
 <div class="comments" style="padding: 10px;">
 	<p class="font-weight-bold">
 		{% if user.is_staff %}
-		<a href="{% url 'delete-comment' post.slug comment.pk %}">
+		<a href="{% url 'comment-delete' post.slug comment.pk %}">
 			<i class="fas fa-trash icon-color-primary"></i>&nbsp</a>
 		{% endif %}
 		{{ comment.name }}
@@ -20,7 +20,7 @@
 	<div class="m-2 ms-5 bg-light p-2 ps-5">
 		<p class="font-weight-bold">
 			{% if user.is_staff %}
-			<a href="{% url 'delete-comment' post.slug child_comment.pk %}">
+			<a href="{% url 'comment-delete' post.slug child_comment.pk %}">
 				<i class="fas fa-trash icon-color-primary"></i>&nbsp</a>
 			{% endif %}
 			{{ comment.name }}

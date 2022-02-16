@@ -1,11 +1,11 @@
-from ast import Return
+# from ast import Return
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.safestring import mark_safe
-from django.urls import reverse
+# from django.urls import reverse
 from autoslug import AutoSlugField
-from django_summernote.widgets import SummernoteWidget
+# from django_summernote.widgets import SummernoteWidget
 
 
 # Create your models here.
@@ -13,20 +13,18 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class Category(models.Model):
+	"""	Model for the Category list """	
 	name = models.CharField(max_length=50)
-
 	class Meta:
 		ordering = ["name"]
 		verbose_name = "Category"
 		verbose_name_plural = "Categories"
-
 	def __str__(self):
 		return self.name
 
 
-# code for Blog and COMMENT adapted
-# from a previous walkthrough - Code Institues " I blog therefore I am"
 class Post(models.Model):
+	"""	Model for the Blog Posts """	
 	title = models.CharField(max_length=200, unique=True)
 	slug = AutoSlugField(max_length=250, populate_from='title', unique=True)
 	author = models.ForeignKey(
@@ -76,6 +74,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+	"""	Model for the Post Comments """
 	post = models.ForeignKey(Post, on_delete=models.CASCADE,
 							 related_name="comments")
 	name = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -95,7 +94,7 @@ class Comment(models.Model):
 	def __str__(self):
 		return f"Comment {self.comment} by {self.name}"
 
-	
+
 	@property
 	def children(self):
 		""" returns child comments of a parentby created time """

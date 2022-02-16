@@ -12,7 +12,7 @@
 					{{ post.author }} | {{ post.created_at }}
 					{% if user.is_staff %}
 					<a href="{% url 'post-update' post.slug %}"> <i class="far fa-edit"></i></a>
-					<a href="{% url 'delete-post' post.slug %}"> <i class="fas fa-trash"></i></a>
+					<a href="{% url 'post-delete' post.slug %}"> <i class="fas fa-trash"></i></a>
 					{% endif %}
 				</p>
 
@@ -35,7 +35,7 @@
 <div class="container col-md-8 ms-auto">
 	<div class="row">
 		<!-- Blog Nav filter -->
-		{% include "components/blog/post-cat-nav.html" %}
+		{% include "layout/navbar-catagories.html" %}
 		<div class="col card mb-4  mt-3 left top">
 
 			<div class="card-body">

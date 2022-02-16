@@ -16,18 +16,17 @@ urlpatterns = [
     path('<slug:slug>', staff_member_required(login_url='login')
         (views.PostUpdate.as_view()), name='post-update'),
     path('<slug:slug>/remove', staff_member_required(login_url='login')
-        (views.PostDelete.as_view()), name='delete-post'),
-    path('category/<category>', views.CategoryListView.as_view(), name='category'),
-
+        (views.PostDelete.as_view()), name='post-delete'),
+    path('categories/<category>', views.CategoryList.as_view(), name='category'),
     path('post/<slug:slug>', views.PostDetail.as_view(), name='post-detail'),
     path('like/<slug:slug>', views.PostLike.as_view(), name='like'),
-    path('post/<slug:slug>/comment/<int:pk>/like', views.CommentLike.as_view(), 
-        name='like-comment'),
-    path('post/<slug:slug>/comment/<int:pk>/dislike', views.CommentDislike.as_view(), 
-        name='dislike-comment'),
-    path('post/<slug:slug>/comment/<int:pk>/', views.CommentReply.as_view(), 
+    path('post/<slug:slug>/comment/<int:pk>/like', views.CommentLike.as_view(),
+        name='comment-like'),
+    path('post/<slug:slug>/comment/<int:pk>/dislike', views.CommentDislike.as_view(),
+        name='comment-dislike'),
+    path('post/<slug:slug>/comment/<int:pk>/', views.CommentReply.as_view(),
         name='comment-reply'),
-    path('post/<slug:slug>/comment/delete/<int:pk>/', views.CommentDelete.as_view(), 
-        name='delete-comment'),
+    path('post/<slug:slug>/comment/delete/<int:pk>/', views.CommentDelete.as_view(),
+        name='comment-delete'),
     # path('URL', views.VIEWS-FORM-CLASS-NAME.as_view(), name='PAGE-NAME'),
     ]

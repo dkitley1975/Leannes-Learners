@@ -11,7 +11,7 @@
 							<a class="dropdown-item-categories" href="{% url 'blog' %}">All Posts</a>
 						</li>
 						{% for category in category_list %}
-						<li><a class="dropdown-item-categories" href="/category/{{ category.name }}">
+						<li><a class="dropdown-item-categories" href="/blog/categories/{{ category.name }}">
 								{{ category.name|title}}</a></li>
 						{% endfor %}
 					</ul>
