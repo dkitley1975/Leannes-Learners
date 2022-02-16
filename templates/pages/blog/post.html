@@ -2,23 +2,23 @@
 {% block title %}Leannes Learners - Blog{% endblock %}
 {% block content %}
 
-<div class="blog-post-header col-12">
+<div class="post-detail-header col-12">
 	<div class="container col-md-12 ms-auto">
 		<div class="row align-items-end">
 			<div class="col-md-7 p-3 ">
-				<h1 class="blog-post-title">{{ post.title }}</h1>
-				<hr class="blog-post-h-rule">
-				<p class="blog-post-subtitle">Post Category - {{ post.category }} <br>
+				<h1 class="post-detail-title">{{ post.title }}</h1>
+				<hr class="post-detail-h-rule">
+				<p class="post-detail-subtitle">Post Category - {{ post.category }} <br>
 					{{ post.author }} | {{ post.created_at }}
 					{% if user.is_staff %}
-					<a href="{% url 'update-post' post.slug %}"> <i class="far fa-edit"></i></a>
+					<a href="{% url 'post-update' post.slug %}"> <i class="far fa-edit"></i></a>
 					<a href="{% url 'delete-post' post.slug %}"> <i class="fas fa-trash"></i></a>
 					{% endif %}
 				</p>
 
 			</div>
 
-			<div class="d-none d-md-block col-md-5 ms-auto blog-post-header-image">
+			<div class="d-none d-md-block col-md-5 ms-auto post-detail-header-image">
 				<!-- The featured image URL goes in the src attribute -->
 				{% if "placeholder" in post.featured_image.url %}
 				<img class="alt-text-white"

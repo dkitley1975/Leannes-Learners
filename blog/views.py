@@ -24,7 +24,7 @@ from django.db.models import Count
 
 # Create your views here.
 
-class BlogPost(View):
+class PostDetail(View):
     """ individual Blog Page view """
     def get(self, request, slug, *args, **kwargs):
         """ Return render view for blog post detail """
@@ -83,11 +83,9 @@ class BlogPost(View):
                 "liked": liked,
             },
         )
-        
-        
 
 
-class BlogPostsPage(generic.ListView):
+class BlogPosts(generic.ListView):
     """ Blog Page list view """
     model = Post
     queryset = Post.objects.order_by("-created_at")
@@ -125,113 +123,23 @@ def category_list(request):
         'category_list': category_list,
     }
     return context
-    
-
-class LikePost(View):
-    """ Blog post view page like functionality view """
-
-    def post(self, request, slug, *args, **kwargs):
-        post = get_object_or_404(Post, slug=slug)
-        if post.likes.filter(id=request.user.id).exists():
-            post.likes.remove(request.user)
-        else:
-            post.likes.add(request.user)
-
-        return HttpResponseRedirect(reverse('blog-post', args=[slug]))
 
 
-
-class CreatePost(CreateView):
-    """ Add a new post page """
-    model = Post
-    template_name = "pages/blog/create-new-post.html"
-    form_class = CreateNewPostForm
-
-    def get_context_data(self, **kwargs):
-        """ Gets the Company Contact info """
-        context = super().get_context_data(**kwargs)
-        context['social'] = CompanyDetails.objects.all()[0:1]
-        return context
-
-
-class UpdatePost(UpdateView):
-    """ update post page """
-    model = Post
-    template_name = "pages/blog/edit-blog-post-entry.html"
-    form_class = CreateNewPostForm
-
-    def get_context_data(self, **kwargs):
-        """ Gets the Company Contact info """
-        context = super().get_context_data(**kwargs)
-        context['social'] = CompanyDetails.objects.all()[0:1]
-        return context
-
-
-class DeletePost(DeleteView):
-    """ Add a new post page """
-    model = Post
-    template_name = "pages/blog/delete-blog-post-entry.html"
-    success_url = reverse_lazy('blog')
-
-    def get_context_data(self, **kwargs):
-        """ Gets the Company Contact info """
-        context = super().get_context_data(**kwargs)
-        context['social'] = CompanyDetails.objects.all()[0:1]
-        return context
-
-class DeleteComment(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """ delete a comment """
     model = Comment
-    template_name = "pages/blog/delete-blog-comment.html"
+    template_name = "pages/blog/post-comment-delete.html"
     
     def get_success_url(self):
         slug = self.kwargs['slug']
-        return reverse_lazy('blog-post', args=[slug])
+        return reverse_lazy('post-detail', args=[slug])
 
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.name
 
 
-
-
-
-
-
-
-
-
-class LikeComment(LoginRequiredMixin, View):
-    """ Comment like functionality """
-
-    def post(self, request, pk, *args, **kwargs):
-        comment = Comment.objects.get(pk=pk)
-        comment_disliked = False
-        for disliked in comment.disliked.all():
-            if disliked == request.user:
-                comment_disliked = True
-                break
-
-        if comment_disliked:
-            comment.disliked.remove(request.user)
-
-        liked = False
-
-        for liked in comment.liked.all():
-            if liked == request.user:
-                liked = True
-                break
-
-        if not liked:
-            comment.liked.add(request.user)
-
-        if liked:
-            comment.liked.remove(request.user)
-
-        next = request.POST.get('next', '/')
-        return HttpResponseRedirect(next)
-
-class DislikeComment(LoginRequiredMixin, View):
+class CommentDislike(LoginRequiredMixin, View):
     """
     comment dislike functionality
     """
@@ -265,7 +173,39 @@ class DislikeComment(LoginRequiredMixin, View):
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
 
-class CommentReplyView(LoginRequiredMixin, View):
+
+class CommentLike(LoginRequiredMixin, View):
+    """ Comment like functionality """
+
+    def post(self, request, pk, *args, **kwargs):
+        comment = Comment.objects.get(pk=pk)
+        comment_disliked = False
+        for disliked in comment.disliked.all():
+            if disliked == request.user:
+                comment_disliked = True
+                break
+
+        if comment_disliked:
+            comment.disliked.remove(request.user)
+
+        liked = False
+
+        for liked in comment.liked.all():
+            if liked == request.user:
+                liked = True
+                break
+
+        if not liked:
+            comment.liked.add(request.user)
+
+        if liked:
+            comment.liked.remove(request.user)
+
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+
+
+class CommentReply(LoginRequiredMixin, View):
     def post(self, request, slug, pk, *args, **kwargs):
         post = Post.objects.get(slug=slug)
         parent_comment = Comment.objects.get(pk=pk)
@@ -278,9 +218,68 @@ class CommentReplyView(LoginRequiredMixin, View):
             comment.parent = parent_comment
             comment.save()
             comment_form = CommentForm()
-            return HttpResponseRedirect(reverse('blog-post', args=[slug]))
+            return HttpResponseRedirect(reverse('post-detail', args=[slug]))
         else:
             comment_form = CommentForm()
 
-        return HttpResponseRedirect(reverse('blog-post', args=[slug]))
+        return HttpResponseRedirect(reverse('post-detail', args=[slug]))
+
+
+class PostCreate(CreateView):
+    """ Add a new post page """
+    model = Post
+    template_name = "pages/blog/post-creation.html"
+    form_class = CreateNewPostForm
+
+    def get_context_data(self, **kwargs):
+        """ Gets the Company Contact info """
+        context = super().get_context_data(**kwargs)
+        context['social'] = CompanyDetails.objects.all()[0:1]
+        return context
+
+
+class PostDelete(DeleteView):
+    """ Add a new post page """
+    model = Post
+    template_name = "pages/blog/post-entry-delete.html"
+    success_url = reverse_lazy('blog')
+
+    def get_context_data(self, **kwargs):
+        """ Gets the Company Contact info """
+        context = super().get_context_data(**kwargs)
+        context['social'] = CompanyDetails.objects.all()[0:1]
+        return context
+
+
+class PostLike(View):
+    """ Blog post view page like functionality view """
+
+    def post(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(Post, slug=slug)
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+
+        return HttpResponseRedirect(reverse('post-detail', args=[slug]))
+
+
+class PostUpdate(UpdateView):
+    """ update post page """
+    model = Post
+    template_name = "pages/blog/post-entry-edit.html"
+    form_class = CreateNewPostForm
+
+    def get_context_data(self, **kwargs):
+        """ Gets the Company Contact info """
+        context = super().get_context_data(**kwargs)
+        context['social'] = CompanyDetails.objects.all()[0:1]
+        return context
+
+
+
+
+
+
+
 

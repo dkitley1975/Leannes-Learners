@@ -1,6 +1,6 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
-from leannes_learners_data.views import AboutUsPage, BlogPost, BlogPage, ContactUsPage, ContactSuccessView, PassPlusPage, PricesPage, TermsPage, Testimonials
+from leannes_learners_data.views import AboutUsPage, PostDetail, BlogPage, ContactUsPage, ContactSuccessView, PassPlusPage, PricesPage, TermsPage, Testimonials
 
 
 class TestUrls(SimpleTestCase):
@@ -50,7 +50,7 @@ class TestUrls(SimpleTestCase):
 
     def test_blog_post_Page_url(self):
         """ Test the Blog Post Detail Page URL """
-        url = reverse('blog-post', args=['My-Great-First-Blog-slug'])
+        url = reverse('post-detail', args=['My-Great-First-Blog-slug'])
         print(resolve(url))
-        self.assertEquals(resolve(url).func.view_class, BlogPost)
+        self.assertEquals(resolve(url).func.view_class, PostDetail)
         
