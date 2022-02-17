@@ -46,11 +46,6 @@ class PostDetail(View):
             },
         )
 
-    def get_context_data(self, **kwargs):
-        """ Gets the Company Contact info """
-        context = super().get_context_data(**kwargs)
-        context['social'] = CompanyDetails.objects.all()[0:1]
-        return context
 
     def post(self, request, slug, *args, **kwargs):
         queryset = Post.objects
@@ -90,12 +85,6 @@ class BlogPosts(generic.ListView):
     queryset = Post.objects.order_by("-created_at")
     template_name = "pages/blog/blog.html"
     paginate_by = 9
-
-    def get_context_data(self, **kwargs):
-        """ Gets the Company Contact info """
-        context = super().get_context_data(**kwargs)
-        context['social'] = CompanyDetails.objects.all()[0:1]
-        return context
 
 
 class CategoryList(ListView):
@@ -139,10 +128,7 @@ class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 class CommentDislike(LoginRequiredMixin, View):
-    """
-    comment dislike functionality
-    """
-
+    """ comment dislike functionality """
     def post(self, request, pk, *args, **kwargs):
         comment = Comment.objects.get(pk=pk)
 
@@ -175,7 +161,6 @@ class CommentDislike(LoginRequiredMixin, View):
 
 class CommentLike(LoginRequiredMixin, View):
     """ Comment like functionality """
-
     def post(self, request, pk, *args, **kwargs):
         comment = Comment.objects.get(pk=pk)
         comment_disliked = False
@@ -208,7 +193,7 @@ class CommentReply(LoginRequiredMixin, View):
     def post(self, request, slug, pk, *args, **kwargs):
         post = Post.objects.get(slug=slug)
         parent_comment = Comment.objects.get(pk=pk)
-        comment_form = CommentForm(data=request.POST)
+        comment_form = CommentForm(request.POST)
         
         if comment_form.is_valid():
             comment_form.instance.name = request.user
@@ -230,12 +215,6 @@ class PostCreate(CreateView):
     template_name = "pages/blog/post-creation.html"
     form_class = CreateNewPostForm
 
-    def get_context_data(self, **kwargs):
-        """ Gets the Company Contact info """
-        context = super().get_context_data(**kwargs)
-        context['social'] = CompanyDetails.objects.all()[0:1]
-        return context
-
 
 class PostDelete(DeleteView):
     """ Add a new post page """
@@ -243,16 +222,9 @@ class PostDelete(DeleteView):
     template_name = "pages/blog/post-entry-delete.html"
     success_url = reverse_lazy('blog')
 
-    def get_context_data(self, **kwargs):
-        """ Gets the Company Contact info """
-        context = super().get_context_data(**kwargs)
-        context['social'] = CompanyDetails.objects.all()[0:1]
-        return context
-
 
 class PostLike(View):
     """ Blog post view page like functionality view """
-
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
@@ -269,8 +241,3 @@ class PostUpdate(UpdateView):
     template_name = "pages/blog/post-entry-edit.html"
     form_class = CreateNewPostForm
 
-    def get_context_data(self, **kwargs):
-        """ Gets the Company Contact info """
-        context = super().get_context_data(**kwargs)
-        context['social'] = CompanyDetails.objects.all()[0:1]
-        return context
