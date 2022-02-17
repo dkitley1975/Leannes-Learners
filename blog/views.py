@@ -204,7 +204,7 @@ class CommentReply(LoginRequiredMixin, View):
             comment_form = CommentForm()
             return HttpResponseRedirect(reverse('post-detail', args=[slug]))
         else:
-            comment_form = CommentForm()
+            comment_form = CommentForm() 
 
         return HttpResponseRedirect(reverse('post-detail', args=[slug]))
 

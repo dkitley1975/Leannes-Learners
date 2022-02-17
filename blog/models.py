@@ -75,16 +75,15 @@ class Post(models.Model):
 
 class Comment(models.Model):
 	"""	Model for the Post Comments """
-	post = models.ForeignKey(Post, on_delete=models.CASCADE,
-							 related_name="comments")
-	name = models.ForeignKey(User, on_delete=models.CASCADE)
 	comment = models.TextField()
 	created_at = models.DateTimeField(auto_now_add=True)
+	name = models.ForeignKey(User, on_delete=models.CASCADE)
+	liked = models.ManyToManyField(User, blank=True, related_name="comments_liked")
 	disliked = models.ManyToManyField(User, blank=True,
-									  related_name="comments_disliked")
-	liked = models.ManyToManyField(User, blank=True,
-								   related_name="comments_liked")
-	parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='+')
+								  related_name="comments_disliked")
+	parent = models.ForeignKey('self', on_delete=models.CASCADE, 
+								blank=True, null=True, related_name='+')								  
+	post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
 
 	class Meta:
 		ordering = ["created_at"]
