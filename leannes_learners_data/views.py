@@ -19,10 +19,9 @@ class AboutUsPage(generic.ListView):
     template_name = "pages/about-us.html"
 
     def get_context_data(self, **kwargs):
-        """ Gets the Instructors list and Company Contact info """
+        """ Returns the Instructors list and Company Contact info """
         context = super().get_context_data(**kwargs)
         context['instructors_list'] = Instructors.objects.filter(status=1).order_by("name")
-        context['social'] = CompanyDetails.objects.all()[0:1]
         return context
 
     def aboutuspage(self, request):
@@ -45,9 +44,8 @@ class ContactUsPage(FormView):
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
-        """ Gets the instructors list, Teaching Hours and Company Contact info """
+        """ Returns the instructors list, Teaching Hours and Company Contact info """
         context = super().get_context_data(**kwargs)
-        context['social'] = CompanyDetails.objects.all()[0:1]
         context['companydetails'] = CompanyDetails.objects.all()[0:1]
         context['teaching_hours_list'] = TeachingHours.objects.all().order_by("id")
         return context
@@ -71,13 +69,6 @@ class PassPlusPage(generic.ListView):
     queryset = Passplus.objects.filter(status=1).order_by("-created_at")[0:1]
     template_name = "pages/pass-plus.html"
 
-    def get_context_data(self, **kwargs):
-        """ Gets the instructors list and Company Contact info """
-
-        context = super().get_context_data(**kwargs)
-        context['social'] = CompanyDetails.objects.all()[0:1]
-        return context
-
 
 class PricesPage(generic.ListView):
     """ Prices Page view"""
@@ -87,41 +78,39 @@ class PricesPage(generic.ListView):
     template_name = "pages/prices.html"
 
     def get_context_data(self, **kwargs):
-        """ Gets the instructors list and Company Contact info """
-
+        """ Returns the featured prices """
         context = super().get_context_data(**kwargs)
         context['featured_list'] = Service.objects.filter(featured=1).order_by("price")
-        context['social'] = CompanyDetails.objects.all()[0:1]
         return context
 
 
 class TermsPage(generic.ListView):
     """ Terms and Conditions view"""
-
     model = Terms
     queryset = Terms.objects.filter(status=1).order_by("-created_at")[0:1]
     template_name = "pages/terms-and-conditions.html"
 
-    def get_context_data(self, **kwargs):
-        """ Gets the instructors list and Company Contact info """
-
-        context = super().get_context_data(**kwargs)
-        context['social'] = CompanyDetails.objects.all()[0:1]
-        return context
-
 
 class Testimonials(generic.ListView):
-    """ Grabs the latest Testimonials for the home Page """
+    """ Returns the latest Testimonials for the home Page """
     model = Testimonial
     queryset = Testimonial.objects.filter(status=1).order_by("-created_at")
     template_name = "index.html"
     paginate_by = 2
 
     def get_context_data(self, **kwargs):
-        """ Gets the instructors list and Company Contact info """
+        """ Returns the instructors list and Company Contact info """
         context = super().get_context_data(**kwargs)
-        context['post_list'] = Post.objects.filter(status=1).order_by("-created_at")[0:3]
+        context['post_list'] = Post.objects.order_by("-created_at")[0:3]
         context['carousel_list'] = Carousel.objects.filter(include_in_carousel=1).order_by("slide_identifying_name")
-        context['social'] = CompanyDetails.objects.all()[0:1]
-
         return context
+
+
+def social_icons_list(request):
+    """ Returns the Company Contact info """
+    social_icons_list = CompanyDetails.objects.all()[0:1]
+    context = {
+        'social_icons_list': social_icons_list,
+    }
+    return context
+

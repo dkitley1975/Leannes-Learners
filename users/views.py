@@ -57,12 +57,7 @@ class EditUserDetailsForm(generic.UpdateView):
 	def form_valid(self, form):
 		messages.success(self.request, "Your user details has been updated successfully.")
 		return super().form_valid(form)
-	
-	def get_context_data(self, **kwargs):
-		""" Gets the Company Contact info """
-		context = super().get_context_data(**kwargs)
-		context['social'] = CompanyDetails.objects.all()[0:1]
-		return context
+
 
 class EditUserProfile(LoginRequiredMixin, generic.UpdateView):
 	model = UserProfile
@@ -74,12 +69,6 @@ class EditUserProfile(LoginRequiredMixin, generic.UpdateView):
 		pk = self.kwargs['pk']
 		return reverse_lazy('edit-profile', kwargs={'pk': pk})
 
-	def get_context_data(self, **kwargs):
-		""" Gets the Company Contact info """
-		context = super().get_context_data(**kwargs)
-		context['social'] = CompanyDetails.objects.all()[0:1]
-		return context
-	
 	def form_valid(self, form):
 		messages.success(self.request, "Your profile has been updated successfully.")
 		return super().form_valid(form)

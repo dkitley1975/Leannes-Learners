@@ -209,7 +209,58 @@ I use media queries to make everything look and feel good on mobile devices.
 
     This error continues - but if ```http://localhost:8000/``` or ```http://127.0.0.1:8000/``` are used in the address bar the site works, just not directly from the link in the output message in the terminal.
 
-1. Next issue to arise
+1. My initial thought was to just use the base comment feature as demonstrated in the I think therefore I blog walkthrough, with the following code:
+
+```HTML
+<div class="card-body">
+  {% if commented %}
+  <div class="alert alert-success" role="alert">
+    Your comment is awaiting approval
+  </div>
+  {% else %}
+  {% if user.is_authenticated %}
+  <h3>Leave a comment:</h3>
+  <hr>
+  <p>Posting as: {{ user.username }}</p>
+  <form method="post" style="margin-top: 1.3em;">
+    {% csrf_token %}
+    {{ comment_form | crispy }}
+    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+  </form>
+  {% else %}
+  <h3>Leave a comment:</h3>
+  <hr>
+  <p class="mt-4 mb-2 fw-bolder fst-italic">If you would like a comment.</p>
+  <p>Please login to your account or register and join our community </p>
+  {% endif %}
+  {% endif %}
+</div>
+```
+
+```python
+def post(self, request, slug, *args, **kwargs):
+  queryset = Post.objects.filter(status=1)
+  post = get_object_or_404(queryset, slug=slug)
+  comments = post.comments.filter(approved=True).order_by("-created_at")
+  liked = False
+  if post.likes.filter(id=self.request.user.id).exists():
+      liked = True
+
+  comment_form = CommentForm(data=request.POST)
+  if comment_form.is_valid():
+      comment_form.instance.email = request.user.email
+      comment_form.instance.name = request.user.username
+      comment = comment_form.save(commit=False)
+      comment.post = post
+      comment.save()
+  else:
+      comment_form = CommentForm()
+```
+This refreshed the page and displayed a 'Your comment is awaiting approval message' If like me the user would then hit refresh to see if the message was refreshed, or leave the page open and hit refresh the message would send again repeating the message.
+To solve this easily I looked at removing the fact the message needs to be approved by the admin before being posted, which then made me think about nesting comments, comments on comments etc and so I rethought the entire commenting section, replacing it with its own app.
+
+1. NEXT ISSUE 
+
 
 ## Deployment
 

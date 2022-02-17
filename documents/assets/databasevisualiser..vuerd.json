@@ -1081,7 +1081,7 @@
           "y": 309.8902,
           "direction": "top"
         },
-        "constraintName": "fk_blog_to_registered_users",
+        "constraintName": "pk_blog_to_registered_users",
         "visible": true,
         "id": "b74bdec5-d554-48fe-b4da-21128351de38"
       }

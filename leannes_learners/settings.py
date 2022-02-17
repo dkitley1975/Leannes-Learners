@@ -112,6 +112,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'blog.views.category_list',
+                'leannes_learners_data.views.social_icons_list'
             ],
         },
     },

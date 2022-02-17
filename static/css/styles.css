@@ -6,13 +6,15 @@
     --clr-brand-primary-70: rgba(116, 36, 29, .7);
     --clr-brand-secondary: rgba(255, 239, 148, 0.742);
     --clr-brand-tertiary: rgb(156, 207, 153);
+    --clr-brand-tertiary-darker: rgb(68, 126, 65);
+    --clr-brand-quaternary: rgb(208, 17, 46);
     --clr-background-light: rgb(238, 238, 238);
     --clr-background-grey: rgb(153, 158, 164);
     --clr-border-grey: rgb(222, 226, 230);
     --clr-box-shadow: rgb(153, 153, 153);
     --clr-link-dark: rgb(68, 82, 97);
     --clr-quotation-mark: rgb(51, 51, 51);
-    --clr-warning-advice-text: rgb(208, 0, 0);
+    --clr-brand-quaternary: rgb(208, 0, 0);
 
 
 }
@@ -95,33 +97,33 @@ img {
     background-repeat: no-repeat;
 }
 
-.blog-post-author-info {
+.post-detail-author-info {
     padding: 12px
 }
 
-.blog-post-author-links>a {
+.post-detail-author-links>a {
     font-size: 1rem;
     font-weight: 700;
     color: var(--clr-link-dark)
 }
 
-.blog-post-author-links>a:hover {
+.post-detail-author-links>a:hover {
     color: var(--clr-brand-primary)
 }
 
-.blog-post-author-title {
+.post-detail-author-title {
     color: var(--clr-brand-primary);
     font-size: 1.5rem;
     text-decoration: underline .3px solid var(--clr-brand-primary-70);
     text-underline-offset: 3px;
 }
 
-.blog-post-author-subtitle {
+.post-detail-author-subtitle {
     color: var(--clr-brand-primary-70);
     font-size: 1rem;
 }
 
-.blog-post-header {
+.post-detail-header {
     background-color: var(--clr-brand-primary);
     overflow: hidden;
     position: relative;
@@ -130,7 +132,7 @@ img {
     margin-top: 0;
 }
 
-.blog-post-header-image {
+.post-detail-header-image {
     margin-right: 0;
     padding-right: 0;
     bottom: 0;
@@ -141,22 +143,22 @@ img {
     clip-path: polygon(13% 0, 100% 0, 100% 100%, 33% 100%);
 }
 
-.blog-post-likes {
+.post-detail-likes {
     color: var(--clr-background-grey);
     font-style: italic;
 }
 
-.blog-post-link {
+.post-detail-link {
     text-decoration: none;
     color: var(--clr-link-dark);
 }
 
-.blog-post-link:hover,
+.post-detail-link:hover,
 .page-link {
     color: var(--clr-brand-primary);
 }
 
-.blog-post-profile-image {
+.post-detail-profile-image {
     max-width: 90%;
     height: auto;
     border-top-right-radius: 30px;
@@ -164,31 +166,31 @@ img {
     margin-left: 5%;
 }
 
-.blog-post-subtitle {
+.post-detail-subtitle {
     margin-left: 5%;
     margin-bottom: 10%;
     color: white;
 }
 
 
-.blog-post-subtitle>a {
+.post-detail-subtitle>a {
     color: white;
     text-decoration: none;
     font-style: italic;
 }
 
-.blog-post-subtitle>a:hover {
+.post-detail-subtitle>a:hover {
     color: var(--clr-brand-tertiary);
     text-decoration: none;
 }
 
-.blog-post-title {
+.post-detail-title {
     margin-top: 5%;
     margin-left: 5%;
     color: white;
 }
 
-.blog-post-h-rule {
+.post-detail-h-rule {
     width: 80%;
     margin-left: 5%;
     border: 1px solid white;
@@ -251,7 +253,7 @@ img {
 .btn-warning:hover {
     background: red !important;
     color: white;
-    font-size: 50%;
+    font-size: 90%;
 }
 
 .btn-white-outline {
@@ -279,6 +281,13 @@ img {
 
 .cat-nav {
     color: var(--clr-brand-primary);
+}
+
+.comment-rule {
+    width: 80%;
+    border: .5px solid var(--clr-brand-primary-70);
+    margin-left: 10% !important;
+    margin-right: 10% !important;
 }
 
 .content-overlay {
@@ -381,6 +390,22 @@ img {
 
 .form-group {
     margin-top: 1.25rem;
+}
+
+.icon-color-primary {
+    color: var(--clr-brand-primary);
+}
+
+.icon-color-secondary {
+    color: var(--clr-brand-secondary);
+}
+
+.icon-color-tertiary {
+    color: var(--clr-brand-tertiary-darker);
+}
+
+.icon-color-quaternary {
+    color: var(--clr-brand-quaternary);
 }
 
 .img-focus-image {
@@ -520,10 +545,12 @@ img {
 }
 
 .warning-advice-text {
-    color: var(--clr-warning-advice-text);
-    animation: heart-beat 1s linear infinite;
-    -webkit-animation: heart-beat 1s linear infinite;
+    color: var(--clr-brand-quaternary);
+    animation: heart-beat 2s linear infinite;
+    -webkit-animation: heart-beat 2s linear infinite;
 }
+
+
 
 @keyframes heart-beat {
     50% {
@@ -543,7 +570,7 @@ img {
 
 /* On screens that are 768px */
 @media screen and (min-width: 768px) {
-    .blog-post-header {
+    .post-detail-header {
         height: 300px;
     }
 

@@ -1,0 +1,20 @@
+<div class="d-flex flex-row justify-content-start">
+	<form class="text-end" method="POST" action="{% url 'comment-dislike' post.slug child_comment.pk %}">
+		{% csrf_token %}
+		<input type="hidden" name="next" value="{{ request.path }}">
+
+		<button class="btn" type="submit">
+			<i class="fas fa-thumbs-down icon-color-quaternary">
+				<span>{{ child_comment.disliked.all.count }}</span></i>
+
+		</button>
+	</form>
+	<form class="text-end" method="POST" action="{% url 'comment-like' post.slug child_comment.pk %}">
+		{% csrf_token %}
+		<input type="hidden" name="next" value="{{ request.path }}">
+		<button class="btn" type="submit">
+			<i class="fas fa-thumbs-up icon-color-tertiary"> <span>{{ child_comment.liked.all.count }}</span></i>
+
+		</button>
+	</form>
+</div>

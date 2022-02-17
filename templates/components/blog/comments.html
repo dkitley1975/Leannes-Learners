@@ -1,15 +1,42 @@
-<div class="card-body">
-	<h3>Comments:</h3>
-	<hr>
-	{% for comment in comments %}
-	<div class="comments" style="padding: 10px;">
-		<p class="font-weight-bold">
-			{{ comment.name }}
-			<span class=" text-muted font-weight-normal">
-				{{ comment.created_at }}
-			</span> wrote:
-		</p>
+<hr class="comment-rule">
+{% for comment in comments %}
+{% if comment.is_parent %}
+<div class="comments" style="padding: 10px;">
+	<p class="font-weight-bold">
+		{% if user.is_staff %}
+		<a href="{% url 'comment-delete' post.slug comment.pk %}">
+			<i class="fas fa-trash icon-color-primary"></i>&nbsp</a>
+		{% endif %}
+		{{ comment.name }}
+		<span class=" text-muted font-weight-normal">
+			{{ comment.created_at }}
+		</span>
+		<span class="text-muted font-weight-normal">wrote:</span>
 		{{ comment.comment | linebreaks }}
+		{% include "components/blog/comments-parent-likes.html" %}
+
+
+		{% for child_comment in comment.children %}
+	<div class="m-2 ms-5 bg-light p-2 ps-5">
+		<p class="font-weight-bold">
+			{% if user.is_staff %}
+			<a href="{% url 'comment-delete' post.slug child_comment.pk %}">
+				<i class="fas fa-trash icon-color-primary"></i>&nbsp</a>
+			{% endif %}
+			{{ child_comment.name }}
+			<span class=" text-muted font-weight-normal">
+				{{ child_comment.created_at }}
+			</span>
+			<span class="text-muted font-weight-normal">wrote:</span>
+			{{ child_comment.comment | linebreaks }}
+			{% include "components/blog/comments-child-likes.html" %}
+		</p>
 	</div>
 	{% endfor %}
+
+
+
+	<hr class="comment-rule">
 </div>
+{% endif %}
+{% endfor %}

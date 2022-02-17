@@ -35,7 +35,6 @@ class BlogAdmin(SummernoteModelAdmin):
         'category',
         'excerpt',
         'content',
-        'status',
         'likes',
     ]
 
@@ -43,18 +42,15 @@ class BlogAdmin(SummernoteModelAdmin):
         'image_thumb',
         'title',
         'slug',
-        'status',
+        'category',
         'created_at',
         )
 
     search_fields = ['title', 'content', 'alt_tag',]
-    list_filter = ('status', 'created_at')
-    actions = ['publish_Post',]
+    list_filter = ('category','created_at')
     summernote_fields = ('content',)
     readonly_fields = ['image_thumb', 'slug']
 
-    def publish_Post(self, request, queryset):
-        queryset.update(status=True)
 
 
 @admin.register(Comment)
@@ -69,12 +65,8 @@ class CommentAdmin(admin.ModelAdmin):
         'name',
         'comment',
         'created_at',
-        'approved'
         )
-    list_filter = ('approved', 'created_at')
-    search_fields = ('name', 'email', 'comment')
-    actions = ['approve_comments',]
+    list_filter = ('name', 'created_at')
+    search_fields = ('name', 'comment')
 
-    def approve_comments(self, request, queryset):
-        queryset.update(approved=True)
 
