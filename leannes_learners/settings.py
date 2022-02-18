@@ -200,6 +200,7 @@ if RUNLOCAL is True:
     RECIPIENT_ADDRESS = 'dkitley@mac.com'
     DEFAULT_FROM_EMAIL = 'testing@example.com'
 else:
+    # TODO Deployment update email settings
     # Email Settings
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = 'smtp.gmail.com'
@@ -208,6 +209,7 @@ else:
     EMAIL_PORT = '587'
     EMAIL_USE_TLS = True
     RECIPIENT_ADDRESS = 'dkitley@mac.com'
+    DEFAULT_FROM_EMAIL = 'Leannes Learners <noreply@leanneslearners.com>'
 
 
 SUMMERNOTE_CONFIG = {

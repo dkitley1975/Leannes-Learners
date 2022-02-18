@@ -32,14 +32,18 @@ class Post(models.Model):
 	)
 	featured_image = CloudinaryField(
 		folder='leannes_learners/blog_images/',
-		transformation={'width': '400', 'height': '300', 'crop': 'fill',
-						'gravity': 'face', 'zoom': '0.5'},
+		transformation={
+			'width': '400',
+			'height': '300',
+			'crop': 'fill',
+			'gravity': 'face',
+			'zoom': '0.5'
+			},
 		default='image/upload/leannes_learners/default_image/placeholder')
 	alt_tag = models.CharField(max_length=200, blank=True,
-							   verbose_name='Describe the image for the blind')
+		verbose_name='Describe the image for the blind')
 	excerpt = models.TextField(blank=False,
-							   verbose_name='Eye Catching Excerpt -'
-							   'make someone want to read the article')
+		verbose_name='Eye Catching Excerpt - make someone want to read the article')
 
 	updated_at = models.DateTimeField(auto_now=True)
 	category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
@@ -78,12 +82,14 @@ class Comment(models.Model):
 	comment = models.TextField()
 	created_at = models.DateTimeField(auto_now_add=True)
 	name = models.ForeignKey(User, on_delete=models.CASCADE)
-	liked = models.ManyToManyField(User, blank=True, related_name="comments_liked")
+	liked = models.ManyToManyField(User, blank=True, 
+		related_name="comments_liked")
 	disliked = models.ManyToManyField(User, blank=True,
-								  related_name="comments_disliked")
+		related_name="comments_disliked")
 	parent = models.ForeignKey('self', on_delete=models.CASCADE, 
-								blank=True, null=True, related_name='+')								  
-	post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+		blank=True, null=True, related_name='+')								  
+	post = models.ForeignKey(Post, on_delete=models.CASCADE, 
+		related_name="comments")
 
 	class Meta:
 		ordering = ["created_at"]

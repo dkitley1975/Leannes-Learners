@@ -42,10 +42,14 @@ class Carousel(models.Model):
     slide_text_description = models.TextField(max_length=200, blank=True)
     slide_image = CloudinaryField(
         folder='leannes_learners/caurosel_images/',
-        transformation={'width': '1240', 'height': '700', 'crop': 'fill'},
+        transformation={
+            'width': '1240',
+            'height': '700',
+            'crop': 'fill'},
         default='placeholder')
 
-    alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
+    alt_tag = models.CharField(max_length=200, blank=True, 
+        verbose_name = 'Describe the image for the blind')
     include_in_carousel = models.BooleanField(default=False)
 
     class Meta:
@@ -69,10 +73,16 @@ class Instructors(models.Model):
     name = models.CharField(max_length=80, unique=True)
     instructor_image = CloudinaryField(
         folder='leannes_learners/instructor_images/',
-        transformation={'width': '300', 'height': '400', 'crop': 'fill',
-                        'gravity': 'face', 'zoom': '0.5'},
+        transformation={
+            'width': '300',
+            'height': '400',
+            'crop': 'fill',
+            'gravity': 'face',
+            'zoom': '0.5'
+            },
         default='placeholder')
-    alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
+    alt_tag = models.CharField(max_length=200, blank=True, 
+        verbose_name = 'Describe the image for the blind')
     about = models.TextField()
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
@@ -118,14 +128,22 @@ class Passplus(models.Model):
     background_image = CloudinaryField(
         folder='leannes_learners/pass_plus/background_images/',
         default='placeholder')
-    lead_content =  models.TextField(verbose_name = 'Lead content - more prominent than the rest.')
-    main_content =  models.TextField(verbose_name = 'Main content of the page.')
+    lead_content =  models.TextField(
+        verbose_name = 'Lead content - more prominent than the rest.')
+    main_content =  models.TextField(
+        verbose_name = 'Main content of the page.')
     focus_image = CloudinaryField(
         folder='leannes_learners/pass_plus/focus_images/',
-        transformation={'width': '400', 'height': '400', 'crop': 'fill',
-                        'gravity': 'face', 'zoom': '0.5'},
+        transformation={
+            'width': '400',
+            'height': '400',
+            'crop': 'fill',
+            'gravity': 'face',
+            'zoom': '0.5'
+            },
         default='placeholder')
-    alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
+    alt_tag = models.CharField(max_length=200, blank=True, 
+        verbose_name = 'Describe the image for the blind')
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -152,8 +170,10 @@ class Terms(models.Model):
     background_image = CloudinaryField(
         folder='leannes_learners/terms_and_conditions/background_images/',
         default='placeholder')
-    lead_content =  models.TextField(verbose_name = 'Lead content - The explanation.')
-    main_content =  models.TextField(verbose_name = 'The Terms and Conditions.')
+    lead_content =  models.TextField(
+        verbose_name = 'Lead content - The explanation.')
+    main_content =  models.TextField(
+        verbose_name = 'The Terms and Conditions.')
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -180,10 +200,16 @@ class Testimonial(models.Model):
     name = models.CharField(max_length=80, unique=True)
     testimonial_image = CloudinaryField(
         folder='leannes_learners/testimonial_images/',
-        transformation={'width': '300', 'height': '400', 'crop': 'fill',
-                        'gravity': 'face', 'zoom': '0.5'},
+        transformation={
+            'width': '300',
+            'height': '400',
+            'crop': 'fill',
+            'gravity': 'face',
+            'zoom': '0.5'
+            },
         default='placeholder')
-    alt_tag = models.CharField(max_length=200, blank=True, verbose_name = 'Describe the image for the blind')
+    alt_tag = models.CharField(max_length=200, blank=True, 
+        verbose_name = 'Describe the image for the blind')
     testimonial =  models.TextField()
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
@@ -214,7 +240,11 @@ class CompanyDetails(models.Model):
     social_media_link = models.CharField(max_length=200, blank=True)
     social_media_image = CloudinaryField(
         folder='leannes_learners/contact_page/social_images/',
-        transformation={'width': 'auto', 'height': '50', 'crop': 'fill'},
+        transformation={
+            'width': 'auto',
+            'height': '50',
+            'crop': 'fill'
+            },
         default='placeholder')
     social_media_name_2 = models.CharField(max_length=80, blank=True)
     social_media_link_2 = models.CharField(max_length=200, blank=True)
@@ -232,7 +262,11 @@ class CompanyDetails(models.Model):
     social_media_link_4 = models.CharField(max_length=200, blank=True)
     social_media_image_4 = CloudinaryField(
         folder='leannes_learners/contact_page/social_images/',
-        transformation={'width': 'auto', 'height': '50', 'crop': 'fill'},
+        transformation={
+            'width': 'auto',
+            'height': '50',
+            'crop': 'fill'
+            },
         default='placeholder')
 
     class Meta:

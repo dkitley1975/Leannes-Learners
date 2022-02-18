@@ -439,6 +439,18 @@ img {
     text-decoration: underline;
 }
 
+.link-primary-tertiary {
+    color: var(--clr-brand-primary);
+    text-decoration: none;
+}
+
+.link-primary-tertiary:hover,
+.link-primary-tertiary:active {
+    color: var(--clr-brand-tertiary-darker);
+    text-decoration: none;
+}
+
+
 .logo-image {
     width: 12vw width;
 }

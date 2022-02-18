@@ -1,7 +1,7 @@
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
-from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin, AccessMixin
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
 from django.views import generic, View
 from django.views.generic import CreateView, DeleteView, FormView, ListView, TemplateView, UpdateView
@@ -13,7 +13,7 @@ from .forms import CommentForm, CreateNewPostForm
 
 # from django.db.models.query import QuerySet
 # from django.contrib import messages
-# from django.contrib.auth.mixins import PermissionRequiredMixin
+# from django.contrib.auth.mixins import PermissionRequiredMixin, AccessMixin
 # from django.contrib.auth import logout
 # from django.http.response import HttpResponse
 # from django_summernote.widgets import SummernoteInplaceWidget
