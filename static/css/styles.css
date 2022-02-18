@@ -455,6 +455,10 @@ img {
     width: 12vw width;
 }
 
+.map {
+    height: 70vh;
+}
+
 .navbar {
     z-index: 999;
 }
