@@ -6,18 +6,18 @@
 		{% csrf_token %}
 		{% if liked %}
 		<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
-			<i class="fas fa-heart"></i>
+			<i class="fas fa-heart icon-color-quaternary"></i>
 		</button>
 		{% else %}
 		<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
-			<i class="far fa-heart"></i>
+			<i class="far fa-heart icon-color-quaternary"></i>
 		</button>
 		{% endif %}
 		<span class="text-secondary">
 			{{ post.number_of_likes }}
 			{% else %}
 			<span class="text-secondary">
-				<i class="far fa-heart"></i>
+				<i class="far fa-heart icon-color-quaternary"></i>
 				<span class="text-secondary text-center">
 					{{ post.number_of_likes }}
 				</span>

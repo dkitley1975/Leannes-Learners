@@ -2,32 +2,32 @@
 {% for comment in comments %}
 {% if comment.is_parent %}
 <div class="comments" style="padding: 10px;">
-	<p class="font-weight-bold">
+	<p>
 		{% if user.is_staff %}
 		<a href="{% url 'comment-delete' post.slug comment.pk %}">
 			<i class="fas fa-trash icon-color-primary"></i>&nbsp</a>
 		{% endif %}
-		{{ comment.name }}
-		<span class=" text-muted font-weight-normal">
-			{{ comment.created_at }}
+		<span class="fw-bold">{{ comment.name }}</span>
+		<span class="text-muted">
+			on {{ comment.created_at | date:"d F Y" }} at {{ comment.created_at | time:"h:i a" }}
 		</span>
-		<span class="text-muted font-weight-normal">wrote:</span>
+		<span class="text-muted">wrote:</span>
 		{{ comment.comment | linebreaks }}
 		{% include "components/blog/comments-parent-likes.html" %}
 
 
 		{% for child_comment in comment.children %}
 	<div class="m-2 ms-5 bg-light p-2 ps-5">
-		<p class="font-weight-bold">
+		<p>
 			{% if user.is_staff %}
 			<a href="{% url 'comment-delete' post.slug child_comment.pk %}">
 				<i class="fas fa-trash icon-color-primary"></i>&nbsp</a>
 			{% endif %}
-			{{ child_comment.name }}
-			<span class=" text-muted font-weight-normal">
-				{{ child_comment.created_at }}
+			<span class="fw-bold">{{ child_comment.name }}</span>
+			<span class="text-muted font-weight-normal">
+				on {{ child_comment.created_at | date:"d F Y" }} at {{ child_comment.created_at | time:"h:i a" }}
 			</span>
-			<span class="text-muted font-weight-normal">wrote:</span>
+			<span class="text-muted">wrote:</span>
 			{{ child_comment.comment | linebreaks }}
 			{% include "components/blog/comments-child-likes.html" %}
 		</p>

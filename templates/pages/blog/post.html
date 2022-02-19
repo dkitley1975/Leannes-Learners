@@ -9,7 +9,7 @@
 				<h1 class="post-detail-title">{{ post.title }}</h1>
 				<hr class="post-detail-h-rule">
 				<p class="post-detail-subtitle">Post Category - {{ post.category }} <br>
-					{{ post.author }} | {{ post.created_at }}
+					{{ post.author }} | {{ post.created_at | date:"d F Y" }}
 					{% if user.is_staff %}
 					<a href="{% url 'post-update' post.slug %}"> <i class="far fa-edit"></i></a>
 					<a href="{% url 'post-delete' post.slug %}"> <i class="fas fa-trash"></i></a>

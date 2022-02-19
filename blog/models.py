@@ -1,12 +1,8 @@
-# from ast import Return
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.safestring import mark_safe
-# from django.urls import reverse
 from autoslug import AutoSlugField
-# from django_summernote.widgets import SummernoteWidget
-
 
 # Create your models here.
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -141,12 +137,24 @@ class Comment(models.Model):
 		@returns the string representation of the comment.
 		"""
 		return f"Comment {self.comment} by {self.name}"
+	
+	def number_of_comment_likes(self):
+		"""
+		returns the number of likes for the comment 
+		"""
+		return self.liked.count()
+	
+	def number_of_comment_dislikes(self):
+		"""
+		returns the number of likes for the comment 
+		"""
+		return self.disliked.count()
 
 
 	@property
 	def children(self):
 		""" 
-		returns child comments of a parentby created time
+		returns child comments of a parent by created time
 		"""
 		return Comment.objects.filter(parent=self).order_by('-created_at').all()
 

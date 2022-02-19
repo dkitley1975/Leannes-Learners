@@ -5,7 +5,8 @@
 
 		<button class="btn" type="submit">
 			<i class="fas fa-thumbs-down icon-color-quaternary">
-				<span>{{ comment.disliked.all.count }}</span></i>
+				<span>{{ comment.number_of_comment_dislikes }}</span></i>
+
 
 		</button>
 	</form>
@@ -13,7 +14,7 @@
 		{% csrf_token %}
 		<input type="hidden" name="next" value="{{ request.path }}">
 		<button class="btn" type="submit">
-			<i class="fas fa-thumbs-up icon-color-tertiary"> <span>{{ comment.liked.all.count }}</span></i>
+			<i class="fas fa-thumbs-up icon-color-tertiary"> <span>{{ comment.number_of_comment_likes }}</span></i>
 
 		</button>
 	</form>
