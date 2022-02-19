@@ -161,80 +161,44 @@ class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user == post.name
 
 
-class CommentDislike(LoginRequiredMixin, View):
-    def post(self, request, pk, *args, **kwargs):
-        """
-        This function is used to like or dislike a comment. It is called by the post function.
-        @param request - the request object
-        @param pk - the primary key of the comment
-        @param args - the arguments
-        @param kwargs - the keyword arguments
-        @returns the next page
-        """
+
+
+class CommentDislike(View):
+    """
+    This function is used to like or dislike a comment. It is called when the user clicks on the like or dislike button.
+    @param request - the request object
+    @param slug - the slug of the post
+    @param pk - the primary key of the comment
+    @returns a redirect to the post detail page
+    """
+    def post(self, request, slug, pk, *args, **kwargs):
         comment = Comment.objects.get(pk=pk)
-
-        liked = False
-        
-        for liked in comment.liked.all():
-            if liked == request.user:
-                liked = True
-                break
-
-        if liked:
-            comment.liked.remove(request.user)
-
-        comment_disliked = False
-
-        for disliked in comment.disliked.all():
-            if disliked == request.user:
-                comment_disliked = True
-                break
-
-        if not comment_disliked:
+        if comment.disliked.filter(id=request.user.id).exists():
+            comment.disliked.remove(request.user)
+        else:
             comment.disliked.add(request.user)
-
-        if comment_disliked:
-            comment.disliked.remove(request.user)
-
-        next = request.POST.get('next', '/')
-        return HttpResponseRedirect(next)
+            if comment.liked.filter(id=request.user.id).exists():
+                comment.liked.remove(request.user)
+        return HttpResponseRedirect(reverse('post-detail', args=[slug]))
 
 
-class CommentLike(LoginRequiredMixin, View):
-    def post(self, request, pk, *args, **kwargs):
-        """
-        This function is used to like or dislike a comment. It is called by the post function.
-        @param request - the request object
-        @param pk - the primary key of the comment
-        @param args - the arguments
-        @param kwargs - the keyword arguments
-        @returns the next page
-        """
+class CommentLike(View):
+    """
+    This function is used to like or dislike a comment. It is called when a user clicks on the like button.
+    @param request - the request object
+    @param slug - the slug of the post
+    @param pk - the primary key of the comment
+    @returns a redirect to the post detail page
+    """
+    def post(self, request, slug, pk, *args, **kwargs):
         comment = Comment.objects.get(pk=pk)
-        comment_disliked = False
-        for disliked in comment.disliked.all():
-            if disliked == request.user:
-                comment_disliked = True
-                break
-
-        if comment_disliked:
-            comment.disliked.remove(request.user)
-
-        liked = False
-
-        for liked in comment.liked.all():
-            if liked == request.user:
-                liked = True
-                break
-
-        if not liked:
-            comment.liked.add(request.user)
-
-        if liked:
+        if comment.liked.filter(id=request.user.id).exists():
             comment.liked.remove(request.user)
-
-        next = request.POST.get('next', '/')
-        return HttpResponseRedirect(next)
+        else:
+            comment.liked.add(request.user)
+            if comment.disliked.filter(id=request.user.id).exists():
+                comment.disliked.remove(request.user)
+        return HttpResponseRedirect(reverse('post-detail', args=[slug]))
 
 
 class CommentReply(LoginRequiredMixin, View):
@@ -314,4 +278,3 @@ class PostUpdate(UpdateView):
     model = Post
     template_name = "pages/blog/post-entry-edit.html"
     form_class = CreateNewPostForm
-
