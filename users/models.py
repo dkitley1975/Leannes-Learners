@@ -15,11 +15,23 @@ from cloudinary.models import CloudinaryField
 # Very Academy - Using Signals
 @ receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
+    """
+    When a user is created, create a profile for them.
+    @param sender - the sender of the signal (User)
+    @param instance - the instance of the user (User)
+    @param created - whether the user was created (boolean)
+    @param kwargs - the keyword arguments (dict)
+    """
     if created:
         UserProfile.objects.create(user=instance)
 
 
 class UserProfile(models.Model):
+    """
+    Create a user profile for the user.
+    @param user - the user's profile
+    @returns the user's profile
+    """
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE,)
     user_bio =  models.CharField(max_length=2500, blank=False,
         verbose_name = 'Biography')
@@ -44,13 +56,12 @@ class UserProfile(models.Model):
         verbose_name = 'Website Link')
 
     def image_thumb(self):
-        """
-        This creates a thumbnail image of the current uploaded image
-        """
+        """ Create a thumbnail for the user's profile image.
+        @returns the thumbnail """
         return mark_safe('<img src="{}" width="50" height="auto">'.format(
             self.user_profile_image.url))
-    image_thumb.short_discription = "image"
-    user_profile_image.allow_tags = True
+        image_thumb.short_discription = "image"
+        user_profile_image.allow_tags = True
 
     def __str__(self):
         return str(self.user)

@@ -5,7 +5,11 @@ from users.models import UserProfile
 
 
 class RegistrationForm(UserCreationForm):
-    """Form to collect registration details"""
+    """
+    Initialize the RegistrationForm class. This class is used to create a form for registering a new user.
+    @param args - the arguments passed to the class.
+    @param kwargs - the keyword arguments passed to the class.
+    """
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={'class': 'form-control'}))
     first_name = forms.CharField(max_length=100,
@@ -14,7 +18,6 @@ class RegistrationForm(UserCreationForm):
         widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
-        """declaring the model and fields to use"""
         model = User
         fields = (
             'username',
@@ -26,6 +29,9 @@ class RegistrationForm(UserCreationForm):
             )
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize the RegistrationForm class. This class is used to create a form for registering a new user.
+        """
         super(RegistrationForm, self).__init__(*args, **kwargs)
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
@@ -33,7 +39,11 @@ class RegistrationForm(UserCreationForm):
 
 
 class EditUserDetailsForm(UserChangeForm):
-    """Form to edit the User Details (name ,email, username)"""
+    """
+    The form for editing the user details. This is used in the user profile page.
+    @param UserChangeForm - the form for editing the user details.
+    @returns the form for editing the user details.
+    """
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={'class': 'form-control'}))
     username = forms.CharField(max_length=100,
@@ -44,7 +54,6 @@ class EditUserDetailsForm(UserChangeForm):
         widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
-        """declaring the model and fields to use"""
         model = User
         fields = (
             'username',
@@ -56,9 +65,10 @@ class EditUserDetailsForm(UserChangeForm):
 
 
 class EditUserProfileForm(UserChangeForm):
-    """Form to edit the User Profile Details (Bio and Social)"""
+    """
+     this is the form for the user profile page 
+    """
     class Meta:
-        """declaring the model and fields to use"""
         model = UserProfile
         fields = (
         'user_bio',

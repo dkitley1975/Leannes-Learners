@@ -6,10 +6,9 @@ from .models import UserProfile
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     """
-    Establish the view in admin for the User Profile.
-    Which fields to include in the:
-    list/search views, how they are filtered,
-    which are prepopulated.
+    Publish the selected posts.
+    @param request - the request object
+    @param queryset - the queryset object
     """
     fields = [
         'user',
