@@ -44,7 +44,7 @@ DEBUG = True
 RUNLOCAL = False
 
 # SECURITY WARNING: activate the below for deployment!
-# X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 ALLOWED_HOSTS = [ '127.0.0.1', 'localhost', 'leannes-learners.herokuapp.com' ]

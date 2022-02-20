@@ -16,6 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# Start Unregister from the admin main site panel to help remove confusion for the end user 
+from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
+from allauth.account.models import EmailAddress
+from django.contrib.sites.models import Site
+
+admin.site.unregister(SocialToken)
+admin.site.unregister(SocialAccount)
+admin.site.unregister(SocialApp)
+admin.site.unregister(Site)
+admin.site.unregister(EmailAddress)
+# end of Unregister from the admin main site panel to help remove confusion for the end user 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('django_summernote/', include('django_summernote.urls')),

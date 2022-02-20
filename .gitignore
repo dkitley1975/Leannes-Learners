@@ -12,5 +12,3 @@ myenv/
 *.sqlite3
 *.code-workspace
 .gitignore
-
-latest.dump
