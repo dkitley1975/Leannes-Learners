@@ -14,16 +14,14 @@ import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
 import dj_database_url
-
+from django.core.mail import send_mail
+from django.conf import settings
 # import sentry_sdk
 # from sentry_sdk.integrations.django import DjangoIntegration
 
 
 if os.path.isfile("env.py"):
     import env
-
-from django.core.mail import send_mail
-from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -36,18 +34,20 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in deployment!
-DEBUG = True
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = str(os.environ.get('DEBUG')) == "1" # 1 == True
+RUNLOCAL = str(os.environ.get('RUNLOCAL')) == "1" # 1 == True
 
-# TODO before Deployment remove the if else statement in the database section and this RUNLOCAL variable,
-# this is when only used for running the unittests
-RUNLOCAL = False
+ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
+ALLOWED_HOSTS = []
+if not DEBUG:
+    ALLOWED_HOSTS += [os.environ.get('DJANGO_ALLOWED_HOST')]
 
-# SECURITY WARNING: activate the below for deployment!
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+if not DEBUG:
+    X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
-ALLOWED_HOSTS = [ '127.0.0.1', 'localhost', 'leannes-learners.herokuapp.com' ]
+
 
 
 # Application definition
