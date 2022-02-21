@@ -40,7 +40,6 @@ RUN_UNITTESTS = str(os.environ.get('RUN_UNITTESTS')) == "1" # 1 == True
 
 ENV_ALLOWED_HOST = os.environ.get('ENV_ALLOWED_HOST') or None
 ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOST')]
-
 if not DEBUG:
     X_FRAME_OPTIONS = 'SAMEORIGIN'
 
