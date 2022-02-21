@@ -36,12 +36,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DEBUG')) == "1" # 1 == True
-RUNLOCAL = str(os.environ.get('RUNLOCAL')) == "1" # 1 == True
+RUN_UNITTESTS = str(os.environ.get('RUN_UNITTESTS')) == "1" # 1 == True
 
-ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
-ALLOWED_HOSTS = []
-if not DEBUG:
-    ALLOWED_HOSTS += [os.environ.get('DJANGO_ALLOWED_HOST')]
+ENV_ALLOWED_HOST = os.environ.get('ENV_ALLOWED_HOST') or None
+ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOST')]
 
 if not DEBUG:
     X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -126,7 +124,7 @@ WSGI_APPLICATION = 'leannes_learners.wsgi.application'
 # TODO before Deployment remove the if else statement and replace with this    
 # DATABASES = {'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
-if RUNLOCAL is True:
+if RUN_UNITTESTS is True:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -190,7 +188,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # TODO amend before deployment 
 # test email server setup
-if RUNLOCAL is True:
+if RUN_UNITTESTS is True:
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     EMAIL_HOST = '127.0.0.1'
     EMAIL_PORT = 1025

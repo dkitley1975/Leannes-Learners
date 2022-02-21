@@ -1,86 +1,49 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from blog.views import PostDetail, BlogPosts, PostCreate, PostUpdate, PostDelete, CategoryList, PostLike, CommentLike, CommentDislike, CommentReply, CommentDelete
+from blog.models import Category, Post, Comment
 import json
 
 
-class TestLeannesLearnersDataViews(TestCase):
-	""" Test the Views """
-
+class TestBlogViews(TestCase):
 	def setUp(self):
 		self.client = Client()
-		self.about_us_url = reverse('about-us')
-		self.contact_us_url = reverse('contact-us')
-		self.success_url = reverse('success')
-		self.pass_plus_url = reverse('pass-plus')
-		self.prices_url = reverse('prices')
-		self.terms_and_conditions_url = reverse('terms-and-conditions')
-		self.home_url = reverse('home')
+		
+		self.blog_url = reverse('blog')
+		self.post_detail_url = reverse('post-detail', args=['post_details'])
+		self.post_detils = Post.objects.create(
+			title="my-great-first-blog",
+			slug="my-great-first-blog",
+			author="1",
+			featured_image="my-great-first-blog.jpg",
+			alt_tag="my_great_first_blog_image_description",
+			category="my-great-first-blog-test_category",
+			content="This-is-my-great-first-blog-content",
+			excerpt="This-is-my-great-first-blog-excerpt",
+			likes = "1"
+		)
 
-	def test_about_us_GET(self):
-		"""
-		Test the about us page GET request.
-		@returns the response
-		"""
-		response = self.client.get(self.about_us_url)
+
+
+
+
+
+
+
+
+
+
+
+
+
+	def test_blogposts_GET(self):
+		response = self.client.get(self.blog_url)
 		self.assertEquals(response.status_code, 200)
-		self.assertTemplateUsed(response, 'pages/about-us.html')
+		self.assertTemplateUsed(response, 'pages/blog/blog.html')
 
-	def test_contact_us_GET(self):
-		"""
-		Test the contact us page GET request.
-		@returns the response
-		"""
-		response = self.client.get(self.contact_us_url)
+
+	def test_post_detail_GET(self):
+		response = self.client.get(self.post_detail_url)
 		self.assertEquals(response.status_code, 200)
-		self.assertTemplateUsed(response, 'pages/contact-us.html')
+		self.assertTemplateUsed(response, 'pages/blog/post.html')
 
-	def test_contact_success_GET(self):
-		"""
-		Test the contact successful page GET request.
-		@returns the response
-		"""
-		response = self.client.get(self.success_url)
-		self.assertEquals(response.status_code, 200)
-		self.assertTemplateUsed(response, 'pages/success.html')
-
-	def test_pass_plus_GET(self):
-		"""
-		Test the pass plus page GET request.
-		@returns the response
-		"""
-		response = self.client.get(self.pass_plus_url)
-		self.assertEquals(response.status_code, 200)
-		self.assertTemplateUsed(response, 'pages/pass-plus.html')
-
-	def test_prices_information_page_GET(self):
-		"""
-		Test the prices and information page GET request.
-		@returns the response
-		"""
-		response = self.client.get(self.prices_url)
-		self.assertEquals(response.status_code, 200)
-		self.assertTemplateUsed(response, 'pages/prices.html')
-
-	def test_terms_and_conditions_page_GET(self):
-		"""
-		Test the terms and conditions page GET request.
-		@returns the response
-		"""
-		response = self.client.get(self.terms_and_conditions_url)
-		self.assertEquals(response.status_code, 200)
-		self.assertTemplateUsed(response, 'pages/terms-and-conditions.html')
-
-	def test_home_page_GET(self):
-		"""
-		Test the home page GET request.
-		@returns the response
-		"""
-		response = self.client.get(self.home_url)
-		self.assertEquals(response.status_code, 200)
-		self.assertTemplateUsed(response, 'index.html')
-
-
-# TODO these are querys test these
-	# def test_social_icons_list_GET(self):
-	# def test_instructors_list_GET(self):
+	

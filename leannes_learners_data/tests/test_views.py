@@ -1,6 +1,7 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from leannes_learners_data.views import AboutUsPage, ContactUsPage, ContactSuccessView, PassPlusPage, PricesPage, TermsPage, Testimonials, InstructorsList, TemplateView
+from leannes_learners_data.models import About, Carousel, CompanyDetails, Instructors, Passplus, Service, TeachingHours, Terms, Testimonial
+from blog.models import Post
 import json
 
 
