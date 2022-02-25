@@ -597,8 +597,15 @@ img {
 /* On screens that are 992px */
 @media screen and (min-width: 992px) {
 
-
     .dropdown-menu-end {
         width: 300px;
     }
+
+    .nav-link {
+        text-align: center
+    }
+
+    /* .nav-item.dropdown>ul>li>a {
+        text-align: center
+    } */
 }
