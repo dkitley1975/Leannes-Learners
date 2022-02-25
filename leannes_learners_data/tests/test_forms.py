@@ -4,26 +4,6 @@ from django.test import Client
 
 from ..forms import *
 
-
-class TestCommentForm(TestCase):
-
-	def test_comment_body_is_required(self):
-		''' Test that the body field is required '''
-		form = CommentForm({'body': ''})
-		self.assertFalse(form.is_valid())
-		self.assertIn('body', form.errors.keys())
-		self.assertEqual(form.errors['body'][0], 'This field is required.')
-
-	def test_body_field_is_not_required(self):
-		''' Test that the body field has been filled '''
-		form = CommentForm({'body': 'Test Comment'})
-		self.assertTrue(form.is_valid())
-
-	def test_fields_are_explicit_in_form_metaclass(self):
-		''' Test fields are explicit in form metaclass'''
-		form = CommentForm()
-		self.assertEqual(form.Meta.fields, ('body',))
-
 class TestContactForm(TestCase):
 
 	def test_ContactForm_valid_test_data_fills_all_fields(self):

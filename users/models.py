@@ -5,10 +5,6 @@ from django.utils.safestring import mark_safe
 from django.db.models.signals import post_save
 from cloudinary.models import CloudinaryField
 
-# from django.urls import reverse
-# from django.core.signals import request_finished
-# from django.dispatch import receiver
-# from autoslug import AutoSlugField
 
 # Create your models here.
 

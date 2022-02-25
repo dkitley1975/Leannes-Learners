@@ -31,10 +31,12 @@
    "python.testing.unittestArgs": [
       "-v",
       "-s",
-      ".",
+      "./blog",
       "-p",
       "test_*.py"
    ],
    "python.testing.pytestEnabled": false,
-   "python.testing.unittestEnabled": true
+   "pythonTestExplorer.testplanPath": "",
+   "python.testing.unittestEnabled": true,
+   "pythonTestExplorer.testFramework": "unittest"
 }

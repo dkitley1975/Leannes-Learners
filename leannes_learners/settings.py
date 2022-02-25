@@ -37,11 +37,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DEBUG')) == "1" # 1 == True
 RUN_UNITTESTS = str(os.environ.get('RUN_UNITTESTS')) == "1" # 1 == True
-ENV_ALLOWED_HOST = os.environ.get('ENV_ALLOWED_HOST') or None
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
-if not DEBUG:
-    X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+if DEBUG:
+    ALLOWED_HOSTS = [os.environ.get('ENV_ALLOWED_HOST')]  
+    if RUN_UNITTESTS:
+        RUN_UNITTESTS = str(os.environ.get('RUN_UNITTESTS')) == "1" # 1 == True  
+else:
+    X_FRAME_OPTIONS = 'SAMEORIGIN'
+    ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
 
 
 
@@ -184,7 +187,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-# TODO amend before deployment 
+# TODO amend email to before deployment 
 # test email server setup
 if RUN_UNITTESTS is True:
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
