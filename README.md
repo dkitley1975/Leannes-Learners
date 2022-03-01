@@ -19,9 +19,8 @@ To build a Full-Stack site based on business logic used to control a centrally-o
   * I want to be able to see the prices.
   * I want to know about the company.
   * I want to be able to contact the company.
-  * I want to be able to easily book my lessons.
-  * I want to be able to easily cancel my lessons.
-  * I want to get a confirmation email with my appointment time.
+  * I want to be able engage with the site and with others.
+  
 
 ### Site Owner Goals
 
@@ -30,6 +29,14 @@ To build a Full-Stack site based on business logic used to control a centrally-o
   * I want to show the prices.
   * I want to let people see the services we offer
   * I want to let people easily contact us either by email or phone.
+  * I want to be able to engage with site users.
+  * I want to be able to have a blog section.
+  * I want to be able to allow selected people to login to the site and easily add, delete and amend Posts.
+  * I want to be able to allow site users to be able to post comments on the posts.
+  * I want to be able to allow users to reply to any comments.
+  * I want to be able to allow staff to delete any comments posted.
+
+  These are Items I would like for the future
   * I want to make it easy for pupils to book lessons.
   * I want to get an email when a pupil requests to make or cancel a lesson.
   * I want to be able to confirm a pupils requests to make or cancel a lesson.
@@ -72,19 +79,35 @@ In addition to User Stories and Tasks Project board I also created a Site Creati
 
 ## Design
 
-### Fonts
-
-### Colors
-
-### Wireframe
-
-#### Desktop
-
-![WEB](/documents/assets/Holding_Image.png)
+### Wireframes
 
 #### Mobile
 
 ![MOBILE](/documents/assets/Wireframes/wireframe-mobile.png)
+
+
+### Fonts
+![image](/documents/assets/screenshots/font/our_latest_blog_post.png)
+![image](/documents/assets/screenshots/font/our_latest_testimonials.png)
+For the headings I have used Pushster from Google
+
+### Colors
+These are the main images used throughout the site.
+![Main Colour Pallet](/documents/assets/colour-pallets/main-colour-palette.png)
+* clr-brand-primary: rgb(116, 36, 29) - used for the navigation bar and footer. 
+* clr-brand-secondary: rgba(255, 239, 148, 0.742)  - used in the navigation bar.
+* clr-brand-tertiary: rgb(156, 207, 153)  - used as the hover state - to indicate GO.
+* clr-brand-tertiary-darker: rgb(68, 126, 65)  Used for the Like button.
+* clr-brand-quaternary: rgb(208, 0, 0)  - used as the hover state on some buttons - to indicate STOP/DANGER and the Dislike button.  
+
+These light greys are used through out the site to highlite areas and as shadow areas.
+* clr-background-light: rgb(238, 238, 238)  
+* clr-background-grey: rgb(153, 158, 164)  
+* clr-border-grey: rgb(222, 226, 230)  
+* clr-box-shadow: rgb(153, 153, 153)  
+* clr-link-dark: rgb(68, 82, 97)  
+* clr-quotation-mark: rgb(51, 51, 51)  
+
 
 ## Technologies
 
