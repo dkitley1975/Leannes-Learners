@@ -48,8 +48,8 @@ class Post(models.Model):
 	featured_image = CloudinaryField(
 		folder='leannes_learners/blog_images/',
 		transformation={
-			'width': '400',
-			'height': '300',
+			'width': '800',
+			'height': '600',
 			'crop': 'fill',
 			'gravity': 'face',
 			'zoom': '0.5'

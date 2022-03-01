@@ -34,8 +34,8 @@ class UserProfile(models.Model):
     user_profile_image = CloudinaryField(
         folder='leannes_learners/user_profile_images/',
         transformation={
-            'width': '300',
-            'height': '400',
+            'width': '600',
+            'height': '800',
             'crop': 'fill',
             'gravity': 'face',
             'zoom': '0.5'

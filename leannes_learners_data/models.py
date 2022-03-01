@@ -106,8 +106,8 @@ class Instructors(models.Model):
     instructor_image = CloudinaryField(
         folder='leannes_learners/instructor_images/',
         transformation={
-            'width': '300',
-            'height': '400',
+            'width': '600',
+            'height': '800',
             'crop': 'fill',
             'gravity': 'face',
             'zoom': '0.5'
@@ -191,8 +191,8 @@ class Passplus(models.Model):
     focus_image = CloudinaryField(
         folder='leannes_learners/pass_plus/focus_images/',
         transformation={
-            'width': '400',
-            'height': '400',
+            'width': '800',
+            'height': '800',
             'crop': 'fill',
             'gravity': 'face',
             'zoom': '0.5'
@@ -274,8 +274,8 @@ class Testimonial(models.Model):
     testimonial_image = CloudinaryField(
         folder='leannes_learners/testimonial_images/',
         transformation={
-            'width': '300',
-            'height': '400',
+            'width': '600',
+            'height': '800',
             'crop': 'fill',
             'gravity': 'face',
             'zoom': '0.5'
