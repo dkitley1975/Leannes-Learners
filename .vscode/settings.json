@@ -38,5 +38,6 @@
    "python.testing.pytestEnabled": false,
    "pythonTestExplorer.testplanPath": "",
    "python.testing.unittestEnabled": true,
-   "pythonTestExplorer.testFramework": "unittest"
+   "pythonTestExplorer.testFramework": "unittest",
+   "python.terminal.activateEnvironment": true
 }

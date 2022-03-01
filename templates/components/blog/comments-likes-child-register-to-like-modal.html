@@ -1,0 +1,32 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#likeModal">
+	<i class="fas fa-thumbs-down icon-color-quaternary">
+		<span>{{ child_comment.disliked.all.count }}&nbsp&nbsp&nbsp&nbsp&nbsp</span></i>
+
+	<i class="fas fa-thumbs-up icon-color-tertiary">
+		<span>{{ child_comment.liked.all.count }}</span></i>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="likeModal" tabindex="-1" aria-labelledby="likeModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="likeModalLabel">Show your appreciation:</h3>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<p class="mt-4 mb-2 fw-bolder">Thank you for showing an intrest and wanting to show your
+						appreciation/or not of the posters comments,</p>
+					<p>Thank you for showing an intrest and wanting to show your appreciation/or not of the posters
+						comments,</p>
+					<p class="mt-1">To do so, first please login to your account or register to join our community</p>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>

@@ -1,4 +1,6 @@
 <div class="d-flex flex-row justify-content-start">
+	{% if user.is_authenticated %}
+
 	<form class="text-end" method="POST" action="{% url 'comment-dislike' post.slug comment.pk %}">
 		{% csrf_token %}
 		<input type="hidden" name="next" value="{{ request.path }}">
@@ -19,5 +21,10 @@
 		</button>
 	</form>
 	{% include "components/blog/comment-reply-modal.html" %}
+	{% else %}
+	{% include "components/blog/comments-likes-parent-register-to-like-modal.html" %}
+	{% endif %}
+
+
 
 </div>

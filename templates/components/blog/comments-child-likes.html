@@ -1,12 +1,11 @@
 <div class="d-flex flex-row justify-content-start">
+	{% if user.is_authenticated %}
 	<form class="text-end" method="POST" action="{% url 'comment-dislike' post.slug child_comment.pk %}">
 		{% csrf_token %}
 		<input type="hidden" name="next" value="{{ request.path }}">
-
 		<button class="btn" type="submit">
 			<i class="fas fa-thumbs-down icon-color-quaternary">
 				<span>{{ child_comment.disliked.all.count }}</span></i>
-
 		</button>
 	</form>
 	<form class="text-end" method="POST" action="{% url 'comment-like' post.slug child_comment.pk %}">
@@ -14,7 +13,9 @@
 		<input type="hidden" name="next" value="{{ request.path }}">
 		<button class="btn" type="submit">
 			<i class="fas fa-thumbs-up icon-color-tertiary"> <span>{{ child_comment.liked.all.count }}</span></i>
-
 		</button>
 	</form>
+	{% else %}
+	{% include "components/blog/comments-likes-child-register-to-like-modal.html" %}
+	{% endif %}
 </div>
