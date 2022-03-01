@@ -99,12 +99,12 @@
 					Logout</a>
 				{% else %}
 				<li class="nav-item dropdown">
-					<a class="nav-link" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
+					<a class="nav-link" href="#" id="Register-Drop-Down" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false">
 						<i class="fas fa-user-plus nav-link-white"></i>
 						Register</a>
 					</a>
-					<ul class="dropdown-menu p-3 dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
+					<ul class="dropdown-menu p-3 dropdown-menu-end" aria-labelledby="Register-Drop-Down">
 						<form class="form-group" method="POST" action='{% url "register" %}'>
 							{% csrf_token %}
 							<p>Please enter a username and password.</p>
@@ -146,12 +146,12 @@
 					</ul>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
+					<a class="nav-link" href="#" id="Login-Drop-Down" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false">
 						<i class="fas fa-sign-in-alt nav-link-white"></i>
 						Login</a>
 					</a>
-					<ul class="dropdown-menu p-3 dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
+					<ul class="dropdown-menu p-3 dropdown-menu-end" aria-labelledby="Login-Drop-Down">
 						<form class="form-group" method="POST" action='{% url "login" %}?next={{request.path}}'>
 							{% csrf_token %}
 							<p>Please enter your username and password.</p>

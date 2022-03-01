@@ -565,7 +565,13 @@ img {
     -webkit-animation: heart-beat 2s linear infinite;
 }
 
+.navbar-light {
+    z-index: 100;
+}
 
+.z-index-1001 {
+    z-index: 1001;
+}
 
 @keyframes heart-beat {
     50% {
