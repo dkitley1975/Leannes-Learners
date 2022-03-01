@@ -118,7 +118,7 @@ class Comment(models.Model):
 	comment = models.TextField()
 	created_at = models.DateTimeField(auto_now_add=True)
 	name = models.ForeignKey(User, on_delete=models.CASCADE)
-	user_profile_image = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='avatar')
+	# user_profile_image = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='avatar')
 	liked = models.ManyToManyField(User, blank=True, 
 		related_name="comments_liked")
 	disliked = models.ManyToManyField(User, blank=True,
