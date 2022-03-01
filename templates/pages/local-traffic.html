@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 
 
 {% block title %}Traffic and Weather Report{% endblock %}
@@ -27,4 +27,7 @@
 	</section>
 
 </div>
+<script src="{% static 'js/maps.js' %}"></script>
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMyP_LqIDbp8HMUyMyZtQ7VCOBX2NRoMw&callback=initMap"></script>
 {% endblock %}
