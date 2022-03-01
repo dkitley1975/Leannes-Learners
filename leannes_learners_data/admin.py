@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
+from import_export.admin import ImportExportModelAdmin
 from .models import About, Carousel, CompanyDetails, TeachingHours, Instructors, Passplus, Service, Terms, Testimonial 
 
 
 # Register your models here.
 @admin.register(About)
-class AboutAdmin(SummernoteModelAdmin):
+class AboutAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     """
     Admin class for the About Us Page model
     """
@@ -50,7 +51,7 @@ class AboutAdmin(SummernoteModelAdmin):
 
 
 @admin.register(Carousel)
-class CarouselAdmin(SummernoteModelAdmin):
+class CarouselAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     """
     Admin class for the Cauousel model
     """
@@ -90,7 +91,7 @@ class CarouselAdmin(SummernoteModelAdmin):
 
 
 @admin.register(CompanyDetails)
-class CompanyDetailsAdmin(admin.ModelAdmin):
+class CompanyDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     """
     Admin class for the company contact details model
     """
@@ -124,7 +125,7 @@ class CompanyDetailsAdmin(admin.ModelAdmin):
 
 
 @admin.register(Instructors)
-class InstructorsAdmin(admin.ModelAdmin):
+class InstructorsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     """
     Admin class for the instructors model
     """
@@ -161,7 +162,7 @@ class InstructorsAdmin(admin.ModelAdmin):
 
 
 @admin.register(Passplus)
-class PassplusAdmin(SummernoteModelAdmin):
+class PassplusAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     """
     Admin class for the Pass Plus model
     """
@@ -209,7 +210,7 @@ class PassplusAdmin(SummernoteModelAdmin):
 
 
 @admin.register(Service)
-class ServiceAdmin(admin.ModelAdmin):
+class ServiceAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     """
     Admin class for the services model
     """
@@ -234,7 +235,7 @@ class ServiceAdmin(admin.ModelAdmin):
 
 
 @admin.register(Terms)
-class TermsAdmin(SummernoteModelAdmin):
+class TermsAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     """
     Admin class for the terms and conditions model
     """
@@ -278,7 +279,7 @@ class TermsAdmin(SummernoteModelAdmin):
 
 
 @admin.register(Testimonial)
-class TestimonialAdmin(SummernoteModelAdmin):
+class TestimonialAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     """
     Admin class for the testimonials Model
     """
@@ -316,7 +317,7 @@ class TestimonialAdmin(SummernoteModelAdmin):
 
 
 @admin.register(TeachingHours)
-class TeachingHoursAdmin(admin.ModelAdmin):
+class TeachingHoursAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     """
     Admin class for the Teaching Hours model.
     """

@@ -1,4 +1,6 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin, ExportActionMixin
+
 from .models import Post, Comment, Category
 from django_summernote.admin import SummernoteModelAdmin
 
@@ -7,7 +9,7 @@ from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(ImportExportModelAdmin):
     """
     Establish the view in admin for the Categories.
     .
@@ -18,7 +20,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Post)
-class BlogAdmin(SummernoteModelAdmin):
+class BlogAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     """
     Establish the view in admin for the Blog.
     Which fields to include in the:
@@ -54,7 +56,7 @@ class BlogAdmin(SummernoteModelAdmin):
 
 
 @admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
+class CommentAdmin(ImportExportModelAdmin):
     """
     Establish the view in admin for the Comments.
     Which fields to include in the:

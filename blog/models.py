@@ -34,10 +34,10 @@ class Post(models.Model):
 	@param featured_image - the featured image of the post
 	@param alt_tag - the alt tag of the post
 	@param excerpt - the excerpt of the post
-	@param updated_at - the updated at of the post
+	@param updated_at - the date the post was last updated
 	@param category - the category of the post
 	@param content - the content of the post
-	@param created_at - the created at of the post
+	@param created_at - the date the post was created
 	@param likes - the likes of the post
 	"""
 	title = models.CharField(max_length=200, unique=True)
@@ -90,13 +90,13 @@ class Post(models.Model):
 
 	def __str__(self):
 		"""
-		returns the slug of the post 
+		Return the slug of the object.
 		"""
 		return self.slug
 
 	def number_of_likes(self):
 		"""
-		returns the number of likes for the post 
+		Return the number of likes for a post.
 		"""
 		return self.likes.count()
 
@@ -106,14 +106,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
 	"""
-	The comment model. This is the model that is used to store the comments.
-	@param comment - the comment itself
-	@param created_at - the date and time the comment was created
-	@param name - the user who created the comment
-	@param liked - the users who liked the comment
-	@param disliked - the users who disliked the comment
-	@param parent - the parent comment
-	@param post - the post the comment is associated with
+	A class for the comments.
 	"""
 	comment = models.TextField()
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -136,7 +129,6 @@ class Comment(models.Model):
 	def __str__(self):
 		"""
 		Return a string representation of the comment.
-		@returns the string representation of the comment.
 		"""
 		return f"Comment {self.comment} by {self.name}"
 	
