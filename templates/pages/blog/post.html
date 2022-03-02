@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% block title %}Leannes Learners - Blog{% endblock %}
+{% block seo_page_title  %}Blog Post - Leanne's Learners{% endblock %}
+
 {% block content %}
 
 <div class="post-detail-header col-12">
@@ -36,7 +37,7 @@
 	<div class="row">
 		<!-- Blog Nav filter -->
 		{% include "layout/navbar-catagories.html" %}
-		<div class="col card mb-4  mt-3 left top">
+		<div class="col card mb-4 mt-3 img-radius-10 bg-white">
 
 			<div class="card-body">
 
@@ -59,7 +60,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="card mb-4 p-3 mt-3">
+		<div class="card mb-4 p-3 mt-3  img-radius-10 bg-white">
 			{% include "components/blog/comment-modal.html" %}
 			{% include "components/blog/comments.html" %}
 		</div>

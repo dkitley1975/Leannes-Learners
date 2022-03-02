@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-{% block title %}About Us{% endblock %}
+{% block seo_page_title %}Prices - Leanne's Learners{% endblock %}
+{% block seo_page_description %}Our up to date prices and and special offers{% endblock %}
+
 {% block content %}
 
 
@@ -16,10 +18,13 @@
 
 
 		</div>
-
 		<h2 class="display-6 text-center mb-4">Our Services list</h2>
-		{% include "components/service-table.html" %}
+		<div class="col-12 col-md-10 offset-md-1 my-md-4 my-lg-5 card bg-white img-radius-10 justify-content-center">
 
+
+
+			{% include "components/service-table.html" %}
+		</div>
 	</section>
 </div>
 

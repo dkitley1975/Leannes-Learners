@@ -1,36 +1,33 @@
 {% extends "base.html" %}
-{% block title %}Pass Plus{% endblock %}
+{% block seo_page_title %}Pass Plus course details - Leanne's Learners {% endblock %}
+{% block seo_page_description %}Details on the Pass Plus Training Course - Statistics show that new drivers are more
+likely to have an accident in the first two years after passing their test. This is because of their lack of driving
+experience{% endblock %}
 {% block content %}
 
 <!-- Pass Plus Content -->
 {% for passplus in passplus_list %}
-{% if "placeholder" in passplus.background_image.url %}
-<section
-	style="background-image: url(https://res.cloudinary.com/dkitley1975/image/upload/v1641618826/leannes_learners/default_image/drivers_side_of_a_car_moving_at_speed_with_the_street_light_bluring.jpg);"
-	class="background-image">
-	{% else %}
-	<section style="background-image: url({{ passplus.background_image.url }});" class="background-image">
-		{% endif %}
-		<div class="container-fluid col-12">
-			<div
-				class="container-fluid col-sm-12 col-md-10 justify-content-center content-overlay mt-3 mt-md-4 mt-lg-5">
-				<div class="row">
-					<h1 class="section-header">Pass Plus Course Details</h1>
-					<div class="col-12 mt-3 p-5 row justify-content-center">
-						<div class="col-12 col-md-4 col-lg-3 mt-3"><img src="{{ passplus.focus_image.url }}"
-								class="img-fluid img-focus-image" alt="{{ passplus.alt_tag }}">
-						</div>
-						<p class="lead">{{ passplus.lead_content | safe }}</p>
-						<p>{{ passplus.main_content | safe }}</p>
-					</div>
+<section class="container p-3">
+	<div class="col-12 col-md-10 offset-md-1
+	my-md-4 my-lg-5
+card bg-white img-radius-10 justify-content-center">
+		<div class="row">
+			<h1 class="section-header">Pass Plus Course Details</h1>
+			<div class="col-12 mt-3 p-5 row justify-content-center">
+				<div class="col-12 col-md-4 col-lg-3 mt-3"><img src="{{ passplus.focus_image.url }}"
+						class="img-fluid img-focus-image" alt="{{ passplus.alt_tag }}">
 				</div>
-				{% endfor %}
-
+				<p class="lead">{{ passplus.lead_content | safe }}</p>
+				<p>{{ passplus.main_content | safe }}</p>
 			</div>
-
-
 		</div>
-	</section>
+		{% endfor %}
+
+	</div>
 
 
-	{%endblock%}
+	</div>
+</section>
+
+
+{%endblock%}

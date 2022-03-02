@@ -1,4 +1,4 @@
-<div class="d-none d-sm-block sm-12 mb-12 post-detail-author-info" style=" padding: 10px;">
+<div class="sm-12 mb-12 post-detail-author-info" style=" padding: 10px;">
 	{% if not post.comments.all %}
 	<p>Be the first to leave a comment on {{ post.author }}'s post </p>
 	{% endif %}
@@ -7,7 +7,7 @@
 	<hr class="comment-rule mb-4">
 	<div class="row justify-content-about g-0 p-2 img-radius-10">
 		<!-- Parent Comment -->
-		<div class="col-xs-2 col-sm-2 col-md-1 justify-content-center pe-3">
+		<div class="d-none d-sm-block col-sm-2 col-md-2 col-lg-1 justify-content-center pe-3">
 			{% if comment.name.userprofile %}
 			{% if "placeholder" in comment.name.userprofile.user_profile_image.url %}
 			<img class="img-radius-10"
@@ -23,7 +23,7 @@
 				alt="missing image placeholder image">
 			{% endif %}
 		</div>
-		<div class="col-xs-10 col-sm-10 col-md-11">
+		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-11">
 			<p>
 				{% if user.is_staff %}
 				<a href="{% url 'comment-delete' post.slug comment.pk %}">
@@ -45,7 +45,7 @@
 	<!--- Child Comments-->
 	{% for child_comment in comment.children %}
 	<div class="row justify-content-about g-0 p-2 img-radius-10 ms-5 my-2">
-		<div class="col-xs-2 col-sm-2 col-md-1 justify-content-center pe-3">
+		<div class="d-none d-sm-block col-sm-2 col-md-2 col-lg-1 justify-content-center pe-3">
 			{% if child_comment.name.userprofile %}
 			{% if "placeholder" in child_comment.name.userprofile.user_profile_image.url %}
 			<img class="img-radius-10"
@@ -61,7 +61,7 @@
 				alt="missing image placeholder image">
 			{% endif %}
 		</div>
-		<div class="col-xs-10 col-sm-10 col-md-11">
+		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-11">
 			<div class="comments">
 
 				<p>

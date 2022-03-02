@@ -8,19 +8,19 @@ from .models import About, Carousel, CompanyDetails, TeachingHours, Instructors,
 @admin.register(About)
 class AboutAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     """
-    Admin class for the About Us Page model
+    Unpublish the About Us page.
+    @param self - the current page instance.
+    @param request - the request object.
+    @param queryset - the queryset of the current page.
     """
     fields = [
         'short_description',
         'about_us',
-        'background_image',
-        'image_thumb',
         'status',
     ]
 
     list_display = (
         'short_description',
-        'image_thumb',
         'status',
         'created_at',
         )
@@ -29,7 +29,6 @@ class AboutAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     list_filter = ('status',)
     actions = ['publish_About_us', 'unpublish_About_us']
     summernote_fields = ('about_us',)
-    readonly_fields = ['image_thumb',]
 
     def publish_About_us(self, request, queryset):
         """
@@ -131,19 +130,20 @@ class InstructorsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     """
     fields = [
         'name',
-        'instructor_image',
         'image_thumb',
+        'instructor_image',
         'alt_tag',
         'about',
         'status',
+        
     ]
 
     list_display = (
-        'image_thumb',
         'name',
         'about',
         'status',
         'created_at',
+        'image_thumb',
         )
 
     search_fields = ['name',]
@@ -172,13 +172,10 @@ class PassplusAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
         'main_content',
         'focus_image',
         'alt_tag',
-        'background_image',
-        'image_thumb',
         'status',
     ]
 
     list_display = (
-        'image_thumb',
         'short_description',
         'status',
         'created_at',
@@ -188,7 +185,6 @@ class PassplusAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     list_filter = ('status', 'created_at',)
     actions = ['publish_Passplus', 'unpublish_Passplus']
     summernote_fields = ('main_content',)
-    readonly_fields = ['image_thumb',]
 
     def publish_Passplus(self, request, queryset):
         """
@@ -212,7 +208,8 @@ class PassplusAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
 @admin.register(Service)
 class ServiceAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     """
-    Admin class for the services model
+    This is the admin page for the ImportExportModel. It allows the user to see the           
+    model's name, the number of parameters, and the accuracy of the model.
     """
     list_display = (
         'service_name',
@@ -226,10 +223,10 @@ class ServiceAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
     def include_in_Services(self, request, queryset):
         """
-        A function to be used in the admin interface to allow the user to select which services to include in the services page.
-        @param self - the admin interface object itself.
-        @param request - the request object itself.
-        @param queryset - the queryset object itself.
+        A custom filter for the admin site. This function will only return objects that are in the Services table.
+        @param request - the request object           
+        @param queryset - the queryset object           
+        @return the queryset object           
         """
         queryset.update(featured=True)
 
@@ -237,13 +234,11 @@ class ServiceAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 @admin.register(Terms)
 class TermsAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     """
-    Admin class for the terms and conditions model
+    The fields for the admin page for the ImportExportModelAdmin and the SummernoteModelAdmin.
     """
     fields = [
         'lead_content',
         'main_content',
-        'background_image',
-        'image_thumb',
         'status',
     ]
 
@@ -257,7 +252,6 @@ class TermsAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     list_filter = ('status', 'created_at',)
     actions = ['publish_Terms', 'unpublish_Terms']
     summernote_fields = ('lead_content', 'main_content',)
-    readonly_fields = ['image_thumb',]
 
     def publish_Terms(self, request, queryset):
         """
@@ -281,19 +275,20 @@ class TermsAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
 @admin.register(Testimonial)
 class TestimonialAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     """
-    Admin class for the testimonials Model
+    Update the status of the testimonials to true.
+    @param self - the current view instance.
+    @param request - the current request.
+    @param queryset - the testimonials to update.
     """
     fields = [
         'name',
         'testimonial_image',
-        'image_thumb',
         'alt_tag',
         'testimonial',
         'status',
     ]
 
     list_display = (
-        'image_thumb',
         'name',
         'testimonial',
         'status',
@@ -304,14 +299,12 @@ class TestimonialAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     list_filter = ('status', 'created_at')
     actions = ['publish_Testimonial',]
     summernote_fields = ('testimonial',)
-    readonly_fields = ['image_thumb',]
 
     def publish_Testimonial(self, request, queryset):
         """
-        Update the status of the testimonials to true.
-        @param self - the current view instance.
-        @param request - the current request.
-        @param queryset - the testimonials to update.
+        Publish the testimonials that are selected.
+        @param request - the request object
+        @param queryset - the testimonials that are selected
         """
         queryset.update(status=True)
 
@@ -319,7 +312,9 @@ class TestimonialAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
 @admin.register(TeachingHours)
 class TeachingHoursAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     """
-    Admin class for the Teaching Hours model.
+    This is a custom admin class for the ImportExportModel class. It allows us to import and export models.
+    @param ImportExportModelAdmin - the admin class for the ImportExportModel class
+    @param admin.ModelAdmin - the admin class for the Model class
     """
     fields = [
         'day',

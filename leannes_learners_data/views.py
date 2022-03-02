@@ -124,7 +124,7 @@ class PricesPage(generic.ListView):
         @returns the context data for the home page.
         """
         context = super().get_context_data(**kwargs)
-        context['featured_list'] = Service.objects.filter(featured=1).order_by("price")
+        context['featured_list'] = Service.objects.filter(featured=1).order_by("featured_order")
         return context
 
 

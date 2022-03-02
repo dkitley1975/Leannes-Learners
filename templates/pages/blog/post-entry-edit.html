@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
-{% block title %}Leannes Learners - Edit Blog Post{% endblock %}
+{% block seo_page_title %}Edit Blog Post- Leanne's Learners{% endblock %}
 {% block content %}
 
 <section>
@@ -11,7 +11,7 @@
 			<div class="col-12 mt-3 ">
 
 				<h1 class="section-header">Edit Blog Post</h1>
-				<div class="row col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 mt-3">
+				<div class="row col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 mt-3  img-radius-10 bg-white my-4">
 					<div class="form-group">
 						<form method="POST">
 							{% csrf_token %}

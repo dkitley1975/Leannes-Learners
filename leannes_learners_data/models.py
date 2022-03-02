@@ -13,29 +13,15 @@ class About(models.Model):
     The About model. This model is used to store the about us information.
     @param short_description - the short description of the about us page.
     @param about_us - the long description of the about us page.
-    @param background_image - the background image of the about us page.
     @param updated_at - the date the about us page was last updated.
     @param created_at - the date the about us page was created.
     @param status - the status of the about us page.
     """
     short_description = models.CharField(max_length=80, unique=True)
     about_us =  models.TextField()
-    background_image = CloudinaryField(
-        folder='leannes_learners/about_us/background_images/',
-        default='placeholder')
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-
-    def image_thumb(self):
-        """
-        Return the image thumbnail for the background image.
-        @returns the image thumbnail
-        """
-        return mark_safe('<img src="{}" width="auto" height="100">'.format(
-            self.background_image.url))
-    image_thumb.short_discription = "background image"
-    background_image.allow_tags = True 
 
     class Meta:
         ordering = ["-created_at"]
@@ -161,6 +147,7 @@ class Service(models.Model):
     price = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     featured = models.BooleanField(default=False)
+    featured_order = models.IntegerField(verbose_name = "Featured Price Order results display 1,2,3")
 
     class Meta:
         ordering = ["-featured", "service_duration"]
@@ -181,9 +168,6 @@ class Passplus(models.Model):
     It has a short description, a background image, a lead content, a main content, and a focus image.
     """
     short_description = models.CharField(max_length=80, unique=True)
-    background_image = CloudinaryField(
-        folder='leannes_learners/pass_plus/background_images/',
-        default='placeholder')
     lead_content =  models.TextField(
         verbose_name = 'Lead content - more prominent than the rest.')
     main_content =  models.TextField(
@@ -204,16 +188,6 @@ class Passplus(models.Model):
     created_at = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
-    def image_thumb(self):
-        """
-        Create a thumbnail for the image.
-        @returns the thumbnail
-        """
-        return mark_safe('<img src="{}" width="auto" height="100">'.format(
-            self.background_image.url))
-    image_thumb.short_discription = "background image"
-    background_image.allow_tags = True
-
     class Meta:
         ordering = ["-created_at"]
         verbose_name = "Pass Plus Page"
@@ -231,9 +205,6 @@ class Terms(models.Model):
     """
     The Terms and Conditions page.
     """
-    background_image = CloudinaryField(
-        folder='leannes_learners/terms_and_conditions/background_images/',
-        default='placeholder')
     lead_content =  models.TextField(
         verbose_name = 'Lead content - The explanation.')
     main_content =  models.TextField(
@@ -241,16 +212,6 @@ class Terms(models.Model):
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-
-    def image_thumb(self):
-        """
-        Create a thumbnail for the image. This is used in the admin interface.
-        @returns the thumbnail
-        """
-        return mark_safe('<img src="{}" width="auto" height="100">'.format(
-            self.background_image.url))
-    image_thumb.short_discription = "terms_and_conditions"
-    background_image.allow_tags = True
 
     class Meta:
         ordering = ["-created_at"]

@@ -2,11 +2,11 @@
 	<div class="col-12 mt-3 left">
 		<div class="row d-flex justify-content-around">
 			{% for testimonial in testimonial_list %}
-			<div class="card mb-3 align-self-center" style="max-width: 540px;">
-				<div class="row g-1 mt-3">
+			<div class="mb-3 align-self-center bg-white img-radius-10" style="max-width: 540px;">
+				<div class="row g-1 mt-2 ms-2">
 					{% if "placeholder" in testimonial.testimonial_image.url %}
 					<div class="col-md-4 align-self-center">
-						<img class="card-img-top img-radius-10 trans-80align-self-center"
+						<img class="card-img-top img-radius-10 trans-80 align-self-center"
 							src="https://res.cloudinary.com/dkitley1975/image/upload/v1641189549/leannes_learners/default_image/placeholder-300x400.png"
 							alt="Image missing - default place holder image">
 					</div>

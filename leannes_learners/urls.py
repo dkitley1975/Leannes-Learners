@@ -21,7 +21,7 @@ from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
 from allauth.account.models import EmailAddress
 from django.contrib.sites.models import Site
 
-admin.site.unregister(SocialToken)
+# admin.site.unregister(SocialToken)
 admin.site.unregister(SocialAccount)
 admin.site.unregister(SocialApp)
 admin.site.unregister(Site)

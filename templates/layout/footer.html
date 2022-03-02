@@ -11,7 +11,8 @@
 						{{ companydetails.social_media_name }}</a>
 					{% else %}
 					<a href='{{ companydetails.social_media_link }}' target="_blank" rel="noopener noreferrer"><img
-							src='{{ companydetails.social_media_image.url }}' height="20px" class="mx-auto d-block" alt="{{ companydetails.social_media_name }} icon"></a>
+							src='{{ companydetails.social_media_image.url }}' height="20px" class="mx-auto d-block"
+							alt="{{ companydetails.social_media_name }} icon"></a>
 					{% endif %}
 				</div>
 				{% endif %}
@@ -23,8 +24,8 @@
 						{{ companydetails.social_media_name_2 }}</a>
 					{% else %}
 					<a href='{{ companydetails.social_media_link_2 }}' target="_blank" rel="noopener noreferrer"><img
-							src='{{ companydetails.social_media_image_2.url }}' height="20px"
-							class="mx-auto d-block" alt="{{ companydetails.social_media_name_2 }}icon"></a>
+							src='{{ companydetails.social_media_image_2.url }}' height="20px" class="mx-auto d-block"
+							alt="{{ companydetails.social_media_name_2 }}icon"></a>
 					{% endif %}
 				</div>
 				{% endif %}
@@ -36,9 +37,8 @@
 						{{ companydetails.social_media_name_3 }}</a>
 					{% else %}
 					<a href='{{ companydetails.social_media_link_3 }}' target="_blank" rel="noopener noreferrer"><img
-							src='{{ companydetails.social_media_image_3.url }}' height="20px"
-							class="mx-auto d-block" 
-						alt="{{ companydetails.social_media_name_3 }} icon"></a>
+							src='{{ companydetails.social_media_image_3.url }}' height="20px" class="mx-auto d-block"
+							alt="{{ companydetails.social_media_name_3 }} icon"></a>
 					{% endif %}
 				</div>
 				{% endif %}
@@ -50,15 +50,15 @@
 						{{ companydetails.social_media_name_4 }}</a>
 					{% else %}
 					<a href='{{ companydetails.social_media_link_4 }}' target="_blank" rel="noopener noreferrer"><img
-							src='{{ companydetails.social_media_image_4.url }}' height="20px"
-							class="mx-auto d-block" 
-						alt="{{ companydetails.social_media_name_4 }} icon"></a>
+							src='{{ companydetails.social_media_image_4.url }}' height="20px" class="mx-auto d-block"
+							alt="{{ companydetails.social_media_name_4 }} icon"></a>
 					{% endif %}
 				</div>
 				{% endif %}
 
 				<div class="col-2 footer-social text-center mx-auto">
-					<a class="fw-bold tel-link" href='tel:{{ companydetails.phone }}' alt="telephone icon with link to the number:{{ companydetails.phone }}"><i class="fa fa-phone"
+					<a class="fw-bold tel-link" href='tel:{{ companydetails.phone }}'
+						alt="link to the contact Number: {{ companydetails.phone }}"><i class="fa fa-phone"
 							aria-hidden="true"></i>
 					</a>
 				</div>
