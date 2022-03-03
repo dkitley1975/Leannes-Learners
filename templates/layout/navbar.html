@@ -44,12 +44,12 @@
 				</li>
 				{% if user.is_authenticated %}
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false">
+					<a class="nav-link dropdown-toggle-authenticated" href="#" id="navbarDropdown-authenticated"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						Member's Area
 					</a>
 					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark"
-						aria-labelledby="navbarDropdown">
+						aria-labelledby="navbarDropdown-authenticated">
 						<li><a class="dropdown-item {% if url_name == 'edit-user-details' %}active{% endif %}"
 								href="{% url 'edit-user-details' %}">Edit Details</a></li>
 
@@ -72,10 +72,10 @@
 				{% endif %}
 				{% if user.is_staff %}
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+					<a class="nav-link dropdown-toggle-staff-only" href="#" id="navbarDropdown-staff-only" role="button"
 						data-bs-toggle="dropdown" aria-expanded="false">Staff Area</a>
 					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark"
-						aria-labelledby="navbarDropdown">
+						aria-labelledby="navbarDropdown-staff-only">
 						<li><a class="dropdown-item" href="/admin/">Login to Admin</a></li>
 						<li><a class="dropdown-item {% if url_name == 'post-creation' %}active{% endif %}"
 								href="/blog/post-creation">Create a Blog Post</a></li>
@@ -91,9 +91,11 @@
 			</ul>
 			<ul class="navbar-nav d-flex navbar-burnt-red navbar-dark">
 				{% if user.is_authenticated %}
+				<li>
 				<a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt nav-link-white"></i>
 					Logout</a>
 				{% else %}
+				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link" href="#" id="Register-Drop-Down" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false">

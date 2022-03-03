@@ -25,7 +25,7 @@
 					{% else %}
 					<a href='{{ companydetails.social_media_link_2 }}' target="_blank" rel="noopener noreferrer"><img
 							src='{{ companydetails.social_media_image_2.url }}' height="20px" class="mx-auto d-block"
-							alt="{{ companydetails.social_media_name_2 }}icon"></a>
+							alt="{{ companydetails.social_media_name_2 }} icon"></a>
 					{% endif %}
 				</div>
 				{% endif %}
@@ -57,10 +57,10 @@
 				{% endif %}
 
 				<div class="col-2 footer-social text-center mx-auto">
-					<a class="fw-bold tel-link" href='tel:{{ companydetails.phone }}'
-						alt="link to the contact Number: {{ companydetails.phone }}"><i class="fa fa-phone"
-							aria-hidden="true"></i>
-					</a>
+					<a class="fw-bold tel-link" href='tel:{{ companydetails.phone }}'>
+						<img src='https://res.cloudinary.com/dkitley1975/image/upload/v1646299274/leannes_learners/logos/phone.png'
+							height="20px" class="mx-auto d-block"
+							alt="Telephone icon with link to the contact Number: {{ companydetails.phone }}"></a>
 				</div>
 				{% endfor %}
 			</div>
