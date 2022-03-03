@@ -56,7 +56,7 @@ class Carousel(models.Model):
         default='placeholder')
 
     alt_tag = models.CharField(max_length=200, blank=True, 
-        verbose_name = 'Describe the image for the blind')
+        verbose_name = 'image alternative text')
     include_in_carousel = models.BooleanField(default=False)
 
     class Meta:
@@ -100,7 +100,7 @@ class Instructors(models.Model):
             },
         default='placeholder')
     alt_tag = models.CharField(max_length=200, blank=True, 
-        verbose_name = 'Describe the image for the blind')
+        verbose_name = 'image alternative text')
     about = models.TextField()
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
@@ -183,7 +183,7 @@ class Passplus(models.Model):
             },
         default='placeholder')
     alt_tag = models.CharField(max_length=200, blank=True, 
-        verbose_name = 'Describe the image for the blind')
+        verbose_name = 'image alternative text')
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -243,7 +243,7 @@ class Testimonial(models.Model):
             },
         default='placeholder')
     alt_tag = models.CharField(max_length=200, blank=True, 
-        verbose_name = 'Describe the image for the blind')
+        verbose_name = 'image alternative text')
     testimonial =  models.TextField()
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)

@@ -56,7 +56,7 @@ class Post(models.Model):
 			},
 		default='image/upload/leannes_learners/default_image/placeholder')
 	alt_tag = models.CharField(max_length=200, blank=True,
-		verbose_name='Describe the image for the blind')
+		verbose_name='image alternative text')
 	excerpt = models.TextField(blank=False,
 		verbose_name='Eye Catching Excerpt - make someone want to read the article')
 
