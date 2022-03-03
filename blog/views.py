@@ -85,6 +85,7 @@ class PostDetail(View):
                 "liked": liked,
             },
         )
+        
 
 
 class BlogPosts(generic.ListView):

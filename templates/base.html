@@ -5,11 +5,19 @@
 <head>
 
 	{% include "layout/header.html" %}
-	<meta name="description"
+	{% comment %} <title>{% block seo_page_title %} {% endblock %}</title> {% endcomment %}
+	{% comment %} <meta name="description" 
 		content="Leanne's Learners a small independant driving school based in Huddersfield - {% block seo_page_description %} {% endblock %} ">
-	<meta name="keywords"
+	{% endcomment %}
+		<meta name="keywords"
 		content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor">
-	<title>{% block seo_page_title %} {% endblock %}</title>
+	
+		
+
+		{% block metadescription %}
+		{% endblock %}
+
+
 </head>
 
 <body class="d-flex flex-column min-vh-100">

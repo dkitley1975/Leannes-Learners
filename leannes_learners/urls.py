@@ -22,10 +22,10 @@ from allauth.account.models import EmailAddress
 from django.contrib.sites.models import Site
 
 # admin.site.unregister(SocialToken)
-admin.site.unregister(SocialAccount)
-admin.site.unregister(SocialApp)
-admin.site.unregister(Site)
-admin.site.unregister(EmailAddress)
+# admin.site.unregister(SocialAccount)
+# admin.site.unregister(SocialApp)
+# admin.site.unregister(Site)
+# admin.site.unregister(EmailAddress)
 # end of Unregister from the admin main site panel to help remove confusion for the end user 
 
 

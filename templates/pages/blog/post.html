@@ -1,5 +1,8 @@
 {% extends "base.html" %}
-{% block seo_page_title  %}Blog Post - Leanne's Learners{% endblock %}
+{% block metadescription %}
+<title>Post - {{post.title}}</title>
+<meta name="description" content="{{post.title|safe|truncatechars:50 }} - {{post.content|safe|truncatechars:100 }}">
+{% endblock %}
 
 {% block content %}
 
