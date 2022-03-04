@@ -52,7 +52,7 @@ class ContactUsPage(FormView):
     """
     template_name = "pages/contact-us.html"
     form_class = ContactForm
-    success_url = reverse_lazy('pages/success')
+    success_url = reverse_lazy('contact-us')
 
     def form_valid(self, form):
         """
@@ -64,7 +64,7 @@ class ContactUsPage(FormView):
         # Calls the custom send method
         form.send()
         # This will add the flash message after email being valid
-        # messages.success(self.request, "Message sent." )
+        messages.success(self.request, "Message sent." )
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):

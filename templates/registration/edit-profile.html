@@ -29,27 +29,27 @@
 				<div class="col-md-10">
 					<div class="card-body">
 						<h2 class="card-title post-detail-author-title">Your site Profile</h2>
-						<h2 class="card-title post-detail-author-subtitle fw-bold">
-							{{ userprofile.user.first_name }} {{ userprofile.user.last_name }}
-						</h2>
-						<p class="small text-muted post-detail-author-links" target="_blank" rel="noopener noreferrer">
+						<h3 class="card-title post-detail-author-subtitle fw-bold">
+							{{ userprofile.user.first_name }} {{ userprofile.user.last_name }}</h3>
+
+						<p class="small text-muted post-detail-author-links">
 							{% if userprofile.user_website_url %}
 							<a href="{{userprofile.user_website_url}}" target="_blank" rel="noopener noreferrer">
-								<i class="fas fa-globe" aria-hidden="true"></i>&nbsp</a>
+								<i class="fas fa-globe" aria-hidden="true"></i>&nbsp;</a>
 							{% endif %}
 							{% if userprofile.user_linkedin_url %}
 							<a href="{{userprofile.user_linkedin_url}}" target="_blank" rel="noopener noreferrer">
-								<i class="fab fa-linkedin" aria-hidden="true"></i>&nbsp</a>
+								<i class="fab fa-linkedin" aria-hidden="true"></i>&nbsp;</a>
 							{% endif %}
 
 							{% if userprofile.user_facebook_url %}
 							<a href="{{userprofile.user_facebook_url}}" target="_blank" rel="noopener noreferrer">
-								<i class="fab fa-facebook"></i>&nbsp</a>
+								<i class="fab fa-facebook"></i>&nbsp;</a>
 							{% endif %}
 
 							{% if userprofile.user_twitter_url %}
 							<a href="{{userprofile.user_twitter_url}}" target="_blank" rel="noopener noreferrer">
-								<i class="fab fa-twitter"></i>&nbsp</a>
+								<i class="fab fa-twitter"></i>&nbsp;</a>
 							{% endif %}
 						</p>
 						<p class="card-text">Update your biography</p>
@@ -66,19 +66,19 @@
 				</div>
 				<h3 class="card-title post-detail-author-title pt-5">Update your social media profile links</h3>
 				<div class="col-12 col-lg-6">
-					<i class="fas fa-globe"></i>&nbspYour Website URL
+					<i class="fas fa-globe"></i>&nbsp;Your Website URL
 					{{ form.user_website_url}}
 				</div>
 				<div class="col-12 col-lg-6">
-					<i class="fab fa-linkedin"></i>&nbspYour LinkedIn Profile URL
+					<i class="fab fa-linkedin"></i>&nbsp;Your LinkedIn Profile URL
 					{{ form.user_linkedin_url}}
 				</div>
 				<div class="col-12 col-lg-6">
-					<i class="fab fa-facebook"></i>&nbspYour Facebook Profile URL
+					<i class="fab fa-facebook"></i>&nbsp;Your Facebook Profile URL
 					{{ form.user_facebook_url}}
 				</div>
 				<div class="col-12 col-lg-6">
-					<i class="fab fa-twitter"></i>&nbspYour Twitter Profile URL
+					<i class="fab fa-twitter"></i>&nbsp;Your Twitter Profile URL
 					{{ form.user_twitter_url}}
 				</div>
 			</div>

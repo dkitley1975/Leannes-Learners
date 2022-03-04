@@ -16,8 +16,8 @@
 				{% endif %}
 				<img src="{{ carousel.slide_image.url }}" class="d-block w-100" alt="{{ carousel.alt_tag }}">
 				<div class="carousel-caption d-none d-md-block">
-					<h5>{{ carousel.slide_text_headline | safe}}</h5>
-					<p>{{ carousel.slide_text_description | safe}}</p>
+					<h5>{{ carousel.slide_text_headline|safe}}</h5>
+					<p>{{ carousel.slide_text_description|safe}}</p>
 				</div>
 			</div>
 			{% endfor %}
@@ -33,4 +33,3 @@
 			<span class="visually-hidden">Next</span>
 		</button>
 	</div>
-</div>
