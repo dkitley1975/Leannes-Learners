@@ -13,16 +13,24 @@ class Category(models.Model):
 	"""
 	A model for the categories of the dataset.
 	"""
-	name = models.CharField(max_length=50)
+	title = models.CharField(max_length=50)
+	slug = AutoSlugField(max_length=60, populate_from='name', unique=True)
+
 	class Meta:
-		ordering = ["name"]
+		ordering = ["title"]
 		verbose_name = "Category"
 		verbose_name_plural = "Categories"
 	def __str__(self):
 		"""
-		returns the name of the category 
+		returns the title of the category 
 		"""
-		return self.name
+		return self.title
+
+	def __str__(self):
+		"""
+		Return the name of the object.
+		"""
+		return self.slug
 
 
 class Post(models.Model):
@@ -43,7 +51,7 @@ class Post(models.Model):
 	title = models.CharField(max_length=200, unique=True)
 	slug = AutoSlugField(max_length=250, populate_from='title', unique=True)
 	author = models.ForeignKey(
-		User, on_delete=models.CASCADE, related_name="post_posts"
+		User, on_delete=models.CASCADE, limit_choices_to={'is_staff': True}, related_name="post_posts"
 	)
 	featured_image = CloudinaryField(
 		folder='leannes_learners/blog_images/',
@@ -111,7 +119,6 @@ class Comment(models.Model):
 	comment = models.TextField()
 	created_at = models.DateTimeField(auto_now_add=True)
 	name = models.ForeignKey(User, on_delete=models.CASCADE)
-	# user_profile_image = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='avatar')
 	liked = models.ManyToManyField(User, blank=True, 
 		related_name="comments_liked")
 	disliked = models.ManyToManyField(User, blank=True,

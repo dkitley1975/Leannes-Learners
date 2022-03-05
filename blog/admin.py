@@ -14,9 +14,11 @@ class CategoryAdmin(ImportExportModelAdmin):
     Establish the view in admin for the Categories.
     .
     """
-    list_display = ['name',]
-    list_filter = ['name',]
-    search_fields = ['name',]
+    list_display = ['title','slug']
+    list_filter = ['title',]
+    search_fields = ['title',]
+    readonly_fields = ['slug',]
+
 
 
 @admin.register(Post)

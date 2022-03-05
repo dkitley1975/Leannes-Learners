@@ -33,7 +33,6 @@ class CreateNewPostForm(forms.ModelForm):
 			'author',
 			'category',
 			)
-
 		widgets = {
 			'title': forms.TextInput(attrs={'class': 'form-control'}),
 			'alt_tag': forms.TextInput(attrs={'class': 'form-control'}),

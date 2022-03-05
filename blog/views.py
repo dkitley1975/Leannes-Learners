@@ -105,8 +105,9 @@ class CategoryList(ListView):
     @param category - the category name
     @returns the queryset for the category page
     """
+    model = Category
     template_name = 'pages/blog/category.html'
-    context_object_name = 'catagorylist'
+    context_object_name = 'categorylist'
 
     def get_queryset(self):
         """
@@ -116,21 +117,23 @@ class CategoryList(ListView):
         """
         content = {
             'cat': self.kwargs['category'],
-            'posts': Post.objects.filter(category__name=self.kwargs
-            ['category']).filter()
+            'posts': Post.objects.filter(category__slug=self.kwargs
+            ['category']).filter(),
+            'title': self.kwargs['category'].replace('-', ' '),
+            
         }
         return content
 
 
 def category_list(request):
     """
-    Return the category list for the category page.
-    @param request - the request object
-    @returns the category list
+    Returns a list of categorys for the Category NavBar.
+    This filters if they have at lease 1 post and 
+    orders by amount of posts mentioning the category 
     """
     category_list = Category.objects.annotate(post_count=Count("post")).filter(post_count__gt=0).order_by('-post_count')
     context = {
-        'category_list': category_list,
+        'category_list': category_list
     }
     return context
 
