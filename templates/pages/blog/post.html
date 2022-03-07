@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block metadescription %}
 <title>Post - {{post.title}}</title>
-<meta name="description" content="{{post.title|safe|truncatechars:50 }} - {{post.content|safe|truncatechars:100 }}">
+<meta name="description"
+	content="{{post.title|safe|truncatechars:50 }} - {{post.content|striptags|safe|truncatechars:100 }}">
 {% endblock %}
 
 {% block content %}
-
 <div class="post-detail-header col-12">
 	<div class="container col-md-12 ms-auto">
 		<div class="row align-items-end">
@@ -13,7 +13,7 @@
 				<h1 class="post-detail-title">{{ post.title }}</h1>
 				<hr class="post-detail-h-rule">
 				<p class="post-detail-subtitle">Post Category - {{ post.category }} <br>
-					{{ post.author }} | {{ post.created_at | date:"d F Y" }}
+					{{ post.author }} | {{ post.updated_at | date:"d F Y" }}
 					{% if user.is_staff %}
 					<a href="{% url 'post-update' post.slug %}"> <i class="far fa-edit"></i></a>
 					<a href="{% url 'post-delete' post.slug %}"> <i class="fas fa-trash"></i></a>
@@ -41,12 +41,8 @@
 		<!-- Blog Nav filter -->
 		{% include "layout/navbar-catagories.html" %}
 		<div class="col card mb-4 mt-3 img-radius-10 bg-white">
-
-			<div class="card-body">
-
-				<p class="card-text">
+			<div class="card-body card-text">
 					{{ post.content | safe }}
-				</p>
 				<div class="row">
 					<hr class="feature-rule mt-3">
 					{% include "components/blog/post-likes-and-comments-count.html" %}
@@ -67,9 +63,6 @@
 			{% include "components/blog/comment-modal.html" %}
 			{% include "components/blog/comments.html" %}
 		</div>
-
 	</div>
-
 </div>
-
 {% endblock content %}

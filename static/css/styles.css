@@ -55,7 +55,7 @@ img {
     top: 40vh;
     left: 0px;
     width: 100%;
-    z-index: 9999;
+    z-index: 50;
 }
 
 .alt-text-white {
@@ -316,7 +316,7 @@ img {
 }
 
 .footer {
-    z-index: 50;
+    z-index: 20;
 }
 
 .footer-social>a {
@@ -426,14 +426,14 @@ img {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 101;
+    z-index: 80;
     width: 100vw;
     height: 100vh;
     background-color: #000;
 }
 
 .navbar {
-    z-index: 50;
+    z-index: 100;
 }
 
 .navbar-nav {
@@ -642,7 +642,7 @@ img {
 }
 
 .navbar-light {
-    z-index: 50;
+    z-index: 10;
 }
 
 .z-index-1001 {

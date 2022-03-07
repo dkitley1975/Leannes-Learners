@@ -1,0 +1,62 @@
+<!-- Button trigger modal -->
+<a class="nav-link" href="#" role="button" data-bs-toggle="modal" data-bs-target="#registrationModal"
+	aria-expanded="false">
+	<i class="fas fa-user-plus nav-link-white"></i>
+	Register</a>
+<!-- Modal -->
+<div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" id="registrationModalLabel">Join our community:</h3>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+
+	<form class="form-group" method="POST" action='{% url "register" %}'>
+		{% csrf_token %}
+		<p>Please enter a username and password.</p>
+		<div>
+			<input type="text" class="form-control" name="username" maxlength="150" autocapitalize="none"
+				autocomplete="username" required="" id="id_username_registration_modal" placeholder="Username">
+			<p class="registration-helptext">Required. 150 characters or fewer. Letters,
+				digits
+				and
+				@/./+/-/_ only.</p>
+			<div>
+				<input type="text" class="form-control" name="first_name" id="id_first_name_registration_modal"
+					placeholder="First Name">
+			</div>
+			<div>
+				<input type="text" class="form-control" name="last_name" id="id_last_name_registration_modal"
+					placeholder="Last Name">
+			</div>
+			<div>
+				<input type="email" class="form-control" name="email" id="id_email_registration_modal" placeholder="Email">
+			</div>
+			<input type="password" class="form-control" name="password1" autocomplete="new-password" required=""
+				id="id_password1_registration_modal" placeholder="Password">
+			<ul class="registration-helptext">
+				<li>Your password can’t be too similar to your other personal information.
+				</li>
+				<li>Your password must contain at least 8 characters.</li>
+				<li>Your password can’t be a commonly used password.</li>
+				<li>Your password can’t be entirely numeric.</li>
+			</ul>
+
+			<input type="password" class="form-control" name="password2" autocomplete="new-password" required=""
+				id="id_password2_registration_modal" placeholder="Password confirmation">
+		</div>
+		
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary btn-white-outline">Register</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>

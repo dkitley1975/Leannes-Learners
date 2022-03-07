@@ -2,8 +2,6 @@
 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#commentReplyModal{{ comment.id }}"
 	name='parent_id' value="{{ comment.id }}">
 	<i class="far fa-comment-dots"></i></button>
-</button>
-
 <!-- Modal -->
 <div class="modal fade" id="commentReplyModal{{ comment.id }}" tabindex="-1"
 	aria-labelledby="commentReplyModalLabel{{ comment.id }}" aria-hidden="true">
@@ -14,13 +12,17 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				{% load crispy_forms_tags %}
 				<div class="card-body">
 					{% if user.is_authenticated %}
 					<p>Posting as: {{ user.username }}</p>
 					<form method="post" action="{% url 'comment-reply' post.slug comment.pk %}">
 						{% csrf_token %}
-						{{ comment_form | crispy }}
+						<div id="div_id_comment{{ comment.id }}" class="form-group"> <label
+								for="id_comment{{ comment.id }}" class="requiredField">
+								Your comment</label>
+							<div> <textarea name="comment" cols="40" rows="10" class="textarea form-control" required=""
+									id="id_comment{{ comment.id }}"></textarea> </div>
+						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 							<button type="submit" class="btn btn-signup">Submit</button>

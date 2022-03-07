@@ -39,5 +39,9 @@
    "pythonTestExplorer.testplanPath": "",
    "python.testing.unittestEnabled": true,
    "pythonTestExplorer.testFramework": "unittest",
-   "python.terminal.activateEnvironment": true
+   "python.terminal.activateEnvironment": true,
+   "python.formatting.provider": "black",
+   "[python]": {
+      "editor.defaultFormatter": "ms-python.python"
+   }
 }

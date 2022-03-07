@@ -27,7 +27,7 @@
 			<p>
 				{% if user.is_staff %}
 				<a href="{% url 'comment-delete' post.slug comment.pk %}">
-					<i class="fas fa-trash icon-color-primary"></i>&nbsp</a>
+					<i class="fas fa-trash icon-color-primary"></i>&nbsp;</a>
 				{% endif %}
 				<span class="fw-bold">{{ comment.name }}</span>
 				<span class="text-muted">
@@ -63,22 +63,18 @@
 		</div>
 		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-11">
 			<div class="comments">
-
-				<p>
-					{% if user.is_staff %}
-					<a href="{% url 'comment-delete' post.slug child_comment.pk %}">
-						<i class="fas fa-trash icon-color-primary"></i>&nbsp</a>
-					{% endif %}
-					<span class="fw-bold">{{ child_comment.name }}</span>
-					<span class="text-muted font-weight-normal">
-						on {{ child_comment.created_at | date:"d F Y" }} at
-						{{ child_comment.created_at | time:"h:i a" }}
-					</span>
-					<span class="text-muted">wrote:</span>
-					{{ child_comment.comment | linebreaks }}
-					{% include "components/blog/comments-child-likes.html" %}
-				</p>
-
+				{% if user.is_staff %}
+				<a href="{% url 'comment-delete' post.slug child_comment.pk %}">
+					<i class="fas fa-trash icon-color-primary"></i>&nbsp;</a>
+				{% endif %}
+				<span class="fw-bold">{{ child_comment.name }}</span>
+				<span class="text-muted font-weight-normal">
+					on {{ child_comment.created_at | date:"d F Y" }} at
+					{{ child_comment.created_at | time:"h:i a" }}
+				</span>
+				<span class="text-muted">wrote:</span>
+				{{ child_comment.comment | linebreaks }}
+				{% include "components/blog/comments-child-likes.html" %}
 			</div>
 		</div>
 	</div>

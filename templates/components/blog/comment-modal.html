@@ -24,7 +24,11 @@
 					<p>Posting as: {{ user.username }}</p>
 					<form method="post" style="margin-top: 1.3em;">
 						{% csrf_token %}
-						{{ comment_form | crispy }}
+						<div id="div_id_comment" class="form-group"> <label for="id_comment" class=" requiredField">
+								Your comment</label>
+							<div> <textarea name="comment" cols="40" rows="10" class="textarea form-control" required=""
+									id="id_comment"></textarea> </div>
+						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 							<button type="submit" class="btn btn-signup">Submit</button>

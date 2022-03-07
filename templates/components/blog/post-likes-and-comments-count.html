@@ -1,37 +1,35 @@
 <div class="col-12 row m-1">
-
-	<p>
-		{% if user.is_authenticated %}
-		<form class="text-end" action="{% url 'like' post.slug %}" method="POST">
-			{% csrf_token %}
-			{% if liked %}
-			<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
-				<i class="fas fa-heart icon-color-quaternary"></i>
-			</button>
+	{% if user.is_authenticated %}
+	<form class="text-end" action="{% url 'like' post.slug %}" method="POST">
+		{% csrf_token %}
+		{% if liked %}
+		<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
+			<i class="fas fa-heart icon-color-quaternary"></i>
+		</button>
+		{% else %}
+		<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
+			<i class="far fa-heart icon-color-quaternary"></i>
+		</button>
+		{% endif %}
+		<span class="text-secondary">
+			{{ post.number_of_likes }}
 			{% else %}
-			<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
-				<i class="far fa-heart icon-color-quaternary"></i>
-			</button>
-			{% endif %}
 			<span class="text-secondary">
-				{{ post.number_of_likes }}
-				{% else %}
-				<span class="text-secondary">
-					<i class="far fa-heart icon-color-quaternary"></i>
-					<span class="text-secondary text-center">
-						{{ post.number_of_likes }}
-					</span>
+				<i class="far fa-heart icon-color-quaternary"></i>
+				<span class="text-secondary text-center">
+					{{ post.number_of_likes }}
 				</span>
-				{% endif %}
-
-				{% with comments.count as total_comments %}
-
-				<i class="far fa-comments ms-3"></i>
-				{{ total_comments }}
-
-				{% endwith %}
-		</form>
-
-	</p>
-
+			</span>
+			{% endif %}
+			{% with comments.count as total_comments %}
+			<i class="far fa-comments ms-3"></i>
+			{{ total_comments }}
+		</span>
+		{% if user.is_authenticated %}
+		&nbsp;
+		{% else %}
+		<span class="text-muted">&nbsp;Please login to like and add comments</span>
+		{% endif %}
+		{% endwith %}
+	</form>
 </div>

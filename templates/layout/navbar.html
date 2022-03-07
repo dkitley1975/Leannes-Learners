@@ -9,8 +9,10 @@
 					alt="Leanne's Learners Logo made up of the words Leannes Learners in white, replacing the L's with Red L-Plates at an angle">
 			</a>
 		</div>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -29,7 +31,8 @@
 						href="{% url 'prices' %}">Prices</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link {% if url_name == 'blog' %}active{% endif %}" href="{% url 'blog' %}">Blog</a>
+					<a class="nav-link {% if url_name == 'blog' %}active{% endif %}"
+						href="{% url 'blog' %}">Blog</a>
 
 				</li>
 				<li class="nav-item">
@@ -44,14 +47,17 @@
 				</li>
 				{% if user.is_authenticated %}
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle-authenticated" href="#" id="navbarDropdown-authenticated"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Member's Area
+					<a class="nav-link dropdown-toggle-authenticated" href="#"
+						id="navbarDropdown-authenticated" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false">
+						Member's Area <i class="fas
+						fa-caret-down nav-link-white"></i>
 					</a>
 					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark"
 						aria-labelledby="navbarDropdown-authenticated">
 						<li><a class="dropdown-item {% if url_name == 'edit-user-details' %}active{% endif %}"
-								href="{% url 'edit-user-details' %}">Edit Details</a></li>
+								href="{% url 'edit-user-details' %}">Edit
+								Details</a></li>
 
 						<li>
 						<li><a class="dropdown-item {% if url_name == 'edit-profile' %}active{% endif %}"
@@ -62,112 +68,51 @@
 							{% if request.user|has_group:"Pupil" %}
 							<hr class="dropdown-divider">
 						</li>
-						<li><a class="dropdown-item" href="#">Schedule a Lesson</a></li>
-						<li><a class="dropdown-item" href="#">Lesson Diary</a></li>
+						<li><a class="dropdown-item" href="#">Schedule a
+								Lesson</a></li>
+						<li><a class="dropdown-item" href="#">Lesson Diary</a>
+						</li>
 						<li><a class="dropdown-item {% if url_name == 'terms-and-conditions' %}active{% endif %}"
-								href="{% url 'terms-and-conditions' %}">Terms and Conditions</a></li>
+								href="{% url 'terms-and-conditions' %}">Terms
+								and Conditions</a></li>
 						{% endif %}
 					</ul>
 				</li>
 				{% endif %}
 				{% if user.is_staff %}
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle-staff-only" href="#" id="navbarDropdown-staff-only" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false">Staff Area</a>
+					<a class="nav-link dropdown-toggle-staff-only" href="#"
+						id="navbarDropdown-staff-only" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false">Staff
+						Area <i class="fas
+						fa-caret-down nav-link-white"></i></a></i>
 					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark"
 						aria-labelledby="navbarDropdown-staff-only">
-						<li><a class="dropdown-item" href="/admin/">Login to Admin</a></li>
+						<li><a class="dropdown-item" href="/admin/">Login to
+								Admin</a></li>
 						<li><a class="dropdown-item {% if url_name == 'post-creation' %}active{% endif %}"
-								href="/blog/post-creation">Create a Blog Post</a></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
+								href="/blog/post-creation">Create a Blog
+								Post</a></li>
+						<li><a class="dropdown-item" href="#">Something else
+								here</a></li>
 						<li>
 							<hr class="dropdown-divider">
 						</li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
+						<li><a class="dropdown-item" href="#">Something else
+								here</a></li>
 					</ul>
 				</li>
 				{% endif %}
 				{% endwith %}
 			</ul>
-			<ul class="navbar-nav d-flex navbar-burnt-red navbar-dark">
-				{% if user.is_authenticated %}
-				<li>
-					<a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt nav-link-white"></i>
-						Logout</a>
-					{% else %}
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link" href="#" id="Register-Drop-Down" role="button" data-bs-toggle="dropdown"
-						aria-expanded="false">
-						<i class="fas fa-user-plus nav-link-white"></i>
-						Register</a>
-					</a>
-					<ul class="dropdown-menu p-3 dropdown-menu-end" aria-labelledby="Register-Drop-Down">
-						<form class="form-group" method="POST" action='{% url "register" %}'>
-							{% csrf_token %}
-							<p>Please enter a username and password.</p>
-							<div>
-								<input type="text" class="form-control" name="username" maxlength="150"
-									autocapitalize="none" autocomplete="username" autofocus="" required=""
-									id="id_username" placeholder="Username">
-								<p class="registration-helptext">Required. 150 characters or fewer. Letters, digits and
-									@/./+/-/_ only.</p>
-								<div>
-									<input type="text" class="form-control" name="first_name" id="id_first_name"
-										placeholder="First Name">
-								</div>
-								<div>
-									<input type="text" class="form-control" name="last_name" id="id_last_name"
-										placeholder="Last Name">
-								</div>
-								<div>
-									<input type="email" class="form-control" name="email" id="id_email"
-										placeholder="Email">
-								</div>
-								<input type="password" class="form-control" name="password1" autocomplete="new-password"
-									required="" id="id_password1" placeholder="Password">
-								<ul class="registration-helptext">
-									<li>Your password can’t be too similar to your other personal information.</li>
-									<li>Your password must contain at least 8 characters.</li>
-									<li>Your password can’t be a commonly used password.</li>
-									<li>Your password can’t be entirely numeric.</li>
-								</ul>
-
-								<input type="password" class="form-control" name="password2" autocomplete="new-password"
-									required="" id="id_password2" placeholder="Password confirmation">
-							</div>
-							<button type="submit" class="btn btn-primary btn-white-outline">Register</button>
-						</form>
-
-
-
-					</ul>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link" href="#" id="Login-Drop-Down" role="button" data-bs-toggle="dropdown"
-						aria-expanded="false">
-						<i class="fas fa-sign-in-alt nav-link-white"></i>
-						Login</a>
-					</a>
-					<ul class="dropdown-menu p-3 dropdown-menu-end" aria-labelledby="Login-Drop-Down">
-						<form class="form-group" method="POST" action='{% url "login" %}?next={{request.path}}'>
-							{% csrf_token %}
-							<p>Please enter your username and password.</p>
-							<div>
-								<input type="text" class="form-control" name="username" id="id_username"
-									placeholder="Username">
-							</div>
-							<div>
-								<input type="password" class="form-control" name="password" id="id_password"
-									placeholder="Password">
-							</div>
-							<button type="submit" class="btn btn-primary btn-white-outline">Login</button>
-						</form>
-					</ul>
-				</li>
-				{% endif %}
-			</ul>
-
+			{% if user.is_authenticated %}
+			<a class="nav-link" href="{% url 'logout' %}"><i
+					class="fas fa-sign-out-alt nav-link-white"></i>
+				Logout</a>
+			{% else %}
+			{% include "components/registration-modal.html" %}
+			{% include "components/login-modal.html" %}
+			{% endif %}
 		</div>
 	</div>
 </nav>

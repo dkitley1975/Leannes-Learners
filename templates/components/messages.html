@@ -1,12 +1,11 @@
 {% block content %}
 {% for message in messages %}
-<div id="alert-msg" class="container">
+<div class="container alert-msg">
 	<div class="row">
 		<div class="col-md-8 offset-md-2">
 			<div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-				{{ message | safe }}
+			 {{ message | safe }}
 				<button type="button" class="button btn-close" aria-label="Close" data-bs-dismiss="alert"></button>
-				<!-- <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button> -->
 			</div>
 
 		</div>

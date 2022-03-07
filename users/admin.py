@@ -5,7 +5,7 @@ from .models import UserProfile
 
 
 @admin.register(UserProfile)
-class UserProfileAdmin(ImportExportModelAdmin,admin.ModelAdmin):
+class UserProfileAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     """
     Publish the selected posts.
     @param request - the request object
@@ -20,17 +20,15 @@ class UserProfileAdmin(ImportExportModelAdmin,admin.ModelAdmin):
         'user_linkedin_url',
         'user_website_url',
     ]
-    
+
     list_display = (
         'image_thumb',
         'user',
         'user_bio',
         )
 
-    search_fields = ['user', 'user_bio',]
-    readonly_fields = ['image_thumb',]
-
+    search_fields = ['user', 'user_bio']
+    readonly_fields = ['image_thumb']
 
     def publish_Post(self, request, queryset):
         queryset.update(status=True)
-

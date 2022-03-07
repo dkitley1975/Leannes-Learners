@@ -37,31 +37,31 @@
 												{% if users_profile_id %}
 												<a href="{% url 'user-profile_page' users_profile_id.id %}"
 													target="_blank" rel="noopener noreferrer">
-													<i class="fas fa-user-circle" aria-hidden="true"></i>&nbsp</a>
+													<i class="fas fa-user-circle" aria-hidden="true"></i>&nbsp;</a>
 												{% endif %}
 
 												{% if users_profile_id.user_website_url %}
 												<a href="{{post.author.user_website_url}}" target="_blank"
 													rel="noopener noreferrer">
-													<i class="fas fa-globe" aria-hidden="true"></i>&nbsp</a>
+													<i class="fas fa-globe" aria-hidden="true"></i>&nbsp;</a>
 												{% endif %}
 
 												{% if users_profile_id.user_linkedin_url %}
 												<a href="{{post.author.user_linkedin_url}}" target="_blank"
 													rel="noopener noreferrer">
-													<i class="fab fa-linkedin" aria-hidden="true"></i>&nbsp</a>
+													<i class="fab fa-linkedin" aria-hidden="true"></i>&nbsp;</a>
 												{% endif %}
 
 												{% if post.author.profile.user_facebook_url %}
 												<a href="{{post.author.user_facebook_url}}" target="_blank"
 													rel="noopener noreferrer">
-													<i class="fab fa-facebook"></i>&nbsp</a>
+													<i class="fab fa-facebook"></i>&nbsp;</a>
 												{% endif %}
 
 												{% if users_profile_id.user_twitter_url %}
 												<a href="{{post.author.user_twitter_url}}" target="_blank"
 													rel="noopener noreferrer">
-													<i class="fab fa-twitter"></i>&nbsp</a>
+													<i class="fab fa-twitter"></i>&nbsp;</a>
 												{% endif %}
 											</p>
 											<p class="card-text">{{users_profile_id.user_bio}}</p>
@@ -79,5 +79,4 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
