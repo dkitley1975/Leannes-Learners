@@ -1,4 +1,4 @@
-#[![David's GitHub Banner](/documents/assets/logos/GitHubHeader.png)](https://www.linkedin.com/in/david-kitley-mcnamara)
+# [![David's GitHub Banner](/documents/assets/logos/GitHubHeader.png)](https://www.linkedin.com/in/david-kitley-mcnamara)
 
 # Leannes Learners - Tests
 
@@ -73,6 +73,7 @@ The W3C CSS Validation Service was used to validate the CSS file used for the pr
 ### Python
 
 The PEP8 Online Check was used to validate all Python code. No errors or warnings to show
+
 ### Blog
 
 * **admin.py** -  No Errors
@@ -105,112 +106,70 @@ The PEP8 Online Check was used to validate all Python code. No errors or warning
 The site is optimized for all screen sizes and tested with an ipad, iPhone 10 and Chrome developer.
 I use media queries to make everything look and feel good as the screen size increases.
 
-### Issues found during site development and their Solutions
+### Issues found and worth metioning during site development and their Solutions
 
 1. When adding the localhost as an ALLOWEDHOST in the settings page, I continued to receive an Django error indicating the host needed to be added to the allowed host settings.
 
     * As this was being developed locally in VS Code. I tried editing the hosts file via -
 
-      ```bash
-      sudo nano /private/etc/hosts
-      ```
+`
+sudo nano /private/etc/hosts
+`
+Saving the changes by pressing ctrl + O, then exiting by pressing ctrl + X  
 
-      Saving the changes by pressing ```ctrl + O```, then exiting by pressing ```ctrl + X```  
+This error continues - but if `http://localhost:8000/` or `http://127.0.0.1:8000/` are used in the address bar the site works, just not directly from the link in the output message in the terminal.
 
-    This error continues - but if ```http://localhost:8000/``` or ```http://127.0.0.1:8000/``` are used in the address bar the site works, just not directly from the link in the output message in the terminal.
+1. Refreshing the page after commenting resubmitted the page.
+My initial thought was to just use the base comment feature as demonstrated in the I think therefore I blog walkthrough, with the following code:
+After submitting the message this would refreshed the page and displayed a 'Your comment is awaiting approval message',  
+But if the user would then hit refresh the page the message would send again repeating the message.
+To solve this easily I removed the message needing to be approved by the admin before being posted.
+The commenting code was later extracted and added to a modal.
 
-1. My initial thought was to just use the base comment feature as demonstrated in the I think therefore I blog walkthrough, with the following code:
+1. The replys to comments all had the same html reference id's, causing a reply to a previous comment to always be associated with the latest comment.
+This was fixed by adding the comment.id reference to the html id reference.  
 
-```HTML
-<div class="card-body">
-  {% if commented %}
-  <div class="alert alert-success" role="alert">
-    Your comment is awaiting approval
-  </div>
-  {% else %}
-  {% if user.is_authenticated %}
-  <h3>Leave a comment:</h3>
-  <hr>
-  <p>Posting as: {{ user.username }}</p>
-  <form method="post" style="margin-top: 1.3em;">
-    {% csrf_token %}
-    {{ comment_form | crispy }}
-    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-  </form>
-  {% else %}
-  <h3>Leave a comment:</h3>
-  <hr>
-  <p class="mt-4 mb-2 fw-bolder fst-italic">If you would like a comment.</p>
-  <p>Please login to your account or register and join our community </p>
-  {% endif %}
-  {% endif %}
-</div>
-```
+1. I initially had placed login, logout and register elements within insividual forms in the Navigation bar. Whilst testing manually on the live site on smaller screens, the forms were hidden beneath the footer and the page wouldn't scroll to reveal the rest of the forms.
+This was fixed within the CSS, further testing with the the W3C Markup Validation Service flagged the forms as errors, indicating that forms were not allowed with in `<ul>` elements.
+I rethought the approach and added the login and register elements as modals instead.  
 
-```python
-def post(self, request, slug, *args, **kwargs):
-  queryset = Post.objects.filter(status=1)
-  post = get_object_or_404(queryset, slug=slug)
-  comments = post.comments.filter(approved=True).order_by("-created_at")
-  liked = False
-  if post.likes.filter(id=self.request.user.id).exists():
-      liked = True
+1. Page Meta Descriptions and Title. I had added the page title to each page using this method:  
 
-  comment_form = CommentForm(data=request.POST)
-  if comment_form.is_valid():
-      comment_form.instance.email = request.user.email
-      comment_form.instance.name = request.user.username
-      comment = comment_form.save(commit=False)
-      comment.post = post
-      comment.save()
-  else:
-      comment_form = CommentForm()
-```
+~~~~ html
+{% block title %}
+<title>Leannes Learner's Home Page</title>
+{% endblock %}
+~~~~  
 
-This refreshed the page and displayed a 'Your comment is awaiting approval message' If like me the user would then hit refresh to see if the message was refreshed, or leave the page open and hit refresh the message would send again repeating the message.
-To solve this easily I looked at removing the fact the message needs to be approved by the admin before being posted, which then made me think about nesting comments, comments on comments etc and so I rethought the entire commenting section, replacing it with its own app.
+I then added the Page Meta Description with:  
 
-1. NEXT ISSUE
+~~~~ html
+{% block metadescription %} 
+<meta name="keywords"
+  content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog"> 
+<meta name="description"
+ content="Welcome to Leannes Learners, we are a Huddersfield based Driving School, here you can find links to our latest blog posts and testimonials">
+<title>Leannes Learner's Home Page</title>
+{% endblock %}
+~~~~
 
-## Deployment
+It is a future revision to have this information pulled from the database but this has alluded me so far.
+To add dynamic content for the page meta description for the individual blog pages I added the page description using this:
 
-1. On the home screen click on create new app button
-2. Enter a name for the project and select your region to the correct region
-3. On the next screen select settings
-4. Go to config vars and click reveal config vars
-5. Switch to the program file and where you are keeping your credentials copy these and then on Heroku enter a name for the key and paste the code into the config vars value box and click add
-6. Now scroll down to buildPacks and click add build packs
-7. First select python and click save changes
-8. Click back into build packs and choose node.js and click save again
-9. Ensure that the Python build pack is at the top of the list you are able to drag and drop if you need to rearrange
-10. Now select deploy
-11. From the deployment method select GitHub
-12. Then click on connect to Github button that appears
-13. Click into the search box and search for the project name
-14. Once located select connect
-15. Then click deploy branch, this will then be shown in the box below
-16. You can the click view to show the app in a browser
+~~~~html
+{% block metadescription %} 
+<meta name="keywords" content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog"> 
+<meta name="description"
+ content="{{post.title|safe|truncatechars:50 }} - {{post.content|striptags|safe|truncatechars:100 }}">
+<title>Post - {{post.title}}</title>
+{% endblock %}
+~~~~
 
-The program is set to be deployed automatically after each push from gitpod.
+This will add dynamocally add the post title and some content to the page description within google searches.
+This did add an error within the W3C Markup Validation Service. As the Post content allowed html elements these appeared within the description, but didn't always close.
+This would show as unclosed tags in the source code.
+I added the ```|striptags``` to remove the html markup from the page description content to resolve this error.
 
-I also set up a Postgres database with Heroku.
+### Contrast Checking
 
-1. Click on Resources in your Heroku app.
-2. In the add-ons field search for Heroku Postgres and press submit.
-
-### Cloning
-
-How to clone this repository.
-
-* On GitHub go to the main page of the Repository.
-* Above the list of files click the code button with the drop-down arrow.
-* To clone the repository using HTTPS, under "Clone with HTTPS", click on the clipboard.
-* Open the Git Bash terminal.
-* Change the current working directory to the location where you want the cloned directory.
-* Type git clone, and then paste the URL you copied earlier from step 3.
-* Press Enter to create your local clone.
-
-## Credits
-
-Email sending: Using Forms and Class based views instead of Function based views
-<https://www.sitepoint.com/django-send-email/>
+![image](/documents/assets/Holding_Image.png)

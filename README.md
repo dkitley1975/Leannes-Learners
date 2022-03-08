@@ -1,7 +1,7 @@
 [![David's GitHub Banner](/documents/assets/logos/GitHubHeader.png)](https://www.linkedin.com/in/david-kitley-mcnamara)
 
 # Leannes Learners
-
+[![Leannes Learners](/documents/assets/logos/GitHubHeader.png)](https://www.linkedin.com/in/david-kitley-mcnamara)
 This is the documentation regarding the creation of the Leanne's Learners website.
 This is my 4th Portfolio Project for the Code Institute's Diploma in Full Stack Development.  
 The projects purpose:
@@ -21,7 +21,6 @@ To build a Full-Stack site based on business logic used to control a centrally-o
   * I want to be able to contact the company.
   * I want to be able engage with the site and with others.
   
-
 ### Site Owner Goals
 
 * As a site owner
@@ -64,18 +63,8 @@ I Used Github's Project board to plan the project and Github Issue's for User St
 *Project Board Kanban, with Automation*
 ![Project Board Kanban, with Automation](/documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board.png)  
 
-### Site Creation Path Project Board
-
-In addition to User Stories and Tasks Project board I also created a Site Creation Path Board Used Github's Project board again to plan the projects creation path.
-
-*Site Creation Path Board List View*
-![Site Creation Path Board List View](/documents/assets/screenshots/GitHub_Site_Creation_Project_Path_Screen_Shots/GitHub_Site_Creation_Project_Path_Screen_Shots_list_view.png)
-
-*Site Creation Path Board Table View*
-![Site Creation Path Board Table View](/documents/assets/screenshots/GitHub_Site_Creation_Project_Path_Screen_Shots/GitHub_Site_Creation_Project_Path_Screen_Shots_table_view.png)
-
-*Site Creation Path Board Indiviual Item View*
-![Site Creation Path Board Indiviual Item View](/documents/assets/screenshots/GitHub_Site_Creation_Project_Path_Screen_Shots/GitHub_Site_Creation_Project_Path_Screen_Shots_item.png)
+*Project Board in progress*
+![Project Board Kanban, with Automation](/documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board_finish.png) 
 
 ## Design
 
@@ -85,29 +74,31 @@ In addition to User Stories and Tasks Project board I also created a Site Creati
 
 ![MOBILE](/documents/assets/Wireframes/wireframe-mobile.png)
 
-
 ### Fonts
+
 ![image](/documents/assets/screenshots/font/our_latest_blog_post.png)
 ![image](/documents/assets/screenshots/font/our_latest_testimonials.png)
 For the headings I have used Pushster from Google
 
 ### Colors
+
 These are the main images used throughout the site.
 ![Main Colour Pallet](/documents/assets/colour-pallets/main-colour-palette.png)
-* clr-brand-primary: rgb(116, 36, 29) - used for the navigation bar and footer. 
+
+* clr-brand-primary: rgb(116, 36, 29) - used for the navigation bar and footer.
 * clr-brand-secondary: rgba(255, 239, 148, 0.742)  - used in the navigation bar.
 * clr-brand-tertiary: rgb(156, 207, 153)  - used as the hover state - to indicate GO.
 * clr-brand-tertiary-darker: rgb(68, 126, 65)  Used for the Like button.
 * clr-brand-quaternary: rgb(208, 0, 0)  - used as the hover state on some buttons - to indicate STOP/DANGER and the Dislike button.  
 
 These light greys are used through out the site to highlite areas and as shadow areas.
+
 * clr-background-light: rgb(238, 238, 238)  
 * clr-background-grey: rgb(153, 158, 164)  
 * clr-border-grey: rgb(222, 226, 230)  
 * clr-box-shadow: rgb(153, 153, 153)  
 * clr-link-dark: rgb(68, 82, 97)  
 * clr-quotation-mark: rgb(51, 51, 51)  
-
 
 ## Technologies
 
@@ -133,157 +124,138 @@ These light greys are used through out the site to highlite areas and as shadow 
 * [Am I responsive](http://ami.responsivedesign.is/)
 * [WebAim](https://webaim.org/resources/contrastchecker/)
 
-### Contrast Checker
-
-![image](/documents/assets/Holding_Image.png)
-
 ## Features
 
 The website has the following features:
 
 ### Navigation bar
 
-![image](/documents/assets/Holding_Image.png)
+These are the navigation bars for site users currently not logged in, just displaying the register and login options:  
+Desktop
+![image](/documents/assets/screenshots/navbar/navbar_desktop.png)
+Small Screen
+![image](/documents/assets/screenshots/navbar/navbar_small_screen.png)
+
+These are the navigation bars for site members logged in, displaying the menu bar selection for members with profile and detail edit optons. and now with logout replacing login and register options:  
+Desktop
+![image](/documents/assets/screenshots/navbar/navbar_member_desktop.png)
+Small Screen
+![image](/documents/assets/screenshots/navbar/navbar_member_smallscreen.png)  
+
+These are the navigation bars for site members who are pupils and logged in, displaying the menu bar selection for members with profile edit, details edit and the Terms and Conditions optons. This is to be expandedaapon when the lesson booking functionality is added:  
+Desktop
+![image](/documents/assets/screenshots/navbar/navbar_pupil_desktop.png)
+Small Screen
+![image](/documents/assets/screenshots/navbar/navbar_pupil_small_screen.png)  
+
+These are the navigation bars for site Staff logged in, displaying the menu bar selection for staff with Login into admin and create a blog post optons.:
+
+Desktop
+![image](/documents/assets/screenshots/navbar/navbar_staff_desktop.png)
+
+Small Screen
+![image](/documents/assets/screenshots/navbar/navbar_staff_small_screen.png)
+
+### Quick Overview
+
+Small Screen page designs
+![image](/documents/assets/screenshots/main_pages/leannes_learners_small_screen.png)
+
+The rest of the screenshots used for the pages will use the Desktop View for clarity
 
 ### Home
 
-![image](/documents/assets/Holding_Image.png)
+![image](/documents/assets/screenshots/main_pages/home_desktop.png)
 
-### Services
+### About Us
 
-![image](/documents/assets/Holding_Image.png)
+![image](/documents/assets/screenshots/main_pages/about_us_desktop.png)
 
-### Contact us
+### Pass Plus
 
+![image](/documents/assets/screenshots/main_pages/pass_plus_desktop.png)
 
-### Login
+### Prices
 
-![image](/documents/assets/Holding_Image.png)
+![image](/documents/assets/screenshots/main_pages/prices_desktop.png)
 
-### Admin
+### Contact Us
 
-![image](/documents/assets/Holding_Image.png)
-
-### Registration/Login
-
-![image](/documents/assets/Holding_Image.png)
-
-### User/Logout
-
-![image](/documents/assets/Holding_Image.png)
+![image](/documents/assets/screenshots/main_pages/contact_us_desktop.png)
 
 #### Contact Form
+
 This is the contact form filled in
 ![image](/documents/assets/screenshots/contactform/contact-form.png)
-After submission:   
+After submission:
 the user is redirected to this page
 ![image](/documents/assets/screenshots/contactform/contact-success.png)
 and receives an email
 ![image](/documents/assets/screenshots/contactform/contact-result-email-for-originator.png)
 the owner reveives this email
 ![image](/documents/assets/screenshots/contactform/contact-result-email-for-staff.png)
-During debug:   
+During debug:
 the contact test results are shown in the console:
 ![image](/documents/assets/screenshots/contactform/contact-test-result-email-for-staff.png)
 ![image](/documents/assets/screenshots/contactform/contact-test-result-email-for-originator.png)
 
-## Testing
+### Local Traffic Report
 
-### Code Validation
+![image](/documents/assets/screenshots/main_pages/local_traffic_desktop.png)
 
-### HTML
+### Terms and Conditions
 
-The W3C Markup Validation Service was used to validate the HTML page of the project. No errors or warnings to show.
+Available to Users within the Pupil Group only
+![image](/documents/assets/screenshots/main_pages/terms_and_conditions_desktop.png)
 
-#### Home Page
+### Login
 
-#### Service Page
+![image](/documents/assets/screenshots/main_pages/login_desktop.png)
 
-#### Contact-Us Page
+### Registration
 
-#### Appointment Page
+![image](/documents/assets/screenshots/main_pages/registration_desktop.png)
 
-#### Manage-Appointment Page
+## Blog/Posts Section
 
-### CSS
+### Blog
 
-The W3C CSS Validation Service was used to validate the CSS file used for the project. No errors or warnings to show.
+![image](/documents/assets/screenshots/main_pages/blog_posts_desktop.png)
 
-### Python
+### Post
 
-The PEP8 Online Check was used to validate all Python code. No errors or warnings to show
+![image](/documents/assets/screenshots/main_pages/post_desktop.png)
 
-### Different Screen Size
+### Post Logged in as Staff
 
-The site is optimized for all screen sizes and tested with a Macbook Pro 13" and iPhone 13 Pro.
-I use media queries to make everything look and feel good on mobile devices.
+![image](/documents/assets/screenshots/main_pages/post_desktop_staff.png)
+Logged in as a Staff Member adds an edit post and delete post icons next to Author and Date.
 
-### Issues found during site development and their Solutions
+#### Post Delete
 
-1. When adding the localhost as an ALLOWEDHOST in the settings page, I continued to receive an Django error indicating the host needed to be added to the allowed host settings.
+![image](/documents/assets/screenshots/main_pages/post_delete_desktop.png)
+Delete a Blog Post shows a preview of the post that is about to be deleted and shows warning that this will also delete the comments etc.
 
-    * As this was being developed locally in VS Code. I tried editing the hosts file via -
+#### Post Edit
 
-      ```bash
-      sudo nano /private/etc/hosts
-      ```
+![image](/documents/assets/screenshots/main_pages/post_edit_desktop.png)
 
-      Saving the changes by pressing ```ctrl + O```, then exiting by pressing ```ctrl + X```  
+### Commenting
 
-    This error continues - but if ```http://localhost:8000/``` or ```http://127.0.0.1:8000/``` are used in the address bar the site works, just not directly from the link in the output message in the terminal.
+Comment Modal
+![image](/documents/assets/screenshots/main_pages/comment_to_the_post.png)
+Comment Modal for replying to a comment
+![image](/documents/assets/screenshots/main_pages/comment_to_the_comment.png)
+Showing the Comments, with likes and dislikes added.  
+This also shows a delete comment icon which only shows when the authenticated staff member.
+![image](/documents/assets/screenshots/main_pages/comments.png)
 
-1. My initial thought was to just use the base comment feature as demonstrated in the I think therefore I blog walkthrough, with the following code:
+### Admin
 
-```HTML
-<div class="card-body">
-  {% if commented %}
-  <div class="alert alert-success" role="alert">
-    Your comment is awaiting approval
-  </div>
-  {% else %}
-  {% if user.is_authenticated %}
-  <h3>Leave a comment:</h3>
-  <hr>
-  <p>Posting as: {{ user.username }}</p>
-  <form method="post" style="margin-top: 1.3em;">
-    {% csrf_token %}
-    {{ comment_form | crispy }}
-    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-  </form>
-  {% else %}
-  <h3>Leave a comment:</h3>
-  <hr>
-  <p class="mt-4 mb-2 fw-bolder fst-italic">If you would like a comment.</p>
-  <p>Please login to your account or register and join our community </p>
-  {% endif %}
-  {% endif %}
-</div>
-```
+I have used brand colors for the Admin Section.
 
-```python
-def post(self, request, slug, *args, **kwargs):
-  queryset = Post.objects.filter(status=1)
-  post = get_object_or_404(queryset, slug=slug)
-  comments = post.comments.filter(approved=True).order_by("-created_at")
-  liked = False
-  if post.likes.filter(id=self.request.user.id).exists():
-      liked = True
-
-  comment_form = CommentForm(data=request.POST)
-  if comment_form.is_valid():
-      comment_form.instance.email = request.user.email
-      comment_form.instance.name = request.user.username
-      comment = comment_form.save(commit=False)
-      comment.post = post
-      comment.save()
-  else:
-      comment_form = CommentForm()
-```
-This refreshed the page and displayed a 'Your comment is awaiting approval message' If like me the user would then hit refresh to see if the message was refreshed, or leave the page open and hit refresh the message would send again repeating the message.
-To solve this easily I looked at removing the fact the message needs to be approved by the admin before being posted, which then made me think about nesting comments, comments on comments etc and so I rethought the entire commenting section, replacing it with its own app.
-
-1. NEXT ISSUE 
-
+![image](/documents/assets/screenshots/main_pages/admin_not_authorised_desktop.png)
+![image](/documents/assets/screenshots/main_pages/admin_desktop.png)
 
 ## Deployment
 
@@ -324,5 +296,6 @@ How to clone this repository.
 * Press Enter to create your local clone.
 
 ## Credits
+
 Email sending: Using Forms and Class based views instead of Function based views
-https://www.sitepoint.com/django-send-email/
+<https://www.sitepoint.com/django-send-email/>
