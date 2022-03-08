@@ -68,10 +68,12 @@
 							{% if request.user|has_group:"Pupil" %}
 							<hr class="dropdown-divider">
 						</li>
-						<li><a class="dropdown-item" href="#">Schedule a
+						<!---#TODO remove-->
+						{% comment %} <li><a class="dropdown-item"
+								href="#">Schedule a
 								Lesson</a></li>
 						<li><a class="dropdown-item" href="#">Lesson Diary</a>
-						</li>
+						</li> {% endcomment %}
 						<li><a class="dropdown-item {% if url_name == 'terms-and-conditions' %}active{% endif %}"
 								href="{% url 'terms-and-conditions' %}">Terms
 								and Conditions</a></li>
@@ -88,18 +90,20 @@
 						fa-caret-down nav-link-white"></i></a></i>
 					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark"
 						aria-labelledby="navbarDropdown-staff-only">
-						<li><a class="dropdown-item" href="/admin/">Login to
-								Admin</a></li>
+						<li><a class="dropdown-item" href="/admin/" target="_blank">
+							Login to Admin</a></li>
 						<li><a class="dropdown-item {% if url_name == 'post-creation' %}active{% endif %}"
 								href="/blog/post-creation">Create a Blog
 								Post</a></li>
-						<li><a class="dropdown-item" href="#">Something else
+						<!--- #TODO remove-->
+						{% comment %} <li><a class="dropdown-item"
+								href="#">Something else
 								here</a></li>
 						<li>
 							<hr class="dropdown-divider">
 						</li>
 						<li><a class="dropdown-item" href="#">Something else
-								here</a></li>
+								here</a></li> {% endcomment %}
 					</ul>
 				</li>
 				{% endif %}

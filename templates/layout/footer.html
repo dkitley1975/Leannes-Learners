@@ -7,11 +7,14 @@
 				{% if companydetails.social_media_link %}
 				<div class="col-2 footer-social text-center mx-auto">
 					{% if "placeholder" in companydetails.social_media_image.url %}
-					<a href='{{ companydetails.social_media_link }}' target="_blank" rel="noopener noreferrer">
+					<a href='{{ companydetails.social_media_link }}'
+						target="_blank" rel="noopener noreferrer">
 						{{ companydetails.social_media_name }}</a>
 					{% else %}
-					<a href='{{ companydetails.social_media_link }}' target="_blank" rel="noopener noreferrer"><img
-							src='{{ companydetails.social_media_image.url }}' height="20" class="mx-auto d-block"
+					<a href='{{ companydetails.social_media_link }}'
+						target="_blank" rel="noopener noreferrer"><img
+							src='{{ companydetails.social_media_image.url }}'
+							height="20" class="mx-auto d-block"
 							alt="{{ companydetails.social_media_name }} icon"></a>
 					{% endif %}
 				</div>
@@ -20,11 +23,14 @@
 				{% if companydetails.social_media_link_2 %}
 				<div class="col-2 footer-social text-center mx-auto">
 					{% if "placeholder" in companydetails.social_media_image_2.url %}
-					<a href='{{ companydetails.social_media_link_2 }}' target="_blank" rel="noopener noreferrer">
+					<a href='{{ companydetails.social_media_link_2 }}'
+						target="_blank" rel="noopener noreferrer">
 						{{ companydetails.social_media_name_2 }}</a>
 					{% else %}
-					<a href='{{ companydetails.social_media_link_2 }}' target="_blank" rel="noopener noreferrer"><img
-							src='{{ companydetails.social_media_image_2.url }}' height="20" class="mx-auto d-block"
+					<a href='{{ companydetails.social_media_link_2 }}'
+						target="_blank" rel="noopener noreferrer"><img
+							src='{{ companydetails.social_media_image_2.url }}'
+							height="20" class="mx-auto d-block"
 							alt="{{ companydetails.social_media_name_2 }} icon"></a>
 					{% endif %}
 				</div>
@@ -33,11 +39,14 @@
 				{% if companydetails.social_media_link_3 %}
 				<div class="col-2 footer-social text-center mx-auto">
 					{% if "placeholder" in companydetails.social_media_image_3.url %}
-					<a href='{{ companydetails.social_media_link_3 }}' target="_blank" rel="noopener noreferrer">
+					<a href='{{ companydetails.social_media_link_3 }}'
+						target="_blank" rel="noopener noreferrer">
 						{{ companydetails.social_media_name_3 }}</a>
 					{% else %}
-					<a href='{{ companydetails.social_media_link_3 }}' target="_blank" rel="noopener noreferrer"><img
-							src='{{ companydetails.social_media_image_3.url }}' height="20" class="mx-auto d-block"
+					<a href='{{ companydetails.social_media_link_3 }}'
+						target="_blank" rel="noopener noreferrer"><img
+							src='{{ companydetails.social_media_image_3.url }}'
+							height="20" class="mx-auto d-block"
 							alt="{{ companydetails.social_media_name_3 }} icon"></a>
 					{% endif %}
 				</div>
@@ -46,18 +55,22 @@
 				{% if companydetails.social_media_link_4 %}
 				<div class="col-2 footer-social text-center mx-auto">
 					{% if "placeholder" in companydetails.social_media_image_4.url %}
-					<a href='{{ companydetails.social_media_link_4 }}' target="_blank" rel="noopener noreferrer">
+					<a href='{{ companydetails.social_media_link_4 }}'
+						target="_blank" rel="noopener noreferrer">
 						{{ companydetails.social_media_name_4 }}</a>
 					{% else %}
-					<a href='{{ companydetails.social_media_link_4 }}' target="_blank" rel="noopener noreferrer"><img
-							src='{{ companydetails.social_media_image_4.url }}' height="20" class="mx-auto d-block"
+					<a href='{{ companydetails.social_media_link_4 }}'
+						target="_blank" rel="noopener noreferrer"><img
+							src='{{ companydetails.social_media_image_4.url }}'
+							height="20" class="mx-auto d-block"
 							alt="{{ companydetails.social_media_name_4 }} icon"></a>
 					{% endif %}
 				</div>
 				{% endif %}
 
 				<div class="col-2 footer-social text-center mx-auto">
-					<a class="fw-bold tel-link" href='tel:{{ companydetails.phone }}'>
+					<a class="fw-bold tel-link"
+						href='tel:{{ companydetails.phone }}'>
 						<img src='https://res.cloudinary.com/dkitley1975/image/upload/v1646299274/leannes_learners/logos/phone.png'
 							height="20" class="mx-auto d-block"
 							alt="Telephone icon with link to the contact Number: {{ companydetails.phone }}"></a>
@@ -67,9 +80,14 @@
 
 			<div class="row">
 				<div class="col-md-12 text-center text-white pt-1">
-					<p>Copyright © 2019 - {% now "Y" %} <a class="text-center text-white"
-							href='https://github.com/dkitley1975' target="_blank"
-							rel="noopener noreferrer">&nbsp;&nbsp;Kitley-McNamara.&nbsp;&nbsp;</a>All Rights Reserved
+					<p>Copyright ©<br class='d-md-none' /> 2019 - {% now "Y" %}
+						<a class="text-center text-white"
+							href='https://github.com/dkitley1975'
+							target="_blank" rel="noopener noreferrer"><br
+								class='d-md-none' />
+							&nbsp;&nbsp;Kitley-McNamara.&nbsp;&nbsp;</a><br
+							class='d-lg-none' />
+						All Rights Reserved
 					</p>
 				</div>
 			</div>

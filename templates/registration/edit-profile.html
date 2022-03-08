@@ -2,7 +2,8 @@
 
 {% block metadescription %}
 <meta name="keywords"
-	content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog" Blog">
+	content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog"
+	Blog">
 <meta name="description"
 	content="Edit user profile, add Avatar, Social Media Links and a Short Bio">
 <title>Edit Profile</title>
@@ -50,23 +51,24 @@
 									aria-hidden="true"></i>&nbsp;</a>
 							{% endif %}
 							{% if userprofile.user_linkedin_url %}
-							<a href="{{userprofile.user_linkedin_url}}"
+							<a href="{{uuserprofile.user_linkedin_url}}"
 								target="_blank" rel="noopener noreferrer"
-								aria-label="link to {{userprofile.user_linkedin_url }}>
-								<i class=" fab fa-linkedin" aria-hidden="true"></i>&nbsp;</a>
+								aria-label="link to {{userprofile.user_linkedin_url }}">
+								<i class=" fab fa-linkedin"
+									aria-hidden="true"></i>&nbsp;</a>
 							{% endif %}
 
 							{% if userprofile.user_facebook_url %}
 							<a href="{{userprofile.user_facebook_url}}"
 								target="_blank" rel="noopener noreferrer"
-								aria-label="link to {{userprofile.user_facebook_url}}>
+								aria-label="link to {{userprofile.user_facebook_url}}">
 								<i class=" fab fa-facebook"></i>&nbsp;</a>
 							{% endif %}
 
 							{% if userprofile.user_twitter_url %}
 							<a href="{{userprofile.user_twitter_url}}"
 								target="_blank" rel="noopener noreferrer"
-								aria-label="link to {{userprofile.user_twitter_url}}>
+								aria-label="link to {{userprofile.user_twitter_url}}">
 								<i class=" fab fa-twitter"></i>&nbsp;</a>
 							{% endif %}
 						</p>
@@ -81,8 +83,7 @@
 				<div class="col-md-12 mt-3">
 					<input type="file" name="user_profile_image"
 						class="clearablefileinput form-control-file"
-						id="id_user_profile_image"
-						aria-label="File Upload">
+						id="id_user_profile_image" aria-label="File Upload">
 					<br><br>
 				</div>
 				<h3 class="card-title post-detail-author-title pt-5">Update your
