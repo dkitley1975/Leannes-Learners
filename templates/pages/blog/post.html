@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block metadescription %}
-<title>Post - {{post.title}}</title>
+<meta name="keywords"
+	content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog"
+	Blog" Blog">
 <meta name="description"
 	content="{{post.title|safe|truncatechars:50 }} - {{post.content|striptags|safe|truncatechars:100 }}">
+<title>Post - {{post.title}}</title>
 {% endblock %}
 
 {% block content %}
@@ -12,24 +15,29 @@
 			<div class="col-md-7 p-3 ">
 				<h1 class="post-detail-title">{{ post.title }}</h1>
 				<hr class="post-detail-h-rule">
-				<p class="post-detail-subtitle">Post Category - {{ post.category }} <br>
+				<p class="post-detail-subtitle">Post Category -
+					{{ post.category }} <br>
 					{{ post.author }} | {{ post.updated_at | date:"d F Y" }}
 					{% if user.is_staff %}
-					<a href="{% url 'post-update' post.slug %}"> <i class="far fa-edit"></i></a>
-					<a href="{% url 'post-delete' post.slug %}"> <i class="fas fa-trash"></i></a>
+					<a href="{% url 'post-update' post.slug %}"> <i
+							class="far fa-edit"></i></a>
+					<a href="{% url 'post-delete' post.slug %}"> <i
+							class="fas fa-trash"></i></a>
 					{% endif %}
 				</p>
 
 			</div>
 
-			<div class="d-none d-md-block col-md-5 ms-auto post-detail-header-image">
+			<div
+				class="d-none d-md-block col-md-5 ms-auto post-detail-header-image">
 				<!-- The featured image URL goes in the src attribute -->
 				{% if "placeholder" in post.featured_image.url %}
 				<img class="alt-text-white"
 					src="https://res.cloudinary.com/dkitley1975/image/upload/v1643781954/leannes_learners/default_image/default_blog_image.jpg"
 					alt="Missing image - default placeholder">
 				{% else %}
-				<img class="alt-text-white" src=" {{ post.featured_image.url }}" alt="{{ post.alt_tag }}">
+				<img class="alt-text-white" src=" {{ post.featured_image.url }}"
+					alt="{{ post.alt_tag }}">
 				{% endif %}
 			</div>
 		</div>
@@ -42,7 +50,7 @@
 		{% include "layout/navbar-catagories.html" %}
 		<div class="col card mb-4 mt-3 img-radius-10 bg-white">
 			<div class="card-body card-text">
-					{{ post.content | safe }}
+				{{ post.content | safe }}
 				<div class="row">
 					<hr class="feature-rule mt-3">
 					{% include "components/blog/post-likes-and-comments-count.html" %}

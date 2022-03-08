@@ -12,15 +12,12 @@ class RegistrationForm(UserCreationForm):
     @param kwargs - the keyword arguments passed to the class.
     """
 
-    email = forms.EmailField(widget=forms.EmailInput(
-        attrs={"class": "form-control"}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={"class": "form-control"}))
     first_name = forms.CharField(
-        max_length=100, widget=forms.TextInput(
-            attrs={"class": "form-control"})
+        max_length=100, widget=forms.TextInput(attrs={"class": "form-control"})
     )
     last_name = forms.CharField(
-        max_length=100, widget=forms.TextInput(
-            attrs={"class": "form-control"})
+        max_length=100, widget=forms.TextInput(attrs={"class": "form-control"})
     )
 
     class Meta:
@@ -53,19 +50,15 @@ class EditUserDetailsForm(UserChangeForm):
     @returns the form for editing the user details.
     """
 
-    email = forms.EmailField(widget=forms.EmailInput(
-        attrs={"class": "form-control"}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={"class": "form-control"}))
     username = forms.CharField(
-        max_length=100, widget=forms.TextInput(
-            attrs={"class": "form-control"})
+        max_length=100, widget=forms.TextInput(attrs={"class": "form-control"})
     )
     first_name = forms.CharField(
-        max_length=100, widget=forms.TextInput(
-            attrs={"class": "form-control"})
+        max_length=100, widget=forms.TextInput(attrs={"class": "form-control"})
     )
     last_name = forms.CharField(
-        max_length=100, widget=forms.TextInput(
-            attrs={"class": "form-control"})
+        max_length=100, widget=forms.TextInput(attrs={"class": "form-control"})
     )
 
     class Meta:
@@ -95,15 +88,35 @@ class EditUserProfileForm(UserChangeForm):
             "user_website_url",
         )
         exclude = ("id_password",)
-
         widgets = {
-            "user_bio": forms.Textarea(attrs={"class": "form-control"}),
+            "user_bio": forms.Textarea(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Add a small description about yourself.",
+                }
+            ),
             "user_facebook_url": forms.TextInput(
-                attrs={"class": "form-control"}),
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "https://www.facebook.com/Your Facebook ID/",
+                }
+            ),
             "user_twitter_url": forms.TextInput(
-                attrs={"class": "form-control"}),
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "https://twitter.com/Your Twitter ID/",
+                }
+            ),
             "user_linkedin_url": forms.TextInput(
-                attrs={"class": "form-control"}),
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "https://www.linkedin.com/in//Your LinkedIn ID",
+                }
+            ),
             "user_website_url": forms.TextInput(
-                attrs={"class": "form-control"}),
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "https://leannes-learners.herokuapp.com",
+                }
+            ),
         }

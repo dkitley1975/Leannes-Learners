@@ -2,7 +2,7 @@
 	<table class="table text-center">
 		<thead>
 			<tr>
-				<th class="text-start" style="width: 56%;"></th>
+				<th class="text-start" style="width: 56%;">Service</th>
 				<th style="width: 22%;">Duration</th>
 				<th style="width: 22%;">Price</th>
 			</tr>
@@ -11,7 +11,8 @@
 			{% for service in service_list %}
 			<tr>
 				<td class="text-start fw-bold">{{ service.service_name }}
-					{% if service.service_description %} <small class="text-muted"> -
+					{% if service.service_description %} <small
+						class="text-muted"> -
 						{{ service.service_description }}</small>
 					{% endif %}
 				</td>

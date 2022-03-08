@@ -1,44 +1,23 @@
 {% load static from static %}
 <!doctype html>
 <html lang="en-us">
-
 <head>
-
 	{% include "layout/header.html" %}
-		<meta name="keywords"
-		content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor">
-	
-		
-
-		{% block metadescription %}
-		{% endblock %}
-
-
+	{% block metadescription %}
+	{% endblock %}
 </head>
-
 <body class="d-flex flex-column min-vh-100">
 	<!-- navbar -->
 	{% include "layout/navbar.html" %}
-
 	<!-- messages -->
 	{% include "components/messages.html" %}
-
 	<!-- Main content -->
 	<main>
-
 		{% block content %}
-
 		{% endblock content %}
 	</main>
-
 	<!-- Footer -->
 	{% include "layout/footer.html" %}
 	{% include "layout/scripts.html" %}
-
-
-
-
-
 </body>
-
 </html>

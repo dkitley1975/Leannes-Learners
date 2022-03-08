@@ -17,6 +17,7 @@
     --clr-muted-text: rgb(43, 35, 35);
     --clr-background-pagecolour: rgb(246, 249, 244);
     --clr-background-card-background: rgb(255, 255, 255);
+    --clr-brand-primary-carousel: rgba(116, 36, 29, 0.85);
 }
 
 body {
@@ -231,7 +232,7 @@ img {
 }
 
 .carousel-caption {
-    background-color: var(--clr-brand-primary-70);
+    background-color: var(--clr-brand-primary-carousel);
     right: 0;
     left: 0;
     color: white;
