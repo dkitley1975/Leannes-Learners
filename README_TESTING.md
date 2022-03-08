@@ -10,7 +10,7 @@ This is the documentation section regarding the testing of the Leanne's Learners
 
 ### Code Validation
 
-### HTML
+#### HTML
 
 The W3C Markup Validation Service was used to validate the HTML page of the project.
 To use this service, I opened each page and viewed the source code, copied and pasted in to the W3C Markup Validation Service, minor errors were corrected, issues and problems have been noted below.
@@ -63,18 +63,18 @@ Percentage ("%") is not followed by two hexadecimal digits.
 
 * **Delete a Post** - No Errors
 
-### CSS
+#### CSS
 
 The W3C CSS Validation Service was used to validate the CSS file used for the project. No errors or warnings to show.
 
 * **styles.css** - No Errors (used for the frontend)
 * **admin_color.css** - No Errors (used for the backend admin area)
 
-### Python
+#### Python
 
 The PEP8 Online Check was used to validate all Python code. No errors or warnings to show
 
-### Blog
+##### Blog
 
 * **admin.py** -  No Errors
 * **apps.py** -  No Errors
@@ -83,7 +83,7 @@ The PEP8 Online Check was used to validate all Python code. No errors or warning
 * **urls.py** -  No Errors
 * **views.py** -  No Errors
 
-### leannes_learners_data  
+##### leannes_learners_data  
 
 * **admin.py** -  No Errors
 * **apps.py** -  No Errors
@@ -92,7 +92,7 @@ The PEP8 Online Check was used to validate all Python code. No errors or warning
 * **urls.py** -  No Errors
 * **views.py** -  No Errors  
 
-### users  
+##### users  
 
 * **admin.py** -  No Errors
 * **apps.py** -  No Errors
@@ -170,6 +170,14 @@ This did add an error within the W3C Markup Validation Service. As the Post cont
 This would show as unclosed tags in the source code.
 I added the ```|striptags``` to remove the html markup from the page description content to resolve this error.
 
+### Lighthouse
+
+Performance varies wildly on a moment to moment. The same test on the same page has shown results from the mid 80's to high 90s.
+
+![image](/documents/assets/screenshots/tests/lighthouse.png)
+
 ### Contrast Checking
+
+I used [color.a11y.com](https://color.a11y.com/Contrast/) to check the sites colour contrast.
 
 ![image](/documents/assets/Holding_Image.png)

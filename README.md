@@ -1,7 +1,7 @@
 [![David's GitHub Banner](/documents/assets/logos/GitHubHeader.png)](https://www.linkedin.com/in/david-kitley-mcnamara)
 
 # Leannes Learners
-[![Leannes Learners](/documents/assets/logos/GitHubHeader.png)](https://www.linkedin.com/in/david-kitley-mcnamara)
+[![Leannes Learners](/documents/assets/screenshots/responsive-showcase-mockup.png)](https://www.linkedin.com/in/david-kitley-mcnamara)
 This is the documentation regarding the creation of the Leanne's Learners website.
 This is my 4th Portfolio Project for the Code Institute's Diploma in Full Stack Development.  
 The projects purpose:
@@ -46,7 +46,7 @@ To build a Full-Stack site based on business logic used to control a centrally-o
 
 ## Project Board
 
-I Used Github's Project board to plan the project and Github Issue's for User Stories and Tasks [here](https://github.com/users/dkitley1975/projects/9)  
+I Used Github's Project board to plan the project and Github Issue's for User Stories and Tasks
 
 *Project Board listed by Status*
 ![Project Board listed by Status](/documents/assets/screenshots/GitHub_Project_Board_Screen_Shots/Leannes_Learners_Project_Board_List_By_Status.png)  
