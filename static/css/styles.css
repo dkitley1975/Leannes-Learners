@@ -14,15 +14,15 @@
     --clr-box-shadow: rgb(153, 153, 153);
     --clr-link-dark: rgb(68, 82, 97);
     --clr-quotation-mark: rgb(67, 64, 64);
-    --clr-muted-text: rgb(43, 35, 35);
-    --clr-background-pagecolour: rgb(246, 249, 244);
+    --clr-muted-text: rgb(68, 82, 97);
+    --clr-background-page-colour: rgb(246, 249, 244);
     --clr-background-card-background: rgb(255, 255, 255);
     --clr-brand-primary-carousel: rgba(116, 36, 29, 0.85);
 }
 
 body {
     padding-top: 55px;
-    background-color: var(--clr-background-pagecolour);
+    background-color: var(--clr-background-page-colour);
 }
 
 a {
@@ -640,7 +640,7 @@ img {
 }
 
 .text-muted {
-    color: var(--clr-muted-text)
+    color: var(--clr-muted-text) !important;
 }
 
 .warning-advice-text {
@@ -676,7 +676,7 @@ img {
         height: auto;
     }
 
-    .responsive-break{
+    .responsive-break {
         display: inline;
 
 
