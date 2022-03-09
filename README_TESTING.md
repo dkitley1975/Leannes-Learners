@@ -1,29 +1,42 @@
-# [![David's GitHub Banner](/documents/assets/logos/GitHubHeader.png)](https://www.linkedin.com/in/david-kitley-mcnamara)
+[![David's GitHub Banner](/documents/assets/logos/GitHubHeader.png)](https://www.linkedin.com/in/david-kitley-mcnamara) <!-- omit in toc -->
 
-# Leannes Learners - Tests
+# Leannes Learners - Tests <!-- omit in toc -->
 
 This is the documentation section regarding the testing of the Leanne's Learners website.
 
-<!--TODO CONTENTS HERE-->
+## Contents <!-- omit in toc -->
+
+- [Testing](#testing)
+  - [Code Validation](#code-validation)
+  - [HTML](#html)
+  - [CSS](#css)
+  - [Python](#python)
+- [Blog](#blog)
+  - [leannes_learners_data](#leannes_learners_data)
+  - [users](#users)
+- [Different Screen Size](#different-screen-size)
+- [Issues found and worth metioning during site development and their Solutions](#issues-found-and-worth-metioning-during-site-development-and-their-solutions)
+- [Lighthouse](#lighthouse)
+- [Contrast Checking](#contrast-checking)
 
 ## Testing
 
 ### Code Validation
 
-#### HTML
+### HTML
 
 The W3C Markup Validation Service was used to validate the HTML page of the project.
 To use this service, I opened each page and viewed the source code, copied and pasted in to the W3C Markup Validation Service, minor errors were corrected, issues and problems have been noted below.
 
-* **Home Page** - No Errors
+- **Home Page** - No Errors
 
-* **About Us** - No Errors
+- **About Us** - No Errors
 
-* **Pass Plus** - No Errors
+- **Pass Plus** - No Errors
 
-* **Prices** - No Errors
+- **Prices** - No Errors
 
-* **Posts - individual detail view** - No Errors  
+- **Posts - individual detail view** - No Errors  
 (initially I had errors from the comment section, I had used a comment form for the replies which used the same id for each reply button and comment form. I added the reply to comment reference to each reply button and copied the form element from the code and replaced the ```comment.form | crispy``` with
 
 ~~~~ html
@@ -37,80 +50,80 @@ To use this service, I opened each page and viewed the source code, copied and p
 
 using the ```{{ comment.id }}``` gave each comment reply its own unique id
 
-* **Blog Categories** - No Errors
+- **Blog Categories** - No Errors
 (fixed an error with regard to empty spaces in the categories passed to the url. Fixed by creating a slug of the name and passing this through as the url)
 
-* **Contact us** -
+- **Contact us** -
 Error: ```Bad value mailto:leanne@leanneslearners.com?subject=Website%20Contact%20Details%Page%Link for attribute href on element a:
 Percentage ("%") is not followed by two hexadecimal digits.
 <a href="mailto:leanne@leanneslearners.com?subject=Website%20Contact%20Details%Page%Link”>```
 
     *This is code injected from the Django Summernotes form widget. The form has been tested and does submit the email, sending copies to both admin and the user*
 
-* **Local_traffic** - No Errors
+- **Local_traffic** - No Errors
 
-* **edit_user_details** - No Errors
+- **edit_user_details** - No Errors
 
-* **edit_profile** - No Errors
+- **edit_profile** - No Errors
 
-* **Create a Blog Post** - code injected from the Django Summernotes form widget showed as having errors.
+- **Create a Blog Post** - code injected from the Django Summernotes form widget showed as having errors.
 
     *It does create the post and goes directly to the new posts page*.
 
-* **Edit a Blog Post**  - code injected from the Django Summernotes form widget showed as having errors.
+- **Edit a Blog Post**  - code injected from the Django Summernotes form widget showed as having errors.
 
     *It does edit the post successfully goes returns to the posts page*.
 
-* **Delete a Post** - No Errors
+- **Delete a Post** - No Errors
 
-#### CSS
+### CSS
 
 The W3C CSS Validation Service was used to validate the CSS file used for the project. No errors or warnings to show.
 
-* **styles.css** - No Errors (used for the frontend)
-* **admin_color.css** - No Errors (used for the backend admin area)
+- **styles.css** - No Errors (used for the frontend)
+- **admin_color.css** - No Errors (used for the backend admin area)
 
-#### Python
+### Python
 
 The PEP8 Online Check was used to validate all Python code. No errors or warnings to show
 
-##### Blog
+## Blog
 
-* **admin.py** -  No Errors
-* **apps.py** -  No Errors
-* **forms.py** -  No Errors
-* **models.py** -  No Errors
-* **urls.py** -  No Errors
-* **views.py** -  No Errors
+- **admin.py** -  No Errors
+- **apps.py** -  No Errors
+- **forms.py** -  No Errors
+- **models.py** -  No Errors
+- **urls.py** -  No Errors
+- **views.py** -  No Errors
 
-##### leannes_learners_data  
+### leannes_learners_data  
 
-* **admin.py** -  No Errors
-* **apps.py** -  No Errors
-* **forms.py** -  No Errors
-* **models.py** -  No Errors
-* **urls.py** -  No Errors
-* **views.py** -  No Errors  
+- **admin.py** -  No Errors
+- **apps.py** -  No Errors
+- **forms.py** -  No Errors
+- **models.py** -  No Errors
+- **urls.py** -  No Errors
+- **views.py** -  No Errors  
 
-##### users  
+### users  
 
-* **admin.py** -  No Errors
-* **apps.py** -  No Errors
-* **forms.py** -  No Errors
-* **models.py** -  No Errors
-* **urls.py** -  No Errors
-* **views.py** -  No Errors  
+- **admin.py** -  No Errors
+- **apps.py** -  No Errors
+- **forms.py** -  No Errors
+- **models.py** -  No Errors
+- **urls.py** -  No Errors
+- **views.py** -  No Errors  
 
-### Different Screen Size
+## Different Screen Size
 
 The site is optimized for all screen sizes and tested with an ipad, iPhone 10 and Chrome developer.
 I use media queries to make everything look and feel good as the screen size increases.
 
-### Issues found and worth metioning during site development and their Solutions
+## Issues found and worth metioning during site development and their Solutions
 
 1. When adding the localhost as an ALLOWEDHOST in the settings page, I continued to receive an Django error indicating the host needed to be added to the allowed host settings.
 
-    * As this was being developed locally in VS Code. I tried editing the hosts file via -
+    - As this was being developed locally in VS Code. I tried editing the hosts file via -
 
 `
 sudo nano /private/etc/hosts
@@ -170,14 +183,14 @@ This did add an error within the W3C Markup Validation Service. As the Post cont
 This would show as unclosed tags in the source code.
 I added the ```|striptags``` to remove the html markup from the page description content to resolve this error.
 
-### Lighthouse
+## Lighthouse
 
 Performance varies wildly on a moment to moment. The same test on the same page has shown results from the mid 80's to high 90s.
 
 ![image](/documents/assets/screenshots/tests/lighthouse.png)
 
-### Contrast Checking
+## Contrast Checking
 
-I used [color.a11y.com](https://color.a11y.com/Contrast/) to check the sites colour contrast.
+I used [color.a11y.com](https://color.a11y.com/Contrast/) to check the sites colour contrast for each page. No issues detected.
 
-![image](/documents/assets/Holding_Image.png)
+![image](/documents/assets/screenshots/tests/color_contrast_report.png)
