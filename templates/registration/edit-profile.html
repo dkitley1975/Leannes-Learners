@@ -48,28 +48,30 @@
 								target="_blank" rel="noopener noreferrer"
 								aria-label="link to {{userprofile.user_website_url }}">
 								<i class="fas fa-globe"
-									aria-hidden="true"></i>&nbsp;</a>
+									aria-hidden="true" title="Click to open link in new tab"></i>&nbsp;</a>
 							{% endif %}
 							{% if userprofile.user_linkedin_url %}
 							<a href="{{uuserprofile.user_linkedin_url}}"
 								target="_blank" rel="noopener noreferrer"
 								aria-label="link to {{userprofile.user_linkedin_url }}">
 								<i class=" fab fa-linkedin"
-									aria-hidden="true"></i>&nbsp;</a>
+									aria-hidden="true" title="Click to open link in new tab"></i>&nbsp;</a>
 							{% endif %}
 
 							{% if userprofile.user_facebook_url %}
 							<a href="{{userprofile.user_facebook_url}}"
 								target="_blank" rel="noopener noreferrer"
 								aria-label="link to {{userprofile.user_facebook_url}}">
-								<i class=" fab fa-facebook"></i>&nbsp;</a>
+								<i class=" fab fa-facebook"
+									title="Click to open link in new tab"></i>&nbsp;</a>
 							{% endif %}
 
 							{% if userprofile.user_twitter_url %}
 							<a href="{{userprofile.user_twitter_url}}"
 								target="_blank" rel="noopener noreferrer"
 								aria-label="link to {{userprofile.user_twitter_url}}">
-								<i class=" fab fa-twitter"></i>&nbsp;</a>
+								<i class=" fab fa-twitter"
+									title="Click to open link in new tab"></i>&nbsp;</a>
 							{% endif %}
 						</p>
 						<p class="card-text">Update your biography</p>
@@ -89,7 +91,7 @@
 				<h3 class="card-title post-detail-author-title pt-5">Update your
 					social media profile links</h3>
 				<div class="col-12 col-lg-6">
-					<i class="fas fa-globe"></i>&nbsp;Your Website URL
+					<i class="fas fa-globe" title="Click to open link in new tab"></i>&nbsp;Your Website URL
 					{{ form.user_website_url}}
 				</div>
 				<div class="col-12 col-lg-6">

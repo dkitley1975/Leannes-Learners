@@ -27,7 +27,8 @@
 			<p>
 				{% if user.is_staff %}
 				<a href="{% url 'comment-delete' post.slug comment.pk %}">
-					<i class="fas fa-trash icon-color-primary"></i>&nbsp;</a>
+					<i class="fas fa-trash icon-color-primary"
+						title="Delete Comment"></i>&nbsp;</a>
 				{% endif %}
 				<span class="fw-bold">{{ comment.name }}</span>
 				<span class="text-muted">
@@ -65,7 +66,8 @@
 			<div class="comments">
 				{% if user.is_staff %}
 				<a href="{% url 'comment-delete' post.slug child_comment.pk %}">
-					<i class="fas fa-trash icon-color-primary"></i>&nbsp;</a>
+					<i class="fas fa-trash icon-color-primary"
+						title="Delete Comment"></i>&nbsp;</a>
 				{% endif %}
 				<span class="fw-bold">{{ child_comment.name }}</span>
 				<span class="text-muted font-weight-normal">

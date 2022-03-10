@@ -1,18 +1,23 @@
-<div class="d-flex flex-row justify-content-start">
+<div class="d-flex flex-row justify-content-end">
 	{% if user.is_authenticated %}
-	<form class="text-end" method="POST" action="{% url 'comment-dislike' post.slug child_comment.pk %}">
+	<form class="text-end" method="POST"
+		action="{% url 'comment-dislike' post.slug child_comment.pk %}">
 		{% csrf_token %}
 		<input type="hidden" name="next" value="{{ request.path }}">
 		<button class="btn" type="submit">
-			<i class="fas fa-thumbs-down icon-color-quaternary">
+			<i class="fas fa-thumbs-down icon-color-quaternary"
+				title="click to dislike this Comment">
 				<span>{{ child_comment.disliked.all.count }}</span></i>
 		</button>
 	</form>
-	<form class="text-end" method="POST" action="{% url 'comment-like' post.slug child_comment.pk %}">
+	<form class="text-end" method="POST"
+		action="{% url 'comment-like' post.slug child_comment.pk %}">
 		{% csrf_token %}
 		<input type="hidden" name="next" value="{{ request.path }}">
 		<button class="btn" type="submit">
-			<i class="fas fa-thumbs-up icon-color-tertiary"> <span>{{ child_comment.liked.all.count }}</span></i>
+			<i class="fas fa-thumbs-up icon-color-tertiary"
+				title="click to like this Comment">
+				<span>{{ child_comment.liked.all.count }}</span></i>
 		</button>
 	</form>
 	{% else %}

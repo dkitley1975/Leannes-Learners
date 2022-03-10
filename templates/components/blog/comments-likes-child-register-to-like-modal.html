@@ -1,9 +1,11 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#likeModal">
-	<i class="fas fa-thumbs-down icon-color-quaternary">
+	<i class="fas fa-thumbs-down icon-color-quaternary"
+		title="please login and click to dislike this Comment">
 		<span>{{ child_comment.disliked.all.count }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></i>
 
-	<i class="fas fa-thumbs-up icon-color-tertiary">
+	<i class="fas fa-thumbs-up icon-color-tertiary"
+		title="please login and click to like this Comment">
 		<span>{{ child_comment.liked.all.count }}</span></i>
 	</div>
 	<!-- Modal -->
@@ -16,7 +18,7 @@
 				</div>
 				<div class="modal-body">
 
-					<p class="mt-4 mb-2 fw-bolder">Thank you for showing an intrest and wanting to show your
+					<p class="mt-4 mb-2 fw-bolder">Thank you for showing an interest and wanting to show your
 						appreciation/or not of the posters comments,</p>
 					<p>Thank you for showing an intrest and wanting to show your appreciation/or not of the posters
 						comments,</p>

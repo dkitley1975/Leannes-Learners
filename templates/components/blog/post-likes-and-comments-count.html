@@ -1,35 +1,46 @@
-<div class="col-12 row m-1">
-	{% if user.is_authenticated %}
-	<form class="text-end" action="{% url 'like' post.slug %}" method="POST">
-		{% csrf_token %}
-		{% if liked %}
-		<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
-			<i class="fas fa-heart icon-color-quaternary"></i>
-		</button>
-		{% else %}
-		<button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
-			<i class="far fa-heart icon-color-quaternary"></i>
-		</button>
-		{% endif %}
+<div class="d-flex flex-row justify-content-end ">
+	{% if not user.is_authenticated %}
+	<!-- comments not authenticated -->
+	<i class="far fa-comments ms-3"></i>
+	<span class="text-secondary">
+		{% with comments.count as total_comments %}
+		&nbsp;{{ total_comments }}
+		{% endwith %}
+		&nbsp;&nbsp;&nbsp;
+		<!-- likes not authenticated -->
+		<i class="far fa-heart icon-color-quaternary" title=" login and click to like the
+			Post"></i>
+		&nbsp;{{ post.number_of_likes }}
+	</span>
+
+	{% else %}
+	<!-- comments  authenticated -->
+	<form>
+		{% with comments.count as total_comments %}
+		<i class="far fa-comments ms-3"></i>
 		<span class="text-secondary">
-			{{ post.number_of_likes }}
-			{% else %}
-			<span class="text-secondary">
-				<i class="far fa-heart icon-color-quaternary"></i>
-				<span class="text-secondary text-center">
-					{{ post.number_of_likes }}
-				</span>
-			</span>
-			{% endif %}
-			{% with comments.count as total_comments %}
-			<i class="far fa-comments ms-3"></i>
-			{{ total_comments }}
+			&nbsp;{{ total_comments }}&nbsp;&nbsp;
 		</span>
-		{% if user.is_authenticated %}
-		&nbsp;
-		{% else %}
-		<span class="text-muted">&nbsp;Please login to like and add comments</span>
-		{% endif %}
 		{% endwith %}
 	</form>
+
+	<!-- likes authenticated -->
+	<form class="text-end" action="{% url 'like' post.slug %}" method="POST">
+		{% csrf_token %}
+		<button type="submit" name="blogpost_id" value="{{post.slug}}"
+			class="btn-like">
+			{% if liked %}
+			<i class="fas fa-heart icon-color-quaternary"
+				title="click to unlike the Post"></i>
+			{% else %}
+			<i class="far fa-heart icon-color-quaternary"
+				title="click to like the Post"></i>
+			{% endif %}
+		</button>
+		<span class="text-secondary">
+			&nbsp;{{ post.number_of_likes }}
+		</span>
+	</form>
+	{% endif %}
+
 </div>
