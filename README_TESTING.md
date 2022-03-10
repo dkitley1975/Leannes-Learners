@@ -125,69 +125,72 @@ I use media queries to make everything look and feel good as the screen size inc
 
     - As this was being developed locally in VS Code. I tried editing the hosts file via -
 
-`
-sudo nano /private/etc/hosts
-`
-Saving the changes by pressing ctrl + O, then exiting by pressing ctrl + X  
+      `
+      sudo nano /private/etc/hosts
+      `
+      Saving the changes by pressing ctrl + O, then exiting by pressing ctrl + X  
 
-This error continues - but if `http://localhost:8000/` or `http://127.0.0.1:8000/` are used in the address bar the site works, just not directly from the link in the output message in the terminal.
+      This error continues - but if `http://localhost:8000/` or `http://127.0.0.1:8000/` are used in the address bar the site works, just not directly from the link in the output message in the terminal.
 
-1. Refreshing the page after commenting resubmitted the page.
+2. Refreshing the page after commenting resubmitted the page.
 My initial thought was to just use the base comment feature as demonstrated in the I think therefore I blog walkthrough, with the following code:
 After submitting the message this would refreshed the page and displayed a 'Your comment is awaiting approval message',  
 But if the user would then hit refresh the page the message would send again repeating the message.
 To solve this easily I removed the message needing to be approved by the admin before being posted.
 The commenting code was later extracted and added to a modal.
 
-1. The replys to comments all had the same html reference id's, causing a reply to a previous comment to always be associated with the latest comment.
+3. The replys to comments all had the same html reference id's, causing a reply to a previous comment to always be associated with the latest comment.
 This was fixed by adding the comment.id reference to the html id reference.  
 
-1. I initially had placed login, logout and register elements within insividual forms in the Navigation bar. Whilst testing manually on the live site on smaller screens, the forms were hidden beneath the footer and the page wouldn't scroll to reveal the rest of the forms.
+4. I initially had placed login, logout and register elements within insividual forms in the Navigation bar. Whilst testing manually on the live site on smaller screens, the forms were hidden beneath the footer and the page wouldn't scroll to reveal the rest of the forms.
 This was fixed within the CSS, further testing with the the W3C Markup Validation Service flagged the forms as errors, indicating that forms were not allowed with in `<ul>` elements.
 I rethought the approach and added the login and register elements as modals instead.  
 
-1. Page Meta Descriptions and Title. I had added the page title to each page using this method:  
+5. Page Meta Descriptions and Title. I had added the page title to each page using this method:  
 
-~~~~ html
-{% block title %}
-<title>Leannes Learner's Home Page</title>
-{% endblock %}
-~~~~  
+      ~~~~ html
+      {% block title %}
+      <title>Leannes Learner's Home Page</title>
+      {% endblock %}
+      ~~~~  
 
-I then added the Page Meta Description with:  
+    I then added the Page Meta Description with:  
 
-~~~~ html
-{% block metadescription %} 
-<meta name="keywords"
-  content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog"> 
-<meta name="description"
- content="Welcome to Leannes Learners, we are a Huddersfield based Driving School, here you can find links to our latest blog posts and testimonials">
-<title>Leannes Learner's Home Page</title>
-{% endblock %}
-~~~~
+      ~~~~ html
+      {% block metadescription %} 
+      <meta name="keywords"
+        content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog"> 
+      <meta name="description"
+      content="Welcome to Leannes Learners, we are a Huddersfield based Driving School, here you can find links to our latest blog posts and testimonials">
+      <title>Leannes Learner's Home Page</title>
+      {% endblock %}
+      ~~~~
 
-It is a future revision to have this information pulled from the database but this has alluded me so far.
-To add dynamic content for the page meta description for the individual blog pages I added the page description using this:
+    It is a future revision to have this information pulled from the database but this has alluded me so far.
+    To add dynamic content for the page meta description for the individual blog pages I added the page description using this:
 
-~~~~html
-{% block metadescription %} 
-<meta name="keywords" content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog"> 
-<meta name="description"
- content="{{post.title|safe|truncatechars:50 }} - {{post.content|striptags|safe|truncatechars:100 }}">
-<title>Post - {{post.title}}</title>
-{% endblock %}
-~~~~
+      ~~~~html
+      {% block metadescription %} 
+      <meta name="keywords" content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog"> 
+      <meta name="description"
+      content="{{post.title|safe|truncatechars:50 }} - {{post.content|striptags|safe|truncatechars:100 }}">
+      <title>Post - {{post.title}}</title>
+      {% endblock %}
+      ~~~~
 
-This will add dynamocally add the post title and some content to the page description within google searches.
-This did add an error within the W3C Markup Validation Service. As the Post content allowed html elements these appeared within the description, but didn't always close.
-This would show as unclosed tags in the source code.
-I added the ```|striptags``` to remove the html markup from the page description content to resolve this error.
+    This will add dynamocally add the post title and some content to the page description within google searches.
+    This did add an error within the W3C Markup Validation Service. As the Post content allowed html elements these appeared within the description, but didn't always close.
+    This would show as unclosed tags in the source code.
+    I added the ```|striptags``` to remove the html markup from the page description content to resolve this error.  
+
+6. On the ipad the like and comment icons for a post distributed over two lines even when there was enough room to display, this displayed fine on Desktop Safari and Chrome, I amended the code using flex and moved the icons to the right.  
 
 ## Lighthouse
 
 Performance varies wildly on a moment to moment. The same test on the same page has shown results from the mid 80's to high 90s.
 
 ![image](/documents/assets/screenshots/tests/lighthouse.png)
+The Performace issues appear to be related to the time the content can be retrived from cloudinary.   
 
 ## Contrast Checking
 
