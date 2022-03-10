@@ -1,29 +1,36 @@
 <div class="col-12 mt-3 left">
 	<div class="row">
 		{% for post in post_list %}
-		<div class="col-md-4"> 
+		<div class="col-md-4">
 			<div class="card bg-white img-radius-10 mb-4">
 				<div class="card-body">
 					<div class="image-container">
-						<a href="{% url 'post-detail' post.slug %}" class="post-detail-link">
+						<a href="{% url 'post-detail' post.slug %}"
+							class="post-detail-link">
 							{% if "placeholder" in post.featured_image.url %}
 							<img class="card-img-top img-radius-10 trans-white-background-80"
 								src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg">
 							{% else %}
 							<img class="card-img-top img-radius-10 trans-white-background-80"
-								src=" {{ post.featured_image.url }}" alt="{{ post.alt_tag }}">
+								src=" {{ post.featured_image.url }}"
+								alt="{{ post.alt_tag }}">
 							{% endif %}
 						</a>
 						<div class="image-flash">
-							<p class="author text-muted">Author: {{ post.author }}</p>
+							<p class="author text-muted">Author:
+								{{ post.author.first_name }}
+								{{ post.author.last_name }}</p>
 						</div>
 					</div>
-					<a href="{% url 'post-detail' post.slug %}" class="post-detail-link">
-						<h2 class="card-title text-uppercase">{{ post.title }}</h2>
+					<a href="{% url 'post-detail' post.slug %}"
+						class="post-detail-link">
+						<h2 class="card-title text-uppercase">{{ post.title }}
+						</h2>
 						<p class="card-text">{{ post.excerpt }}</p>
 					</a>
 					<hr />
-					<p class="card-text text-muted h6">{{ post.created_at | date:"d F Y" }}
+					<p class="card-text text-muted h6">
+						{{ post.created_at | date:"d F Y" }}
 						{% if post.number_of_likes %}
 						<i class="fas fa-heart icon-color-quaternary"></i>
 						{% else %}

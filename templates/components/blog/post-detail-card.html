@@ -7,12 +7,14 @@
 				src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg"
 				alt="missing image placeholder image">
 			{% else %}
-			<img class="card-img-top post-detail-link" src=" {{ post.featured_image.url }}" alt="{{ post.alt_tag }}">
+			<img class="card-img-top post-detail-link"
+				src=" {{ post.featured_image.url }}" alt="{{ post.alt_tag }}">
 			{% endif %}
 		</a>
 
 		<div class="image-flash">
-			<p class="author text-muted">Author: {{ post.author }}</p>
+			<p class="author text-muted">Author: {{ post.author.first_name }}
+				{{ post.author.last_name }}</p>
 		</div>
 	</div>
 	<a href="{% url 'post-detail' post.slug %}" class="post-detail-link">

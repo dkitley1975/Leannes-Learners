@@ -17,12 +17,15 @@
 				<hr class="post-detail-h-rule">
 				<p class="post-detail-subtitle">Post Category -
 					{{ post.category }} <br>
-					{{ post.author }} | {{ post.updated_at | date:"d F Y" }}
+					{{ post.author.first_name }} {{ post.author.last_name }} |
+					{{ post.updated_at | date:"d F Y" }}
 					{% if user.is_staff %}
 					<a href="{% url 'post-update' post.slug %}"> <i
-							class="far fa-edit" title="Click to edit post"></i></a>
+							class="far fa-edit"
+							title="Click to edit post"></i></a>
 					<a href="{% url 'post-delete' post.slug %}"> <i
-							class="fas fa-trash" title="Click to delete post"></i></a>
+							class="fas fa-trash"
+							title="Click to delete post"></i></a>
 					{% endif %}
 				</p>
 
