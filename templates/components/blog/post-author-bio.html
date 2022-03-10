@@ -29,7 +29,8 @@
 					<p class="small text-muted post-detail-author-links">
 						{% if post.author.userprofile.user_website_url %}
 						<a href="{{ post.author.userprofile.user_website_url }}"
-							target="_blank" rel="noopener noreferrer">
+							target="_blank" rel="noopener noreferrer"
+							alt="link to {{ post.author.userprofile.user_website_url }}">
 							<i class="fas fa-globe" aria-hidden="true"
 								title="Click to open link"></i>&nbsp;</a>
 						{% endif %}
@@ -41,12 +42,14 @@
 						{% endif %}
 						{% if post.author.userprofile.user_facebook_url %}
 						<a href="{{ post.author.userprofile.user_facebook_url }}"
+							alt="link to {{ post.author.userprofile.user_facebook_url }}"
 							target="_blank" rel="noopener noreferrer">
 							<i class="fab fa-facebook" aria-hidden="true"
 								title="Click to open link"></i>&nbsp;</a>
 						{% endif %}
 						{% if post.author.userprofile.user_twitter_url %}
 						<a href="{{ post.author.userprofile.user_twitter_url }}"
+							alt="link to {{ post.author.userprofile.user_twitter_url }}"
 							target="_blank" rel="noopener noreferrer">
 							<i class="fab fa-twitter" aria-hidden="true"
 								title="Click to open link"></i>&nbsp;</a>

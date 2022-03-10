@@ -8,6 +8,7 @@ This is the documentation section regarding the testing of the Leanne's Learners
 
 - [Testing](#testing)
   - [Code Validation](#code-validation)
+  - [Unittest](#unittest)
   - [HTML](#html)
   - [CSS](#css)
   - [Python](#python)
@@ -22,6 +23,13 @@ This is the documentation section regarding the testing of the Leanne's Learners
 ## Testing
 
 ### Code Validation
+
+### Unittest
+
+Unit test were performed on the python files.
+![image](/documents/assets/screenshots/tests/unit_test_results.png)  
+
+[The results are here](/htmlcov/index.html)
 
 ### HTML
 
@@ -187,10 +195,9 @@ I rethought the approach and added the login and register elements as modals ins
 
 ## Lighthouse
 
-Performance varies wildly on a moment to moment. The same test on the same page has shown results from the mid 80's to high 90s.
-
-![image](/documents/assets/screenshots/tests/lighthouse.png)
-The Performace issues appear to be related to the time the content can be retrived from cloudinary.   
+![image](/documents/assets/screenshots/tests/lighthouse_home.png)
+![image](/documents/assets/screenshots/tests/lighthouse_blog.png)
+Any performace issues appear to be related to the time the content can be retrived from cloudinary.
 
 ## Contrast Checking
 

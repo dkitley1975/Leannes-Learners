@@ -9,11 +9,14 @@
 		<span>{{ child_comment.liked.all.count }}</span></i>
 	</div>
 	<!-- Modal -->
-	<div class="modal fade" id="likeModal" tabindex="-1" aria-labelledby="likeModalLabel" aria-hidden="true">
+	<div class="modal fade" id="likeModal_{{ child_comment.pk }}" tabindex="-1"
+		aria-labelledby="likeModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h3 class="modal-title" id="likeModalLabel">Show your appreciation:</h3>
+					<h3 class="modal-title"
+						id="likeModalLabel_{{ child_comment.pk }}">Show your
+						appreciation:</h3>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">

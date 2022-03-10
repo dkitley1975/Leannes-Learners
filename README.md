@@ -155,6 +155,8 @@ Image showing the database for Leanne's Learners - Blog Post and User site area
 
 ## Fonts
 
+The default Sans-Serif is used as the main font. I was unnecessary to change the default font type as this is an easy font to read and displays well throughout the site.
+
 For the headings I have used Pushster from Google
 ![image](/documents/assets/screenshots/font/our_latest_blog_post.png)
 ![image](/documents/assets/screenshots/font/our_latest_testimonials.png)  
