@@ -1,33 +1,40 @@
 <!-- Button trigger modal -->
-<a class="nav-link" href="#" role="button" data-bs-toggle="modal" data-bs-target="#loginModal" aria-expanded="false">
-	<i class="fas fa-sign-in-alt nav-link-white"
-		title="Click to Sign In"></i>
+<a class="nav-link" href="#" role="button" data-bs-toggle="modal"
+	data-bs-target="#loginModal" aria-expanded="false">
+	<i class="fas fa-sign-in-alt nav-link-white" title="Click to Sign In"></i>
 	Login</a>
 <!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1"
+	aria-labelledby="loginModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h3 class="modal-title" id="loginModalLabel">Login:</h3>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
 
 
-				<form class="form-group" method="POST" action='{% url "login" %}?next={{request.path}}'>
+				<form class="form-group" method="POST"
+					action='{% url "login" %}?next={{request.path}}'>
 					{% csrf_token %}
 					<p>Please enter your username and password.</p>
 					<div>
-						<input type="text" class="form-control" name="username" id="id_username_login"
-							placeholder="Username">
+						<input type="text" class="form-control" name="username"
+							id="id_username_login" placeholder="Username"
+							autocomplete="on">
 					</div>
 					<div>
-						<input type="password" class="form-control" name="password" id="id_password_login"
-							placeholder="Password">
+						<input type="password" class="form-control"
+							name="password" id="id_password_login"
+							placeholder="Password" autocomplete="on">
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary btn-white-outline">Login</button>
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+						<button type="submit"
+							class="btn btn-primary btn-white-outline">Login</button>
 					</div>
 				</form>
 			</div>

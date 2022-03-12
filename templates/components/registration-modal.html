@@ -19,21 +19,23 @@
 		<p>Please enter a username and password.</p>
 		<div>
 			<input type="text" class="form-control" name="username" maxlength="150" autocapitalize="none"
-				autocomplete="username" required="" id="id_username_registration_modal" placeholder="Username">
+				autocomplete="username" required="" id="id_username_registration_modal"
+				placeholder="Username" autocomplete="off">
 			<p class="registration-helptext">Required. 150 characters or fewer. Letters,
 				digits
 				and
 				@/./+/-/_ only.</p>
 			<div>
 				<input type="text" class="form-control" name="first_name" id="id_first_name_registration_modal"
-					placeholder="First Name">
+					placeholder="First Name" autocomplete="on">
 			</div>
 			<div>
 				<input type="text" class="form-control" name="last_name" id="id_last_name_registration_modal"
-					placeholder="Last Name">
+					placeholder="Last Name" autocomplete="on">
 			</div>
 			<div>
-				<input type="email" class="form-control" name="email" id="id_email_registration_modal" placeholder="Email">
+				<input type="email" class="form-control" name="email"
+					id="id_email_registration_modal" placeholder="Email" autocomplete="on">
 			</div>
 			<input type="password" class="form-control" name="password1" autocomplete="new-password" required=""
 				id="id_password1_registration_modal" placeholder="Password">

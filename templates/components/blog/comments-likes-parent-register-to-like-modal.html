@@ -1,42 +1,43 @@
-<!-- Button trigger modal -->
+<!-- Button trigger Modal Parent Likes - (register) -->
+<div>
 <button type="button" class="btn" data-bs-toggle="modal"
-	data-bs-target="#likeModal">
+	data-bs-target="#likeModal_{{ comment.pk }}">
 	<i class="fas fa-thumbs-down icon-color-quaternary"
 		title="please login and click to dislike this Comment">
 		<span>{{ comment.number_of_comment_dislikes }}&nbsp;&nbsp;&nbsp;&nbsp;</span></i>
 
 	<i class="fas fa-thumbs-up icon-color-tertiary"
 		title="please login and click to like this Comment">
-		<span>{{ comment.number_of_comment_likes  }}&nbsp;</span></i>
+		<span>{{ comment.number_of_comment_likes  }}&nbsp;</span></i></button>
 	{% include "components/blog/comment-reply-modal.html" %}
-	</div>
-	<!-- Modal -->
-	<div class="modal fade" id="likeModal" tabindex="-1"
-		aria-labelledby="likeModalLabel_{{ comment.pk }}" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h3 class="modal-title"
-						id="likeModalLabel_{{ comment.pk }}">Show
-						your appreciation:</h3>
-					<button type="button" class="btn-close"
-						data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-
-					<p>Thank you for showing an interest and wanting to show
-						your appreciation/or not of the posters
-						comments,</p>
-					<p class="mt-1">To do so, first please login to your account
-						or register to join our community</p>
-
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-					</div>
-
-				</div>
+</div>
+<!-- Modal Parent Likes - (register) -->
+<div class="modal fade" id="likeModal_{{ comment.pk }}" tabindex="-1"
+	aria-labelledby="likeModalLabel_{{ comment.pk }}" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" id="likeModalLabel_{{ comment.pk }}">
+					Show
+					your appreciation:</h3>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
 			</div>
+			<div class="modal-body">
 
+				<p>Thank you for showing an interest and wanting to show
+					your appreciation/or not of the posters
+					comments,</p>
+				<p class="mt-1">To do so, first please login to your account
+					or register to join our community</p>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+				</div>
+
+			</div>
 		</div>
+
 	</div>
+</div>

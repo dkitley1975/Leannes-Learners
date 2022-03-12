@@ -39,7 +39,7 @@
 				{{ comment.comment | linebreaks }}
 				{% include "components/blog/comments-parent-likes.html" %}
 		</div>
-	</div>
+	{% comment %} </div> {% endcomment %}
 	{% endif %}
 	<!-- end if for the parent comments-->
 
@@ -84,3 +84,5 @@
 	{% endfor %}
 	<!--end for for the comment in comments-->
 </div>
+
+
