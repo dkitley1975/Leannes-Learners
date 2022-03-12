@@ -76,40 +76,6 @@ img {
     font-style: italic;
 }
 
-.text-404-wrap {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 3rem;
-    border-radius: 3rem;
-    -webkit-border-radius: 3rem;
-    -moz-border-radius: 3rem;
-    -ms-border-radius: 3rem;
-    -o-border-radius: 3rem;
-}
-
-.text-bg-404 {
-    background: var(--clr-404-bg);
-}
-
-.text-404-wrap h1 {
-    /* font-size: 6.66rem; */
-    font-size: 20vw;
-    font-weight: 800;
-    letter-spacing: .75rem;
-    color: var(--clr-404-text);
-
-}
-
-.text-404-wrap h2 {
-    font-size: 6vw;
-    font-weight: 800;
-    color: var(--clr-404-text);
-}
-
-
-
 .background-image-l-plate {
     background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1641303161/leannes_learners/authentication_images/authentication_page_image.jpg');
 }
@@ -120,7 +86,7 @@ img {
 
 .background-image-container {
     box-sizing: border-box;
-    min-height: 80vh;
+    min-height: 83vh;
     min-width: 100vw;
     overflow: hidden;
     background-size: cover;
@@ -618,6 +584,42 @@ img {
 
 .tel-link:hover {
     color: var(--clr-link-dark);
+}
+
+.text-404-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3rem;
+    border-radius: 3rem;
+    -webkit-border-radius: 3rem;
+    -moz-border-radius: 3rem;
+    -ms-border-radius: 3rem;
+    -o-border-radius: 3rem;
+}
+
+.text-bg-404 {
+    background: var(--clr-404-bg);
+}
+
+.text-404-wrap h1 {
+    font-size: min(10vw, 150px);
+    font-weight: 800;
+    letter-spacing: .75rem;
+    color: var(--clr-404-text);
+}
+
+.text-404-wrap h2 {
+    font-size: min(5vw, 70px);
+    font-weight: 800;
+    color: var(--clr-404-text);
+}
+
+.text-404-wrap p {
+    font-size: min(2vw, 28px);
+    font-weight: 500;
+    color: var(--clr-404-text);
 }
 
 .table a {
