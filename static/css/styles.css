@@ -18,6 +18,8 @@
     --clr-background-page-colour: rgb(246, 249, 244);
     --clr-background-card-background: rgb(255, 255, 255);
     --clr-brand-primary-carousel: rgba(116, 36, 29, 0.85);
+    --clr-404-text: rgba(52, 52, 52, 0.947);
+    --clr-404-bg: rgba(255, 239, 148, 0.35);
 }
 
 body {
@@ -28,7 +30,6 @@ body {
 a {
     text-decoration: none;
     text-decoration-color: white !important;
-    -moz-text-decoration-color: white !important;
 }
 
 blockquote {
@@ -41,10 +42,6 @@ blockquote {
     text-align: left;
     box-shadow: 1px 1px 1px var(--clr-box-shadow), 2px 2px 1px var(--clr-box-shadow), 3px 3px 1px var(--clr-box-shadow);
     transition-duration: 0.3s;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
 }
 
 .responsive-break
@@ -79,33 +76,65 @@ img {
     font-style: italic;
 }
 
-/* TODO check this is needed*/
-.authentication-background-image-container {
+.text-404-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3rem;
+    border-radius: 3rem;
+    -webkit-border-radius: 3rem;
+    -moz-border-radius: 3rem;
+    -ms-border-radius: 3rem;
+    -o-border-radius: 3rem;
+}
+
+.text-bg-404 {
+    background: var(--clr-404-bg);
+}
+
+.text-404-wrap h1 {
+    /* font-size: 6.66rem; */
+    font-size: 20vw;
+    font-weight: 800;
+    letter-spacing: .75rem;
+    color: var(--clr-404-text);
+
+}
+
+.text-404-wrap h2 {
+    font-size: 6vw;
+    font-weight: 800;
+    color: var(--clr-404-text);
+}
+
+
+
+.background-image-l-plate {
+    background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1641303161/leannes_learners/authentication_images/authentication_page_image.jpg');
+}
+
+.background-image-404-image {
+    background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1646976719/leannes_learners/404/404.jpg');
+}
+
+.background-image-container {
     box-sizing: border-box;
-    min-height: 100vh;
+    min-height: 80vh;
     min-width: 100vw;
     overflow: hidden;
-    background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1641303161/leannes_learners/authentication_images/authentication_page_image.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     z-index: -1;
 }
 
-.authentication-input-container {
+.container-transparent-background {
     background-color: rgba(225, 225, 225, 0.8);
     border-radius: 20px;
-}
-
-.background-image {
-    background-color: var(--clr-background-grey);
-    box-sizing: border-box;
-    min-height: 100vh;
-    min-width: 100vw;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .border-brand-primary {
@@ -126,10 +155,6 @@ img {
 .border-radius-shadow-tertiary {
     border-radius: 10px;
     box-shadow: 1px 1px 1px rgba(156, 207, 153, 0.726), 2px 2px 1px rgba(156, 207, 153, 0.308), 4px 10px 1px rgba(156, 207, 153, 0.068);
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
 }
 
 .border-top-radius-10 {
@@ -150,7 +175,6 @@ img {
 .btn-like:hover,
 .btn-like:active {
     animation: heart-beat 1s linear infinite;
-    -webkit-animation: heart-beat 1s linear infinite;
 }
 
 .btn-primary,
@@ -160,10 +184,6 @@ img {
     border: none;
     border-radius: .5rem;
     padding: .5rem;
-    -webkit-border-radius: .5rem;
-    -moz-border-radius: .5rem;
-    -ms-border-radius: .5rem;
-    -o-border-radius: .5rem;
 }
 
 .btn-primary:hover,
@@ -172,17 +192,12 @@ img {
     background-color: white !important;
     border: 1px solid var(--clr-brand-primary);
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    -moz-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    -ms-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    -o-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .btn-signup {
     color: white;
     background-color: var(--clr-brand-primary);
     text-decoration: none;
-    border: 1px solid var(--clr-brand-primary);
 }
 
 .btn-signup:hover {
@@ -190,10 +205,6 @@ img {
     background-color: white !important;
     border: 1px solid var(--clr-brand-primary);
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    -moz-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    -ms-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    -o-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .btn-warning {
@@ -214,10 +225,6 @@ img {
 .card {
     background-color: var(--clr-card-background);
     border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
 }
 
 .card-header {
@@ -334,23 +341,17 @@ img {
 .footer-social>a:hover {
     color: var(--clr-brand-tertiary);
     transform: scale(1.5);
-    -webkit-transform: scale(1.5);
-    -moz-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    -o-transform: scale(1.5);
 }
 
 .force-white-text-black-hover,
 .force-white-text-black-hover:active {
     color: white;
     text-decoration-color: white;
-    -moz-text-decoration-color: white;
 }
 
 .force-white-text-black-hover:hover {
     color: black;
     text-decoration-color: black;
-    -moz-text-decoration-color: black;
 }
 
 .form-control {
@@ -393,10 +394,6 @@ img {
     border-radius: 10px;
     box-shadow: 1px 1px 1px rgb(180, 180, 180), 2px 2px 1px rgb(200, 200, 200), 3px 3px 1px rgb(220, 220, 220);
     max-width: 100%;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
 }
 
 .link {
@@ -497,10 +494,6 @@ img {
     border: 1px solid var(--clr-border-grey);
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
 }
 
 .page-link:hover {
@@ -678,38 +671,38 @@ img {
 
     .responsive-break {
         display: inline;
-
-
     }
 
-    /* On screens that are 768px */
-    @media screen and (min-width: 768px) {
-        .post-detail-header {
-            height: 300px;
-        }
+}
 
-        .dropdown-menu-end {
-            right: 30px;
-        }
+/* On screens that are 768px */
+@media screen and (min-width: 768px) {
+    .post-detail-header {
+        height: 300px;
     }
 
-    /* On screens that are 992px */
-    @media screen and (min-width: 992px) {
-        .dropdown-menu-end {
-            width: 300px;
-        }
-
-        .logo-image {
-            width: 15vw;
-            height: auto;
-        }
-
-        .nav-link {
-            text-align: center
-        }
-
-        .logo-image {
-            width: 15vw;
-            height: auto;
-        }
+    .dropdown-menu-end {
+        right: 30px;
     }
+}
+
+/* On screens that are 992px */
+@media screen and (min-width: 992px) {
+    .dropdown-menu-end {
+        width: 300px;
+    }
+
+    .logo-image {
+        width: 15vw;
+        height: auto;
+    }
+
+    .nav-link {
+        text-align: center
+    }
+
+    .logo-image {
+        width: 15vw;
+        height: auto;
+    }
+}

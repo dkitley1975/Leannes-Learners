@@ -15,26 +15,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
-# Start Unregister from the admin main site panel to help remove confusion for the end user 
 from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
 from allauth.account.models import EmailAddress
 from django.contrib.sites.models import Site
+from leannes_learners import views
+
 
 # admin.site.unregister(SocialToken)
 # admin.site.unregister(SocialAccount)
 # admin.site.unregister(SocialApp)
 # admin.site.unregister(Site)
 # admin.site.unregister(EmailAddress)
-# end of Unregister from the admin main site panel to help remove confusion for the end user 
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('django_summernote/', include('django_summernote.urls')),
-    path('users/', include('django.contrib.auth.urls')),
-    path('', include('leannes_learners_data.urls'), name='leannes_learners_data_urls'),
-    path('blog/', include('blog.urls'), name='blog_urls'),
-    path('members/', include('users.urls'), name='users_urls'),
-
+    path("admin/", admin.site.urls),
+    path("django_summernote/", include("django_summernote.urls")),
+    path("users/", include("django.contrib.auth.urls")),
+    path("", include("leannes_learners_data.urls"), name="leannes_learners_data_urls"),
+    path("blog/", include("blog.urls"), name="blog_urls"),
+    path("members/", include("users.urls"), name="users_urls"),
 ]
+
+handler404 = "leannes_learners.views.page_not_found_view"
