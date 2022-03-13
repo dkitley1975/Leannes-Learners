@@ -19,6 +19,7 @@ from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
 from allauth.account.models import EmailAddress
 from django.contrib.sites.models import Site
 from leannes_learners import views
+from django.conf.urls import handler404, handler500, handler403, handler400
 
 
 # admin.site.unregister(SocialToken)
@@ -37,4 +38,7 @@ urlpatterns = [
     path("members/", include("users.urls"), name="users_urls"),
 ]
 
-handler404 = "leannes_learners.views.page_not_found_view"
+handler400 = "leannes_learners.views.bad_request_error_400"
+handler404 = "leannes_learners.views.page_not_found_view_404"
+handler403 = "leannes_learners.views.forbidden_error_403"
+handler500 = "leannes_learners.views.internal_error_500"

@@ -18,8 +18,8 @@
     --clr-background-page-colour: rgb(246, 249, 244);
     --clr-background-card-background: rgb(255, 255, 255);
     --clr-brand-primary-carousel: rgba(116, 36, 29, 0.85);
-    --clr-404-text: rgba(52, 52, 52, 0.947);
-    --clr-404-bg: rgba(255, 239, 148, 0.35);
+    --clr-404-text: rgb(36, 36, 36);
+    --clr-404-bg: rgba(245, 222, 42, 0.694);
 }
 
 body {
@@ -78,12 +78,31 @@ img {
 
 .background-image-l-plate {
     background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1641303161/leannes_learners/authentication_images/authentication_page_image.jpg');
+    filter: blur(2px);
+    backdrop-filter: brightness(1.5);
+    -webkit-filter: blur(2px);
 }
 
 .background-image-404-image {
     background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1646976719/leannes_learners/404/404.jpg');
+    filter: blur(4px);
+    backdrop-filter: brightness(1.5);
+    -webkit-filter: blur(4px);
 }
 
+.background-image-403-image {
+    background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1647178031/leannes_learners/404/403.jpg');
+    filter: blur(4px);
+    backdrop-filter: brightness(1.5);
+    -webkit-filter: blur(4px);
+}
+
+.background-image-500-image {
+    background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1647178031/leannes_learners/404/500.jpg');
+    filter: blur(4px);
+    backdrop-filter: brightness(1.5);
+    -webkit-filter: blur(4px);
+}
 .background-image-container {
     box-sizing: border-box;
     min-height: 83vh;
@@ -586,7 +605,7 @@ img {
     color: var(--clr-link-dark);
 }
 
-.text-404-wrap {
+.text-error-page-wrap {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -599,24 +618,24 @@ img {
     -o-border-radius: 3rem;
 }
 
-.text-bg-404 {
+.text-bg-error-page {
     background: var(--clr-404-bg);
 }
 
-.text-404-wrap h1 {
+.text-error-page-wrap h1 {
     font-size: min(10vw, 150px);
     font-weight: 800;
     letter-spacing: .75rem;
     color: var(--clr-404-text);
 }
 
-.text-404-wrap h2 {
+.text-error-page-wrap h2 {
     font-size: min(5vw, 70px);
     font-weight: 800;
     color: var(--clr-404-text);
 }
 
-.text-404-wrap p {
+.text-error-page-wrap p {
     font-size: min(2vw, 28px);
     font-weight: 500;
     color: var(--clr-404-text);
@@ -674,7 +693,6 @@ img {
     .responsive-break {
         display: inline;
     }
-
 }
 
 /* On screens that are 768px */
