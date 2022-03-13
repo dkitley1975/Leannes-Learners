@@ -157,10 +157,14 @@ class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         """
         Test function for the test function.
-        @returns True if the user is the author of the post.
+        @returns True if the user is the author of the comment
+        or if the user is a member of staff.
         """
-        post = self.get_object()
-        return self.request.user == post.name
+        comment = self.get_object()
+        if self.request.user.is_staff:
+            return self.request.user.is_staff
+        else:
+            return self.request.user == comment.name
 
 
 class CommentDislike(View):
