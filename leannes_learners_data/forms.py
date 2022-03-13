@@ -76,9 +76,9 @@ class ContactForm(forms.Form):
         msg += "This is their enquiry:\n"
         msg += cl_data.get("message")
 
-        contacts_subject = "Leanne's Learners Contact Form - sent confirmation"
-        contacts_msg = f"Thank you {first_name}"
-        "for contacting Leannes Learners"
+        contacts_subject = "Leanne's Learners Contact Form - sent confirmation "
+        contacts_msg = f"Thank you {first_name} "
+        "for contacting Leannes Learners "
         "via the online contact form,\n"
         contacts_msg += "the information you sent was as follows:\n"
         contacts_msg += f"Phone: {contact_number}\n"
