@@ -103,9 +103,10 @@ img {
     backdrop-filter: brightness(1.5);
     -webkit-filter: blur(4px);
 }
+
 .background-image-container {
     box-sizing: border-box;
-    min-height: 83vh;
+    min-height: 100vh;
     min-width: 100vw;
     overflow: hidden;
     background-size: cover;

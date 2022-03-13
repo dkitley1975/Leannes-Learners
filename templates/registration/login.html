@@ -9,26 +9,25 @@
 {% block content %}
 <!-- Log in Content -->
 <div class="background-image-container background-image-l-plate p-3">
-	<div
-		class="container p-3 col-md-8  col-lg-6  container-transparent-background">
-		<h1 class="section-header">Login</h1>
-		<div class="row">
-			<div class="p5 col-10 offset-1">
-				<form class="form-group" method="POST">
-					{% load crispy_forms_tags %}
-					{% csrf_token %}
-					{{ form | crispy }}
-					{% if redirect_field_value %}
-					<input type="hidden" name="{{ redirect_field_name }}"
-						value="{{ redirect_field_value }}" />
-					{% endif %}
-					<p><a href="{% url 'password-reset' %}"
-							class="link-primary-tertiary">Forgotten your
-							password?</a>
-					</p>
-					<button type="submit" class="btn btn-primary">Login</button>
-				</form>
-			</div>
+</div>
+<div class="container p-3 col-md-8  col-lg-6  container-transparent-background">
+	<h1 class="section-header">Login</h1>
+	<div class="row">
+		<div class="p5 col-10 offset-1">
+			<form class="form-group" method="POST">
+				{% load crispy_forms_tags %}
+				{% csrf_token %}
+				{{ form | crispy }}
+				{% if redirect_field_value %}
+				<input type="hidden" name="{{ redirect_field_name }}"
+					value="{{ redirect_field_value }}" />
+				{% endif %}
+				<p><a href="{% url 'password-reset' %}"
+						class="link-primary-tertiary">Forgotten your
+						password?</a>
+				</p>
+				<button type="submit" class="btn btn-primary">Login</button>
+			</form>
 		</div>
 	</div>
 </div>

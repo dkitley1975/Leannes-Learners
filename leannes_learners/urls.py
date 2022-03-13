@@ -39,6 +39,6 @@ urlpatterns = [
 ]
 
 handler400 = "leannes_learners.views.bad_request_error_400"
-handler404 = "leannes_learners.views.page_not_found_view_404"
 handler403 = "leannes_learners.views.forbidden_error_403"
+handler404 = "leannes_learners.views.page_not_found_view_404"
 handler500 = "leannes_learners.views.internal_error_500"
