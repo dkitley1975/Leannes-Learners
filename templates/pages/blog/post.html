@@ -27,12 +27,9 @@
 							title="Click to delete post"></i></a>
 					{% endif %}
 				</p>
-
 			</div>
-
 			<div
 				class="d-none d-md-block col-md-5 ms-auto post-detail-header-image">
-				<!-- The featured image URL goes in the src attribute -->
 				{% if "placeholder" in post.featured_image.url %}
 				<img class="alt-text-white"
 					src="https://res.cloudinary.com/dkitley1975/image/upload/v1643781954/leannes_learners/default_image/default_blog_image.jpg"
@@ -45,7 +42,6 @@
 		</div>
 	</div>
 </div>
-
 <div class="container col-md-8 ms-auto">
 	<!-- Blog Nav filter -->
 	{% include "layout/navbar-catagories.html" %}
@@ -61,17 +57,16 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div class="row">
-	<div class="col">
-		<hr>
+	<div class="row">
+		<div class="col">
+			<hr>
+		</div>
 	</div>
-</div>
-<div class="row">
-	<div class="card mb-4 p-3 mt-3  img-radius-10 bg-white">
-		{% include "components/blog/comment-modal.html" %}
-		{% include "components/blog/comments.html" %}
+	<div class="row">
+		<div class="card mb-4 p-3 mt-3  img-radius-10 bg-white">
+			{% include "components/blog/comment-modal.html" %}
+			{% include "components/blog/comments.html" %}
+		</div>
 	</div>
-</div>
 </div>
 {% endblock content %}

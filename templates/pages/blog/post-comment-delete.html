@@ -4,45 +4,39 @@
 {% block metadescription %}
 <meta name="keywords"
 	content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog">
-<meta name="description"
-	content="Leannes Learners, delete a blog post comment">
+<meta name="description" content="Leannes Learners, delete a blog post comment">
 <title>Delete a blog post comment</title>
 {% endblock %}
 
 {% block content %}
-
-
 <section>
 	<div class="container-fluid col-10">
 		<div class="row">
-			<div class="col-md-8 offset-md-2 align-self-center border border-danger p-4 my-5">
+			<div
+				class="col-md-8 offset-md-2 align-self-center border border-danger p-4 my-5">
 				<h1 class="section-header mb-5">Delete Comment</h1>
-				<h2 class="mt-5 text-center">Are you sure you want to delete the comment: </h2>
+				<h2 class="mt-5 text-center">Are you sure you want to delete the
+					comment: </h2>
 				<h3 class="mt-3 text-center">{{ comment.comment }}</h3>
 				<h4 class="mt-3 text-center"> by {{ comment.name }}? </h4>
-
-
 				<div class="col-md-10 offset-md-1 align-self-center">
 					<div class="col align-self-center">
 						<div class="row justify-content-center">
-							<p class="text-center warning-advice-text">This action is not recoverable and removes this
-								comment and all comments listed below this post</p>
+							<p class="text-center warning-advice-text">This
+								action is not recoverable and removes this
+								comment and all comments listed below this post
+							</p>
 							<form method="POST">
 								{% csrf_token %}
-								<button class="btn btn-primary mb-5 btn-warning">Delete Comment!!</button>
+								<button
+									class="btn btn-primary mb-5 btn-warning">Delete
+									Comment!!</button>
 							</form>
-
-
 						</div>
-
-
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
-
 </section>
-
 {%endblock%}

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block metadescription %}
 <meta name="keywords"
 	content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog">
@@ -8,7 +9,6 @@
 {% endblock %}
 
 {% block content %}
-
 <!-- Pass Plus Content -->
 {% for passplus in passplus_list %}
 <section class="container p-3">
@@ -18,8 +18,10 @@ card bg-white img-radius-10 justify-content-center">
 		<div class="row">
 			<h1 class="section-header">Pass Plus Course Details</h1>
 			<div class="col-12 mt-3 p-5 row justify-content-center">
-				<div class="col-12 col-md-4 col-lg-3 mt-3"><img src="{{ passplus.focus_image.url }}"
-						class="img-fluid img-focus-image" alt="{{ passplus.alt_tag }}">
+				<div class="col-12 col-md-4 col-lg-3 mt-3"><img
+						src="{{ passplus.focus_image.url }}"
+						class="img-fluid img-focus-image"
+						alt="{{ passplus.alt_tag }}">
 				</div>
 				<p class="lead">{{ passplus.lead_content | safe }}</p>
 				<p>{{ passplus.main_content | safe }}</p>

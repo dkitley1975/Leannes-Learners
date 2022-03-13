@@ -1,14 +1,14 @@
+<!-- Comments-likes-parent-register-to-like-modal.html -->
 <!-- Button trigger Modal Parent Likes - (register) -->
 <div>
-<button type="button" class="btn" data-bs-toggle="modal"
-	data-bs-target="#likeModal_{{ comment.pk }}">
-	<i class="fas fa-thumbs-down icon-color-quaternary"
-		title="please login and click to dislike this Comment">
-		<span>{{ comment.number_of_comment_dislikes }}&nbsp;&nbsp;&nbsp;&nbsp;</span></i>
-
-	<i class="fas fa-thumbs-up icon-color-tertiary"
-		title="please login and click to like this Comment">
-		<span>{{ comment.number_of_comment_likes  }}&nbsp;</span></i></button>
+	<button type="button" class="btn" data-bs-toggle="modal"
+		data-bs-target="#likeModal_{{ comment.pk }}">
+		<i class="fas fa-thumbs-down icon-color-quaternary"
+			title="please login and click to dislike this Comment">
+			<span>{{ comment.number_of_comment_dislikes }}&nbsp;&nbsp;&nbsp;&nbsp;</span></i>
+		<i class="fas fa-thumbs-up icon-color-tertiary"
+			title="please login and click to like this Comment">
+			<span>{{ comment.number_of_comment_likes  }}&nbsp;</span></i></button>
 	{% include "components/blog/comment-reply-modal.html" %}
 </div>
 <!-- Modal Parent Likes - (register) -->
@@ -24,20 +24,17 @@
 					aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-
 				<p>Thank you for showing an interest and wanting to show
 					your appreciation/or not of the posters
 					comments,</p>
 				<p class="mt-1">To do so, first please login to your account
 					or register to join our community</p>
-
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Close</button>
 				</div>
-
 			</div>
 		</div>
-
 	</div>
 </div>
+<!-- END of Comments-likes-parent-register-to-like-modal.html -->

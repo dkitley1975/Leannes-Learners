@@ -1,3 +1,4 @@
+<!-- comments.html -->
 <div class="sm-12 mb-12 post-detail-author-info" style=" padding: 10px;">
 	{% if not post.comments.all %}
 	<p>Be the first to leave a comment on {{ post.author }}'s post </p>
@@ -7,14 +8,16 @@
 	<hr class="comment-rule mb-4">
 	<div class="row justify-content-about g-0 p-2 img-radius-10">
 		<!-- Parent Comment -->
-		<div class="d-none d-sm-block col-sm-2 col-md-2 col-lg-1 justify-content-center pe-3">
+		<div
+			class="d-none d-sm-block col-sm-2 col-md-2 col-lg-1 justify-content-center pe-3">
 			{% if comment.name.userprofile %}
 			{% if "placeholder" in comment.name.userprofile.user_profile_image.url %}
 			<img class="img-radius-10"
 				src="https://res.cloudinary.com/dkitley1975/image/upload/v1644300446/leannes_learners/default_image/bio_placeholder.png"
 				alt="missing image placeholder image">
 			{% else %}
-			<img class="img-radius-10" src=" {{ comment.name.userprofile.user_profile_image.url }}"
+			<img class="img-radius-10"
+				src=" {{ comment.name.userprofile.user_profile_image.url }}"
 				alt="The comment authors profile image">
 			{% endif %}
 			{% else %}
@@ -39,21 +42,23 @@
 				{{ comment.comment | linebreaks }}
 				{% include "components/blog/comments-parent-likes.html" %}
 		</div>
-	{% comment %} </div> {% endcomment %}
+	</div>
 	{% endif %}
 	<!-- end if for the parent comments-->
 
 	<!--- Child Comments-->
 	{% for child_comment in comment.children %}
 	<div class="row justify-content-about g-0 p-2 img-radius-10 ms-5 my-2">
-		<div class="d-none d-sm-block col-sm-2 col-md-2 col-lg-1 justify-content-center pe-3">
+		<div
+			class="d-none d-sm-block col-sm-2 col-md-2 col-lg-1 justify-content-center pe-3">
 			{% if child_comment.name.userprofile %}
 			{% if "placeholder" in child_comment.name.userprofile.user_profile_image.url %}
 			<img class="img-radius-10"
 				src="https://res.cloudinary.com/dkitley1975/image/upload/v1644300446/leannes_learners/default_image/bio_placeholder.png"
 				alt="missing image placeholder image">
 			{% else %}
-			<img class="img-radius-10" src=" {{ child_comment.name.userprofile.user_profile_image.url }}"
+			<img class="img-radius-10"
+				src=" {{ child_comment.name.userprofile.user_profile_image.url }}"
 				alt="The comment authors profile image">
 			{% endif %}
 			{% else %}
@@ -84,5 +89,4 @@
 	{% endfor %}
 	<!--end for for the comment in comments-->
 </div>
-
-
+<!-- END of comments.html -->

@@ -1,3 +1,4 @@
+<!-- teaching-hours-table.html -->
 <table class="table">
 	<thead>
 		<tr>
@@ -9,12 +10,13 @@
 	<tr>
 		<td>{{ teachinghours.day }}</td>
 		<td class="fw-bold">{{ teachinghours.start_time }}
-			{% if teachinghours.finish_time %} <small class="text-muted"> - </small>
+			{% if teachinghours.finish_time %} <small class="text-muted"> -
+			</small>
 			{{ teachinghours.finish_time }}
 			{% endif %}
-
 		</td>
 	</tr>
 	{% endfor %}
 	</tbody>
 </table>
+<!-- END of teaching-hours-table.html -->

@@ -1,8 +1,8 @@
+<!-- post-details-card.html -->
 <div class="card-body img-radius-10 bg-white p-2">
 	<div class="image-container">
 		<a href="{% url 'post-detail' post.slug %}" class="post-detail-link">
 			{% if "placeholder" in post.featured_image.url %}
-
 			<img class="card-img-top"
 				src="https://res.cloudinary.com/dkitley1975/image/upload/v1640952840/leannes_learners/default_image/Leannes-Learners-Placeholder-Image.jpg"
 				alt="missing image placeholder image">
@@ -31,3 +31,4 @@
 		{{ post.number_of_likes }}
 	</p>
 </div>
+<!-- END of post-details-card.html -->

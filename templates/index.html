@@ -9,28 +9,22 @@
 {% endblock %}
 
 {% block content %}
-
 <!-- Carousel -->
 <section>
 	{% include "components/carousel.html" %}
 </section>
-
 <!-- Testimonials Cards-->
 <section>
 	<div class="container-fluid col-10">
-				<h1 class="section-header">Welcome to Leanne's Learners</h1>
-
+		<h1 class="section-header">Welcome to Leanne's Learners</h1>
 		<h2 class="section-header">Our latest testimonials</h2>
 		{% include "components/testimonial-cards.html" %}
 		<hr />
 	</div>
 </section>
-
-
 <!-- Blog Post Cards -->
 <section>
 	<div class="container-fluid col-10">
-
 		<h2 class="section-header">Our latest blog Posts</h2>
 		<div class="row">
 			{% include "components/blog/post-preview-card.html" %}
@@ -38,5 +32,4 @@
 	</div>
 	<hr />
 </section>
-
 {%endblock%}

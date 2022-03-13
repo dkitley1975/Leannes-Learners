@@ -10,26 +10,22 @@
 
 {% block content %}
 {% load crispy_forms_tags %}
-
-
 <!-- contact us -->
-
 <div class="container py-3">
-
 	<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
 		<h1 class="section-header">Contact Us</h1>
 	</div>
-
 	<section>
 		<div class="row d-flex g-3 justify-content-around">
 			{% for companydetails in companydetails %}
-			<p class="text-center">We would love to talk to you regarding your requirements so
-				use the form below to drop us an email or send us a text on <a class="fw-bold tel-link"
+			<p class="text-center">We would love to talk to you regarding your
+				requirements so use the form below to drop us an email or send
+				us a text on <a class="fw-bold tel-link"
 					href='tel:{{ companydetails.phone }}'>
 					{{ companydetails.phone }}</a></p>
-
 			<!-- Contact Details  -->
-			<div class="col-sm-10 col-md-10 col-lg-5  col-xl-4 col-xxl-3 img-radius-10 trans-white-background-80">
+			<div
+				class="col-sm-10 col-md-10 col-lg-5  col-xl-4 col-xxl-3 img-radius-10 trans-white-background-80">
 				<div class="card-body">
 					<h2 class="card-title text-center">Contact Details</h2>
 					{% include "components/contact-details-table.html" %}
@@ -39,19 +35,18 @@
 				</div>
 			</div>
 			{% endfor %}
-
 			<!-- Contact Form -->
-			<div class="col-sm-10 col-md-10  col-lg-4 col-xl-4 col-xxl-7 img-radius-10 trans-white-background-80 p-4">
+			<div
+				class="col-sm-10 col-md-10  col-lg-4 col-xl-4 col-xxl-7 img-radius-10 trans-white-background-80 p-4">
 				<h2 class="card-title text-center">Contact Form</h2>
 				<form method="post">
 					{% csrf_token %}
 					{{ form | crispy }}
-					<button class="btn btn-primary me-md-2 mt-2" type="submit">Submit form</button>
+					<button class="btn btn-primary me-md-2 mt-2"
+						type="submit">Submit form</button>
 				</form>
 			</div>
 		</div>
 	</section>
-
 </div>
-
 {%endblock%}

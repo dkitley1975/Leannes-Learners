@@ -1,3 +1,4 @@
+<!-- login-modal.html -->
 <!-- Button trigger modal -->
 <a class="nav-link" href="#" role="button" data-bs-toggle="modal"
 	data-bs-target="#loginModal" aria-expanded="false">
@@ -14,8 +15,6 @@
 					aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-
-
 				<form class="form-group" method="POST"
 					action='{% url "login" %}?next={{request.path}}'>
 					{% csrf_token %}
@@ -39,6 +38,6 @@
 				</form>
 			</div>
 		</div>
-
 	</div>
 </div>
+<!-- END of login-modal.html -->

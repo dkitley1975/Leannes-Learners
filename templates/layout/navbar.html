@@ -33,12 +33,10 @@
 				<li class="nav-item">
 					<a class="nav-link {% if url_name == 'blog' %}active{% endif %}"
 						href="{% url 'blog' %}">Blog</a>
-
 				</li>
 				<li class="nav-item">
 					<a class="nav-link {% if url_name == 'contact_us' %}active{% endif %}"
-						href="{% url 'contact-us' %}">Contact
-						Us</a>
+						href="{% url 'contact-us' %}">Contact Us</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link {% if url_name == 'local-traffic' %}active{% endif %}"
@@ -58,22 +56,14 @@
 						<li><a class="dropdown-item {% if url_name == 'edit-user-details' %}active{% endif %}"
 								href="{% url 'edit-user-details' %}">Edit
 								Details</a></li>
-
 						<li>
 						<li><a class="dropdown-item {% if url_name == 'edit-profile' %}active{% endif %}"
 								href="{% url 'edit-profile' user.userprofile.id %}">Edit
 								Profile</a></li>
 						<li>
-
 							{% if request.user|has_group:"Pupil" %}
 							<hr class="dropdown-divider">
 						</li>
-						<!---#TODO remove-->
-						{% comment %} <li><a class="dropdown-item"
-								href="#">Schedule a
-								Lesson</a></li>
-						<li><a class="dropdown-item" href="#">Lesson Diary</a>
-						</li> {% endcomment %}
 						<li><a class="dropdown-item {% if url_name == 'terms-and-conditions' %}active{% endif %}"
 								href="{% url 'terms-and-conditions' %}">Terms
 								and Conditions</a></li>
@@ -90,20 +80,12 @@
 						fa-caret-down nav-link-white"></i></a></i>
 					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark"
 						aria-labelledby="navbarDropdown-staff-only">
-						<li><a class="dropdown-item" href="/admin/" target="_blank">
-							Login to Admin</a></li>
+						<li><a class="dropdown-item" href="/admin/"
+								target="_blank">
+								Login to Admin</a></li>
 						<li><a class="dropdown-item {% if url_name == 'post-creation' %}active{% endif %}"
 								href="/blog/post-creation">Create a Blog
 								Post</a></li>
-						<!--- #TODO remove-->
-						{% comment %} <li><a class="dropdown-item"
-								href="#">Something else
-								here</a></li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li><a class="dropdown-item" href="#">Something else
-								here</a></li> {% endcomment %}
 					</ul>
 				</li>
 				{% endif %}
@@ -120,5 +102,4 @@
 		</div>
 	</div>
 </nav>
-
 {% endblock content %}

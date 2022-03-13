@@ -2,8 +2,7 @@
 
 {% block metadescription %}
 <meta name="keywords"
-	content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog"
-	Blog">
+	content="Driving School, Driving Lessons, Learn to Drive, Huddersfield, HD4, Female Driving School, Female Driving Instructor, Blog">
 <meta name="description"
 	content="Edit user profile, add Avatar, Social Media Links and a Short Bio">
 <title>Edit Profile</title>
@@ -11,9 +10,8 @@
 
 {% load crispy_forms_tags %}
 {% block content %}
-
 <!-- edit Profile Content -->
-<article class="mt-2 p-5 col-md-8 offset-md-2">
+<section class="mt-2 p-5 col-md-8 offset-md-2">
 	<h1 class="section-header">Edit your site profile</h1>
 	{% if user.id == userprofile.user.id %}
 	<form method="POST" enctype='multipart/form-data'>
@@ -41,21 +39,22 @@
 							class="card-title post-detail-author-subtitle fw-bold">
 							{{ userprofile.user.first_name }}
 							{{ userprofile.user.last_name }}</h3>
-
 						<p class="small text-muted post-detail-author-links">
+
 							{% if userprofile.user_website_url %}
 							<a href="{{userprofile.user_website_url}}"
 								target="_blank" rel="noopener noreferrer"
 								aria-label="link to {{userprofile.user_website_url }}">
-								<i class="fas fa-globe"
-									aria-hidden="true" title="Click to open link in new tab"></i>&nbsp;</a>
+								<i class="fas fa-globe" aria-hidden="true"
+									title="Click to open link in new tab"></i>&nbsp;</a>
 							{% endif %}
+
 							{% if userprofile.user_linkedin_url %}
 							<a href="{{uuserprofile.user_linkedin_url}}"
 								target="_blank" rel="noopener noreferrer"
 								aria-label="link to {{userprofile.user_linkedin_url }}">
-								<i class=" fab fa-linkedin"
-									aria-hidden="true" title="Click to open link in new tab"></i>&nbsp;</a>
+								<i class=" fab fa-linkedin" aria-hidden="true"
+									title="Click to open link in new tab"></i>&nbsp;</a>
 							{% endif %}
 
 							{% if userprofile.user_facebook_url %}
@@ -91,7 +90,9 @@
 				<h3 class="card-title post-detail-author-title pt-5">Update your
 					social media profile links</h3>
 				<div class="col-12 col-lg-6">
-					<i class="fas fa-globe" title="Click to open link in new tab"></i>&nbsp;Your Website URL
+					<i class="fas fa-globe"
+						title="Click to open link in new tab"></i>&nbsp;Your
+					Website URL
 					{{ form.user_website_url}}
 				</div>
 				<div class="col-12 col-lg-6">
@@ -110,12 +111,10 @@
 				</div>
 			</div>
 		</div>
-
 		<button type="submit" class="btn btn-primary mb-5">Update
 			Profile</button>
 	</form>
 	{% else %}
-
 	<div class="card mb-12 post-detail-author-info my-3 img-radius-10">
 		<p class="text-center mt-5">You don't have permission to edit this user
 			profile, please logout and login with
@@ -129,6 +128,6 @@
 		</div>
 	</div>
 	{% endif %}
-</article>
+</section>
 
 {%endblock%}
