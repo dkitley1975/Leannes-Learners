@@ -15,7 +15,7 @@ class Category(models.Model):
     """
 
     title = models.CharField(max_length=50)
-    slug = AutoSlugField(max_length=60, populate_from="name", unique=True)
+    slug = AutoSlugField(max_length=60, populate_from="title", unique=True)
 
     class Meta:
         ordering = ["title"]

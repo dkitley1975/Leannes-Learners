@@ -19,7 +19,7 @@ from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
 from allauth.account.models import EmailAddress
 from django.contrib.sites.models import Site
 from leannes_learners import views
-from django.conf.urls import handler404, handler500, handler403, handler400
+from django.conf.urls import handler400, handler404, handler403, handler500
 
 
 # admin.site.unregister(SocialToken)

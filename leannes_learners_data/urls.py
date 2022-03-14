@@ -9,7 +9,7 @@ urlpatterns = [
     path('contact-us', views.ContactUsPage.as_view(), name='contact-us'),
     path('pass-plus', views.PassPlusPage.as_view(), name='pass-plus'),
     path('prices', views.PricesPage.as_view(), name='prices'),
-    path('success', views.ContactSuccessView.as_view(), name='success.html'),
+    path('success', views.ContactSuccessView.as_view(), name='success'),
     path('terms-and-conditions', views.TermsPage.as_view(),
          name='terms-and-conditions'),
     path('local-traffic', TemplateView.as_view(
