@@ -624,20 +624,20 @@ img {
 }
 
 .text-error-page-wrap h1 {
-    font-size: min(10vw, 150px);
+    font-size: 1rem;
     font-weight: 800;
-    letter-spacing: .75rem;
+    letter-spacing: .35rem;
     color: var(--clr-404-text);
 }
 
 .text-error-page-wrap h2 {
-    font-size: min(5vw, 70px);
+    font-size: 2rem;
     font-weight: 800;
     color: var(--clr-404-text);
 }
 
 .text-error-page-wrap p {
-    font-size: min(2vw, 28px);
+    font-size: 1rem;
     font-weight: 500;
     color: var(--clr-404-text);
 }
