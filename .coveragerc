@@ -1,5 +1,5 @@
 [run]
-omit = ./myenv/*,*tests*,*manage.py,*__init__.py,*migrations*,*/django_summernote/*,*env.py,*settings.py
+omit = ./myenv/*,*tests*,*manage.py,*__init__.py,*migrations*,*/django_summernote/*,*env.py,*settings.py,
 
 [report]
 omit = ./myenv/*,*tests*,*manage.py,*__init__.py,*migrations*,*/django_summernote/*,*env.py,*settings.py,*leannes_learners_data/forms.py
