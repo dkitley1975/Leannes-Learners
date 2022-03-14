@@ -64,6 +64,9 @@ To build a Full-Stack site based on business logic used to control a centrally-o
 - [x] I want to know about the company.
 - [x] I want to be able to contact the company.
 - [x] I want to be able engage with the site and with others.
+- [x] I want the ability to comment on a post.
+- [x] I want the ability to remove my comment, if I later decide.
+- [x] I want to be able to like both a blog posts content and comments
 - [ ] I want to book my lesson
 - [ ] I want to see my booked lessons
 - [ ] I want to cancel my lesson
@@ -85,6 +88,7 @@ To build a Full-Stack site based on business logic used to control a centrally-o
   - [x] I want to be able to allow users to reply to comments.
   - [x] I want to be able to allow Leanne's Learners Staff to delete any comments posted.
   - [x] I want to be able to allow Leanne's Learners Staff to create/delete/edit Posts.
+  - [x] I want the originator of a comment to be able to delete their comments and it's child comments.
 
 #### I want to be able to update information, without the need to ask the site developer.<!-- omit in toc -->
 
@@ -106,7 +110,7 @@ To build a Full-Stack site based on business logic used to control a centrally-o
 - [ ] I want to get an email when a pupil requests to make or cancel a lesson.
 - [ ] I want to be able to confirm a pupils requests to make or cancel a lesson.
 - [ ] I want to be able to cancel pupils lessons.
-- [x] I want to be able to indicat is a site user is a current pupil of Leanne's Learners
+- [x] I want to be able to place registered users in to a Pupil Group.
 - [x] I want to be able to get email from site users through a contact form  
 
 ## User Persona Summary ![User Persona Summary](/documents/assets/UserPersonaSummary.jpg)

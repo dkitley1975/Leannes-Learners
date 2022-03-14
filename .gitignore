@@ -12,3 +12,7 @@ myenv/
 *.sqlite3
 *.code-workspace
 .gitignore
+htmlcov/
+latest.sql
+.gitignore
+latest.dump

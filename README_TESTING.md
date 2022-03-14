@@ -27,9 +27,35 @@ This is the documentation section regarding the testing of the Leanne's Learners
 ### Unittest
 
 Unit test were performed on the python files.
-![image](/documents/assets/screenshots/tests/unit_test_results.png)  
-
+  
 [The results are here](/htmlcov/index.html)
+
+|                                                                         | coverage report |      |       |
+|-------------------------------------------------------------------------|-----------------|------|-------|
+| Name                                                                    | Stmts           | Miss | Cover |
+|----------------------------------------------------|-----------------|------|-------|---|
+| blog/admin.py                                                           | 23              | 0    | 100%  |
+| blog/apps.py                                                            | 5               | 0    | 100%  |
+| blog/forms.py                                                           | 12              | 0    | 100%  |
+| blog/models.py                                                          | 72              | 7    | 90%   |
+| blog/urls.py                                                            | 8               | 0    | 100%  |
+| blog/views.py                                                           | 114             | 55   | 52%   |
+| leannes_learners/urls.py                                                | 12              | 0    | 100%  |
+| leannes_learners/views.py                                               | 10              | 4    | 60%   |
+| leannes_learners_data/admin.py                                          | 88              | 10   | 89%   |
+| leannes_learners_data/apps.py                                           | 5               | 0    | 100%  |
+| leannes_learners_data/models.py                                         | 139             | 11   | 92%   |
+| leannes_learners_data/templatetags/auth_extras.py                       | 7               | 2    | 71%   |
+| leannes_learners_data/urls.py                                           | 5               | 0    | 100%  |
+| leannes_learners_data/views.py                                          | 67              | 4    | 94%   |
+| users/admin.py                                                          | 11              | 1    | 91%   |
+| users/apps.py                                                           | 4               | 0    | 100%  |
+| users/forms.py                                                          | 31              | 0    | 100%  |
+| users/models.py                                                         | 24              | 2    | 92%   |
+| users/urls.py                                                           | 4               | 0    | 100%  |
+| users/views.py                                                          | 40              | 9    | 78%   |
+|                                                                         | _______________ | ____ | _____ |
+| TOTAL                                                                   | 681             | 105  | 85%   |
 
 ### HTML
 
