@@ -47,11 +47,17 @@ To build a Full-Stack site based on business logic used to control a centrally-o
         - [Post Edit](#post-edit)
       - [Commenting](#commenting)
     - [Admin](#admin)
+- [Error Pages](#error-pages)
+  - [Error 400](#error-400)
+  - [Error 403](#error-403)
+  - [Error 404](#error-404)
+  - [Error 500](#error-500)
 - [Deployment](#deployment)
 - [Cloning](#cloning)
 - [Credits](#credits)
 
 [Testing Documentation](/README_TESTING.md)
+
 ## UX (User Experience)
 
 ### User Stories
@@ -115,6 +121,8 @@ To build a Full-Stack site based on business logic used to control a centrally-o
 
 ## User Persona Summary ![User Persona Summary](/documents/assets/UserPersonaSummary.jpg)
 
+*The item's  left in this section of the document and marked as incomplete are left intentionally, as these are items discussed previously with the client. Although I could of removed these from the documentation and make it appear the site is completed, I believe it is important to leave these items showing as incomplete. Because the site isn't fully completed and is only through its first iteration, with plans for further development.*
+
 [Table of Contents](#table-of-contents)
   
 ***
@@ -147,6 +155,7 @@ I Used Github's Project board to plan the project and Github Issue's for User St
 # Design
 
 ## Database
+
 Image showing the database for Leanne's Learners - main site area
 ![Leannes Learners](/documents/assets/database/leannes_learners_data.png)
 
@@ -339,10 +348,10 @@ Delete a Blog Post shows a preview of the post that is about to be deleted and s
 
 Comment Modal
 ![image](/documents/assets/screenshots/main_pages/comment_to_the_post.png)
-Comment Modal for replying to a comment
+Comment Modal for replying to a comment - As indicated against oliphant_watcher's previous comment there is a delete icon to remove her comment. 
 ![image](/documents/assets/screenshots/main_pages/comment_to_the_comment.png)
 Showing the Comments, with likes and dislikes added.  
-This also shows a delete comment icon which only shows when the authenticated staff member.
+This also shows a delete comment icon which only shows when the user is the originator of the comment or if the user is a authenticated staff member.
 ![image](/documents/assets/screenshots/main_pages/comments.png)
 
 ### Admin
@@ -354,6 +363,29 @@ I have used brand colors for the Admin Section.
 
 [Table of Contents](#table-of-contents)
 ***
+
+# Error Pages
+
+I have created the following custom error pages for the site.
+
+## Error 400
+
+![image](/documents/assets/screenshots/error_pages/400_error.png)
+
+## Error 403
+
+![image](/documents/assets/screenshots/error_pages/403_error.png)
+
+## Error 404
+
+![image](/documents/assets/screenshots/error_pages/404_error.png)
+
+## Error 500
+
+![image](/documents/assets/screenshots/error_pages/500_error.png)
+
+  [Table of Contents](#table-of-contents)
+  ***
 
 # Deployment
 
