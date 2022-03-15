@@ -18,24 +18,26 @@ from django.urls import path, include
 from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
 from allauth.account.models import EmailAddress
 from django.contrib.sites.models import Site
+from django_summernote.utils import get_attachment_model
+
 from leannes_learners import views
 from django.conf.urls import handler400, handler404, handler403, handler500
 
 
-# admin.site.unregister(SocialToken)
-# admin.site.unregister(SocialAccount)
-# admin.site.unregister(SocialApp)
-# admin.site.unregister(Site)
-# admin.site.unregister(EmailAddress)
-
+admin.site.unregister(SocialToken)
+admin.site.unregister(SocialAccount)
+admin.site.unregister(SocialApp)
+admin.site.unregister(Site)
+admin.site.unregister(EmailAddress)
+admin.site.unregister(get_attachment_model())
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("django_summernote/", include("django_summernote.urls")),
     path("users/", include("django.contrib.auth.urls")),
+    path("members/", include("users.urls"), name="users_urls"),
     path("", include("leannes_learners_data.urls"), name="leannes_learners_data_urls"),
     path("blog/", include("blog.urls"), name="blog_urls"),
-    path("members/", include("users.urls"), name="users_urls"),
+    path("django_summernote/", include("django_summernote.urls")),
 ]
 
 handler400 = "leannes_learners.views.bad_request_error_400"

@@ -25,6 +25,12 @@ To build a Full-Stack site based on business logic used to control a centrally-o
 - [Technologies](#technologies)
   - [Languages](#languages)
   - [Frameworks and Tools](#frameworks-and-tools)
+- [CRUD](#crud)
+  - [General User](#general-user)
+  - [General - Registered User](#general---registered-user)
+  - [Pupil - Registered User (Pupil)](#pupil---registered-user-pupil)
+  - [Staff - Registered User (Pupil)](#staff---registered-user-pupil)
+    - [I able to Create, Update and Delete](#i-able-to-create-update-and-delete)
 - [Features](#features)
   - [Navigation bar](#navigation-bar)
   - [Small Screen Screenshots](#small-screen-screenshots)
@@ -223,6 +229,45 @@ These light greys are used through out the site to highlite areas and as shadow 
 [Table of Contents](#table-of-contents)
 ***
 
+# CRUD
+
+## General User
+
+As a **General User** of the site, I am able to browse and read the website, the pages I read have data pulled from tables in a remote database.
+
+## General - Registered User
+
+As a **General Registered User** browser of the site, I am able do the same as the **General User**. In addition I am able to create *Comments* on Blog Posts, I can also *Like* and *Dislike* Posts and *Comments*. I can also *Delete* a *Comment* I made previously.
+I also have access to a new menu item which allows me to *Update* my *Registered Details* and *Update* my *User Profile*.
+
+## Pupil - Registered User (Pupil)
+
+As a **Registered User** who is marked a being a **Pupil**, I can do all that the **General Registered User** can do, I have access to a *Member's Area* menu item which allows me to view the Terms and Conditions I have entered into.
+
+## Staff - Registered User (Pupil)
+
+As a Staff Registered User, I can do all that the **Pupil Registered Users** can do, I have access to a *Staff Area* menu which gives me access to the Admin Area and to a link to *create* a new Blog Post.
+When viewing a Post I also a link to *Update* the post, and *Delete* a Post.
+I can also *Delete* all Comments.
+I have to the Admin panel where I can Create, Read, Update and Delete all the information.  
+
+### I able to Create, Update and Delete
+
+- About Us, I can Create, Read, Update and Delete page information.
+- Carousel on the Home Page, I can Create, Read, Update and Delete Slides.
+- Company Contact and Social Medial Information, I can Create, Read, Update and Delete.
+- Driving Instructors, I can Create, Read, Update and Delete instructors information.
+- Pass Plus Page, I can Create, Read, Update and Delete page information.
+- Service Description,  I can Create, Read, Update and Delete the Services Provided and the prices by leannes Learners.
+- Teaching Hours, I can Create, Read, Update and Delete the teaching hours information.
+- Terms and Contitions, I can Create, Read, Update and Delete Terms and Conditions information
+- Testimonials, I can Create, Read, Update and Delete Testimonials
+- Categories, I can Create, Read, Update and Delete Categories.
+- Comments, I can Create, Read, Update and Delete Comments.
+- Posts, I can Create, Read, Update and Delete Posts.
+- User Profiles, I can Create, Read, Update and Delete Users and their profiles.
+
+
 # Features
 
 The website has the following features:
@@ -296,9 +341,9 @@ the user is redirected to this page
 ![image](/documents/assets/screenshots/contactform/contact-success.png)
 and receives an email
 ![image](/documents/assets/screenshots/contactform/contact-result-email-for-originator.png)
-the owner reveives this email
-![image](/documents/assets/screenshots/contactform/contact-result-email-for-staff.png)
-During debug:
+the owner reveives this email  
+![image](/documents/assets/screenshots/contactform/contact-result-email-for-staff.png)  
+During debug:  
 the contact test results are shown in the console:
 ![image](/documents/assets/screenshots/contactform/contact-test-result-email-for-staff.png)
 ![image](/documents/assets/screenshots/contactform/contact-test-result-email-for-originator.png)
@@ -348,10 +393,10 @@ Delete a Blog Post shows a preview of the post that is about to be deleted and s
 
 Comment Modal
 ![image](/documents/assets/screenshots/main_pages/comment_to_the_post.png)
-Comment Modal for replying to a comment - As indicated against oliphant_watcher's previous comment there is a delete icon to remove her comment. 
+Comment Modal for replying to a comment - As indicated against oliphant_watcher's previous comment there is a delete icon to remove her comment, this only appears to the originator of the comment (in this case oliphant_watcher) or if the user is a authenticated staff member.
 ![image](/documents/assets/screenshots/main_pages/comment_to_the_comment.png)
 Showing the Comments, with likes and dislikes added.  
-This also shows a delete comment icon which only shows when the user is the originator of the comment or if the user is a authenticated staff member.
+This also shows a delete comment icon which only shows when the user is the originator of the comment (in this case oliphant_watcher) or if the user is a authenticated staff member.
 ![image](/documents/assets/screenshots/main_pages/comments.png)
 
 ### Admin
