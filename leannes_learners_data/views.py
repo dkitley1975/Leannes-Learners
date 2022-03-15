@@ -23,10 +23,7 @@ from .forms import ContactForm
 class AboutUsPage(generic.ListView):
     """
     Render the about us page.
-    @param request - the request object
-    @returns the about us page
     """
-
     model = About
     queryset = About.objects.filter(status=1).order_by("-created_at")[0:1]
     template_name = "pages/about-us.html"
@@ -34,13 +31,11 @@ class AboutUsPage(generic.ListView):
     def get_context_data(self, **kwargs):
         """
         Get the context data for the instructor page.
-        @param self - the instructor page instance
-        @param **kwargs - the keyword arguments
-        @returns the context data for the instructor page
         """
         context = super().get_context_data(**kwargs)
-        context["instructors_list"] = Instructors.objects.filter(
-            status=1).order_by("name")
+        context["instructors_list"] = Instructors.objects.filter(status=1).order_by(
+            "name"
+        )
         return context
 
     def aboutuspage(self, request):
@@ -49,18 +44,13 @@ class AboutUsPage(generic.ListView):
         @param request - the request object
         @returns the about us page
         """
-
         return render(request, "pages/about-us.html")
 
 
 class ContactUsPage(FormView):
     """
     The contact us page. This page is used to send emails to the company.
-    @param self - the page itself
-    @param **kwargs - the keyword arguments
-    @returns the context data
     """
-
     template_name = "pages/contact-us.html"
     form_class = ContactForm
     success_url = reverse_lazy("contact-us")
@@ -68,10 +58,7 @@ class ContactUsPage(FormView):
     def form_valid(self, form):
         """
         Override the form_valid method to send the form to the server.
-        @param form - the form to be sent to the server
-        @returns the form_valid method
         """
-
         # Calls the custom send method
         form.send()
         # This will add the flash message after email being valid
@@ -82,14 +69,10 @@ class ContactUsPage(FormView):
         """
         Get the context data for the page.
         This is used to pass data to the template.
-        @param self - the page itself
-        @param **kwargs - the keyword arguments
-        @returns the context data
         """
         context = super().get_context_data(**kwargs)
         context["companydetails"] = CompanyDetails.objects.all()[0:1]
-        context["teaching_hours_list"] = TeachingHours.objects.all(
-            ).order_by("id")
+        context["teaching_hours_list"] = TeachingHours.objects.all().order_by("id")
         return context
 
 
@@ -97,7 +80,6 @@ class ContactSuccessView(TemplateView):
     """
     The contact success page.
     """
-
     template_name = "pages/success.html"
 
 
@@ -111,7 +93,6 @@ class PassPlusPage(generic.ListView):
     The PassPlusPage class is a generic class that is used to display the
     PassPlus page.
     """
-
     model = Passplus
     queryset = Passplus.objects.filter(status=1).order_by("-created_at")[0:1]
     template_name = "pages/pass-plus.html"
@@ -121,11 +102,7 @@ class PricesPage(generic.ListView):
     """
     The view for the prices page.
     This is used to display the featured services.
-    @param self - the view itself.
-    @param **kwargs - the keyword arguments.
-    @returns the context data for the home page.
     """
-
     model = Service
     queryset = Service.objects.all().order_by("price")
     template_name = "pages/prices.html"
@@ -134,9 +111,6 @@ class PricesPage(generic.ListView):
         """
         Get the context data for the home page.
         This is used to display the featured services.
-        @param self - the view itself.
-        @param **kwargs - the keyword arguments.
-        @returns the context data for the home page.
         """
         context = super().get_context_data(**kwargs)
         context["featured_list"] = Service.objects.filter(featured=1).order_by(
@@ -149,7 +123,6 @@ class TermsPage(generic.ListView):
     """
     The terms and conditions page.
     """
-
     model = Terms
     queryset = Terms.objects.filter(status=1).order_by("-created_at")[0:1]
     template_name = "pages/terms-and-conditions.html"
@@ -159,11 +132,7 @@ class Testimonials(generic.ListView):
     """
     Override the get_context_data method to add the post_list and
     carousel_list to the context dictionary.
-    @param self - the view itself
-    @param **kwargs - the keyword arguments
-    @returns the context dictionary
     """
-
     model = Testimonial
     queryset = Testimonial.objects.filter(status=1).order_by("-created_at")
     template_name = "index.html"
@@ -173,9 +142,6 @@ class Testimonials(generic.ListView):
         """
         Override the get_context_data method to add the post_list and
         carousel_list to the context dictionary.
-        @param self - the view itself
-        @param **kwargs - the keyword arguments
-        @returns the context dictionary
         """
         context = super().get_context_data(**kwargs)
         context["post_list"] = Post.objects.order_by("-created_at")[0:3]
@@ -188,8 +154,6 @@ class Testimonials(generic.ListView):
 def social_icons_list(request):
     """
     Return the social icons list for the footer.
-    @param request - the request object
-    @returns the social icons list
     """
     social_icons_list = CompanyDetails.objects.all()[0:1]
     context = {

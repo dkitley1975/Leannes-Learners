@@ -6,11 +6,6 @@ from django.core.mail import send_mail
 class ContactForm(forms.Form):
     """
     Send an email to the user with their contact information.
-    @param contact_email - the email address of the user
-    @param contacts_subject - the subject of the email
-    @param contacts_msg - the message of the email
-    @param settings.EMAIL_HOST_USER - the email address of the sender
-    @param fail_silently - if the email fails, don't throw an error
     """
 
     first_name = forms.CharField(
@@ -55,7 +50,6 @@ class ContactForm(forms.Form):
         """
         Take the cleaned data and create the email message
         for the contact form.
-        @param cl_data - the cleaned data from the contact form
         """
         # Cleaned data
         cl_data = super().clean()
@@ -95,12 +89,6 @@ class ContactForm(forms.Form):
     def send(self):
         """
         Send the email to the user and the contact email.
-        @param subject - the subject of the email.
-        @param msg - the message of the email.
-        @param from_email - the email address of the sender.
-        @param recipient_list - the email address of the recipient.
-        @param fail_silently - if the email fails to send,
-        do not throw an exception.
         """
         (
             subject,

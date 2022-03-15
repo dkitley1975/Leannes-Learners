@@ -8,8 +8,6 @@ from .models import UserProfile
 class UserProfileAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     """
     Publish the selected posts.
-    @param request - the request object
-    @param queryset - the queryset object
     """
     fields = [
         'user',
@@ -31,4 +29,7 @@ class UserProfileAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     readonly_fields = ['image_thumb']
 
     def publish_Post(self, request, queryset):
+        """
+        Update the status of the post to published.
+        """
         queryset.update(status=True)

@@ -37,18 +37,8 @@ class Category(models.Model):
 
 class Post(models.Model):
     """
-    The Post model for the blog. This is the model that will be used to store the blog posts.
-    @param title - the title of the post
-    @param slug - the slug of the post
-    @param author - the author of the post
-    @param featured_image - the featured image of the post
-    @param alt_tag - the alt tag of the post
-    @param excerpt - the excerpt of the post
-    @param updated_at - the date the post was last updated
-    @param category - the category of the post
-    @param content - the content of the post
-    @param created_at - the date the post was created
-    @param likes - the likes of the post
+    The Post model for the blog. 
+    This is the model that will be used to store the blog posts.
     """
 
     title = models.CharField(max_length=200, unique=True)
@@ -90,7 +80,6 @@ class Post(models.Model):
     def image_thumb(self):
         """
         Create a thumbnail for the image.
-        @returns the thumbnail
         """
         return mark_safe(
             '<img src="{}" width="100" height="auto">'.format(self.featured_image.url)
@@ -123,6 +112,9 @@ class Post(models.Model):
         return self.likes.count()
 
     def get_absolute_url(self):
+        """
+        Get the absolute url for the post.
+        """
         return "post/{}".format(self.slug)
 
 

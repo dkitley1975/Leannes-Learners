@@ -11,11 +11,6 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class About(models.Model):
     """
     The About model. This model is used to store the about us information.
-    @param short_description - the short description of the about us page.
-    @param about_us - the long description of the about us page.
-    @param updated_at - the date the about us page was last updated.
-    @param created_at - the date the about us page was created.
-    @param status - the status of the about us page.
     """
 
     short_description = models.CharField(max_length=80, unique=True)
@@ -32,7 +27,6 @@ class About(models.Model):
     def __str__(self):
         """
         Return a string representation of the object.
-        @returns the string representation of the object.
         """
         return self.short_description
 
@@ -40,12 +34,7 @@ class About(models.Model):
 class Carousel(models.Model):
     """
     Create a model for the carousel.
-    @param slide_identifying_name - the name of the slide
-    @param slide_text_headline - the headline of the slide
-    @param slide_text_description - the description of the slide
-    @param slide_image - the image of the slide
     """
-
     slide_identifying_name = models.CharField(max_length=80, unique=True)
     slide_text_headline = models.CharField(
         max_length=80, unique=False, blank=True)
@@ -69,14 +58,12 @@ class Carousel(models.Model):
     def __str__(self):
         """
         Return the slide headline for the slide.
-        @return The slide headline for the slide.
         """
         return self.slide_text_headline
 
     def image_thumb(self):
         """
         Create a thumbnail for the image.
-        @returns the thumbnail
         """
         return mark_safe(
             '<img src="{}" width="100" height="auto">'.format(
@@ -90,11 +77,7 @@ class Carousel(models.Model):
 class Instructors(models.Model):
     """
     The instructor model.
-    @param name - the name of the instructor
-    @param instructor_image - the image of the instructor
-    @returns the instructor model
     """
-
     name = models.CharField(max_length=80, unique=True)
     instructor_image = CloudinaryField(
         folder="leannes_learners/instructor_images/",
@@ -118,9 +101,7 @@ class Instructors(models.Model):
     def image_thumb(self):
         """
         Return the image thumbnail for the instructor.
-        @returns the image thumbnail
         """
-
         return mark_safe(
             '<img src="{}" width="100" height="auto">'.format(
                 self.instructor_image.url)
@@ -137,7 +118,6 @@ class Instructors(models.Model):
     def __str__(self):
         """
         Return the name.
-        @return the name.
         """
         return self.name
 
@@ -145,15 +125,7 @@ class Instructors(models.Model):
 class Service(models.Model):
     """
     The service model.
-    @param service_name - the name of the service
-    @param service_description - the description of the service
-    @param service_duration - the duration of the service
-    @param price - the price of the service
-    @param created_at - the date the service was created
-    @param featured - whether the service is featured
-    @return The service model.
     """
-
     service_name = models.CharField(max_length=80, unique=True)
     service_description = models.CharField(max_length=200, blank=True)
     service_duration = models.CharField(max_length=80, blank=True)
@@ -172,7 +144,6 @@ class Service(models.Model):
     def __str__(self):
         """
         Return the service name.
-        @return The service name.
         """
         return self.service_name
 
@@ -216,7 +187,6 @@ class Passplus(models.Model):
     def __str__(self):
         """
         Return a string representation of the object.
-        @returns a string representation of the object.
         """
         return self.short_description
 
@@ -248,10 +218,7 @@ class Terms(models.Model):
 class Testimonial(models.Model):
     """
     The testimonial model.
-    @param name - the name of the testimonial.
-    @param testimonial_image - the testimonial image.
     """
-
     name = models.CharField(max_length=80, unique=True)
     testimonial_image = CloudinaryField(
         folder="leannes_learners/testimonial_images/",
@@ -275,7 +242,6 @@ class Testimonial(models.Model):
     def image_thumb(self):
         """
         Create a thumbnail for the testimonial image.
-        @returns the thumbnail
         """
         return mark_safe(
             '<img src="{}" width="100" height="auto">'.format(
@@ -294,7 +260,6 @@ class Testimonial(models.Model):
     def __str__(self):
         """
         Return the name.
-        @return The name.
         """
         return self.name
 
@@ -302,9 +267,7 @@ class Testimonial(models.Model):
 class CompanyDetails(models.Model):
     """
     Return the contact details of the company.
-    @returns the contact details of the company.
     """
-
     phone = models.CharField(max_length=15)
     email = models.EmailField(max_length=30)
     social_media_name = models.CharField(max_length=80, blank=True)
@@ -337,14 +300,12 @@ class CompanyDetails(models.Model):
     )
 
     class Meta:
-        # ordering = ["-id"]
         verbose_name = "Company Contact/Social Information"
         verbose_name_plural = "Company Contact/Social Information"
 
     def __str__(self):
         """
         Return the phone number of the user.
-        @returns the phone number of the user.
         """
         return self.phone
 
@@ -353,11 +314,7 @@ class TeachingHours(models.Model):
     """
     The model for the teaching hours.
     This is a simple model that stores the day, start time, and finish time.
-    @param day - the day of the week
-    @param start_time - the start time
-    @param finish_time - the finish time
     """
-
     day = models.CharField(max_length=9, unique=True)
     start_time = models.CharField(max_length=6)
     finish_time = models.CharField(max_length=6, blank=True)

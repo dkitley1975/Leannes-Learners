@@ -13,10 +13,6 @@ from cloudinary.models import CloudinaryField
 def create_user_profile(sender, instance, created, **kwargs):
     """
     When a user is created, create a profile for them.
-    @param sender - the sender of the signal (User)
-    @param instance - the instance of the user (User)
-    @param created - whether the user was created (boolean)
-    @param kwargs - the keyword arguments (dict)
     """
     if created:
         UserProfile.objects.create(user=instance)
@@ -25,10 +21,7 @@ def create_user_profile(sender, instance, created, **kwargs):
 class UserProfile(models.Model):
     """
     Create a user profile for the user.
-    @param user - the user's profile
-    @returns the user's profile
     """
-
     user = models.OneToOneField(
         User,
         null=True,
@@ -62,8 +55,9 @@ class UserProfile(models.Model):
     )
 
     def image_thumb(self):
-        """Create a thumbnail for the user's profile image.
-        @returns the thumbnail"""
+        """
+        Create a thumbnail for the user's profile image.
+        """
         return mark_safe(
             '<img src="{}" width="50" height="auto">'.format(
                 self.user_profile_image.url
@@ -74,4 +68,7 @@ class UserProfile(models.Model):
     user_profile_image.allow_tags = True
 
     def __str__(self):
+        """
+        Return the user's name.
+        """
         return str(self.user)

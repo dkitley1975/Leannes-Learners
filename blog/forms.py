@@ -7,7 +7,6 @@ from django_summernote.widgets import SummernoteWidget
 class CommentForm(forms.ModelForm):
     """
     The comment form for the comment section of the website.
-    @param comment - the comment itself
     """
 
     class Meta:
@@ -17,11 +16,8 @@ class CommentForm(forms.ModelForm):
 
 class CreateNewPostForm(forms.ModelForm):
     """
-    Create a form for creating a new post. This is used in the admin site.
-    @param model - the model we are creating a form for.
-    @param fields - the fields we are creating a form for.
-    @param widgets - the widgets we are using for the form.
-    @returns the form
+    Create a form for creating a new post. 
+    This is used in the admin site.
     """
 
     class Meta:

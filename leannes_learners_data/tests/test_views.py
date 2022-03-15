@@ -9,6 +9,9 @@ class TestLeannesLearnersDataViews(TestCase):
 	""" Test the Views """
 
 	def setUp(self):
+		"""
+		Set up the client and the urls for the views.
+		"""
 		self.client = Client()
 		self.about_us_url = reverse('about-us')
 		self.contact_us_url = reverse('contact-us')
@@ -21,7 +24,6 @@ class TestLeannesLearnersDataViews(TestCase):
 	def test_about_us_GET(self):
 		"""
 		Test the about us page GET request.
-		@returns the response
 		"""
 		response = self.client.get(self.about_us_url)
 		self.assertEquals(response.status_code, 200)
@@ -30,7 +32,6 @@ class TestLeannesLearnersDataViews(TestCase):
 	def test_contact_us_GET(self):
 		"""
 		Test the contact us page GET request.
-		@returns the response
 		"""
 		response = self.client.get(self.contact_us_url)
 		self.assertEquals(response.status_code, 200)
@@ -39,7 +40,6 @@ class TestLeannesLearnersDataViews(TestCase):
 	def test_contact_success_GET(self):
 		"""
 		Test the contact successful page GET request.
-		@returns the response
 		"""
 		response = self.client.get(self.success_url)
 		self.assertEquals(response.status_code, 200)
@@ -48,7 +48,6 @@ class TestLeannesLearnersDataViews(TestCase):
 	def test_pass_plus_GET(self):
 		"""
 		Test the pass plus page GET request.
-		@returns the response
 		"""
 		response = self.client.get(self.pass_plus_url)
 		self.assertEquals(response.status_code, 200)
@@ -57,7 +56,6 @@ class TestLeannesLearnersDataViews(TestCase):
 	def test_prices_information_page_GET(self):
 		"""
 		Test the prices and information page GET request.
-		@returns the response
 		"""
 		response = self.client.get(self.prices_url)
 		self.assertEquals(response.status_code, 200)
@@ -66,7 +64,6 @@ class TestLeannesLearnersDataViews(TestCase):
 	def test_terms_and_conditions_page_GET(self):
 		"""
 		Test the terms and conditions page GET request.
-		@returns the response
 		"""
 		response = self.client.get(self.terms_and_conditions_url)
 		self.assertEquals(response.status_code, 200)
@@ -75,13 +72,7 @@ class TestLeannesLearnersDataViews(TestCase):
 	def test_home_page_GET(self):
 		"""
 		Test the home page GET request.
-		@returns the response
 		"""
 		response = self.client.get(self.home_url)
 		self.assertEquals(response.status_code, 200)
 		self.assertTemplateUsed(response, 'index.html')
-
-
-# TODO these are querys test these
-	# def test_social_icons_list_GET(self):
-	# def test_instructors_list_GET(self):

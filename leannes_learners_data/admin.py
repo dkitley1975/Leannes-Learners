@@ -47,18 +47,12 @@ class AboutAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     def publish_About_us(self, request, queryset):
         """
         Publish the About Us page.
-        @param self - the current instance of the model being changed.
-        @param request - the request object.
-        @param queryset - the queryset of the model being changed.
         """
         queryset.update(status=True)
 
     def unpublish_About_us(self, request, queryset):
         """
         Unpublish the About Us page.
-        @param self - the current page instance.
-        @param request - the request object.
-        @param queryset - the queryset of the current page.
         """
         queryset.update(status=False)
 
@@ -110,9 +104,6 @@ class CarouselAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     def include_in_carousel(self, request, queryset):
         """
         Update the include_in_carousel field to True for the queryset.
-        @param self - the view itself, not used.
-        @param request - the request itself, not used.
-        @param queryset - the queryset to update.
         """
         queryset.update(include_in_carousel=True)
 
@@ -196,9 +187,6 @@ class InstructorsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     def publish_Instructor(self, request, queryset):
         """
         Update the status of the instructor to True.
-        @param self - the current instance of the instructor model.
-        @param request - the request object.
-        @param queryset - the queryset of the instructor model.
         """
         queryset.update(status=True)
 
@@ -240,18 +228,12 @@ class PassplusAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     def publish_Passplus(self, request, queryset):
         """
         Update the status of the selected Passplus objects to True.
-        @param self - the current view instance.
-        @param request - the current request.
-        @param queryset - the selected Passplus objects.
         """
         queryset.update(status=True)
 
     def unpublish_Passplus(self, request, queryset):
         """
         Update the status of the selected Passplus to unpublish.
-        @param self - the current view instance.
-        @param request - the current request.
-        @param queryset - the selected Passplus objects.
         """
         queryset.update(status=False)
 
@@ -278,9 +260,6 @@ class ServiceAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         """
         A custom filter for the admin site.
         This function will only return objects that are in the Services table.
-        @param request - the request object
-        @param queryset - the queryset object
-        @return the queryset object
         """
         queryset.update(featured=True)
 
@@ -318,18 +297,12 @@ class TermsAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     def publish_Terms(self, request, queryset):
         """
         Publish the selected terms.
-        @param self - the view itself.
-        @param request - the request itself.
-        @param queryset - the queryset itself.
         """
         queryset.update(status=True)
 
     def unpublish_Terms(self, request, queryset):
         """
         Update the status of the terms to unpublish.
-        @param self - the view itself.
-        @param request - the request itself.
-        @param queryset - the queryset itself.
         """
         queryset.update(status=False)
 
@@ -338,9 +311,6 @@ class TermsAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
 class TestimonialAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     """
     Update the status of the testimonials to true.
-    @param self - the current view instance.
-    @param request - the current request.
-    @param queryset - the testimonials to update.
     """
 
     fields = [
@@ -372,8 +342,6 @@ class TestimonialAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     def publish_Testimonial(self, request, queryset):
         """
         Publish the testimonials that are selected.
-        @param request - the request object
-        @param queryset - the testimonials that are selected
         """
         queryset.update(status=True)
 
@@ -383,9 +351,6 @@ class TeachingHoursAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     """
     This is a custom admin class for the ImportExportModel class.
     It allows us to import and export models.
-    @param ImportExportModelAdmin - the admin class for the
-    ImportExportModel class
-    @param admin.ModelAdmin - the admin class for the Model class
     """
 
     fields = ["day", "start_time", "finish_time"]

@@ -22,9 +22,6 @@ class PostDetail(View):
     def get(self, request, slug, *args, **kwargs):
         """
         Get the data for a specific post.
-        @param request - the request object
-        @param slug - the slug of the post
-        @returns the data for the post
         """
         queryset = Post.objects
         post = get_object_or_404(queryset, slug=slug)
@@ -47,8 +44,7 @@ class PostDetail(View):
 
     def post(self, request, slug, *args, **kwargs):
         """
-        Post the results to the database.
-        @param results - the results to post
+        Render the post page.
         """
         queryset = Post.objects
         post = get_object_or_404(queryset, slug=slug)
@@ -83,7 +79,8 @@ class PostDetail(View):
 
 class BlogPosts(generic.ListView):
     """
-    The blog page. This is a generic list view that displays all the posts in the database.
+    The blog page. This is a generic list view that 
+    displays all the posts in the database.
     """
 
     model = Post
@@ -95,11 +92,7 @@ class BlogPosts(generic.ListView):
 class CategoryList(ListView):
     """
     The category list view.
-    @param self - the view itself
-    @param category - the category name
-    @returns the queryset for the category page
     """
-
     model = Category
     template_name = "pages/blog/category.html"
     context_object_name = "categorylist"
@@ -107,8 +100,6 @@ class CategoryList(ListView):
     def get_queryset(self):
         """
         Get the queryset for the category page.
-        @param self - the view itself
-        @returns the queryset for the category page
         """
         content = {
             "cat": self.kwargs["category"],
@@ -122,9 +113,7 @@ class CategoryList(ListView):
 
 def category_list(request):
     """
-    Returns a list of categorys for the Category NavBar.
-    This filters if they have at lease 1 post and
-    orders by amount of posts mentioning the category
+    Return the category list for the category list page.
     """
     category_list = (
         Category.objects.annotate(post_count=Count("post"))
@@ -137,28 +126,24 @@ def category_list(request):
 
 class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
-    Delete a comment from the database.
-    @param self - the comment delete view instance
-    @returns the success url for the post detail page.
+    Test function for the test function.
+    @returns True if the user is the author of the comment
+    or if the user is a member of staff.
     """
-
     model = Comment
     template_name = "pages/blog/post-comment-delete.html"
 
     def get_success_url(self):
         """
-        Get the success url for the post detail page.
-        @param self - the post detail view instance
-        @returns the success url for the post detail page.
+        Get the success url for the post detail view.
         """
         slug = self.kwargs["slug"]
         return reverse_lazy("post-detail", args=[slug])
 
     def test_func(self):
         """
-        Test function for the test function.
-        @returns True if the user is the author of the comment
-        or if the user is a member of staff.
+        Check if the user is a staff member. 
+        If so, return true. Otherwise, return false.
         """
         comment = self.get_object()
         if self.request.user.is_staff:
@@ -169,13 +154,9 @@ class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class CommentDislike(View):
     """
-    This function is used to like or dislike a comment. It is called when the user clicks on the like or dislike button.
-    @param request - the request object
-    @param slug - the slug of the post
-    @param pk - the primary key of the comment
-    @returns a redirect to the post detail page
+    This function is used to like or dislike a comment.
+    It is called when the user clicks on the like or dislike button.
     """
-
     def post(self, request, slug, pk, *args, **kwargs):
         comment = Comment.objects.get(pk=pk)
         if comment.disliked.filter(id=request.user.id).exists():
@@ -189,13 +170,9 @@ class CommentDislike(View):
 
 class CommentLike(View):
     """
-    This function is used to like or dislike a comment. It is called when a user clicks on the like button.
-    @param request - the request object
-    @param slug - the slug of the post
-    @param pk - the primary key of the comment
-    @returns a redirect to the post detail page
+    This function is used to like or dislike a comment.
+    It is called when a user clicks on the like button.
     """
-
     def post(self, request, slug, pk, *args, **kwargs):
         comment = Comment.objects.get(pk=pk)
         if comment.liked.filter(id=request.user.id).exists():
@@ -210,11 +187,9 @@ class CommentLike(View):
 class CommentReply(LoginRequiredMixin, View):
     def post(self, request, slug, pk, *args, **kwargs):
         """
-        Post a comment on a post.
-        @param request - the request object
-        @param slug - the slug of the post
-        @param pk - the primary key of the comment
-        @returns the post detail page
+        This function is used to post a comment on a post.
+        It takes the request, the slug of the post,
+        the primary key of the comment, and the comment form.
         """
         post = Post.objects.get(slug=slug)
         parent_comment = Comment.objects.get(pk=pk)
@@ -237,9 +212,7 @@ class CommentReply(LoginRequiredMixin, View):
 class PostCreate(CreateView):
     """
     The view for creating a new post.
-    @param CreateView - the view for creating a new post.
     """
-
     model = Post
     template_name = "pages/blog/post-creation.html"
     form_class = CreateNewPostForm
@@ -248,12 +221,7 @@ class PostCreate(CreateView):
 class PostDelete(DeleteView):
     """
     Delete a post from the database.
-    @param DeleteView - the delete view class
-    @param Post - the post model class
-    @param template_name - the template name for the delete page
-    @param success_url - the url to redirect to after deletion
     """
-
     model = Post
     template_name = "pages/blog/post-entry-delete.html"
     success_url = reverse_lazy("blog")
@@ -262,10 +230,8 @@ class PostDelete(DeleteView):
 class PostLike(View):
     def post(self, request, slug, *args, **kwargs):
         """
-        When a user likes a post, we want to add them to the likes list of the post.
-        @param request - the request object
-        @param slug - the slug of the post
-        @returns the redirect to the post detail page
+        When a user likes a post,
+        we want to add them to the likes list of the post.
         """
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
@@ -279,11 +245,7 @@ class PostLike(View):
 class PostUpdate(UpdateView):
     """
     The view for editing a post.
-    @param model - the model we are editing.
-    @param template_name - the template we are using.
-    @param form_class - the form we are using.
     """
-
     model = Post
     template_name = "pages/blog/post-entry-edit.html"
     form_class = CreateNewPostForm

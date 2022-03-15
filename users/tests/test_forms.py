@@ -11,7 +11,6 @@ class TestEditUserDetailsForm(TestCase):
 	def test_EditUserDetails_valid_test_data_fills_all_required_fields(self):
 		"""
 		Test that the form is valid when all required fields are filled.
-		@param self - the test object itself
 		"""
 		form = EditUserDetailsForm(data={'first_name': 'Peter', 'last_name': 'Smith', 'username': 'P_Smith78', 'email': 'peter.smith@mymail.com'})
 		self.assertTrue(form.is_valid())
@@ -19,7 +18,6 @@ class TestEditUserDetailsForm(TestCase):
 	def test_EditUserDetails_invalid_test_data_missing_first_name(self):
 		"""
 		Test that the form is invalid when the first name is missing.
-		@param self - the test instance itself.
 		"""
 		form = EditUserDetailsForm(data={'first_name': '', 'last_name': 'Smith','username': 'P_Smith78', 'email': 'peter.smith@mymail.com'})
 		self.assertFalse(form.is_valid())
@@ -29,7 +27,6 @@ class TestEditUserDetailsForm(TestCase):
 	def test_EditUserDetails_invalid_test_data_missing_last_name(self):
 		"""
 		Test that the form is invalid when the last name is missing.
-		@param self - the test instance itself.
 		"""
 		form = EditUserDetailsForm(data={'first_name': 'Peter', 'last_name': '','username': 'P_Smith78', 'email': 'peter.smith@mymail.com'})
 		self.assertFalse(form.is_valid())
@@ -39,7 +36,6 @@ class TestEditUserDetailsForm(TestCase):
 	def test_EditUserDetails_invalid_test_data_missing_username(self):
 		"""
 		Test that the form is invalid when the username is missing.
-		@param self - the test instance itself.
 		"""
 		form = EditUserDetailsForm(data={'first_name': 'Peter', 'last_name': 'Smith', 'email': 'peter.smith@mymail.com'})
 		self.assertFalse(form.is_valid())
@@ -49,7 +45,6 @@ class TestEditUserDetailsForm(TestCase):
 	def test_EditUserDetails_invalid_test_data_missing_email(self):
 		"""
 		Test that the form is invalid when the email is missing.
-		@param self - the test instance itself.
 		"""
 		form = EditUserDetailsForm(data={'first_name': 'Peter', 'last_name': 'Smith','username': 'P_Smith78', 'email': ''})
 		self.assertFalse(form.is_valid())
@@ -57,11 +52,9 @@ class TestEditUserDetailsForm(TestCase):
 		self.assertEqual(form.errors['email'][0], 'This field is required.')
 
 class TestRegistrationForm(TestCase):
-
 	def test_RegistrationForm_valid_test_data_fills_all_required_fields(self):
 		"""
 		Test that the form is valid when all required fields are filled.
-		@param self - the test object itself
 		"""
 		form = RegistrationForm(data={'first_name': 'Peter', 'last_name': 'Smith', 'username': 'P_Smith78', 'email': 'peter.smith@mymail.com', 'password1': 'mypassword1', 'password2': 'mypassword1'})
 		self.assertTrue(form.is_valid())
@@ -69,7 +62,6 @@ class TestRegistrationForm(TestCase):
 	def test_RegistrationForm_invalid_test_data_missing_first_name(self):
 		"""
 		Test that the form is invalid when the first name is missing.
-		@param self - the test instance itself.
 		"""
 		form = RegistrationForm(data={'first_name': '', 'last_name': 'Smith', 'username': 'P_Smith78', 'email': 'peter.smith@mymail.com', 'password1': 'mypassword1', 'password2': 'mypassword1'})
 		self.assertFalse(form.is_valid())
@@ -79,7 +71,6 @@ class TestRegistrationForm(TestCase):
 	def test_RegistrationForm_invalid_test_data_missing_last_name(self):
 		"""
 		Test that the form is invalid when the last name is missing.
-		@param self - the test instance itself.
 		"""
 		form = RegistrationForm(data={'first_name': 'Peter', 'last_name': '', 'username': 'P_Smith78', 'email': 'peter.smith@mymail.com', 'password1': 'mypassword1', 'password2': 'mypassword1'})
 		self.assertFalse(form.is_valid())
@@ -89,7 +80,6 @@ class TestRegistrationForm(TestCase):
 	def test_RegistrationForm_invalid_test_data_missing_username(self):
 		"""
 		Test that the form is invalid when the username is missing.
-		@param self - the test instance itself.
 		"""
 		form = RegistrationForm(data={'first_name': 'Peter', 'last_name': 'Smith', 'username': '', 'email': 'peter.smith@mymail.com', 'password1': 'mypassword1', 'password2': 'mypassword1'})
 		self.assertFalse(form.is_valid())
@@ -99,7 +89,6 @@ class TestRegistrationForm(TestCase):
 	def test_RegistrationForm_invalid_test_data_missing_email(self):
 		"""
 		Test that the form is invalid when the email is missing.
-		@param self - the test instance itself.
 		"""
 		form = RegistrationForm(data={'first_name': 'Peter', 'last_name': 'Smith', 'username': 'P_Smith78', 'email': '', 'password1': 'mypassword1', 'password2': 'mypassword1'})
 		self.assertFalse(form.is_valid())
@@ -109,7 +98,6 @@ class TestRegistrationForm(TestCase):
 	def test_RegistrationForm_invalid_test_data_missing_password1(self):
 		"""
 		Test that the form is invalid when the password1 is missing.
-		@param self - the test instance itself.
 		"""
 		form = RegistrationForm(data={'first_name': 'Peter', 'last_name': 'Smith', 'username': 'P_Smith78', 'email': 'peter.smith@mymail.com', 'password1': '', 'password2': 'mypassword1'})
 		self.assertFalse(form.is_valid())
@@ -119,7 +107,6 @@ class TestRegistrationForm(TestCase):
 	def test_RegistrationForm_invalid_test_data_missing_password2(self):
 		"""
 		Test that the form is invalid when the password2 is missing.
-		@param self - the test instance itself.
 		"""
 		form = RegistrationForm(data={'first_name': 'Peter', 'last_name': 'Smith', 'username': 'P_Smith78', 'email': 'peter.smith@mymail.com', 'password1': 'mypassword1', 'password2': ''})
 		self.assertFalse(form.is_valid())
@@ -130,16 +117,25 @@ class TestRegistrationForm(TestCase):
 class TestEditUserProfileForm(TestCase):
 
 	def test_EditUserProfile_valid_test_data_fills_all_fields_filled(self):
+		"""
+		Test that the form is valid when all fields are filled.
+		"""
 		form = EditUserProfileForm(data={'user_bio': 'My user Bio', 'user_facebook_url': 'facebook_url', 'user_twitter_url': 'twitter_url', 'user_linkedin_url': 'linkedin_url', 'user_website_url': 'website_url'})
 		self.assertTrue(form.is_valid())
 	
 	def test_EditUserProfile_valid_test_data_missing_bio_field(self):
+		"""
+		Test that the form is invalid when the user_bio field is missing.
+		"""
 		form = EditUserProfileForm(data={'user_bio': '', 'user_facebook_url': 'facebook_url', 'user_twitter_url': 'twitter_url', 'user_linkedin_url': 'linkedin_url', 'user_website_url': 'website_url'})
 		self.assertFalse(form.is_valid())
 		self.assertIn('user_bio', form.errors.keys())
 		self.assertEqual(form.errors['user_bio'][0], 'This field is required.')
 
 	def test_EditUserProfile_valid_test_data_only_user_bio_added(self):
+		"""
+		Test that the form is valid when the user_bio field is added.
+		"""
 		form = EditUserProfileForm(data={'user_bio': 'My user Bio'})
 		self.assertTrue(form.is_valid())
 		
