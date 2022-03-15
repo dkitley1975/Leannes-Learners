@@ -189,14 +189,12 @@ else:
     # TODO Deployment update email settings
     # Email Settings
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-
-    EMAIL_HOST = os.environ.get("EMAIL_HOST")
-    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_PASSWORD")
+    EMAIL_HOST = "mail.leanneslearners.com"
+    EMAIL_HOST_USER = "noreply@leanneslearners.com"
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-    EMAIL_PORT = os.environ.get("EMAIL_PORT")
-    EMAIL_PORT = os.environ.get("EMAIL_USE_TLS")
-    EMAIL_RECIPIENT_ADDRESS = os.environ.get("EMAIL_RECIPIENT_ADDRESS")
-
+    EMAIL_PORT = "587"
+    RECIPIENT_ADDRESS = "test-noreply@leanneslearners.com"  # default To email
+    DEFAULT_FROM_EMAIL = "Leannes Learners <test@leanneslearners.com>"
 
 SUMMERNOTE_CONFIG = {
     "iframe": True,
