@@ -8,7 +8,6 @@ This is my 4th Portfolio Project for the Code Institute's Diploma in Full Stack 
 The projects purpose:
 To build a Full-Stack site based on business logic used to control a centrally-owned dataset. Including an authentication mechanism and providing role-based access to the site's data or other activities based on the dataset.
 
-<!--TODO CONTENTS HERE-->
 # Table Of Contents
 
 - [Table Of Contents](#table-of-contents)
