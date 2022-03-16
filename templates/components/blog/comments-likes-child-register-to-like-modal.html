@@ -3,10 +3,10 @@
 <div>
 	<button type="button" class="btn" data-bs-toggle="modal"
 		data-bs-target="#likeModal_{{ child_comment.pk }}">
-		<i class="fas fa-thumbs-down icon-color-quaternary"
+		<i class="fa-hover fas fa-thumbs-down icon-color-quaternary"
 			title="please login and click to dislike this Comment">
 			<span>{{ child_comment.disliked.all.count }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></i>
-		<i class="fas fa-thumbs-up icon-color-tertiary"
+		<i class="fa-hover fas fa-thumbs-up icon-color-tertiary"
 			title="please login and click to like this Comment">
 			<span>{{ child_comment.liked.all.count }}</span></i>
 	</button>
