@@ -48,25 +48,32 @@
 					<a class="nav-link dropdown-toggle-authenticated" href="#"
 						id="navbarDropdown-authenticated" role="button"
 						data-bs-toggle="dropdown" aria-expanded="false">
-						Member's Area <i class="fas
-						fa-caret-down nav-link-white"></i>
+						Member's Area
+						<i class="fas fa-caret-down nav-link-white">
+						</i>
 					</a>
 					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark"
 						aria-labelledby="navbarDropdown-authenticated">
 						<li><a class="dropdown-item {% if url_name == 'edit-user-details' %}active{% endif %}"
-								href="{% url 'edit-user-details' %}">Edit
-								Details</a></li>
+								href="{% url 'edit-user-details' %}">
+								Edit Details
+							</a>
+						</li>
 						<li>
 						<li><a class="dropdown-item {% if url_name == 'edit-profile' %}active{% endif %}"
-								href="{% url 'edit-profile' user.userprofile.id %}">Edit
-								Profile</a></li>
+								href="{% url 'edit-profile' user.userprofile.id %}">
+								Edit Profile
+							</a>
+						</li>
 						<li>
 							{% if request.user|has_group:"Pupil" %}
 							<hr class="dropdown-divider">
 						</li>
 						<li><a class="dropdown-item {% if url_name == 'terms-and-conditions' %}active{% endif %}"
-								href="{% url 'terms-and-conditions' %}">Terms
-								and Conditions</a></li>
+								href="{% url 'terms-and-conditions' %}">
+								Terms and Conditions
+							</a>
+						</li>
 						{% endif %}
 					</ul>
 				</li>
@@ -75,24 +82,29 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle-staff-only" href="#"
 						id="navbarDropdown-staff-only" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false">Staff
-						Area <i class="fas
-						fa-caret-down nav-link-white"></i></a></i>
+						data-bs-toggle="dropdown" aria-expanded="false">
+						Staff Area
+						<i class="fas fa-caret-down nav-link-white"></i>
+					</a>
 					<ul class="dropdown-menu navbar-light navbar-burnt-red navbar-dark"
 						aria-labelledby="navbarDropdown-staff-only">
 						<li><a class="dropdown-item" href="/admin/"
 								target="_blank">
-								Login to Admin</a></li>
+								Login to Admin
+							</a>
+						</li>
 						<li><a class="dropdown-item {% if url_name == 'post-creation' %}active{% endif %}"
-								href="/blog/post-creation">Create a Blog
-								Post</a></li>
+								href="/blog/post-creation">
+								Create a Blog Post
+							</a>
+						</li>
 					</ul>
 				</li>
 				{% endif %}
 				{% endwith %}
 			</ul>
 			{% if user.is_authenticated %}
-			<a class="nav-link" href="{% url 'logout' %}"><i
+			<a class="nav-link" href="{% url 'logout' %}?next={{request.path}}"><i
 					class="fas fa-sign-out-alt nav-link-white"></i>
 				Logout</a>
 			{% else %}
