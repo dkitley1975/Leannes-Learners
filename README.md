@@ -266,7 +266,6 @@ I have to the Admin panel where I can Create, Read, Update and Delete all the in
 - Posts, I can Create, Read, Update and Delete Posts.
 - User Profiles, I can Create, Read, Update and Delete Users and their profiles.
 
-
 # Features
 
 The website has the following features:
@@ -471,5 +470,8 @@ How to clone this repository.
 
 # Credits
 
-Email sending: Using Forms and Class based views instead of Function based views
-<https://www.sitepoint.com/django-send-email/>
+[Email sending: Using Forms and Class based views instead of Function based views](https://www.sitepoint.com/django-send-email/)  
+
+Social Sharing Links [Crunchify](https://crunchify.com/list-of-all-social-sharing-urls-for-handy-reference-social-media-sharing-buttons-without-javascript/)
+
+[Social Sharing Tutorial](https://www.youtube.com/watch?v=OfLvQ8KtW2g)
