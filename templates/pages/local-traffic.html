@@ -14,7 +14,8 @@
 <div class="container py-3">
 	<section>
 		<h1 class="section-header p-2 text-center">Huddersfield Traffic</h1>
-		<p class="text-center">A Google map view which is highlighting the heavier traffic areas with red lines.</p>
+		<p class="text-center">A Google map view which is highlighting the
+			heavier traffic areas with red lines.</p>
 		<!-- Traffic API -->
 		<div
 			class="col-sm-12 col-md-12  col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 img-radius-10 trans-white-background-80 p-4">
@@ -22,7 +23,11 @@
 		</div>
 	</section>
 </div>
-<script src="{% static 'js/maps.js' %}"></script>
-<script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMyP_LqIDbp8HMUyMyZtQ7VCOBX2NRoMw&callback=initMap"></script>
 {% endblock %}
+
+{% block customscript %}
+<script src="{% static 'js/map.js' %}"></script>
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMyP_LqIDbp8HMUyMyZtQ7VCOBX2NRoMw&callback=initMap">
+</script>
+{% endblock customscript %}
