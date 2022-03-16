@@ -5,6 +5,25 @@
 <meta name="description"
 	content="{{post.title|safe|truncatechars:50 }} - {{post.content|striptags|safe|truncatechars:100 }}">
 <title>Post - {{post.title}}</title>
+
+
+<!-- Social media integration, for when people share your content -->
+<!-- Facebook, LinkedIn, Google -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{post.title}}"/>
+<meta property="og:description" content="{{post.excerpt}}" />
+<meta name="image" property="og:image" content="{{ post.featured_image.url }}"/>
+<meta property="og:image:alt" content="{{ post.alt_tag }}" />
+<meta property="og:url" content="https://leannes-learners.herokuapp.com/" />
+<meta property="og:site_name" content="Leanne's Learners" />
+<meta name="author" content="David Kitley-McNamara">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{post.title}}">
+<meta name="twitter:description" content="{{post.excerpt}}">
+<meta name="twitter:image" content="{{ post.featured_image.url }}">
+<meta name="twitter:image:alt" content="{{ post.alt_tag }}">
+
 {% endblock %}
 
 {% block content %}
