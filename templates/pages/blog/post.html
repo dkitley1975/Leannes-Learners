@@ -12,7 +12,8 @@
 	<div class="container col-md-12 ms-auto">
 		<div class="row align-items-end">
 			<div class="col-md-7 p-3 ">
-				<h1 class="post-detail-title">{{ post.title }}</h1>
+				<h1 class="post-detail-title share-article-title">
+					{{ post.title }}</h1>
 				<hr class="post-detail-h-rule">
 				<p class="post-detail-subtitle">Post Category -
 					{{ post.category }} <br>
@@ -31,11 +32,12 @@
 			<div
 				class="d-none d-md-block col-md-5 ms-auto post-detail-header-image">
 				{% if "placeholder" in post.featured_image.url %}
-				<img class="alt-text-white"
+				<img class="alt-text-white share-socially-img"
 					src="https://res.cloudinary.com/dkitley1975/image/upload/v1643781954/leannes_learners/default_image/default_blog_image.jpg"
 					alt="Missing image - default placeholder">
 				{% else %}
-				<img class="alt-text-white" src=" {{ post.featured_image.url }}"
+				<img class="alt-text-white share-socially-img"
+					src=" {{ post.featured_image.url }}"
 					alt="{{ post.alt_tag }}">
 				{% endif %}
 			</div>
@@ -50,7 +52,7 @@
 			{{ post.content | safe }}
 			<div class="row">
 				<hr class="feature-rule mt-3">
-				{% include "components/blog/post-likes-and-comments-count.html" %}
+				{% include "components/blog/post-share-and-likes-count.html" %}
 			</div>
 			<div class="row">
 				{% include "components/blog/post-author-bio.html" %}
@@ -70,3 +72,9 @@
 	</div>
 </div>
 {% endblock content %}
+
+
+{% block customscript %}
+{% load static %}
+<script src="{% static 'js/social_share.js' %}"></script>
+{% endblock %}

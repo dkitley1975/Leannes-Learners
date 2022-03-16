@@ -1,0 +1,100 @@
+<!-- post-share-and-likes-count.html -->
+<div
+	class="d-flex flex-row justify-content-end align-items-baseline share-btns">
+	<!-- Share Socially icons -->
+	<a href="#" class="facebook-btn" target="_blank" rel="noopener noreferrer"
+		title="Share Post on Facebook"
+		aria-label="link to share this artical on Facebook">
+		<i class="fab fa-facebook"></i>
+	</a>
+
+	<a href="#" class="twitter-btn" target="_blank" rel="noopener noreferrer"
+		title="Share Post on Twitter"
+		aria-label="link to share this artical on Twitter">
+		<i class="fab fa-twitter"></i>
+	</a>
+
+	<a href="#" class="pinterest-btn" target="_blank" rel="noopener noreferrer"
+		title="Share Post on Pinterest"
+		aria-label="link to share this artical on Pinterest">
+		<i class="fab fa-pinterest"></i>
+	</a>
+
+	<a href="#" class="linkedin-btn" target="_blank" rel="noopener noreferrer"
+		title="Share Post on LinkedIn"
+		aria-label="link to share this artical on LinkedIn">
+		<i class="fab fa-linkedin"></i>
+	</a>
+
+
+
+
+	{% if not user.is_authenticated %}
+	<!-- likes not authenticated -->
+	<!-- Log in to Love the Post Modal Button-->
+	<i class="far fa-heart icon-color-grey share-btns" role="button"
+		title="login and click to love the Post" data-bs-toggle="modal"
+		data-bs-target="#loginToLovePostModal" aria-expanded="false">
+	</i>
+	<!-- Log in to Love the Post Modal -->
+	<div class="modal fade" id="loginToLovePostModal" tabindex="-1"
+		aria-labelledby="loginToLovePostModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="loginToLovePostModalLabel">
+						Please Login to Love the Post:</h3>
+					<button type="button" class="btn-close"
+						data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form class="form-group" method="POST"
+						action='{% url "login" %}?next={{request.path}}'>
+						{% csrf_token %}
+						<p>Please enter your username and password.</p>
+						<div>
+							<input type="text" class="form-control"
+								name="username" id="id_like_username_login"
+								placeholder="Username" autocomplete="on">
+						</div>
+						<div>
+							<input type="password" class="form-control"
+								name="password" id="id_like_password_login"
+								placeholder="Password" autocomplete="on">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal">Close</button>
+							<button type="submit"
+								class="btn btn-primary btn-white-outline">Login</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END Log in to Love the Post Modal -->
+	{% else %}
+	<!-- likes authenticated -->
+	<form class="text-end" action="{% url 'like' post.slug %}" method="POST">
+		{% csrf_token %}
+		<button type="submit" name="blogpost_id" value="{{post.slug}}"
+			class="btn-like share-btns">
+			{% if liked %}
+			<i class="fas fa-heart icon-color-quaternary share-btns"
+				title="click to unlove the Post">
+			</i>
+			{% else %}
+			<i class="far fa-heart icon-color-quaternary share-btns"
+				title="click to love the Post"></i>
+			{% endif %}
+		</button>
+
+	</form>
+	{% endif %}
+	<span class="text-secondary">
+		{{ post.number_of_likes }}
+	</span>
+	<!-- END share Socially Icons -->
+</div>
+<!-- END of post-share-and-likes-count.html -->
