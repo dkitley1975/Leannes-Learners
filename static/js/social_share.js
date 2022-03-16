@@ -19,7 +19,7 @@ function shareSocially() {
 
 	twitterBtn.setAttribute(
 		'href',
-		`https://twitter.com/share?url=${postUrl}&text=${postTitle}&hashtags=leanneslearners, learntodrive, drivinglessons, femaledrivinginstructor, drivingschool, huddersfield`
+		`https://twitter.com/share?url=${postUrl}&text=${postTitle}&hashtags=leanneslearners,learntodrive,drivinglessons,femaledrivinginstructor,drivingschool,huddersfield`
 	);
 
 	pinterestBtn.setAttribute(
