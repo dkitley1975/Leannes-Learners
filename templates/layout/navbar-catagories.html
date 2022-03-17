@@ -1,10 +1,7 @@
 {% block content %}
-<div class="row">
-	<nav
-		class="navbar navbar-light navbar-expand-sm bg-faded justify-content-end z-index-100">
-		<div class="container">
-			<div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
-				<ul class="nav navbar-nav ms-auto w-100 justify-content-end">
+<nav class="d-flex justify-content-end navbar navbar-light navbar-expand-sm bg-faded
+		z-index-100">
+				<ul class="nav navbar-nav ms-auto justify-content-end">
 					<li class="nav-item dropdown cat-nav">
 						<a class="nav-link dropdown-toggle" href="#"
 							id="navbarScrollingDropdown" role="button"
@@ -13,7 +10,7 @@
 						<ul class="dropdown-menu dropdown-menu-end"
 							aria-labelledby="navbarScrollingDropdown">
 							<li>
-								<a class="dropdown-item-categories"
+								<a class="dropdown-item-categories w-100"
 									href="{% url 'blog' %}">All Posts</a>
 							</li>
 							{% for category in category_list %}
@@ -24,8 +21,6 @@
 						</ul>
 					</li>
 				</ul>
-			</div>
-		</div>
+		
 	</nav>
-</div>
 {% endblock content %}

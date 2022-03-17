@@ -15,3 +15,4 @@ myenv/
 latest.sql
 .gitignore
 latest.dump
+templates/layout/navbar-catagories copy.html
