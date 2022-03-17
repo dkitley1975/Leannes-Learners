@@ -27,7 +27,7 @@ class PasswordUpdateView(PasswordChangeView):
     We can do this by calling the super().form_valid(form) method.
     """
     form_class = PasswordChangeForm
-    template_name = "registration/change-password.html"
+    template_name = "registration/change_password.html"
     success_url = reverse_lazy("home")
 
     def form_valid(self, form):

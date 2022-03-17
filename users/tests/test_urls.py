@@ -44,7 +44,7 @@ class TestUsersUrls(SimpleTestCase):
 		"""
 		Test that the url for resetting the user password is correct.
 		"""
-		url = reverse('password-reset')
+		url = reverse('password_reset')
 		print(resolve(url))
 		self.assertEquals(resolve(url).func.view_class, PasswordResetView)
 
@@ -52,7 +52,7 @@ class TestUsersUrls(SimpleTestCase):
 		"""
 		Test that the url for user password done is correct.
 		"""
-		url = reverse('password-reset-done')
+		url = reverse('password_reset_done')
 		print(resolve(url))
 		self.assertEquals(resolve(url).func.view_class, PasswordResetDoneView)
 
@@ -60,7 +60,7 @@ class TestUsersUrls(SimpleTestCase):
 		"""
 		Test that the url for user password reset confirmation is correct.
 		"""
-		url = reverse('password-reset-confirm', args=['uidb64','token'])
+		url = reverse('password_reset_confirm', args=['uidb64','token'])
 		print(resolve(url))
 		self.assertEquals(resolve(url).func.view_class, PasswordResetConfirmView)
 
@@ -68,6 +68,6 @@ class TestUsersUrls(SimpleTestCase):
 		"""
 		Test that the url for user password reset completion is correct.
 		"""
-		url = reverse('password-reset-complete')
+		url = reverse('password_reset_complete')
 		print(resolve(url))
 		self.assertEquals(resolve(url).func.view_class, PasswordResetCompleteView)
