@@ -28,7 +28,7 @@ class UserProfile(models.Model):
         on_delete=models.CASCADE,
     )
     user_bio = models.CharField(
-        max_length=2500, blank=False, verbose_name="Biography")
+        max_length=2500, blank=True, verbose_name="Biography")
     user_profile_image = CloudinaryField(
         folder="leannes_learners/user_profile_images/",
         transformation={
