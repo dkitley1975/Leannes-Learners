@@ -28,5 +28,4 @@ urlpatterns = [
         name='comment-reply'),
     path('post/<slug:slug>/comment/delete/<int:pk>/', views.CommentDelete.as_view(),
         name='comment-delete'),
-    # path('URL', views.VIEWS-FORM-CLASS-NAME.as_view(), name='PAGE-NAME'),
     ]

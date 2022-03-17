@@ -1,4 +1,3 @@
-# from email.policy import default
 from .models import Comment, Post
 from django import forms
 from django_summernote.widgets import SummernoteWidget

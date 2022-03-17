@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-#  from django.shortcuts import redirect
 from django.views import generic
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib import messages

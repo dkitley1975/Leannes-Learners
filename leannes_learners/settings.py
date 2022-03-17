@@ -174,7 +174,6 @@ DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# TODO amend email to before deployment
 # test email server setup
 if RUN_UNITTESTS is True:
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

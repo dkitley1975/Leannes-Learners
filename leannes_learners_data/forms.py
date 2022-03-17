@@ -51,7 +51,6 @@ class ContactForm(forms.Form):
         Take the cleaned data and create the email message
         for the contact form.
         """
-        # Cleaned data
         cl_data = super().clean()
 
         first_name = cl_data.get("first_name").strip()
