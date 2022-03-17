@@ -193,7 +193,7 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
     EMAIL_PORT = "587"
     RECIPIENT_ADDRESS = "test-noreply@leanneslearners.com"  # default To email
-    DEFAULT_FROM_EMAIL = "Leannes Learners <test@leanneslearners.com>"
+    DEFAULT_FROM_EMAIL = "Leannes Learners <test-noreply@leanneslearners.com>"
 
 SUMMERNOTE_CONFIG = {
     "iframe": True,
