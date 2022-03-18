@@ -37,7 +37,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     """
-    The Post model for the blog. 
+    The Post model for the blog.
     This is the model that will be used to store the blog posts.
     """
 
@@ -52,8 +52,8 @@ class Post(models.Model):
     featured_image = CloudinaryField(
         folder="leannes_learners/blog_images/",
         transformation={
-            "width": "800",
-            "height": "600",
+            "width": "400",
+            "height": "300",
             "crop": "fill",
             "gravity": "face",
             "zoom": "0.5",
