@@ -225,6 +225,8 @@ These light greys are used through out the site to highlite areas and as shadow 
 - [H3C CSS Validation](https://jigsaw.w3.org/css-validator/validator.html.en)
 - [pep8online](http://pep8online.com/)
 - [color.a11y.com](https://color.a11y.com/Contrast/)
+- [Pixabay](https://pixabay.com/)
+- [TinyPNG](https://tinypng.com/)
 
 [Table of Contents](#table-of-contents)
 ***
