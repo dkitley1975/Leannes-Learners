@@ -51,7 +51,8 @@ To build a Full-Stack site based on business logic used to control a centrally-o
         - [Post Delete](#post-delete)
         - [Post Edit](#post-edit)
       - [Commenting](#commenting)
-    - [Admin](#admin)
+  - [Password reset](#password-reset)
+- [Admin](#admin)
 - [Error Pages](#error-pages)
   - [Error 400](#error-400)
   - [Error 403](#error-403)
@@ -397,7 +398,32 @@ Showing the Comments, with likes and dislikes added.
 This also shows a delete comment icon which only shows when the user is the originator of the comment (in this case oliphant_watcher) or if the user is a authenticated staff member.
 ![image](/documents/assets/screenshots/main_pages/comments.png)
 
-### Admin
+## Password reset
+
+When a user forgets their password, they are able to reset their password, on the login screen there is a 'forgotton your password link.  
+![image](documents/assets/screenshots/password_reset/0-login-screen-forgotten)
+This opens the Forgot Password page which asks for the users email address.
+![image](documents/assets/screenshots/password_reset/1-forgot-password.png)
+
+A confirmation page informs the user that an email has been sent to the given email address.
+![image](documents/assets/screenshots/password_reset/2-forgot-password-email-sent-confirmation.png)
+
+An email is sent to the users email address with a link to reset their password.
+![image](documents/assets/screenshots/password_reset/3-forgot-password-email.png)
+
+The link goes  opens up the Change password page, allowing the user to change their password.
+![image](documents/assets/screenshots/password_reset/4-forgot-password-revise-password.png)
+
+If the password do not match an error is displayed.
+![image](documents/assets/screenshots/password_reset/password-not-match.png)
+
+If the password do match a confirmation page is displayed with a login link.
+![image](documents/assets/screenshots/password_reset/5-forgot-password-completed.png)
+
+[Table of Contents](#table-of-contents)
+***
+
+# Admin
 
 I have used brand colors for the Admin Section.
 
