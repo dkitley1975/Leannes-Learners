@@ -110,6 +110,27 @@ img {
     -webkit-filter: blur(4px);
 }
 
+.background-image-car-engine-image {
+    background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1647577244/leannes_learners/404/car-engine.jpg');
+    filter: blur(4px);
+    backdrop-filter: brightness(1.5);
+    -webkit-filter: blur(4px);
+}
+
+.background-image-car-keys-image {
+    background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1647577244/leannes_learners/404/car-keys.jpg');
+    filter: blur(4px);
+    backdrop-filter: brightness(1.5);
+    -webkit-filter: blur(4px);
+}
+
+.background-image-new-car-keys-image {
+    background-image: url('https://res.cloudinary.com/dkitley1975/image/upload/v1647577244/leannes_learners/404/new-car-keys.jpg');
+    filter: blur(4px);
+    backdrop-filter: brightness(1.5);
+    -webkit-filter: blur(4px);
+}
+
 .background-image-container {
     box-sizing: border-box;
     min-height: 100vh;
