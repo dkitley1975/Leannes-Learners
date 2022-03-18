@@ -110,6 +110,14 @@ Percentage ("%") is not followed by two hexadecimal digits.
 
 - **Delete a Post** - No Errors
 
+- **Reset a Password** - No Errors
+  
+- **Reset a Password - Email sent Confirmation** - No Errors
+
+- **Reset a Password - Change Password** - One warning regarding the default change password form. Does not effect the functunality of the form or page.
+  
+- **Reset a Password - Completion message** - No Errors.
+  
 ### CSS
 
 The W3C CSS Validation Service was used to validate the CSS file used for the project. No errors or warnings to show.
